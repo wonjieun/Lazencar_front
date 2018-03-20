@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< dev
 	<name>Lazencar_front</name>
-=======
-	<name>Lazencar_front-1</name>
->>>>>>> master
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
-<<<<<<< dev
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
@@ -32,9 +27,5 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
-=======
-	</buildSpec>
-	<natures>
->>>>>>> master
 	</natures>
 </projectDescription>
