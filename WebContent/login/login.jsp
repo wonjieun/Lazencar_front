@@ -14,7 +14,6 @@
 	color: #6d6e72;
 }
 
-
 #login {
 	padding-bottom: 55px;
 }
@@ -209,7 +208,6 @@ a {
 <a href="javascript:void(0);" onclick="doLapSNSLogin('FB');">
 	<img src="/image/facebook.PNG" alt="" />
 </a>
-
 </div>
 </div>
 </div>
