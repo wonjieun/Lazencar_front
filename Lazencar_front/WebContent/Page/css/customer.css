@@ -1,0 +1,266 @@
+@charset "UTF-8";
+
+/* 자주찾는 질문 */
+.question-tab {
+	width:100%;
+	margin-top:30px;
+}
+.question-tab:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+.question-tab li {
+	float:left;
+	width:13%;
+}
+.question-tab li.list-ling01 {
+	width:11%;
+}
+.question-tab li.list-ling02 {
+	width:11%;
+}
+.question-tab li a {
+	display:block;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	border:1px solid #d9d9d9;
+	border-right:none;
+	background-color:#f6f6f6;
+	font-weight:bold;
+	font-size:13px;
+}
+.question-tab li.last-tab a {
+	border-right:1px solid #e6e6e6;
+}
+.question-tab li.on a {
+	background-color:#f1c40f;
+	color:#fff;
+	border-top:1px solid #008c45;
+	border-bottom:1px solid #008c45;
+}
+
+.question-tab li {width:11%;}
+.question-tab li.last-tab {width:12%;}
+/*
+.question-tab.customer-tab li {width:93px;}
+.question-tab.customer-tab li.last-tab {width:99px;}
+*/
+
+.question-wrap {
+	margin-top:20px;
+	border-top:2px solid #4d4c4c;
+}
+.question-wrap li {
+	font-size:14px;
+	font-weight:bold;
+	display:inline;
+}
+.question-wrap li a {
+	font-size:14px;
+	font-weight:bold;
+}
+.question-wrap dl {
+	border-bottom:1px solid #e2e2e2;
+	position:relative;
+}
+.question-wrap dl:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+.question-wrap dt {
+	float:left;
+	color:#333;
+}
+.question-wrap dt span {
+	display:inline-block;
+	padding:12px 0;
+	margin-left:20px;
+	width:120px;
+}
+.question-wrap dd {
+	margin-left:185px;
+}
+.question-wrap dd a {
+	display:block;
+	padding:12px 50px 12px 0;
+	color:#9b9b9b;
+}
+.question-wrap dd a:active {
+	background-color:transparent;
+}
+.question-wrap dd .btn {
+	position:absolute;
+	right:20px;
+	top:20px;
+}
+.question-wrap dl.on .bul_q span{
+	padding-left:35px;
+	background:url("../images/icons/icon_q.png") 0 50% no-repeat;
+	color:#f1c40f;
+}
+.question-wrap dl .bul_q span{
+	padding-left:35px;
+	background:url("../images/icons/icon_q_off.png") 0 50% no-repeat;
+}
+.question-wrap .bul_a {
+	padding-left:35px;
+	background:url("../images/icons/icon_a.png") 0 0 no-repeat;
+	min-height:23px;
+	height:auto !important;
+	height:23px;
+}
+.question-wrap .bul_a * {font-family:'NanumGothic','맑은고딕','Malgun Gothic','MGothic', sans-serif,"돋움",Dotum,"굴림",Gulim !important;font-size:14px !important}
+.question-wrap .answer {
+	padding:25px 20px;
+	background-color:#f6f6f6;
+	border-bottom:1px solid #e2e2e2;
+}
+.question-wrap dl.on,
+.question-wrap dl.on a {
+	color:#f1c40f;
+}
+
+/* 자주찾는질문 가입승인 */
+.question-list {
+	position:relative;
+	border-bottom:1px solid #e6e6e6;
+}
+.question-list a {
+	display:block;
+	color:#888888;
+	padding:12px 60px;
+	background:url("../images/icons/icon_q_off.png") 20px 50% no-repeat;
+}
+.question-wrap li .question-list.on a {
+	color:#0db14b;
+	background:url("../images/icons/icon_q.png") 20px 50% no-repeat;
+}
+.question-wrap .question-list .btn {
+	position:absolute;
+	right:20px;
+	top:20px;
+}
+
+/* 1:1 문의 */
+.boardList-edit tr.question-file td div{
+	position:relative;
+	padding-right:80px;
+}
+.question-file td input {
+	width:100%;
+	height:26px;
+	line-height:26px;
+	border:1px solid #dbd6d4;
+	color:#666;
+}
+.q-file {
+	position:absolute;
+	right:0;
+	top:0;
+}
+.q-select select {
+	width:130px;
+	height:26px;
+	line-height:26px;
+	border:1px solid #d9d9d9;
+	color:#767676;
+	font-size:13px;
+}
+
+/* 공지사항 */
+.notice-list tr td.txt_l a:hover {
+	text-decoration:none;
+	font-weight:normal;
+	color:#3c3c3c;
+}
+.notice-list tr.notice td,
+.notice-list tr.notice td a{
+	color:#f1c40f;
+	font-weight:bold;
+}
+.notice-list tr.notice td a:hover{
+	color:#f1c40f;
+	font-weight:bold;
+}
+
+/* 공지사항 상세 */
+.boardList-best-view tr.notice-view-con td{
+	padding-bottom:100px;
+}
+
+.boardList-best-view tr.notice-view-con ul li {
+	font-size:13px;
+	line-height:20px;
+	padding-bottom:10px;
+}
+
+.boardList-best-view tr.notice-view-con td table td {
+	padding:0;
+}
+
+/* 흡연신고 (2016-07-22) */
+.smoking-wrap {
+	position:relative; 
+	margin-bottom:-10px;
+}
+.smoking-tit {
+	border:1px solid #dbdbdb;
+	margin-top:20px;
+	padding:0 15px;
+}
+.smoking-tit strong {
+	display:block;
+	color:#666;
+	font-size:14px;
+	height:40px;
+	line-height:40px;
+	cursor:pointer;
+	background-image:url("../images/board/ico_toggle_arrow_off.gif");
+	background-position:right;
+	background-repeat:no-repeat;
+}
+.smoking-tit.on {border-bottom:none;}
+.smoking-tit.on strong {background-image:url("../images/board/ico_toggle_arrow_on.gif");}
+.smoking-view {
+	position:relative;
+	z-index:1000;
+	border:1px solid #dbdbdb; 
+	border-top:1px dotted #dbdbdb; 
+	padding:20px;
+}
+.smoking-view:after {content:""; display:block; clear:both;}
+.smoking-view-img {
+	float:left; 
+	text-align:center; 
+	max-width:100%;
+	padding-top:15px;
+}
+.smoking-view-img span {display:block;}
+.smoking-view-img em {display:block; margin-top:3px;}
+.smoking-view-cont {
+	position:relative;
+	border:1px solid #dbdbdb;
+	background-color:#f3f3f3;
+	padding:15px 20px;
+	border-radius:10px;
+	margin-left:80px;
+}
+.smoking-view-cont:after {
+	content:"";
+	position:absolute;
+	top:35px;
+	left:-8px;
+	background:url("../images/board/ico_cont_cock.gif") no-repeat 0 0;
+	width:8px;
+	height:15px;
+}
+.smoking-view-txt strong {font-size:16px; color:#333;}
+.smoking-view-txt ul {margin-top:8px;}
+.smoking-view-txt ul li {font-size:14px;}
+.smoking-view-txt ul li strong {font-size:14px; color:#666;}
+.smoking-view-txt p {font-size:13px; margin-top:5px;}
+.smokimg {margin-top:20px;}
+.btn-txt-r {text-align:right;}

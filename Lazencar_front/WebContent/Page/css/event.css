@@ -1,0 +1,1070 @@
+@charset "UTF-8";
+
+.board-event-wrap {
+	margin-top:40px;
+	border-bottom:1px solid #dbdbdb;
+}
+.board-event-wrap table tr td {padding-bottom:40px;vertical-align:top}
+.board-event-wrap table tr td.txt_r .eventbox {float:right; width:355px;}
+
+.eventbox {}
+
+.eventbox p {position:relative;width:353px;border:1px solid #dbdbdb;overflow:hidden;}
+.eventbox a {display:block}
+.eventbox a img {width:100%}
+.eventbox .band {position:absolute; top:88px; left:20px; display:block; font-size:0; line-height:0; cursor:pointer;}
+.eventbox strong {
+	display:block; 
+	font-size:14px; 
+	color:#767676;
+	margin-top:16px;
+}
+.eventbox ul {margin-top:14px;}
+.eventbox ul li {font-size:13px; color:#767676;}
+
+
+.evetn-view-info {padding:15px 10px 15px 25px; width:600px; border-bottom:1px solid #e2e2e2;}
+.evetn-view-info:after {content:""; display:block; clear:both;}
+.evetn-view-info li {
+	float:left; 
+	color:#767676;
+	margin-left:15px;
+}
+.evetn-view-info li:first-child {margin-left:0;}
+.evetn-view-info li span {
+	display:inline-block;
+	background:url(../images/event/bg_txt_bar.gif) no-repeat right 5px;
+	padding-right:10px;
+	margin-right:10px;
+	font-weight:bold;
+	font-size:13px;
+}
+.evetn-view-info li p {display:inline-block; font-size:13px;}
+
+.evetn-view-btn {text-align:right; padding-right:20px;}
+
+.sns_share {}
+.sns_share .inbox {margin:0 0 0 auto; width:230px;}
+.sns_share .inbox:after {content:""; display:block; clear:both;}
+.sns_share strong {
+	float:left; 
+	font-size:13px;
+	background:url(../images/event/bg_sns_tit.gif) no-repeat 0 6px;
+	padding:3px 0 0 20px;
+}
+.sns_share ul {
+	float:right; 
+	background:url(../images/event/bg_txt_bar.gif) no-repeat 0 center;
+	padding-left:10px;
+}
+.sns_share ul:after {content:""; display:block; clear:both;}
+.sns_share ul li {float:left; margin-left:5px;}
+.sns_share ul li:first-child {margin-left:0;}
+.sns_share ul li a {display:block;}
+
+
+.board-btn-wrap {
+	text-align:right; 
+	margin-top:20px;
+	padding-right:20px;
+}
+
+/* 이용후기 목록 */
+h4.review-title {
+	background:url("../images/event/bul_best.png") left 50% no-repeat;
+	padding-left:16px;
+	color:#f1c40f;
+	font-size:18px;
+	font-weight:bold;
+}
+.review-best {
+	margin:20px 0 17px 0;
+}
+.review-best:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+.review-best li {
+	font-size:13px;
+	color:#666666;
+	float:left;
+	width:220px;
+}
+.review-best li ul:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+.review-best li ul {
+	padding-top:10px;
+}
+.review-best li ul li {
+	clear:both;
+	width:210px;
+}
+.review-id span {
+	font-size:13px;
+	color:#f1c40f;
+	font-weight:bold;
+	padding-left:9px;
+}
+.review-id img {
+	vertical-align:middle;
+}
+.review-best li.title {
+	color:#3c3c3c;
+}
+.review-best .txt {
+	padding:10px 5px;
+	height:110px;
+	border-right:1px solid #e2e2e2;
+	border-left:1px solid #e2e2e2;
+	border-bottom:3px solid #f1c40f;
+	position:relative;
+}
+.review-best .top {
+	position:absolute;
+	left:50%;
+	top:-9px;
+}
+.review-best-con {
+	height:243px;
+}
+.review-best-con .car-img01 {
+	display:inline-block;
+	width:220px;
+	height:110px;
+}
+.review-best-con .car-img01 img{
+	position:relative;
+	z-index:-1;
+	width:220px;
+	height:110px;
+}
+.review-best-con:hover {
+	background:url("../images/event/bg_best.png") 0 0 no-repeat;
+}
+.review-best-con:hover .txt {
+	position:relative;
+	z-index:-1;
+}
+.review-best .center {
+	margin:0 44px;
+}
+
+.paging-best {
+	font-size:16px;
+	font-weight:bold;
+	text-align:center;
+}
+.paging-best span {
+	color:#9b9b9b;
+	margin:0 8px;
+}
+.paging-best em {
+	font-weight:bold;
+	color:#f1c40f;
+}
+.paging-best a.pre {
+	vertical-align:middle;
+	text-indent:-9999px;
+	width:26px;
+	height:26px;
+	display:inline-block;
+	background:url("../images/board/page_best_prev_off.gif") 0 0 no-repeat;
+}
+.paging-best a.pre:hover {
+	background:url("../images/board/page_best_prev_on.gif") 0 0 no-repeat;
+}
+.paging-best a.next {
+	vertical-align:middle;
+	text-indent:-9999px;
+	width:26px;
+	height:26px;
+	display:inline-block;
+	background:url("../images/board/page_best_next_off.gif") 0 0 no-repeat;
+}
+.paging-best a.next:hover {
+	background:url("../images/board/page_best_next_on.gif") 0 0 no-repeat;
+}
+
+.boardList-best {
+	margin-top:40px;
+	margin-bottom:20px;
+}
+.boardList-best th {
+	height:50px;
+	line-height:50px;
+	font-size:14px;
+	color:#fff;
+	border-top:2px solid #9e9890;
+	border-bottom:1px solid #9e9890;
+	background-color:#b7b0a7;
+}
+
+.boardList-best td {
+	text-align:center;
+	height:50px;
+	line-height:50px;
+	font-size:13px;
+	color:#767676;
+	border-bottom:1px solid #e2e2e2;
+}
+.boardList-best td.content {
+	text-align:left;
+	padding-left:10px;
+}
+.boardList-best td.content a:hover {
+	color:#333;	
+}
+.boardList-best td .new {
+	vertical-align:middle;
+	padding-left:5px;
+}
+.btn-regist {
+	text-align:right;
+	margin-right:30px;
+}
+
+/* 이용후기 상세 */	
+.boardList-best-view th {
+	height:50px;
+	line-height:50px;
+	text-align:left;
+}
+.boardList-best-view th.date {
+	text-align:right;
+	font-weight: normal;
+}
+.boardList-best-view td.date {
+	text-align:right;
+}
+.boardList-best-view thead th,
+.boardList-best-view thead td {
+	font-size:14px;
+	color:#fff;
+	background-color:#b7b0a7;
+	border-top:2px solid #9e9890;
+	border-bottom:1px solid #9e9890;
+	padding:0 20px;
+}
+.boardList-best-view tr.user td {
+	height:50px;
+	line-height:50px;
+	padding:0 20px;
+	border-bottom:1px solid #e2e2e2;
+	font-size:13px;
+
+}
+.boardList-best-view .user-id img {
+	vertical-align:middle;
+	border:1px solid #dbdbdb;
+	width:36px;
+	height:36px;
+}
+.boardList-best-view .user-id span {
+	margin-left:10px;
+}
+.boardList-best-view tr.user td.check {
+	text-align:right;
+}
+.boardList-best-view td.check span {
+	background:url("../images/event/bg_sns_list.gif") left 50% no-repeat;
+	height:10px;
+	padding-left:10px;
+	margin-left:10px;
+}
+.boardList-best-view td.user-id span.car-name {
+	background:url("../images/event/bg_sns_list.gif") left 50% no-repeat;
+	height:10px;
+	padding-left:13px;
+	margin-left:10px;
+}
+.boardList-best-view tr.content td {
+	padding:30px 20px 0 20px;
+	border-bottom:1px solid #e2e2e2;
+}
+.boardList-best-view tr.content td .sns_share {
+	margin-bottom:30px;
+}
+.boardList-best-view tr.content p {
+	font-size:13px;
+	padding-bottom:10px;
+}	
+.boardList-best-view tr.content td .txt-wrap {
+	width:710px;
+	margin-top:0;
+}
+.boardList-best-view tr.content td .txt-wrap img {
+	display:block;
+	max-width:710px;
+	width:auto !important;
+	margin-bottom:10px;	
+}
+.boardList-best-view td span.img-size {
+	display:block;
+	max-width:710px;
+	width:auto !important;
+	margin-bottom:10px;
+}
+.boardList-best-view td span.img-size img {
+	max-width:710px;
+	width:auto !important;
+}
+
+/* 이용후기 등록수정 */
+.boardList-edit td, 
+.boardList-edit th {
+	height:50px;
+	line-height:50px;
+}
+
+.boardList-edit .top th,
+.boardList-edit .top td {
+	border-top:2px solid #9e9890;
+	border-bottom:1px solid #9e9890;
+}
+
+.boardList-edit .title th,
+.boardList-edit .file th {
+	background-color:#b7b0a7;
+	font-size:14px;
+	text-align:left;
+	padding-left:20px;
+	border-bottom:1px solid #9e9890;
+	color:#fff;
+}
+.boardList-edit .title td,
+.boardList-edit .file td {
+	padding:0 20px;
+	border-bottom:1px solid #e2e2e2;
+}
+.boardList-edit .common td {
+	padding:0 20px;
+	border-bottom:1px solid #e2e2e2;
+}
+.boardList-edit .common th {
+	background-color:#b7b0a7;
+	font-size:14px;
+	border-bottom:1px solid #9e9890;
+	text-align:left;
+	padding-left:20px;
+	color:#fff;
+}
+.boardList-edit .title td input {
+	width:100%;
+	height:26px;
+	line-height:26px;
+	border:1px solid #d9d9d9;
+	color:#767676;
+}
+.boardList-edit td.editbox{
+	padding:20px 0;
+	border-bottom:1px solid #9e9890;
+}
+.boardList-edit td.editbox div {
+	height:326px;
+	width:100%;
+}
+.boardList-edit td.editbox div.textarea-con {
+	height:326px;
+	width:750px;	
+}
+.boardList-edit td.editbox div.textarea-con textarea {
+	padding:0;
+}
+.boardList-edit .file td input {
+	width:100%;
+	height:26px;
+	font-size:14px;
+	color:#666;
+}
+.boardList-edit td.file-plus-wrap {
+	padding:9px 20px;
+	height:0px;
+	line-height:0px;
+}
+.boardList-edit td input.file-plus {
+	height:27px;
+	line-height:27px;
+	width:350px;
+	vertical-align:middle;
+	color:#666;
+	display:inline-block;
+	margin-top:5px;
+}
+.boardList-edit td input.file-plus.first-gab {
+	margin-top:0;
+}
+.boardList-edit td input.btn-plus {
+	margin-left:10px;
+	vertical-align:top;
+}
+.boardList-edit td a.btn-plus {
+	margin-left:10px;
+	vertical-align:top;
+}
+.paging-edit {
+	margin-top:20px;
+	text-align:center;
+}
+.paging-edit a {
+	margin:0 5px;
+}
+
+.paging-edit input {
+	margin:0 5px;
+}
+
+/* 칭찬릴레이 */
+.user-select {
+	background-color:#f6f6f6;
+	border:1px solid #e2e2e2;
+}
+.user-select  img {
+	vertical-align:middle;
+}
+.user-select .notice img {
+	padding:0 5px;
+}
+.user-select .cars-wrap {
+	padding:15px 0;
+	background:url("../images/common/dot_list.png") 0 bottom repeat-x;
+}
+.user-select .cars {
+	padding:0 20px;
+}
+.boxing {
+	position:relative;
+}
+.boxing .txt {
+	position:absolute;
+	left:20px;
+	top:0;
+	width:60px;
+}
+.boxing .txt.userImg-box {
+	width:36px;
+	height:36px;
+	border:1px solid #dbdbdb;
+	overflow:hidden;
+}
+.boxing .txt.userImg-box img {
+	width:100%;
+}
+.boxing .btn {
+	position:absolute;
+	right:20px;
+	top:0;
+}
+.file .boxing .txt {
+	position:absolute;
+	right:20px;
+	top:2px;
+}
+.user-select .textbox {
+	padding:15px 0;
+	background:url("../images/common/dot_list.png") 0 bottom repeat-x;
+}
+.textbox .textareabox,
+.file .textareabox {
+	display:block;
+	margin:0 100px 0 80px;
+}
+.boxing textarea {
+	width:100%;
+	height:88px;
+	border:1px solid #d9d9d9;
+	color:#767676;
+}
+.user-select .file {
+	padding:15px 0;
+}
+.boxing input {
+	width:100%;
+	height:25px;
+	line-height:25px;
+	border:1px solid #dbd6d4;
+	color:#666;
+}
+.boxing input.btn-commend-regist {
+	width:70px;
+	height:90px;
+	border:none;
+}
+
+.boxing .input_file {
+	width:100%;
+	height:25px;
+	line-height:25px;
+	border:none;
+	color:#767676;
+}
+
+.file .boxing .txt {
+	font-size:14px;
+	font-weight:bold;
+}
+p.user-total {
+	font-size:14px;
+	font-weight:bold;
+	margin:60px 0 10px 0;
+}
+p.user-total span {
+	color:#f1c40f;
+}
+
+.praise-allwrap {
+	border:1px solid #e2e2e2;
+	margin-bottom:50px;
+}
+.praise-top-wrap {
+	position:relative;
+	background:url("../images/common/line_list.jpg") 0 bottom no-repeat;
+	height:100%;
+}
+.praise-top {
+	padding:20px 20px 28px 80px;
+}
+.praise-top span.user-img {
+	position:absolute;
+	left:20px;
+	top:20px;
+	width:36px;
+	height:36px;
+	border:1px solid #dbdbdb;
+	overflow:hidden;
+}
+.praise-top span.user-img img {
+	width:100%;
+}
+.praise-top .date {
+	color:#888;
+	padding-left:15px;
+}
+.praise-top strong {
+	color:#3c3c3c;
+}
+.del-img {
+	vertical-align:middle;
+	margin-left:10px;
+}
+.praise-top-wrap ul li.name {
+	padding-bottom:5px;
+}
+.praise-top-wrap .recom {
+	position:absolute;
+	right:20px;
+	top:20px;
+}
+.praise-top-wrap .recom .txt {
+	font-size:13px;
+	color:#7b5dfd;
+}
+.praise-top-wrap .recom .txt img {
+	vertical-align:middle;
+}
+.praise-top-wrap .recom .txt span {
+	color:#767676;
+	padding:0 10px 0 20px;
+}
+
+.praise-bottom-wrap {
+	position:relative;
+	padding:0 100px 0 20px;
+	background-color:#f6f6f6;
+}
+.praise-bottom-wrap .word {
+	padding:10px 0 20px 0;
+}
+.praise-bottom-wrap .word a {
+	position:absolute;
+	right:20px;
+	top:11px;
+}
+.praise-bottom-wrap .word input {
+	width:100%;
+	height:25px;
+	line-height:25px;
+	border:1px solid #d9d9d9;
+	color:767676;
+}
+.praise-bottom {
+	position:relative;
+	padding-bottom:20px;
+}
+.praise-bottom span.user-img {
+	position:absolute;
+	left:0;
+	top:0;
+	width:36px;
+	height:36px;
+	border:1px solid #dbdbdb;
+	overflow:hidden;
+}
+.praise-bottom span.user-img img {
+	width:100%;
+}
+.praise-bottom  ul {
+	padding-left:60px;
+}
+.praise-bottom .date {
+	color:#888;
+	padding-left:15px;
+}
+.praise-bottom strong {
+	color:#3c3c3c;
+}
+.praise-bottom ul li.name {
+	padding-bottom:5px;
+}
+.praise-allwrap .more {
+	padding:0 20px 20px;
+	background-color:#f3f3f3;
+}
+.praise-allwrap .more a {
+	display:block;
+	width:100%;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	color:#fff;
+	background-color:#d9d9d9;
+}
+.praise-img {
+	margin-top:20px;
+}
+.praise-img img {
+	max-width:648px;
+	width:auto !important;
+}
+
+.praise-allwrap.event {
+	width:710px;
+	margin:0 auto;
+}
+.praise-allwrap.event .praise-top-wrap {
+	background:url("../images/common/dot_list.png") 0 bottom repeat-x;
+}
+.event .praise-top-wrap.last-list {
+	background-image:none;
+}
+.praise-allwrap.event .comment-img {
+	max-width:610px;
+	margin-top:20px;
+}
+.praise-allwrap.event .comment-img img {
+	max-width:610px;
+}
+.praise-allwrap.event .more {
+	padding:0 20px 20px;
+	background-color:#fff;
+}
+.praise-allwrap.event .praise-top ul li {word-break:break-all;}
+
+
+
+
+/* 세차했어요 */
+.tbl-wash {
+	margin-bottom:20px;
+}
+.tbl-wash th {
+	height:50px;
+	line-height:50px;
+	font-size:14px;
+	color:#333;
+	background-color:#f3f3f3;
+	border-top:2px solid #4d4c4c;
+	border-bottom:1px solid #dbdbdb;
+}
+.tbl-wash td {
+	text-align:center;
+	border-bottom:1px solid #dbdbdb;
+	padding:15px 0;
+	font-size:13px;
+}
+.tbl-wash .content{
+	text-align:left;
+	position:relative;
+	height:90px;
+	padding-right:10px;
+}
+
+.tbl-wash .content ul li {word-break:break-all;}
+
+.tbl-wash .content ul li strong {
+	color:#333;
+	display:inline-block;
+	margin-bottom:5px;
+}
+
+.tbl-wash .content span.thumbnail {
+	position:absolute;
+	left:0;
+	top:0;
+}
+.tbl-wash .content ul {
+	padding:13px 0 0 150px;
+}
+
+.tbl-wash .content ul.img_none {
+    padding: 13px 0 0 0;
+}
+
+.tbl-wash .content .new {
+	padding-left:5px;
+	vertical-align:middle;
+}
+
+/* 세차했어요 등록수정 */
+.boardList-edit.top-mr01 {
+	margin-top:20px;
+}
+.boardList-edit tr.carselect th {
+	background-color:#f3f3f3;
+	font-size:14px;
+	border-bottom:1px solid #dbdbdb;
+	text-align:left;
+	padding-left:20px;
+}
+.boardList-edit tr.carselect td {
+	padding:0 20px;
+	border-bottom:1px solid #dbdbdb;
+}
+.boardList-edit tr.carselect td img {
+	vertical-align:middle;
+}
+.boardList-edit tr.carselect td .txt {
+	margin-left:20px;
+	font-size:13px;
+}
+
+
+/* 쿠폰북 */
+.coupon-wrap {
+	border-bottom:1px solid #e2e2e2;
+}
+.coupon-wrap:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+.coupon-con-gap {
+	margin-right:40px;
+}
+.coupon-con {
+	float:left;
+	padding-bottom:60px;
+	width:355px;
+}
+.coupon-down {
+	position:relative;
+	width:335px;
+	height:171px;
+	background-color:#e8e8e8;
+	padding:10px;
+	position:relative;
+}
+.coupon-down li span.eventImg-txt {
+	position:absolute;
+	left:0;
+	top:0;
+}
+.coupon-down .num {
+	position:absolute;
+	left:10px;
+	top:158px;
+	font-size:16px;
+	font-weight:bold;
+}
+.coupon-down .num span{
+	color:#7b5dfd;
+	padding-right:5px;
+}
+.coupon-down-off .num span{
+	color:#666;
+	padding-right:5px;
+}
+/* 2017 01 09 */
+.coupon-down .down {
+	position:absolute;
+	right:10px;
+	top:157px;
+	width:88px;
+	height:26px;
+	line-height:26px; 
+	text-align:center;
+	border-radius:2px;
+	font-size:14px;
+	font-weight:bold;
+}
+.coupon-down .down a{color:#fff; display:block; line-height:26px;}
+.coupon-down .down img{padding:7px 0px; padding-left:5px;}
+/* // 2017 01 09 */
+.coupon-info {
+	margin-top:19px;
+}
+.coupon-info li {
+	font-size:13px;
+	position:relative;
+	padding:1px 0 8px 0;
+}
+/* 2017 01 02*/
+.coupon-info li .title {
+	position:absolute;
+	left:0;
+	top:0;
+	width:60px;
+	height:24px;
+	line-height:24px;
+	text-align:center;
+	color:#fff;
+	background:#bfbebe;
+	font-size:12px;
+	border-radius:2px;
+}
+/* // 2017 01 02*/
+.coupon-info li .txt {
+	color:#3c3c3c;
+	padding-left:70px;
+	padding-right:10px;
+	display:inline-block;
+}
+
+.coupon-bgOff-wrap {
+	position:relative;
+}
+.coupon-bgOff {
+/*	background: url("../images/common/bg_event_off.png") 0 0 no-repeat;*/
+	position:absolute;
+	left:0;
+	top:0;
+	width:335px;
+	height:140px;
+}
+.coupon-benefit-wrap {
+	position:relative;
+}
+.coupon-benefit-wrap .coupon-benefit-more {	
+	position:absolute;
+	right:0;
+	top:15px;
+	color:#333333;
+}
+.coupon-benefit-wrap .coupon-benefit-more  a{
+	color:#333333;
+}
+
+.coupon-benefit-box {
+	margin-top:20px;
+	padding:50px 0;
+	border:1px solid #e6e6e6;
+}
+.coupon-benefit-box:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+.coupon-benefit-box dl {
+	float:left;
+	width:210px;
+	text-align:center;
+	margin:0 19px;
+}
+.coupon-benefit-box dl dt {
+	font-weight:bold;
+	font-size:15px;
+	color:#333;
+	padding:170px 0 10px 0;
+}
+.coupon-benefit01 {
+	background:url("../images/icons/coupon_benefit01.gif") 30px 0 no-repeat;
+	margin-right:0;
+}
+.coupon-benefit02 {
+	background:url("../images/icons/coupon_benefit02.gif") 30px 0 no-repeat;
+}
+.coupon-benefit03 {
+	background:url("../images/icons/coupon_benefit03.gif") 55px 0 no-repeat;
+	margin-left:0;
+}
+
+
+
+.add-explain-coupon {
+	margin-top:60px;
+}
+
+
+/* 반발성_이벤트_20141210 */
+.one-event .user-select {margin:20px;}
+.one-event .user-select .textbox {background-image:none;}
+.one-event .sns_share {margin:30px 20px 20px 20px;}
+.one-event .paging {margin-top:50px;}
+
+/* 댓글아이디 텍스트 컬러 (2015-03-23) */
+.txtcol_orange {color:#7b5dfd !important;}
+
+/* 롯데 임직원 쿠폰몰 (2015-06-23) */
+.lotte_certify_wrap {overflow:hidden;}
+.lotte_certify_wrap:after {content:""; display:block; clear:both;}
+.lotte_certify_wrap li {
+	position:relative;
+	float:left; 
+	width:33.3%;
+}
+.lotte_certify_wrap li .inbox {
+	text-align:center;
+	border-bottom:1px solid #e2e2e2;
+	border-right:1px solid #e2e2e2;
+	height:230px;
+}
+.lotte_certify_wrap li:first-child .inbox {border-left:1px solid #e2e2e2;}
+.lotte_certify_wrap li strong {
+	display:block;
+	position:relative;
+	font-size:18px; 
+	color:#fff; 
+	text-align:center;
+	height:70px;
+	line-height:70px;
+	background-color:#d1cfcf;
+}
+.lotte_certify_wrap li p {
+	font-size:13px;
+	line-height:17px;
+}
+.lotte_certify_wrap li.certi_02 strong {background-color:#bcbcbc;}
+.lotte_certify_wrap li.certi_03 strong {background-color:#858585;}
+
+.lotte_certify_wrap li.certi_01 strong:after {
+	content:""; 
+	display:block;
+	background:url("../images/event/ico_arrow_order1.gif") no-repeat 0 0;
+	width:141px;
+	height:78px;
+	position:absolute;
+	top:0;
+	right:-141px;
+	z-index:33;
+}
+.lotte_certify_wrap li.certi_02 strong:after {
+	content:""; 
+	display:block;
+	background:url("../images/event/ico_arrow_order2.gif") no-repeat 0 0;
+	width:141px;
+	height:78px;
+	position:absolute;
+	top:0;
+	right:-141px;
+	z-index:33;
+}
+.lotte_certify_wrap li.certi_01 p {background:url("../images/event/ico_lotte_certi_join.gif") no-repeat center 25px; padding-top:150px; font-size:14px;}
+.lotte_certify_wrap li.certi_02 p {background:url("../images/event/ico_lotte_certi_member.gif") no-repeat center 25px; padding-top:150px; font-size:14px;}
+.lotte_certify_wrap li.certi_03 p {background:url("../images/event/ico_lotte_certi_coupon.gif") no-repeat center 25px; padding-top:150px; font-size:14px;}
+
+.lotte_member_card_wrap {margin-top:90px;}
+.lotte_member_card_wrap:after {content:""; display:block; clear:both;}
+
+.lotte_member_cardimg {float:left;}
+.lotte_member_card_wrap .inbox {float:left; margin-left:30px; text-align:center;}
+
+.lotte_member_card_number {
+	margin-top:12px; 
+	border:1px solid #e2e2e2; 
+	background-color:#f6f6f6; 
+	padding-top:15px;
+	height:77px;
+	width:475px;
+}
+.lotte_member_card_number input {
+	border:1px solid #d9d9d9;
+	height:25px;
+	line-height:25px;
+	font-size:14px;
+	text-align:center;
+	width:65px;
+	padding:0 5px;
+}
+.lotte_member_card_number .bar {
+	display:inline-block; 
+	background-color:#e3e3e3;
+	font-size:0;
+	overflow:hidden;
+	width:8px;
+	height:1px;
+	font-size:15px;
+	font-weight:bold; 
+	vertical-align:middle;
+	margin:0 10px;
+}
+.lotte_member_tit {color:#666; font-size:18px; text-align:left;}
+.lotte_member_submit {margin-top:10px;}
+.lotte_member_submit button {
+	background-color:#f1c40f;
+	color:#fff;
+	height:30px;
+	line-height:30px;
+	padding:0 20px;
+	font-size:14px;
+	font-weight:bold;
+	vertical-align:middle;
+}
+
+/* 진행중 이벤트 (2015-06-24) */
+.event_150624_wrap .inbox {
+	position:relative;
+	background:url("../images/event/150624/evt_150624.gif") no-repeat 0 0;
+	width:710px;
+	height:2938px;
+}
+.txt_yag_name {
+	text-align:center;
+	height:41px;
+	line-height:41px;
+	border:2px solid #1b49a1;
+	width:350px;
+	font-size:18px;
+	color:#424242;
+	padding:0 5px;
+	margin-right:10px;
+}
+.name_regist {
+	position:absolute;
+	top:1057px;
+	left:50%;
+	margin-left:-250px;
+}
+.event_150624_wrap .btn_download {position:absolute; top:1317px; left:45px;}
+.event_150624_wrap .btn_community {position:absolute; top:1317px; right:45px;}
+
+
+/* 제휴복지몰 (2015-08-26) */
+.event-parter-wrap {background:url("../images/event/ico_dotted_line.gif") repeat-y 50% 0;}
+.event-parter-wrap:after {content:""; display:block; clear:both;}
+.event-parter1 {float:left; width:50%;}
+.event-parter2 {float:left; width:50%;}
+.event-parter-wrap .inbox {width:243px; margin:0 auto; text-align:center;}
+
+.evtparter_txt {margin-top:30px; font-size:14px;}
+.evtparter_txt strong {color:#3c3c3c;}
+.evtparter_txt p {color:#767676;}
+.evtparter_btn {margin-top:25px;}
+
+.lotte_certify_wrap.public li.certi_02 p {
+	background-image:url("../images/event/ico_public_certi_member.gif"); 
+	background-position:center 30%;
+}
+.lotte_certify_wrap.public li.certi_03 p {background-position:center 31%;}
+
+/* 이벤트 추가 (2015-12-17) */
+.col-grn {color:#f1c40f; font-weight:bold;}
+.col-grn.fwnormal {font-weight:normal;}
+/* 2017 01 10 */.col-org {color:#7b5dfd; font-weight:bold;}
+.col-org.fwnormal {font-weight:normal;}
+
+/* 2017 01 09 */
+.green_down{background:#f1c40f; border-radius:2px;} 
+.gray_down{background:#bfbebe; border-radius:2px;} 
