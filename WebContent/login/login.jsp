@@ -17,7 +17,6 @@
 #login {
 	padding-bottom: 55px;
 }
-
 #content_sub {
 	width: 100%;
 	margin: 0 auto;
