@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style> 
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+body{font-family:나눔고딕, NanumGothic, NanumBarunGothic,'Nanum Gothic',arial,verdana,sans-serif;}
+#sidebar{float:left;}
+
+
+ul{list-style:none;margin:0px; padding:0px;position:relative;text-align:center;}
+ul li a{text-decoration:none;display:block; width:100px;height: 35px; line-height:35px;}
+li{width:100px;background-color:#9FC93C;}
+ul li:hover{background-color:#D4F4FA;}
+ul ul{display:none;position:absolute; left: 80px; top: 35px;}
+ul li:hover > ul {display:block;}
+#contents{float:left;width:500px; height: 300px;border:1px solid green;}
+ 
+
+</style>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="sidebar">
+<ul> 
+  <li><a href="http://opencast.naver.com/IT741">menu1</a></li>
+  <li><a href="http://opencast.naver.com/IT741">menu2</a>
+    <ul>
+       <li><a href="http://opencast.naver.com/IT741">menu1</a></li>
+       <li><a href="http://opencast.naver.com/IT741">menu2</a></li>
+       <li><a href="http://opencast.naver.com/IT741">menu3</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu3</a></li>
+</ul>
+</div>
+<div id="contents"> 
+본문
+</div>
+ 
+</body>
+</html>
+
+
