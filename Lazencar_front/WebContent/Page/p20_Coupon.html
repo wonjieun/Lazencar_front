@@ -647,6 +647,168 @@ a.hoverline:hover {
 .chargesImg01 {
 	margin:20px 0 10px 0;
 }
+
+
+
+
+
+
+/* 쿠폰북 */
+.coupon-wrap {
+	border-bottom:1px solid #e2e2e2;
+}
+.coupon-wrap:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+.coupon-con-gap {
+	margin-right:40px;
+}
+.coupon-con {
+	float:left;
+	padding-bottom:60px;
+	width:355px;
+}
+.coupon-down {
+	position:relative;
+	width:335px;
+	height:171px;
+	background-color:#e8e8e8;
+	padding:10px;
+	position:relative;
+}
+.coupon-down li span.eventImg-txt {
+	position:absolute;
+	left:0;
+	top:0;
+}
+.coupon-down .num {
+	position:absolute;
+	left:10px;
+	top:158px;
+	font-size:16px;
+	font-weight:bold;
+}
+.coupon-down .num span{
+	color:#7b5dfd;
+	padding-right:5px;
+}
+.coupon-down-off .num span{
+	color:#666;
+	padding-right:5px;
+}
+/* 2017 01 09 */
+.coupon-down .down {
+	position:absolute;
+	right:10px;
+	top:157px;
+	width:88px;
+	height:26px;
+	line-height:26px; 
+	text-align:center;
+	border-radius:2px;
+	font-size:14px;
+	font-weight:bold;
+}
+.coupon-down .down a{color:#fff; display:block; line-height:26px;}
+.coupon-down .down img{padding:7px 0px; padding-left:5px;}
+/* // 2017 01 09 */
+.coupon-info {
+	margin-top:19px;
+}
+.coupon-info li {
+	font-size:13px;
+	position:relative;
+	padding:1px 0 8px 0;
+}
+/* 2017 01 02*/
+.coupon-info li .title {
+	position:absolute;
+	left:0;
+	top:0;
+	width:60px;
+	height:24px;
+	line-height:24px;
+	text-align:center;
+	color:#fff;
+	background:#bfbebe;
+	font-size:12px;
+	border-radius:2px;
+}
+/* // 2017 01 02*/
+.coupon-info li .txt {
+	color:#3c3c3c;
+	padding-left:70px;
+	padding-right:10px;
+	display:inline-block;
+}
+
+.coupon-bgOff-wrap {
+	position:relative;
+}
+.coupon-bgOff {
+/*	background: url("../images/common/bg_event_off.png") 0 0 no-repeat;*/
+	position:absolute;
+	left:0;
+	top:0;
+	width:335px;
+	height:140px;
+}
+.coupon-benefit-wrap {
+	position:relative;
+}
+.coupon-benefit-wrap .coupon-benefit-more {	
+	position:absolute;
+	right:0;
+	top:15px;
+	color:#333333;
+}
+.coupon-benefit-wrap .coupon-benefit-more  a{
+	color:#333333;
+}
+
+.coupon-benefit-box {
+	margin-top:20px;
+	padding:50px 0;
+	border:1px solid #e6e6e6;
+}
+.coupon-benefit-box:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+.coupon-benefit-box dl {
+	float:left;
+	width:210px;
+	text-align:center;
+	margin:0 19px;
+}
+.coupon-benefit-box dl dt {
+	font-weight:bold;
+	font-size:15px;
+	color:#333;
+	padding:170px 0 10px 0;
+}
+.coupon-benefit01 {
+	background:url("../images/icons/coupon_benefit01.gif") 30px 0 no-repeat;
+	margin-right:0;
+}
+.coupon-benefit02 {
+	background:url("../images/icons/coupon_benefit02.gif") 30px 0 no-repeat;
+}
+.coupon-benefit03 {
+	background:url("../images/icons/coupon_benefit03.gif") 55px 0 no-repeat;
+	margin-left:0;
+}
+
+
+
+.add-explain-coupon {
+	margin-top:60px;
+}
+
+
 </style>
 
 
@@ -799,17 +961,17 @@ a.hoverline:hover {
 
 
 
-					<h2 class="left-tit">라젠카 소개</h2>
+					<h2 class="left-tit">서비스 / 혜택</h2>
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>라젠카란?</span></a></li>
+						<li class="top"><a href="#"><span>특가상품</span></a></li>
 
-						<li><a href="#"><span>이용안내</span></a></li>
+						<li><a href="#"><span>쿠폰받기</span></a></li>
 
-						<li><a href="#"><span>요금안내</span></a></li>
+						<li><a href="#" class = 'on'><span>후기</span></a></li>
 
-						<li><a href="#" class = 'on'><span>찾아오시는길</span></a></li>
+<!-- 					class = 'on'	현재 페이지를 나타낼때 on 사용하는 듯 -->
 
 					</ul>
 
@@ -840,70 +1002,166 @@ a.hoverline:hover {
 
         <div class="location">
           <div class="location_in">
-            <p><span>라젠카 소개</span>&gt; <strong>요금안내</strong></p>
+            <p><span>서비스 / 혜택</span>&gt; <strong>쿠폰받기</strong></p>
           </div>
         </div>
         <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">요금안내</h3>
-          <p class="subtxt"><strong>30분도 대여 가능한 경제적인 라젠카,</strong><br />최대 86%까지 할인된 요금혜택을 누려보세요.</p>
+          <h3 class="subtit">쿠폰받기</h3>
+          <p class="subtxt"><strong>라젠카 회원이라면 누구나 다운받을 수 있는 버라이어티 할인 쿠폰~!</strong><br />일상의 충전, 라젠카의 할인혜택을 누려보세요.</p>
         </div>
 
 
-					<div class="bodystart">
+		<div class="bodystart">
 
-						<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
+			<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
 
-						<div class="charges-wrap">
+	<div class="coupon-wrap">
+					<div class="coupon-con coupon-con-gap">
+					<!-- 진행중 -->
+					<ul class="coupon-down">
+					<li>
+								<span><img src="./images/coupon/nightcoupon_02115.png" alt="" width="335" height="140"/></span>
+						<span class="eventImg-txt"><img src="./images/coupon/icon_event_ing.png" alt="진행" /></span>
+			</li>
+			<li class="num"><span>5331</span>남음</li>
+			
+					<!-- 다운로드 가능 -->
+					<li class="down"><a href="javascript:couponView('2KJdS9pt4cH7i7RarHeQlA==','8383');"><img src="./images/coupon/btn_down.gif" alt="다운로드" /></a></li>
+		
+			</ul>
+			<ul class="coupon-info">
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_name.gif" alt="쿠폰명" /></span> <strong
+					class="txt">심야 10시간 10,000원!(3/21)</strong></li>
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_date.gif" alt="신청기간" /></span> <span
+					class="txt">2018-03-21~2018-03-21</span></li>
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_use.gif" alt="사용조건" /></span> <span
+					class="txt">주중 사용/차종제한/이용가능시간제한</span></li>
+			</ul>
+		</div>
+		
+			
+				
+				
+					<div class="coupon-con">
+				
+			
+			
+				
+					<!-- 진행중 -->
+					<ul class="coupon-down">
+				
+				
+				
+			
+			
+			<li>
+				
+					
+					
+						
+							
+								<span><img src="./images/coupon/coupon-03.png" alt="" width="335" height="140"/></span>
+							
+							
+						
+					
+				
+				
+				
+					
+						<span class="eventImg-txt"><img src="./images/coupon/icon_event_ing.png" alt="진행" /></span>
+					
+					
+					
+				
+			</li>
+			<li class="num"><span>5595</span>남음</li>
+			
+					<!-- 다운로드 가능 -->
+					<li class="down"><a href="javascript:couponView('86k0hhtfhz0O/7w+/IdrFg==','8372');"><img src="./images/coupon/btn_down.gif" alt="다운로드" /></a></li>
 
-						<h4 id="mini-title">라젠카 회원제 안내</h4>
-						<div><img width="100%" alt="회원제 안내" src="./images/charge_guide/Membership.png" />  </div>
+				
+				
+				
+			
+			</ul>
+			<ul class="coupon-info">
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_name.gif" alt="쿠폰명" /></span> <strong
+					class="txt">[봄꽃 트래블위크] 전차종 60% 할인!</strong></li>
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_date.gif" alt="신청기간" /></span> <span
+					class="txt">2018-03-21~2018-03-21</span></li>
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_use.gif" alt="사용조건" /></span> <span
+					class="txt">주중 사용/3시간이상/차종제한</span></li>
+			</ul>
+		</div>
+		
+			
+				
+					<div class="coupon-con coupon-con-gap">
+				
+				
+			
+			
+				
+					<!-- 진행중 -->
+					<ul class="coupon-down">
+				
+				
+				
+			
+			
+			<li>
+				
+					
+					
+						
+							
+								<span><img src="./images/coupon/coupon_web7.png" alt="" width="335" height="140"/></span>
+							
+							
+						
+					
+				
+				
+				
+					
+						<span class="eventImg-txt"><img src="./images/coupon/icon_event_ing.png" alt="진행" /></span>
+					
+					
+					
+				
+			</li>
+			<li class="num"><span>1845</span>남음</li>
+			
+					<!-- 다운로드 가능 -->
+					<li class="down"><a href="javascript:couponView('k/2q2jlEykZVjl3LF2+wTA==','8385');"><img src="./images/coupon/btn_down.gif" alt="다운로드" /></a></li>
 
-						<h4 id="mini-title">요금 안내</h4>
-						<p>- 예약한 시간, 주행한 거리만큼의 저렴하고 합리적인 요금으로 라젠카를 이용하실 수 있습니다.</p>
-						<div><img width="100%" alt="요금 안내" src="./images/charge_guide/Charge.png" />	</div>
-
-						<h4 id="mini-title">차종별 요금표</h4>
-						<p>- 라젠카는 상시 이벤트(차종 및 지역)를 진행하여 표준요금보다 더욱 저렴하게 이용 가능합니다.
-						<div><img width="100%" alt="요금표" src="./images/charge_guide/CarList.png" />	</div>
-						<p>	- 차종 및 지역, 이벤트 등 할인조건에 따라 보다 많은 할인혜택이 제공됩니다. 실시간 할인대여요금을 직접 조회해보세요.<br>
-							- 라젠카 이용요금은 기간별(비수기/성수기 등) 요금 정책에 따라 실시간 변동될 수 있습니다.<br>
-							- 주행요금은 유가변동에 따라 변경될 수 있습니다.<br>
-						</p>
-							
-						<h4 id="mini-title">시간안내(대여시작 기준)</h4>
-						<p>
-						- 주중 : 일요일 19:00 ~ 금요일 18:50<br>
-						- 주말 : 금요일 19:00 ~ 일요일 18:50<br>
-						- 공휴일 : 00:00 ~ 23:50(주말 요금 적용)<br>
-						- 심야 : 00:00 ~ 06:50(주말/공휴일 제외) <br>
-						   단, 심야요금은 대여시작 시간과 관계 없이 주중 대여 건에 적용됩니다.
-						</p>
-							
-						<h4 id="mini-title">보험안내</h4>
-						<p>
-						- 예약한 시간만큼 보험료가 부과되며, 자동차 종합보험(대인배상/대물배상/자기신체사고) 및 차량손해면책제도(자차보험)이 포함됩니다.
-						</p>
-						<div><img width="100%" alt="보럼 안내" src="./images/charge_guide/Insurance.png" />	</div>	
-							
-						<h4 id="mini-title">차량별 자기부담금 안내</h4>
-						<p>
-						- 차량 대여 시 이용자의 귀책사유로 인해 차량손해가 발생한 경우 대여 시 선택하신 보험료에 따라 손해면책 혜택을 받을 수 있습니다.
-						</p>
-						<div><img width="100%" alt="자기부담금 안내" src="./images/charge_guide/Deductible.png" />	</div>	
-							
-						<h4 id="mini-title">라젠카 요금활용 TIP</h4>
-						<div><img width="80%" alt="프로모션" src="./images/charge_guide/Promotion.png" />	</div>	
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-					</div>	<!-- charges-wrap -->
+				
+				
+				
+			
+			</ul>
+			<ul class="coupon-info">
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_name.gif" alt="쿠폰명" /></span> <strong
+					class="txt">[50%할인]통큰 반값할인</strong></li>
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_date.gif" alt="신청기간" /></span> <span
+					class="txt">2018-03-19~2018-03-24</span></li>
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_use.gif" alt="사용조건" /></span> <span
+					class="txt">주중 주말 사용/50시간이상/그린존제한/차종제한/이용가능시간제한</span></li>
+			</ul>
+		</div>
+		
+	</div>
+	<!-- coupon-wrap -->
 
 				</div>		<!-- // bodyend -->
 			</div>		<!-- // end contentBox -->
