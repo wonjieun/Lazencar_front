@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Image slide</title>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+
+<!-- css 적용 -->
+<style type="text/css">
+/*초기화*/
+html, body, ul, li, botton {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+	border: 0;
+	
+}
+
+botton {
+	border: 0;
+	background: none;
+}
+
+/*슬라이드 요소*/
+.slide {
+	/*이미지 크기 만큼 사용 → width: 1538px;*/
+	width: 1538px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	
+}
+
+/*ul 요소*/
+.slide ul {
+	/*1538*8(개) → width: 12304px;*/
+	width: 12304px;
+	list-style: none;
+	font-size: 0;
+}
+
+/*list 요소*/
+.slide ul li {
+	/*이미지 크기에 맞게 지정 → 여백 없게 하기 : font-size: 0;*/
+	display: inline-block;
+}
+
+/*버튼 요소*/
+.slide button.prev {
+	position: absolute;
+	left: 0;
+	/*top : 전체 이미지 요소의 높이 - 버튼의 크기 나누기 2*/
+	top: 120px;
+}
+
+.slide button.next {
+	position: absolute;
+	right: 0;
+	/*top : 전체 이미지 요소의 높이 - 버튼의 크기 나누기 2*/
+	top: 120px;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- div 요소로 이미지 감싸기 -->
+<div class="slide">
+	<button class="prev" type="button"><img src="/images/back.jpg" alt="" /></button>
+		<ul>
+			<li><img src="/images/car_01.jpg" alt="" /></li>
+			<li><img src="/images/car_02.jpg" alt="" /></li>
+			<li><img src="/images/car_03.jpg" alt="" /></li>
+			<li><img src="/images/car_04.jpg" alt="" /></li>
+			<li><img src="/images/car_05.jpg" alt="" /></li>
+			<li><img src="/images/car_06.jpg" alt="" /></li>
+			<li><img src="/images/car_07.jpg" alt="" /></li>
+			<li><img src="/images/car_08.jpg" alt="" /></li>
+		</ul>
+	<button class="next" type="button"><img src="/images/next.jpg" alt="" /></button>	
+</div>
+
+<!-- script 작성 -->
+<script type="text/javascript">
+(function(){
+	
+	var current = 0;
+	var max = 0;
+	var container;
+	var xml;
+	var interval;
+	var xml;
+	var amimateTarget = null;
+	var iWidth;
+	var iHeight;
+	
+	function init() {
+		container = jQuery(".slide ul");
+		max = container.children().length;
+		
+		events();
+		
+		interval = setInterval(next, 3000);
+		
+		config_load();
+	}
+	function config_load() {
+		var obj = {};
+		//obj.url = "/xml/images.xml"
+		obj.dataType = "text";
+		obj.type = "get";
+		obj.success = loadComplete;
+		obj.fail = loadFail;
+		jQuery.ajax(obj);
+	}
+	function loadComplete($arg1, $arg2) {
+		if($arg2 == "success") {
+			var data = jQuery.parseXML($arg1);
+			xml = jQuery(data);
+			
+			setting();
+		}
+	}
+	function loadFail($arg1, $arg2, $arg3) {
+		console.log([$arg1, $arg2, $arg3]);
+	}
+	function setting() {
+		var li = "";
+		xml.find("images").find("item").each(function(i) {
+			var self = jQuery(this);
+			li += '<li><img src="'+self.find("src").text()+'" alt="" /></li>';
+		})
+		
+		iWidth = xml.find("config").find("width").text();
+		iHeight = xml.find("config").find("height").text();
+		
+		jQuery(".slide").css("width", iWidth+"px");
+		jQuery(".slide").css("height", iHeight+"px");
+		
+		container.append(li);
+		max = container.children().length;
+		container.css("margin-left", "-1538px");
+		container.prepend(container.children()[max-1]);
+		
+		events();
+		
+		interval = setInterval(next, 3000);
+	}
+	
+	function events() {
+		jQuery("button.prev").on("click", prev);
+		jQuery("button.next").on("click", next);
+		
+		jQuery(window).on("keydown", keydown);
+	}
+	
+	function prev(e) {
+		current--;
+		if( current < 0 ) current = max-1;
+		animate("prev");
+	}
+	function next(e) {
+		current++;
+		if( current > max-1 ) current = 0;
+		animate("next");
+		
+	}	
+	function animate($direction) {
+		/*var moveX = current * 600;
+		TweenMax.to(container, 0.8, {marginLeft:-moveX, ease:Expo.easeOut});
+		
+		//timer
+		clearInterval(interval);
+		interval = setInterval(next, 3000); */
+		
+		if(amimateTarget != null) {
+			TweenMax.killTweensOf(amimateTarget);
+			amimateTarget.css("margin-left", "0");
+		}
+		if($direction == "next") {
+			jQuery(container.children()[1]).css("margin-left", iWidth+"px");
+			container.append(container.children()[0]);
+			
+		} else if ($direction == "prev" ){
+			container.prepend(container.children()[max-1]);
+			jQuery(container.children()[0]).css("margin-left", (-iWidth)+"px");
+		} 
+		amimateTarget = jQuery(container.children()[0]);
+		TweenMax.to(amimateTarget, 0.8, {marginLeft:0, ease:Expo.easeOut});
+		
+	}
+	function keydown(e) {
+		
+		if(e.which == 39 /*right*/) {
+			next();
+		} else if(e.which == 37 /*left*/) {
+			prev();
+		}
+	}
+	
+	jQuery(document).ready(init);
+})();
+</script>
+
+</body>
+</html>

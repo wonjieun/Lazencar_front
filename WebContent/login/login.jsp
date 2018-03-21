@@ -922,6 +922,15 @@ a.hoverline:hover {
 	font-family: 'NanumBarunGothic', 'Nanum Gothic', Dotum, sans-serif;
 	font-size: 13px;
 	color: #6d6e72;
+<<<<<<< HEAD
+=======
+}
+
+#login {
+	padding-bottom: 55px;
+}
+#content_sub {
+>>>>>>> branch 'master' of https://github.com/wonjieun/Lazencar_front.git
 	width: 100%;
 	margin: 0 auto;
 	background: #fff;
