@@ -9,6 +9,7 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
   <link rel="stylesheet" type="text/css" href="./css/main.css" />  
+    <link rel="stylesheet" type="text/css" href="./css/paging.css" />  
   <script  src="./js/userM/jquery.js"></script>
   <script  src="./js/userM/colResizable-1.5.min.js"></script>
 
@@ -31,7 +32,20 @@
 		
 	});	
   </script>
+  
+  <style type="text/css">
+#table2 th:last-child{
+   background:#f1c40f;
+   height:30px;
+   background-repeat:no-repeat;
+   color:white;
+   text-align: center;   
+   width: 10%;
+}
+</style>
+  
 </head>
+
 <body>
 
 
@@ -101,17 +115,17 @@
 
 
 <div class="content">
-        <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">예약목록 조회</h3>
-          <p class="subtxt"><strong>예약목록을 조회하고 관리합니다.</strong><br />조회할 예약목록 조건을 선택하고 검색버튼을 누르시면 해당 예약목록을 볼 수 있습니다.</p>
+         <div class="subtop-content bg_subvisual_02_01">
+          <h3 class="subtit">후기 조회</h3>
+          <p class="subtxt"><strong>회원의 후기를 관리합니다.</strong><br>조회할 후기 조건을 선택하고 검색버튼을 누르시면 후기내역을 볼 수 있으며 부적절한 후기는 삭제할 수 있습니다.</p>
         </div>
+        
 	<div class="center" >
 						
 		 <table class="table1">
 			<tr>
 				<th>기간</th>
-				<th>등록상태</th>
-				<th>정렬</th>
+				<th>회원계정</th>
 			</tr>
 			<tr>
 				<td class="left">
@@ -120,29 +134,25 @@
 					<fieldset>
 						<div class="rangePicker futureRange">
 							<label for="start_date">From:</label>
-							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" />
+							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" /><br>
 							<label for="end_date">To:</label>
 							<input type="text" name="end_date" id="end_date" value="yyyy/mm/dd" />
 						</div>
 					</fieldset>
 				</form>
 				</td>
-				<td>
-				<form ></form>
-				
-				</td>
 				<td class="right">cell</td>
 			</tr>		
-			<tr>
-				<th>차종</th>
-				<th>차량 번호</th>
-				<th>예약 상태</th>
+						<tr>
+				<th>정렬</th>
+				<th>카테고리</th>
 			</tr>
 			<tr>
-				<td class="left">cell</td>
-				<td>cell</td>
+				<td class="left">
+
+				</td>
 				<td class="right">cell</td>
-			</tr>													
+			</tr>										
 		</table>
 		
 	</div>	
@@ -153,31 +163,46 @@
 			
 			<tr>
 				<th>no</th>
-				<th>상세 정보</th>
+				<th>상세정보</th>
+				<th>선택</th>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td class="right">cell</td>
+				<td></td>
+				<td class="right"><input type="checkbox"></td>
 			</tr>		
 			<tr>
 				<td class="left">cell</td>
-				<td class="right">cell</td>
+				<td></td>
+				<td class="right"><input type="checkbox"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td class="right">cell</td>
+				<td></td>
+				<td class="right"><input type="checkbox"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td class="right">cell</td>
+				<td></td>
+				<td class="right"><input type="checkbox"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td class="right">cell</td>
+				<td></td>
+				<td class="right"><input type="checkbox"></td>
 			</tr>											
 		</table>
 		</div>
 		
+		<div class="btnSave">
+		<button type="button">삭제</button>
+		<button type="reset">초기화</button>
+		<button type="submit">완료</button>
+		</div>
+
+		<div class="paging">
+				<a href="./list.do?searchItem=&amp;searchWord=&amp;bbsCateId=0&amp;gotoPage=1" class="page_first"><img src="./images/paging/page_first.gif" alt="처음" /></a><a href="./list.do?searchItem=&amp;searchWord=&amp;bbsCateId=0&amp;gotoPage=1" class="page_prev"><img src="./images/paging/page_prev.gif" alt="이전" /></a><strong>1</strong><a href="./list.do?searchItem=&amp;searchWord=&amp;bbsCateId=0&amp;gotoPage=1" class="page_next"><img src="./images/paging/page_next.gif" alt="다음" /></a><a href="./list.do?searchItem=&amp;searchWord=&amp;bbsCateId=0&amp;gotoPage=1" class="page_end"><img src="./images/paging/page_end.gif" alt="마지막" /></a>
+		</div>	
 
 </div>		<!-- content end -->
 

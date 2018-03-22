@@ -2,14 +2,14 @@
 
 .header {color: #f1c40f; height: 50px; text-align: center; font-size: 30px;}
 
-#menu {width:250px; height:600px; margin:10px; float:left; position:relative; background-color: #ddd;}
+#menu {width:250px; height:800px; margin:10px; float:left; position:relative; background-color: #ddd;}
 
-#menu ul {margin:0; padding:0; list-style:none; white-space:nowrap; text-align:left; background:url(/data/201011/IJ12908740279361/opaque.png); padding:1px 1px 0 1px;}
+#menu ul {margin:0; padding:0; list-style:none; white-space:nowrap; text-align:left;  padding:1px 1px 0 1px;}
 
 #menu li {margin:0; padding:0; list-style:none;}
 #menu li {display:inline-block; display:inline;}
 #menu ul {position:absolute; left:-9999px;}
-#menu ul.level1 {position:absolute; left:0; top:0px; background-color: #f1c40f; height: 600px;}
+#menu ul.level1 {position:absolute; left:0; top:0px; background-color: #f1c40f; height: 800px;}
 
 
 #menu a {display:block; font:normal 11px verdana,arial,sans-serif; color:#000; line-height:22px; text-decoration:none;padding:10px 30px 10px 30px; border-bottom:1px solid #ddd; margin-top: 10px; margin-bottom: 10px;} 
@@ -46,9 +46,9 @@
 	color: #3c3c3c;
 }
 
-.btnSearch {display: block; float:right; margin-right: 20%; margin-top: 15px; margin-bottom: 20px;}
+.btnSearch {display: block; float:right; margin-right: 10%; margin-top: 15px; margin-bottom: 20px;}
 
-.btnSave {display: block; float:right; margin-right: 20%; margin-top: 15px; margin-bottom: 20px;}
+.btnSave {display: block; float:right; margin-right: 5%; margin-top: 15px; margin-bottom: 20px;}
 
 .content {margin-top: 15px; margin-left: 300px; position: absolute; float: left;}
 
@@ -56,13 +56,25 @@
 	text-align:left;
 }
 
-#table{
+.table1{
 	width:80%;
 	max-width:1200px;
-	margin-top: 20px;
+	margin: 20px auto;
+	border="0"; 
+	cellpadding="0"; 
+	cellspacing="0";
 }
 
-#table1 th{
+.table2{
+	width:90%;
+	max-width:1200px;
+	margin: 20px auto;
+	border="0"; 
+	cellpadding="0"; 
+	cellspacing="0";
+}
+
+.table1 th{
    background:#f1c40f;
    height:30px;
    background-repeat:no-repeat;
@@ -71,7 +83,7 @@
    width: 26%;
 }
 
-#table2 th:first-child{
+.table2 th:first-child{
    background:#f1c40f;
    height:30px;
    background-repeat:no-repeat;
@@ -80,7 +92,7 @@
    width: 10%;
 }
 
-#table2 th{
+.table2 th{
    background:#f1c40f;
    height:30px;
    background-repeat:no-repeat;
@@ -88,7 +100,7 @@
    text-align: center;   
 }
 
-#table1 td{
+.table1 td{
 	text-indent:5px;
 	color:#444;
 	border-bottom:1px solid #bbb;
@@ -97,7 +109,7 @@
 	text-align: center; 
 }
 
-#table2 td{
+.table2 td{
 	text-indent:5px;
 	color:#444;
 	border-bottom:1px solid #bbb;
@@ -143,7 +155,7 @@ td.bottom{
 
 
 
-#table1Txt{
+#table2Txt{
 	float:right;	
 }
 label{

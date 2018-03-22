@@ -116,16 +116,16 @@
 
 <div class="content">
          <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">차량 등록/해제</h3>
-          <p class="subtxt"><strong>차량을 등록하고 해제합니다.</strong><br />조회할 차량 조건을 선택하고 검색버튼을 누르시면 해당 차량의 상세정보를 볼 수 있습니다.</p>
+          <h3 class="subtit">차량 점검 일지</h3>
+          <p class="subtxt"><strong>차량 점검일정을 관리합니다.</strong><br />조회할 차량 조건을 선택하고 검색버튼을 누르시면 차량의 점검일정을 볼 수 있습니다.</p>
         </div>
         
 	<div class="center" >
 						
-		 <table id="table1" width="80%" border="0" cellpadding="0" cellspacing="0">
+		 <table class="table1">
 			<tr>
 				<th>기간</th>
-				<th>회원 계정</th>
+				<th>차량 등급</th>
 				<th>정렬</th>
 			</tr>
 			<tr>
@@ -135,7 +135,7 @@
 					<fieldset>
 						<div class="rangePicker futureRange">
 							<label for="start_date">From:</label>
-							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" />
+							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" /><br>
 							<label for="end_date">To:</label>
 							<input type="text" name="end_date" id="end_date" value="yyyy/mm/dd" />
 						</div>
@@ -149,9 +149,9 @@
 				<td class="right">cell</td>
 			</tr>		
 			<tr>
-				<th>렌트 차량</th>
-				<th>이용 상태</th>
-				<th>결제 상태</th>
+				<th>차종</th>
+				<th>차량 번호</th>
+				<th>예약 상태</th>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
@@ -164,35 +164,41 @@
 	
 		<button class="btnSearch" type="button">검색</button>
 	<div>
-		 <table id="table2" width="80%" border="0" cellpadding="0" cellspacing="0">
+		 <table class="table2">
 			
 			<tr>
 				<th>no</th>
-				<th>상세 정보</th>
+				<th>점검 날짜</th>
+				<th>차량 등급</th>
 				<th>등록</th>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
+				<td>cell</td>
 				<td>cell</td>
 				<td class="right"><input type="checkbox"></td>
 			</tr>		
 			<tr>
 				<td class="left">cell</td>
 				<td>cell</td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
 				<td>cell</td>
 				<td class="right"><input type="checkbox"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
 				<td>cell</td>
+				<td>cell</td>
 				<td class="right"><input type="checkbox"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
+				<td>cell</td>
+				<td>cell</td>
+				<td class="right"><input type="checkbox"></td>
+			</tr>
+			<tr>
+				<td class="left">cell</td>
+				<td>cell</td>
 				<td>cell</td>
 				<td class="right"><input type="checkbox"></td>
 			</tr>											
