@@ -647,6 +647,229 @@ a.hoverline:hover {
 .chargesImg01 {
 	margin:20px 0 10px 0;
 }
+/* 상웅 예약페이지 */
+.rsvStep {
+    position: relative;
+}
+.rsvSchedule {
+    position: relative;
+    height: 368px;
+}
+.rsvSchedule .rsvScheduleArea {
+    position: relative;
+    height: 343px;
+}
+.rsvDatepicker {
+    position: relative;
+    padding-top: 20px;
+}
+.rsvDatepickerHeader {
+    position: relative;
+    width: 130px;
+    height: 35px;
+    margin: 0 auto;
+}
+.rsvDatepickerHeader .rsvDatepickerPrev {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 16px;
+    height: 17px;
+    background: url(./images/reservation/datepicker_prev.gif) no-repeat 0 0;
+}
+.rsvDatepickerHeader .rsvDatepickerNext {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 16px;
+    height: 17px;
+    background: url(./images/reservation/datepicker_next.gif) no-repeat 0 0;
+}
+.rsvDatepickerHeader .rsvDatepickerTitle {
+    color: #4c4c4c;
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: -1px;
+}
+.rsvDatepickerCalendar{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+/*     border-color: inherit; */
+}
+.rsvDatepickerCalendar th.sun {
+    background-color: #f71c0c;
+}
+.rsvDatepickerCalendar th {
+    height: 24px;
+    border-bottom: 1px solid #fff;
+    background-color: #6b5c5a;
+    color: #fff;
+    font-size: 11px;
+    font-family: 'NanumGothicBold';
+}
+.rsvDatepickerCalendar th {
+    height: 24px;
+    border-bottom: 1px solid #fff;
+    background-color: #6b5c5a;
+    color: #fff;
+    font-size: 11px;
+    font-family: 'NanumGothicBold';
+}
+.rsvDatepickerCalendar th.sat {
+    border-right: 1px solid #fff;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.rsvSchedule .rsvScheduleCpation {
+    height: 13px;
+    padding-top: 10px;
+    text-align: right;
+}
+.rsvCommNotice {
+    position: relative;
+    clear: both;
+    padding-top: 6px;
+}
+
+.rsvChoiceMenu {
+    position: relative;
+    clear: both;
+    padding-top: 18px;
+    text-align: right;
+}
+.rsvDatepickerCalendar td.selectFirst a {
+    padding: 4px;
+    border: 1px solid #da5950;
+    background: #f78953 url(/images/front/ko/reserve/datepicker_select_first.gif) no-repeat 28px 24px;
+    color: #fff;
+}
+.rsvDatepickerCalendar td.selectEnd a {
+    padding: 4px;
+    border: 1px solid #da5950;
+    background: #f78953 url(/images/front/ko/reserve/datepicker_select_end.gif) no-repeat 28px 24px;
+    color: #fff;
+}
+.rsvDatepickerCalendar td a {
+    display: block;
+    position: relative;
+    height: 33px;
+    width:100px;
+    padding: 5px;
+    color: #666;
+    cursor: pointer;
+}
+.rsvDatepickerCalendar td.dis a {
+    color: #666;
+    cursor: default;
+    opacity: 0.3;
+    -ms-filter: alpha(opacity=30);
+    filter: alpha(opacity=30);
+}
+.rsvDatepickerCalendar td.weekEnd a {
+    color: #f57a4b;
+}
+.rsvDatepickerCalendar td.weekEnd {
+    background-color: #f9ebe5;
+    color: #f57a4b;
+}
+.rsvChoiceForm {
+    zoom: 1;
+    position: relative;
+    height: 78px;
+    padding-top: 30px;
+}
+.rsvChoiceFormStepA{
+}
+.rsvChoiceFormStepB {
+}
+.rsvChoiceFormStep {
+    width: 232px;
+}
+.rsvChoiceForm .rsvChoiceFormTit {
+    height: 16px;
+    color: #4c4c4c;
+    font-family: 'NanumGothicBold';
+}
+
+.rsvItem {
+    position: relative;
+    margin: -2px 0;
+}
+.rsvChoiceForm .rsvChoiceFormCont .iMask {
+    margin-top: 5px;
+}
+.rsvItem .iMask .iText {
+    width: 100%;
+    margin-right: -12px;
+}
+.rsvItem .iDiv {
+    zoom: 1;
+    position: relative;
+}
+.rsvChoiceForm .rsvChoiceFormCont .iDiv {
+    margin-top: 5px;
+    margin-right: -10px;
+}
+.rsvChoiceForm .rsvChoiceFormCont .iDiv .iSelect {
+    margin-right: 10px;
+}
+.rsvItem .iDiv .iSelect {
+    float: left;
+}
+.rsvItem .iSelect {
+    width: 110px;
+    height: 23px;
+    margin: 2px 0;
+    padding: 1px;
+    border: 1px solid #dedede;
+    color: #666;
+    font-size: 12px;
+    vertical-align: middle;
+    line-height: normal;
+    letter-spacing: 0;
+}
+.rsvItem .iDiv:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+.rsvChoiceMenu {
+    position: relative;
+    clear: both;
+    padding-top: 18px;
+    text-align: right;
+}
+
+a:link {
+    color: #666666;
+    text-decoration: none;
+}
+.rsvHeadingTit{
+	height: 25px;
+    line-height: 33px;
+    font-size: 28px;
+    font-weight: 500;
+    color: #f1c40f;
+}
+/* 상웅 예약페이지 끝 */
+
 </style>
 
 
@@ -682,6 +905,43 @@ a.hoverline:hover {
 	var _fullImgHostAddr = '';
 
 	var _birth = "";
+	
+	
+	
+
+	//예약페이지 js
+	function dateChk(date1, date2, gap, separator) {
+		var d1 = date1.split(separator); //시작일 분리
+		var d2 = date2.split(separator); //끝일 분리
+		var fromDate = new Date(d1[0], Number(d1[1]) - 1, d1[2]); //시작일을 date 형으로
+		var toDate = new Date(d2[0], Number(d2[1]) - 1, d2[2]); //끝일을 date 형으로
+		var date = (fromDate.getTime() - toDate.getTime()) / 1000 / 60 / 60
+				/ 24; //시작일에서 끝일을 뺀 값
+		return date + gap <= 0 ? false : true; //두 날짜의 차이가 입력받은 수치보다 작거나 같으면 포함되지 않는것으로 false를 return한다.
+	}
+	function getCookie(name) {
+		var wcname = name + '=';
+		var wcstart, wcend, end;
+		var i = 0;
+
+		while (i <= document.cookie.length) {
+			wcstart = i;
+			wcend = (i + wcname.length);
+			if (document.cookie.substring(wcstart, wcend) == wcname) {
+				if ((end = document.cookie.indexOf(';', wcend)) == -1)
+					end = document.cookie.length;
+				return document.cookie.substring(wcend, end);
+			}
+
+			i = document.cookie.indexOf('', i) + 1;
+
+			if (i == 0)
+				break;
+		}
+		return '';
+	}
+
+
 </script>
 
 
@@ -799,19 +1059,18 @@ a.hoverline:hover {
 
 
 
-					<h2 class="left-tit">서비스 / 혜택</h2>
+					<h2 class="left-tit">예약하기</h2>
 
-					<ul class="leftMenu">
+				<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>특가상품</span></a></li>
+					<li class="top"><a href="#" ><span>날짜선택</span></a></li>
 
-						<li><a href="#"><span>쿠폰받기</span></a></li>
+					<li><a href="#" ><span>차량선택</span></a></li>
 
-						<li><a href="#" class = 'on'><span>후기</span></a></li>
+					<li><a href="#" class='on'><span>옵션선택</span></a></li>
 
-<!-- 					class = 'on'	현재 페이지를 나타낼때 on 사용하는 듯 -->
+				</ul>
 
-					</ul>
 
 
 
@@ -840,47 +1099,150 @@ a.hoverline:hover {
 
         <div class="location">
           <div class="location_in">
-            <p><span>서비스 / 혜택</span>&gt; <strong>특가상품</strong></p>
+            <p><span>그린카 소개</span>&gt; <strong>요금안내</strong></p>
           </div>
         </div>
-        <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">특가상품</h3>
-          <p class="subtxt"><strong>다양하고, 실속 있는 특가상품으로 라젠카를 이용해보세요.</strong><br />할인에 할인을 더해 저렴한 요금으로 사용하실 수 있습니다.</p>
-        </div>
 
 
-		<div class="bodystart">
+					<div class="bodystart">
 
-			<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
-
-			<div class="charges-wrap">
-
-			<details>
-			    <summary>배너를 누르면 상세 정보를 볼 수 있습니다.<img width="100%" alt="회원제 안내" src="./images/package/Package_01_banner.png" /></summary>
-			    <div><img width="100%" alt="회원제 안내" src="./images/package/Package_01_detail.png" /></div>
-			</details>					
-							
-							
-							
-							
-							
+						<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
+					<div class="charges-wrap">
+					<div class="rsvHeading">
+								<p class="rsvHeadingTit">일정선택</p>
+							</div>
+						<div class="rsvContentBody">
+								<div class="rsvStep rsvStep_schedule">
+									<div class="rsvSchedule" id="calendar">
+										<div class="rsvScheduleArea">
+											<div class="rsvDatepicker">
+												<div class="rsvDatepickerHeader">
+													<a href="#prev" class="rsvDatepickerPrev"></a>
+													<a href="#next" class="rsvDatepickerNext"></a>
+													<div class="rsvDatepickerTitle">2018.03</div>
+												</div>
+												<table cellpadding="0" cellspacing="0" border="1" class="rsvDatepickerCalendar">
+													<thead>
+														<tr>
+															<th class="weekEnd sun"><span>SUN</span></th>
+															<th><span>MON</span></th>
+															<th><span>TUE</span></th>
+															<th><span>WED</span></th>
+															<th><span>THU</span></th>
+															<th><span>FRI</span></th>
+															<th class="weekEnd sat"><span>SAT</span></th>
+														</tr>
+													</thead>
+													<tbody id="calendar_date">
+														<tr>
+															<td class="weekEnd sun dis" date="2018-2-25"><span><a>25</a></span></td>
+															<td class="dis" date="2018-2-26"><span><a>26</a></span></td>
+															<td class="dis" date="2018-2-27"><span><a>27</a></span></td>
+															<td class="dis" date="2018-2-28"><span><a>28</a></span></td>
+															<td class="dis" date="2018-3-1"><span><a>1</a></span></td>
+															<td class="dis" date="2018-3-2"><span><a>2</a></span></td>
+															<td class="weekEnd sat dis" date="2018-3-3"><span><a>3</a></span></td>
+														</tr>
+														<tr>
+															<td class="weekEnd sun dis" date="2018-3-4"><span><a>4</a></span></td>
+															<td class="dis" date="2018-3-5"><span><a>5</a></span></td>
+															<td class="dis" date="2018-3-6"><span><a>6</a></span></td>
+															<td class="dis" date="2018-3-7"><span><a>7</a></span></td>
+															<td class="dis" date="2018-3-8"><span><a>8</a></span></td>
+															<td class="dis" date="2018-3-9"><span><a>9</a></span></td>
+															<td class="weekEnd sat dis" date="2018-3-10"><span><a>10</a></span></td>
+														</tr>
+														<tr>
+															<td class="weekEnd sun dis" date="2018-3-11"><span><a>11</a></span></td>
+															<td class="dis" date="2018-3-12"><span><a>12</a></span></td>
+															<td class="dis" date="2018-3-13"><span><a>13</a></span></td>
+															<td class="dis" date="2018-3-14"><span><a>14</a></span></td>
+															<td date="2018-3-15" class="dis"><span><a>15</a></span></td>
+															<td date="2018-3-16" class="dis"><span><a>16</a></span></td>
+															<td class="weekEnd sat dis" date="2018-3-17"><span><a>17</a></span></td>
+														</tr>
+														<tr>
+															<td class="weekEnd sun dis" date="2018-3-18"><span><a>18</a></span></td>
+															<td class="today" date="2018-3-19"><span><a>19</a></span></td>
+															<td class="" date="2018-3-20"><span><a>20</a></span></td>
+															<td class="" date="2018-3-21"><span><a>21</a></span></td>
+															<td class="" date="2018-3-22"><span><a>22</a></span></td>
+															<td class="" date="2018-3-23"><span><a>23</a></span></td>
+															<td class="weekEnd sat" date="2018-3-24"><span><a>24</a></span></td>
+														</tr>
+														<tr>
+															<td class="weekEnd sun" date="2018-3-25"><span><a>25</a></span></td>
+															<td date="2018-3-26"><span><a>26</a></span></td>
+															<td date="2018-3-27"><span><a>27</a></span></td>
+															<td class="" date="2018-3-28"><span><a>28</a></span></td>
+															<td class="" date="2018-3-29"><span><a>29</a></span></td>
+															<td class="" date="2018-3-30"><span><a>30</a></span></td>
+															<td class="weekEnd sat" date="2018-3-31"><span><a>31</a></span></td>
+														</tr>
+														<tr>
+                                                            <td class="weekEnd sun" date="2018-4-1"><span><a>1</a></span></td>
+                                                            <td date="2018-4-2"><span><a>2</a></span></td>
+                                                            <td date="2018-4-3"><span><a>3</a></span></td>
+                                                            <td class="" date="2018-4-4"><span><a>4</a></span></td>
+                                                            <td class="" date="2018-4-5"><span><a>5</a></span></td>
+                                                            <td class="" date="2018-4-6"><span><a>6</a></span></td>
+                                                            <td class="weekEnd sat" date="2018-4-7"><span><a>7</a></span></td>
+                                                        </tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="rsvScheduleCpation">
+											<span><img src="./images/reservation/datepicker_caption_today.gif" alt="오늘"></span>
+											<span><img src="./images/reservation/datepicker_caption_my.gif" alt="나의 선택날짜"></span>
+										</div>
+									</div>
+									<div class="rsvCommNotice">
+										<div class="rsvCommNoticeTxt">
+											<p>예약은 최대 180일 내 선택이 가능하며,<br> 차량 출고시 계약서 작성 및 차량 확인에 약 15분 정도의 시간이 소요됩니다.</p>
+										</div>
+									</div>
+									<!-- <form method="post" action=""> -->
+										<div class="rsvChoiceForm">
+											<div class="rsvChoiceFormStep rsvChoiceFormStepA">
+												<p class="rsvChoiceFormTit">대여일시</p>
+												<div class="rsvChoiceFormCont">
+													<div class="rsvItem">
+														<div class="iMask"><input type="text" name="" id="rentDate" class="iText" value="" readonly="readonly"></div>
+														<div class="iDiv">
+															<select name="" id="rentHour" class="iSelect"><option value="0">0시</option><option value="1">1시</option><option value="2">2시</option><option value="3">3시</option><option value="4">4시</option><option value="5">5시</option><option value="6">6시</option><option value="7">7시</option><option value="8">8시</option><option value="9">9시</option><option value="10">10시</option><option value="11">11시</option><option value="12">12시</option><option value="13">13시</option><option value="14">14시</option><option value="15">15시</option><option value="16">16시</option><option value="17">17시</option><option value="18">18시</option><option value="19">19시</option><option value="20">20시</option><option value="21">21시</option><option value="22">22시</option><option value="23">23시</option></select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="rsvChoiceFormStep rsvChoiceFormStepB">
+												<p class="rsvChoiceFormTit">반납일시</p>
+												<div class="rsvChoiceFormCont">
+													<div class="rsvItem">
+														<div class="iMask"><input type="text" name="" id="returnDate" class="iText" value="" readonly="readonly"></div>
+														<div class="iDiv">
+															<select name="" id="returnHour" class="iSelect"><option value="0">0시</option><option value="1">1시</option><option value="2">2시</option><option value="3">3시</option><option value="4">4시</option><option value="5">5시</option><option value="6">6시</option><option value="7">7시</option><option value="8">8시</option><option value="9">9시</option><option value="10">10시</option><option value="11">11시</option><option value="12">12시</option><option value="13">13시</option><option value="14">14시</option><option value="15">15시</option><option value="16">16시</option><option value="17">17시</option><option value="18">18시</option><option value="19">19시</option><option value="20">20시</option><option value="21">21시</option><option value="22">22시</option><option value="23">23시</option></select>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="rsvChoiceMenu">
+											<span><a href="#stepBranch"><img src="./images/reservation/btn_fstep_car.gif" alt="차량선택"></a></span>
+											<!-- span style="display:none;"><a href="#stepCar"><img src="/images/front/ko/reserve/btn_step_car.gif" alt="차량선택" /></a></span-->
+										</div>
+									<!-- </form> -->
+								</div>
+							</div>
+						<!-- ########## 일정선택 : end ########## -->
+						</div>
+						
+						
 					</div>	<!-- charges-wrap -->
 
 				</div>		<!-- // bodyend -->
 			</div>		<!-- // end contentBox -->
 
-<<<<<<< HEAD:WebContent/Page/images/p19_Promotion.html
-=======
-						<h4 id="mini-title">차종별 요금표</h4>
-						<p>- 라젠카는 상시 이벤트(차종 및 지역)를 진행하여 표준요금보다 더욱 저렴하게 이용 가능합니다.
-						<div><img width="100%" alt="회원제 안내" src="./images/charge_guide/CarList.jpg" />	</div>
-
-						</div>	<!-- charges-wrap -->
-
-				</div>		<!-- // bodyend -->
-			</div>		<!-- // end contentBox -->
-
->>>>>>> 7abc24c64790aba1f184cbb157991406618968da:Lazencar_front/WebContent/Page/p00_layout.html
 		</div>	<!-- // End #content-wrap -->
 
 	</div>	<!-- // End #container -->
@@ -888,6 +1250,8 @@ a.hoverline:hover {
 		<!-- Begin #footer -->
 
 		<div id="footer">
+
+			<h3 class="blind">라젠카 정책 및 약관</h3>
 
 			<div class="footer_box01">
 

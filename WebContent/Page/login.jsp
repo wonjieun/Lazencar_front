@@ -1052,13 +1052,13 @@ a {
 /* 로그인 입력값 점검 */
 	function f_validate() {
 		$(".join_hidden").hide();
-
+	
 		if ($("#id").val() == null || $("#id").val() == "") {
 			$("#alert_login").css("display", "inline-block");
 			document.getElementById("id").focus();
 			return false;
 		}
-
+	
 		if ($("#password").val() == null || $("#password").val() == "") {
 			$("#alert_login").css("display", "inline-block");
 			document.getElementById("password").focus();
@@ -1067,6 +1067,41 @@ a {
 		
 		return true;
 	}
+	
+	$("#login_confirm").click(function() {
+		if( $("#id").val()==null || $("#id").val()=="" )
+			return;
+	
+		var id = $("#id").val();
+		var password = $("#password").val();
+		
+		$.ajax({
+			type: "POST"
+			, url: "/login/login.do"
+			, data: {
+					memId:id,
+					memPassword:password
+				}
+			, dataType: "json"
+			, success: function( data ) {
+					var cnt = JSON.parse(data.cnt);
+					var list = JSON.parse(data.list);
+					
+					$("#recommend").val(cnt);
+					
+					var html = "";
+					for(var i=0; i<list.length; i++) {
+						html+="<strong>" + list[i].recommendId
+								+ "</strong> ";
+					}
+					$("#recommendList").html(html);
+			}
+			, error: function(e) {
+				console.log("----- error -----");
+				console.log(e.responseText);
+			}
+	});
+});
 </script>
 
 <!-- <link type="text/css" rel="stylesheet" media="all" -->
