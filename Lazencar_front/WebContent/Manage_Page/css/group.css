@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/* 이용안내 */
+.boardGroup01 {table-layout:fixed; border-top:2px solid #9e9890; margin-top:40px;}
+.boardGroup01 tr th {padding:15px 0 13px 0; border-right:1px solid #9e9890;  border-bottom:1px solid #9e9890; background-color:#b7b0a7; font-size:20px; color:#fff; letter-spacing:-2px;}
+.boardGroup01 tr th.last, .boardGroup01 tr td.last {border-right:none;}
+.boardGroup01 tr td {padding:170px 25px 20px 25px; border-right:1px solid #dbdbdb;   border-bottom:1px solid #dbdbdb; line-height:1.2;  text-align:center; font-size:13px; text-align:left; vertical-align:top;}
+.boardGroup01 tr td.td_user {background:url('../images/group/td_bg_user.gif') center 20px no-repeat;}
+.boardGroup01 tr td.td_group {background:url('../images/group/td_bg_group.gif') center 20px no-repeat;}
+
+.group_data01 {margin-top:10px;}
+.group_data01 li {position:relative; background:url('../images/common/dot_line01.gif') left bottom repeat-x; z-index:2;}
+.group_data01 li .txtbox {padding:30px 10px 30px 170px;}
+.group_data01 li .eventGo {right:10px; top:-40px; z-index:44;}
+
+.group_data01 li.m1 .txtbox  {background:url('../images/group/info_ico01.gif') 24px 50% no-repeat;}
+.group_data01 li.m2 .txtbox  {background:url('../images/group/info_ico02.gif') 24px 50% no-repeat;}
+.group_data01 li.m3 .txtbox  {background:url('../images/group/info_ico03.gif') 24px 50% no-repeat;}
+.group_data01 li.m4 .txtbox  {background:url('../images/group/info_ico04.gif') 24px 50% no-repeat;}
+.group_data01 li.m5 .txtbox  {background:url('../images/group/info_ico05.gif') 24px 50% no-repeat;}
+.group_data01 li.m6 .txtbox  {background:url('../images/group/info_ico06.gif') 24px 50% no-repeat;}
+.group_data01 li.m7 .txtbox  {background:url('../images/group/info_ico07.gif') 24px 50% no-repeat;}
+/*160928 추가*/
+.group_data01 li.m8 .txtbox  {background:url('../images/group/info_ico08.gif') 24px 50% no-repeat;}
+.group_data01 li.m9 .txtbox  {background:url('../images/group/info_ico09.gif') 24px 50% no-repeat;}
+.group_data01 li.m10 .txtbox  {background:url('../images/group/info_ico10.gif') 24px 50% no-repeat;}
+
+.group_data01 li.last {background:none;}
+
+.group_data01 li dt {font-size:18px; color:#877b6c; line-height:1.2; font-weight:bold;}
+.group_data01 li dd {margin-top:15px; font-size:13px; line-height:1.4;}
+
+
+/* 가입방법 (2016-03-11) */
+.step-guide-list {margin-top:30px;}
+.step-guide-list li {float:left; width:33.3%; position:relative;}
+.step-guide-list span {
+	display:inline-block;
+	width:165px;
+	color:#3c3c3c;
+	font-size:15px;
+	font-weight:bold;
+	padding-top:183px;
+	text-align:center;
+	background-repeat:no-repeat;
+	background-position:center top;
+}
+.step-guide-list li.step2 {text-align:center;}
+.step-guide-list li.step3 {text-align:right;}
+.step-guide-list:after {content:""; display:block; clear:both;}
+.step-guide-list li span:before {
+	content:"";
+	display:block;
+	width:18px;
+	height:31px;
+	position:absolute;
+	top:70px;
+	left:0;
+	background:url("../images/common/ico_step_arrow.png") no-repeat 0 0;
+}
+.step-guide-list li:first-child span:before {display:none;}
+.step-guide-list li.step2 span:before {margin-left:-25px;}
+.step-guide-list li.step3 span:before {margin-left:15px;}
+
+.join-step-corporate-box {padding-right:5px;}
+.join-step-corporate-box .list_type01 {margin-top:10px;}
+.join-step-corporate-box .list_type01 li {color:#767676; font-size:16px; background-position:left 10px;}
+.join-step-corporate-box .step-guide-list li.step1 span {background-image:url("../images/group/bg_join_corporate_step_1.gif");}
+.join-step-corporate-box .step-guide-list li.step2 span {background-image:url("../images/group/bg_join_corporate_step_2.gif");}
+.join-step-corporate-box .step-guide-list li.step3 span {background-image:url("../images/group/bg_join_corporate_step_3.gif");}
+
+.join-step-member-box {padding-right:5px; margin-top:60px;}
+.join-step-member-box .list_type01 {margin-top:10px;}
+.join-step-member-box .list_type01 li {color:#767676; font-size:16px; background-position:left 10px;}
+.join-step-member-box .step-guide-list li.step1 span {background-image:url("../images/group/bg_join_member_step_1.gif");}
+.join-step-member-box .step-guide-list li.step2 span {background-image:url("../images/group/bg_join_member_step_2.gif");}
+.join-step-member-box .step-guide-list li.step3 span {background-image:url("../images/group/bg_join_member_step_3.gif");}
+
+.greencar-use-guide-box {padding-right:5px; margin-top:60px;}
+.greencar-use-guide-box .list_type01 {margin-top:10px;}
+.greencar-use-guide-box .list_type01 li {color:#767676; font-size:16px; background-position:left 10px;}
+.greencar-use-guide-box .step-guide-list li.step1 span {background-image:url("../images/group/bg_use_guide_step_1.gif");}
+.greencar-use-guide-box .step-guide-list li.step2 span {background-image:url("../images/group/bg_use_guide_step_2.gif");}
+.greencar-use-guide-box .step-guide-list li.step3 span {background-image:url("../images/group/bg_use_guide_step_3.gif");}
+
+/*법인/단체*/
+.corporation_intro {margin-top:-17px;padding-bottom:55px;list-style:none;font-size:0;letter-spacing:-5px}
+.corporation_intro > li {display:inline-block;width:151px;padding:58px 99px 0 0;font-size:13.5px;letter-spacing:0;vertical-align:top;*display:inline;zoom:1}
+.corporation_intro .bg {position:relative;display:block;width:151px;height:151px;margin-bottom:15px;background:#f9f9f9;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%}
+.corporation_intro .bg span {position:absolute;top:50%;left:50%;width:65px;height:63px;margin:-31px 0 0 -32px;background:url('/images/corporation/sp_corporation.png') no-repeat}
+.corporation_intro .bg .bg01 {background-position:0 0}
+.corporation_intro .bg .bg02 {background-position:-75px 0}
+.corporation_intro .bg .bg03 {background-position:-150px 0}
+.corporation_intro .bg .bg04 {background-position:0 -73px}
+.corporation_intro .bg .bg05 {background-position:-75px -73px}
+.corporation_intro .txt01 {display:block;margin-bottom:4px;font-weight:bold;font-size:17.5px;color:#3c3c3c}
+.corporation_intro .txt02 {display:block;margin-bottom:11px;font-weight:bold;font-size:15.5px}
+.corporation_intro ul li {font-size:13.5px;line-height:1.55}
+.corporation_versus {overflow:hidden;padding:35px 0 55px}
+.corporation_versus li {float:left;width:342px;margin-left:66px}
+.corporation_versus li:first-child {margin-left:0}
+.corporation_versus li .tit {display:block;margin-bottom:24px;font-weight:bold;font-size:23.5px;color:#3c3c3c}
+.corporation_versus li .tit span {color:#767676}
+.corporation_versus li .txt {padding-left:15px;margin-top:27px;font-size:13.5px;line-height:1.55;text-indent:-15px}
+.corporation_admin {padding-top:41px;text-align:center}
+.corporation_oxquiz {padding-bottom:59px}
+.corporation_oxquiz p {padding:35px 0 449px;background:url('/images/corporation/img_oxquiz.png') no-repeat 0 100%;font-size:29.5px;line-height:1.35;color:#3c3c3c}
+.corporation_oxquiz p span {display:inline-block;margin-bottom:60px;border-bottom:4px solid #3c3c3c}
+.corporation_step {overflow:hidden;padding:41px 0 59px}
+.corporation_step h4 {position:relative;float:left;width:150px;height:150px;background:#3c3c3c;border:1px solid #3c3c3c;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;font-weight:bold;font-size:13.5px;line-height:150px;text-align:center;color:#fff}
+.corporation_step h4 .line {position:absolute;top:76px;left:152px;width:68px;height:1px;background:url('/images/corporation/bg_dotted.gif') repeat-x 0 0}
+.corporation_step ol {float:right;}
+.corporation_step li {position:relative;float:left;width:150px;height:150px;margin-left:37px;border:1px solid #3c3c3c;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;font-weight:bold;font-size:13.5px;text-align:center;color:#3c3c3c}
+.corporation_step li:first-child {margin-left:0}
+.corporation_step li .arr {position:absolute;top:68px;right:-24px;width:9px;height:15px;background:url('/images/corporation/sp_corporation.png') no-repeat 0 -146px;line-height:1.0}
+.corporation_step li .num {display:block;padding:35px 0 11px;font-size:17.5px}
+.corporation_btm {position:relative;margin-top:120px;padding:55px 0 0 277px;border-top:1px solid #e2e2e2}
+.corporation_btm .tit {position:absolute;top:55px;left:0;font-size:19.5px;line-height:1.48;color:#3c3c3c}
+.corporation_btm .txt {margin-bottom:36px;font-size:17.5px;line-height:1.54}
