@@ -1329,14 +1329,14 @@ a.btnTbl01 {
 												<td><span class="formatIn"> <input type="text"
 														name="ID" class="itext w100 eng" title="아이디를 입력하세요."
 														maxlength="10" /> <a href="#" id="idDupCheck"
-														class="btnTbl01 ml5">확인</a>
-												</span> <span class="exp ml10">*영문,숫자 혼합하여 4-10자 이내 이어야 합니다.</span>
+														class="btnTbl01 ml5">확인</a>	</span>
+														 <span class="exp ml10">회원id 중복확인 메시지 띄우기.</span>
 												</td>
 											</tr>
 											<tr>
 												<th><em title="필수입력">*</em><label for="">비밀번호</label></th>
-												<td><span class="formatIn"><input
-														type="password" name="PASSWORD" class="itext w100 eng"
+												<td><span class="formatIn">
+												<input type="password" name="PASSWORD" class="itext w100 eng"
 														title="비밀번호를 입력하세요." maxlength="20" /></span> <span
 													class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span>
 												</td>
@@ -1368,8 +1368,8 @@ a.btnTbl01 {
 										<tbody>
 											<tr>
 												<th><em title="필수입력">*</em>한글 성명</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="이름입력."
+												<td><span class="formatIn"> 
+												<input type="text" name="NAME" class="itext w100 eng" title="이름입력."
 														maxlength="10" />
 												</span></td>
 											</tr>
@@ -1445,93 +1445,8 @@ a.btnTbl01 {
 								</div>
 
 							</div>
-							<div class="section02">
-								<h6>선택 입력 사항</h6>
-								<!-- S:table //-->
-								<div class="tbl01">
-									<table summary="근무지 정보 입력 테이블">
-										<caption class="caption">근무지 정보</caption>
-										<colgroup>
-											<col width="22%" />
-											<col width="78%" />
-										</colgroup>
-										<tbody>
-											<tr>
-												<th><label for="">직업</label></th>
-												<td><select id="job" name="JOBCODE">
-														<option value="0">선택하세요</option>
-														<option value="1">무직</option>
-														<option value="2">한량</option>
-														<option value="3">취준생</option>
-														<option value="4">백수</option>
-												</select></td>
-											</tr>
-											<tr>
-												<th><label for="">회사명</label></th>
-												<td><input type="text" name="COMPANY"
-													class="itext w250 kor" maxlength="20" /></td>
-											</tr>
-											<tr>
-												<th><label for="">부서/직위</label></th>
-												<td><input type="text" name="DEPT"
-													class="itext w115 kor" maxlength="10" /> <span class="ml5">/</span><input
-													type="text" name="POSITION" class="itext w115 ml5 kor"
-													maxlength="10" /></td>
-											</tr>
-											<tr>
-												<th>직장 전화번호</th>
-												<td><span class="formatIn"> <select class="w80"
-														name="OFFICETEL1"></select> <input type="text"
-														name="OFFICETEL2_1" class="itext w50 eng" maxlength="4" />
-														<span class="ml5">-</span> <input type="text"
-														name="OFFICETEL2_2" class="itext w50 ml5 eng"
-														maxlength="4" />
-												</span></td>
-											</tr>
-
-										</tbody>
-									</table>
-								</div>
-								<!--// E:table -->
-							</div>
-							<div class="section02">
-								<!-- S:table //-->
-								<div class="tbl01">
-									<table summary="부가 정보 입력 테이블">
-										<caption class="caption">부가 정보</caption>
-										<colgroup>
-											<col width="22%" />
-											<col width="78%" />
-										</colgroup>
-										<tbody>
-											<tr>
-												<th><label for="">최근렌터카 사용목적</label></th>
-												<td><select id="usePurpose" name="USETYPE">
-														<option value="0">선택하세요</option>
-														<option value="1">아</option>
-														<option value="2">진짜</option>
-														<option value="3">하기가</option>
-														<option value="4">싫다</option>
-												</select></td>
-											</tr>
-											<tr>
-												<th><label for="">희망 렌트 차종</label></th>
-												<td><select id="hopeKind" name="WANTEDCAR">
-														<option value="0">선택하세요</option>
-														<option value="1">아</option>
-														<option value="2">진짜</option>
-														<option value="3">하기가</option>
-														<option value="4">싫다</option>
-												</select></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<!--// E:table -->
-							</div>
 							<div class="btnArea02">
-								<a href="#" id="sInfo" class="btnP01"
-									onclick="javascript:return false;">입력완료</a>
+								<a href="javascript:callFunction();" onclick="return false;" id="btnSignUp" class="btnP01">입력완료</a>
 							</div>
 						</div>
 						<!-- charges-wrap -->
