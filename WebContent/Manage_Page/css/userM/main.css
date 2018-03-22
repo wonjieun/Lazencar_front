@@ -16,12 +16,20 @@ th{
    text-align: center;   
 }
 
-td{
+#table1 td{
 	text-indent:5px;
 	color:#444;
 	border-bottom:1px solid #bbb;
 	border-left:1px solid #bbb;
 	height: 70px;
+}
+
+.table2 td{
+	text-indent:5px;
+	color:#444;
+	border-bottom:1px solid #bbb;
+	border-left:1px solid #bbb;
+	height: 30px;
 }
 
 td.left{
@@ -64,7 +72,7 @@ input.check{
 	
 }
 
-#sample2Txt{
+#table1Txt{
 	float:right;	
 }
 label{
