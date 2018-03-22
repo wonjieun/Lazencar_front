@@ -1,11 +1,11 @@
-
-<!DOCTYPE html>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
 
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
@@ -327,18 +327,18 @@ a.nvalinks-rev:hover {
 .content-wrap:after {
 	content: "";
 	display: block;
-	clear: both
+	clear: both;
 } /*대체 뭘하려는걸까*/
 .contentbox {
 	float: right;
-	width: 750px
+	width: 750px;
 }
 
 /* 왼쪽메뉴 */
 .sidebar {
 	float: left;
 	width: 240px;
-	padding-top: 62px
+	padding-top: 62px;
 }
 
 .left-tit {
@@ -346,7 +346,7 @@ a.nvalinks-rev:hover {
 	line-height: 33px;
 	font-size: 28px;
 	font-weight: 500;
-	color: #f1c40f
+	color: #f1c40f;
 }
 
 .leftMenu li a {
@@ -354,21 +354,21 @@ a.nvalinks-rev:hover {
 	height: 48px;
 	padding: 0 20px;
 	border-bottom: 1px solid #e2e2e2;
-	cursor: pointer
+	cursor: pointer;
 }
 
 .leftMenu li a:hover {
 	margin-top: -1px;
 	border-bottom-color: #f1c40f;
-	background-color: #f1c40f
+	background-color: #f1c40f;
 }
 
 .leftMenu li:first-child a:hover {
-	margin-top: 0
+	margin-top: 0;
 }
 
 .leftMenu li.top a {
-	border-top: 1px solid #e2e2e2
+	border-top: 1px solid #e2e2e2;
 }
 
 .leftMenu li.top a:hover {
@@ -921,94 +921,121 @@ a.hoverline:hover {
 }
 
 /* 정상웅 id,pw find */
-
 #find .title {
-    font-size: 18px;
-    padding-bottom: 5px;
-    color: #f1c40f;
+	font-size: 18px;
+	padding-bottom: 5px;
+	color: #f1c40f;
 }
+
 #find {
 	border-top: 2px solid #f1c40f;
 	border-bottom: 1px solid #f1c40f;
 	padding: 40px 0;
 	margin: auto;
 }
-#find .idPadding{
-	padding:7px;
-    border-bottom: 1px solid #ececec;
-}
-#find .pwPadding{
-	padding:8px;
-    border-bottom: 1px solid #ececec;
+
+#find .idPadding {
+	padding: 7px;
+	border-bottom: 1px solid #ececec;
 }
 
-#find .left{
-	width: 368px;
-/* 	padding-left:100px; */
-	padding-top:30px;
-	position: relative;
-	padding-bottom :55px;
-	vertical-align: top;
+#find .pwPadding {
+	padding: 8px;
+	border-bottom: 1px solid #ececec;
 }
-#find .right{
+
+#find .left {
 	width: 368px;
-/* 	padding-right:100px; */
-	padding-top:30px;
-	
+	/* 	padding-left:100px; */
+	padding-top: 30px;
 	position: relative;
 	padding-bottom: 55px;
-	vertical-align:top;
+	vertical-align: top;
 }
+
+#find .right {
+	width: 368px;
+	/* 	padding-right:100px; */
+	padding-top: 30px;
+	position: relative;
+	padding-bottom: 55px;
+	vertical-align: top;
+}
+
 #find .frm {
-    padding: 23px 0;
-    padding-left: 15px;
-    border-bottom: 1px solid #ececec;
-    overflow: hidden;
-    color: #6e6e6e;
-    margin-bottom: 20px;
+	padding: 23px 0;
+	padding-left: 15px;
+	border-bottom: 1px solid #ececec;
+	overflow: hidden;
+	color: #6e6e6e;
+	margin-bottom: 20px;
 }
 
 #find .frm input {
-    width: 255px;
-    padding-left: 5px;
-    height: 27px;
-    line-height: 27px;
-    border: 2px solid #ececec;
-    margin-bottom: 5px;
+	width: 255px;
+	padding-left: 5px;
+	height: 27px;
+	line-height: 27px;
+	border: 2px solid #ececec;
+	margin-bottom: 5px;
 }
 
 #find .frm span {
-    line-height: 29px;
-    height: 29px;
-    margin-bottom: 5px;
-    color: #6d6e72;
-    width: 57px;
-    display: inline-block;
+	line-height: 29px;
+	height: 29px;
+	margin-bottom: 5px;
+	color: #6d6e72;
+	width: 57px;
+	display: inline-block;
 }
-#find .ok a {
-    width: 100px;
-    height: 55px;
-    line-height: 55px;
-    font-size: 16px;
-    color: #fff;
-    background: #f1c40f;
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    }
-.dotted_y{
+
+#find .ok button {
+	background-color: #f1c40f;
+	color: white;
+	width: 100px;
+	height: 50px;
+	margin-left: 145px;
+	/* margin: auto; */
+	/* align-self: center; */
+}
+
+#find .ok button {
+	width: 100px;
+	height: 55px;
+	line-height: 55px;
+	font-size: 16px;
+	color: #fff;
+	background: #f1c40f;
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.dotted_y {
 	width: 40px;
 }
 
-tbody{
+tbody {
 	display: table-row-group;
-	vertical-align:middle;
-	border-color:inherit;
+	vertical-align: middle;
+	border-color: inherit;
 }
-tr{
-	display:table-row;
-	vertical-align:inherit;
-	border-color:inherit;
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+#find .frm .join_hidden {
+	color: #fa5c3f;
+	font-size: 12px;
+	/*     display: none; */
+	line-height: 1.5;
+	width: auto;
+	padding-left: 57px;
+	height: auto;
+	margin: 0;
 }
 /* 정상웅 id,pw find end */
 </style>
@@ -1018,6 +1045,8 @@ tr{
 
 
 
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 	//현재 서버 시간
 
@@ -1046,86 +1075,145 @@ tr{
 	var _fullImgHostAddr = '';
 
 	var _birth = "";
+
+// 	비밀번호찾기 - 폰번호입력 란에 숫자만 입력 받기 (isNaN함수)
+function checkNumber(){
+    if(isNaN($("#phone2_pw").val()) || isNaN($("#phone3_pw").val())){
+          alert("숫자만 입력하세요");
+          document.getElementById("phone2_pw").value="";
+    }
+}
+	
+	$(document).ready(
+			function() {
+				$("#btnOk_id").click(
+						function() {
+
+							var name_id = $("#name_id").val();
+							var email_id = $("#email1_id").val()
+							+ "@"
+							+ $("#email2_id").val();
+							console.log("이름 : " + name_id);
+							console.log("이메일: " + email_id);
+
+							if ($("#name_id").val() == null
+									|| $("#name_id").val() == "") {
+								alert("이름 입력후 눌러주세요");
+								return;
+							} else if ($("#email1_id").val() == null
+									|| $("#email2_id").val() == null
+									|| $("#email1_id").val() == ""
+									|| $("#email2_id").val() == "") {
+								alert("이메일 입력후 눌러주세요");
+								return;
+							}
+							if($("#name_id").val()!="" && $("#email1_id").val() !="" && $("#email2_id").val() !=""){
+								$.ajax({
+									type : "POST",
+									url : "/login/findId.do",
+									data : {
+										memName:name_id,
+										memEmail:email_id
+									},
+									dataType : "json",
+									success : function(data) {
+										console.log("아이디찾기Ajax success");
+										var memId = JSON.parse(data.memId);
+										var msg = JSON.parse(data.msg);
+										console.log("---"+memId);
+										console.log("---"+msg);
+										var showIdHtml = "";
+										if (memId != "" && memId!=null) {
+											showIdHtml = "아이디는 " + memId + " 입니다.";
+										}else{
+											showIdHtml = msg;
+										}
+										$("#alert_id").html(showIdHtml);
+									},
+									error : function(e) {
+										console.log("------error------");
+										console.log(e.responseText);
+									}
+								});
+							}
+						});
+				$("#btnOk_pw").click(function() {
+					
+					var id_pw = $("#id_pw").val();
+					var email_pw = $("#email1_pw").val()
+					+ "@"
+					+ $("#email2_pw").val();
+					var phone_pw = $("#phone1_pw").val()+$("#phone2_pw").val()+$("#phone3_pw").val();
+					
+					console.log("아이디 : " + id_pw);
+					console.log("이메일: " + email_pw);
+					console.log("휴대폰: " + phone_pw);
+					
+					if ($("#id_pw").val() == null
+							|| $("#id_pw").val() == "") {
+						alert("이름 입력후 눌러주세요");
+						return;
+					} else if ($("#email1_pw").val() == null
+							|| $("#email2_pw").val() == null
+							|| $("#email1_pw").val() == ""
+							|| $("#email2_pw").val() == "") {
+						alert("이메일 입력후 눌러주세요");
+						return;
+					}else if ($("#phone1_pw").val() ==null
+							||$("#phone1_pw").val() ==""
+							||$("#phone2_pw").val() == null
+							||$("#phone2_pw").val() == ""
+							||$("#phone3_pw").val() == null
+							||$("#phone3_pw").val() == ""){
+						alert("핸드폰 번호를 입력 후 눌러주세요.");
+						return;
+					}
+					if($("#id_pw").val()!="" 
+							&& $("#email1_pw").val() !="" 
+							&& $("#email2_pw").val() !="" 
+							&& $("#phone2_pw").val() != ""
+							&& $("#phone3_pw").val() !=""){
+						$.ajax({
+							type : "POST",
+							url : "/login/findPw.do",
+							data : {
+								memId:id_pw,
+								memEmail:email_pw,
+								memPhone:phone_pw
+							},
+							dataType : "json",
+							success : function(data) {
+								console.log("비번찾기Ajax success");
+
+								var memPw = JSON.parse(data.memPw);
+								var msg = JSON.parse(data.msg);
+								console.log(memPw);
+								console.log("--"+data.memPw);
+								console.log(msg);
+								var showPwHtml = "";
+								if (memPw != "" || memPw != null) {
+									showPwHtml = "비밀번호는 " + memPw + " 입니다.";
+// 								}else if(memPw == "" || memPw==null){
+								}else{
+									showPwHtml = msg;
+								}
+								$("#alert_pw").html(showPwHtml);
+							},
+							error : function(e) {
+								console.log("------error------");
+								console.log(e.responseText);
+							}
+						});
+					}
+				});
+			});
 </script>
-
-
-<script type="text/javascript" src="./js/lib/jquery-1.9.1.js"></script>
-
-
-<!-- <link type="text/css" rel="stylesheet" media="all" -->
-<!-- 	href="./css/master.css" /> -->
 
 <title>ID PW 찾기</title>
 
 </head>
 
 <body>
-
-
-
-
-
-
-
-	<!-- 2016-03-16 noscript 관련해서 body으로 소스이동  -->
-
-	<!-- Facebook Pixel Code -->
-
-	<script type="text/javascript">
-		//<![CDATA[
-
-		!function(f, b, e, v, n, t, s) {
-			if (f.fbq)
-				return;
-			n = f.fbq = function() {
-				n.callMethod ?
-
-				n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-			};
-			if (!f._fbq)
-				f._fbq = n;
-
-			n.push = n;
-			n.loaded = !0;
-			n.version = '2.0';
-			n.queue = [];
-			t = b.createElement(e);
-			t.async = !0;
-
-			t.src = v;
-			s = b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t, s)
-		}(window,
-
-		document, 'script', '//connect.facebook.net/en_US/fbevents.js');
-
-		fbq('init', '1708536146035256');
-
-		fbq('track', "PageView");
-
-		//]]>
-	</script>
-
-	<noscript>
-		<img height="1" width="1" style="display: none" alt="facebook"
-			src="https://www.facebook.com/tr?id=1708536146035256&ev=PageView&noscript=1" />
-	</noscript>
-
-	<!-- End Facebook Pixel Code -->
-
-
-
-	<!-- skip-navigation -->
-
-	<!-- <ul class="skip-navigation"> -->
-
-	<!-- 	<li><a href="#container">본문내용 바로가기</a></li> -->
-
-	<!-- 	<li><a href="#footer">하단메뉴 바로가기</a></li> -->
-
-	<!-- </ul> -->
-
-	<!-- // skip-navigation -->
 
 	<!-- Begin #wrap -->
 
@@ -1263,16 +1351,14 @@ tr{
 										<div class="frm" style="padding-bottom: 62px;">
 											<span>이름</span> <input type="text" id="name_id"
 												name="name_id" /><br> <span>이메일</span> <input
-												type="text" style="width: 100px;"
-												id="email1_id" name="email1_id" /> @ <input type="text"
-												style="width: 126px;" id="email2_id"
-												name="email2_id" />
-											<!-- 										<span class="join_hidden" id="alert_id_null">회원가입되지 않은 고객님입니다.</span> -->
-											<!-- 										<span class="join_hidden" id="alert_id_fail">회원 조회에 실패했습니다.</span> -->
-											<!-- 										<span class="join_hidden" id="alert_id_success">회원 조회에 성공했습니다.</span> -->
+												type="text" id="email1_id" name="email1_id"
+												style="width: 100px;" /> @ <input type="text"
+												id="email2_id" name="email2_id" style="width: 126px;" /> <span
+												class="join_hidden" id="alert_id"></span>
 										</div>
 										<div class="ok">
-											<a href="javascript:fnSearch('I');">확인</a>
+											<!-- 											<a href="javascript:fnSearch('I');" id="btnOk_id">확인</a> -->
+											<button id="btnOk_id">확인</button>
 										</div>
 									</td>
 									<td class="dotted_y"></td>
@@ -1280,13 +1366,12 @@ tr{
 										<div class="title">비밀번호 찾기</div>
 										<div class="pwPadding"></div>
 										<div class="frm">
-											<span>이름</span> <input type="text" id="name_pw"
-												name="name_pw"> <br> <span>이메일</span> <input
-												type="text" style="width: 100px;"
-												id="email1_pw" name="email1_pw" /> @ <input type="text"
-												style="width: 126px;" id="email2_pw"
-												name="email2_pw" /> <br> <span>휴대폰</span> <select
-												id="mobile1_pw" name="mobile1_pw"
+											<span>아이디</span> <input type="text" id="id_pw"
+												name="id_pw"> <br> <span>이메일</span> <input
+												type="text" style="width: 100px;" id="email1_pw"
+												name="email1_pw" /> @ 
+												<input type="text" style="width: 126px;" id="email2_pw" name="email2_pw" /> <br>
+											<span>휴대폰</span> <select id="phone1_pw" name="phone1_pw"
 												style="font-size: 13px; margin-bottom: 5px; height: 30px; border: 2px solid #ececec;">
 												<option value="010">010</option>
 												<option value="011">011</option>
@@ -1294,21 +1379,14 @@ tr{
 												<option value="017">017</option>
 												<option value="018">018</option>
 												<option value="019">019</option>
-											</select> &nbsp; -&nbsp; <input type="text"
-												style="width: 70px;" id="mobile2_pw"
-												name="mobile2_pw" maxlength="4" /> &nbsp; -&nbsp; <input
-												type="text" style="width: 80px;"
-												id="mobile3_pw" name="mobile3_pw" maxlength="4" />
-
-											<!-- 											<span class ="join_hidden" id="alert_pw_yet">조회중입니다.</span> -->
-											<!-- 											<span class="join_hidden" id="alert_pw_null">회원가입되지 않은 고객님입니다.</span> -->
-											<!-- 											<span class="join_hidden" id="alert_pw_email">가입하실때 등록하신 이메일주소와 입력하신 이메일주소가 서로 다름니다.</span> -->
-											<!-- 											<span class="join_hidden" id="alert_pw_mobile">가입하실때 등록하신 핸드폰번호와 입력하신 핸드폰 번호가 서로 다름니다.</span> -->
-											<!-- 											<span class="join_hidden" id="alert_pw_fail">조회에 실패했습니다.</span> -->
-											<!-- 											<span class="join_hidden" id="alert_pw_success">조회에 성공했습니다.</span> -->
+											</select> &nbsp; -&nbsp; 
+											<input type="text" style="width: 70px;" id="phone2_pw" name="phone2_pw" maxlength="4" onkeyup='checkNumber()'/> &nbsp;- &nbsp; 
+											<input type="text" style="width: 80px;" id="phone3_pw" name="phone3_pw" maxlength="4"  onkeyup='checkNumber()'/>
+											<span class ="join_hidden" id="alert_pw"></span>
 										</div>
 										<div class="ok">
-											<a href="javascript:fnSearch('P');">확인</a>
+											<!--										<a href="javascript:fnSearch('P');">확인</a> -->
+											<button id="btnOk_pw">확인</button>
 										</div>
 									</td>
 								</tr>
