@@ -210,27 +210,6 @@ a.nvalinks-rev:hover {
 	color: #f1c40f
 }
 
-.nav-sub-wrap {
-	overflow: hidden;
-	height: 0;
-	z-index: 5555;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding-top: 80px;
-	-webkit-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-	-moz-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-	-o-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-	transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1)
-}
-
-.nav-sub-wrap.on {
-	height: 222px;
-	background: #fff;
-	border-bottom: 1px solid #e2e2e2
-}
-
 /*탑메뉴*/
 #topMenu {
 	height: 40px;
@@ -345,47 +324,6 @@ a.nvalinks-rev:hover {
 	color: #f1c40f
 }
 
-.leftMenu li a {
-	display: block;
-	height: 48px;
-	padding: 0 20px;
-	border-bottom: 1px solid #e2e2e2;
-	cursor: pointer
-}
-
-.leftMenu li a:hover {
-	margin-top: -1px;
-	border-bottom-color: #f1c40f;
-	background-color: #f1c40f
-}
-
-.leftMenu li:first-child a:hover {
-	margin-top: 0
-}
-
-.leftMenu li.top a {
-	border-top: 1px solid #e2e2e2
-}
-
-.leftMenu li.top a:hover {
-	border-top-color: #f1c40f
-}
-
-.leftMenu li a span {
-	display: block;
-	height: 48px;
-	line-height: 49px;
-	font-size: 16px;
-	color: #4d4c4c;
-	font-weight: 500;
-	background: url(./images/icons/left_menu_off.gif) no-repeat right center
-}
-
-.leftMenu li a:hover span {
-	background: url(./images/icons/left_menu_on.png) no-repeat right center;
-	color: #fff
-}
-
 .side_sns {
 	margin-top: 60px;
 	padding: 0 0 20px 20px;
@@ -469,31 +407,6 @@ a.nvalinks-rev:hover {
 /*content 상단 제목*/
 .location {
 	padding-top: 34px
-}
-
-.location_in {
-	display: none
-}
-
-.location_in:after {
-	content: "";
-	display: block;
-	clear: both
-}
-
-.location_in p {
-	float: right;
-	padding-left: 18px;
-	background: url(./images/icons/home.gif) no-repeat 0 3px;
-	font-size: 13px
-}
-
-.location_in p span {
-	margin: 0 4px
-}
-
-.location_in p strong {
-	margin: 0 4px
 }
 
 .subtop-content {
@@ -927,8 +840,9 @@ a.hoverline:hover {
 }
 
 #login {
-	padding-bottom: 55px;
+	padding-bottom: 10px;
 }
+
 #content_sub {
 >>>>>>> branch 'master' of https://github.com/wonjieun/Lazencar_front.git
 	width: 100%;
@@ -1277,11 +1191,19 @@ a {
 		</div>
 	</div>
 	
-	<span id="login_sns">▶ SNS계정 로그인</span><br> <a
-		href="javascript:void(0);"> <img src="/image/facebook.PNG"
-		alt="" />
-	</a>
+	<span id="login_sns">▶ SNS계정 로그인</span><br>
 	
+	<div style="padding-top: 5px;">
+		<a href="javascript:void(0);">
+		<img src="./images/login/facebook.PNG" alt="" />
+		</a>
+		<a href="javascript:void(0);">
+		<img src="./images/login/kakao.PNG" alt="" />
+		</a> <br>
+		<a href="javascript:void(0);">
+		<img src="./images/login/naver.PNG" alt="" />
+		</a>
+	</div>
 </div>
 </div>
 </div>
