@@ -220,7 +220,14 @@
 			</tr>											
 		</table>
 		</div>
-		
+	<div class="clear"></div>
+		<div class="paging">
+				<a href="#" class="page_first"><img src="./images/page_first.gif" alt="처음" /></a>
+				<a href="#" class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a>
+				<strong>1</strong>
+				<a href="#" class="page_next"><img src="./images/page_next.gif" alt="다음" /></a>
+				<a href="#" class="page_end"><img src="./images/page_end.gif" alt="마지막" /></a>
+		</div>	
 
 </div>		<!-- content end -->
 
