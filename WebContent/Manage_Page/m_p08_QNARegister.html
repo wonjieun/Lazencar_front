@@ -10,8 +10,8 @@
 
   <link rel="stylesheet" type="text/css" href="./css/main.css" />  
     <link rel="stylesheet" type="text/css" href="./css/paging.css" />  
-  <script  src="./js/userM/jquery.js"></script>
-  <script  src="./js/userM/colResizable-1.5.min.js"></script>
+  <script  src="./js/jquery.js"></script>
+  <script  src="./js/colResizable-1.5.min.js"></script>
 
   <script type="text/javascript">
 	$(function(){	
@@ -147,8 +147,10 @@
 	</div>	
 	
 		<button class="btnSearch" type="button">검색</button>
+		<div class="clear"></div>
+		
 	<div>
-		 <table class="table2">
+		 <table id="table2">
 			
 			<tr>
 				<th>no</th>
@@ -182,9 +184,14 @@
 		<button type="button">수정</button>
 		<button type="submit">완료</button>
 		</div>
+		<div class="clear"></div>
 
 		<div class="paging">
-				<a href="./list.do?searchItem=&amp;searchWord=&amp;bbsCateId=0&amp;gotoPage=1" class="page_first"><img src="./images/paging/page_first.gif" alt="처음" /></a><a href="./list.do?searchItem=&amp;searchWord=&amp;bbsCateId=0&amp;gotoPage=1" class="page_prev"><img src="./images/paging/page_prev.gif" alt="이전" /></a><strong>1</strong><a href="./list.do?searchItem=&amp;searchWord=&amp;bbsCateId=0&amp;gotoPage=1" class="page_next"><img src="./images/paging/page_next.gif" alt="다음" /></a><a href="./list.do?searchItem=&amp;searchWord=&amp;bbsCateId=0&amp;gotoPage=1" class="page_end"><img src="./images/paging/page_end.gif" alt="마지막" /></a>
+				<a href="#" class="page_first"><img src="./images/page_first.gif" alt="처음" /></a>
+				<a href="#" class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a>
+				<strong>1</strong>
+				<a href="#" class="page_next"><img src="./images/page_next.gif" alt="다음" /></a>
+				<a href="#" class="page_end"><img src="./images/page_end.gif" alt="마지막" /></a>
 		</div>	
 
 </div>		<!-- content end -->
