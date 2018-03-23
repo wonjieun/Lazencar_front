@@ -1000,7 +1000,7 @@ h6 {
 .tbl01 {
 	overflow: hidden;
 	border-top: 1px solid #f2c60f;
-	border-bottom: 1px solid #dedede;
+	/* 	border-bottom: 1px solid #dedede; */
 }
 
 .tbl01 table {
@@ -1038,7 +1038,7 @@ h6 {
 	height: 19px;
 	padding: 8px 20px 9px 20px;
 	border-bottom: 1px solid #dedede;
-	vertical-align: top;
+	vertical-align: middle;
 }
 
 .tbl01 td .formatIn {
@@ -1109,7 +1109,8 @@ a.btnTbl01 {
 }
 
 ul.tabs {
-	border-bottom: 1px solid #f2c71a; margin : 0px;
+	border-bottom: 1px solid #f2c71a;
+	margin: 0px;
 	padding: 0px;
 	list-style: none;
 	margin: 0px;
@@ -1459,11 +1460,145 @@ ul.tabs li.current {
 
 								</div>
 							</div>
-							<div id="tab2" class="tabContent"></div>
+
+							<div id="tab2" class="tabContent">
+								<p>주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항</p>
+								<div class="tbl01" style="font-size: 11px">
+									<table summary="운전면허증번호 성명 (실명) 생년월일" class="">
+										<caption>운전면허 정보</caption>
+										<colgroup>
+											<col width="45%" />
+											<col width="15%" />
+											<col width="42%" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<td rowspan="8" class=""><img
+													src="./images/join/drive_lisence02.jpg" alt="운전면허증 예시 이미지" /></td>
+												<th scope="row">이름</th>
+												<td><input type="text" class="" title="" name="custNm"
+													id="custNm" value="" /> <!-- <p class="notice01_1">이름을 확인해주세요.</p> -->
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">주민등록번호</th>
+												<td><input type="text" class="" title="" name="birth1"
+													id="birth1" maxlength="6" style="width: 60px;" /> <span
+													class="">-</span> <input type="text" class="" title=""
+													name="birth2" id="birth2" maxlength="7"
+													style="width: 60px;" /></td>
+											</tr>
+											<tr>
+												<th scope="row">면허 종류</th>
+												<td><select id="licenType" name="licenType" class="">
+														<option value="2" selected='selected'>2종 보통</option>
+														<option value="1">1종 보통</option>
+														<option value="0">1종 대형</option>
+												</select></td>
+											</tr>
+
+											<tr>
+												<th scope="row">면허 번호</th>
+												<td>
+													<p class="mgb3">
+														<select id="licenNo1" class="" title="코드">
+															<option value="">코드</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+															<option value="13">13</option>
+															<option value="14">14</option>
+															<option value="15">15</option>
+															<option value="16">16</option>
+															<option value="17">17</option>
+															<option value="18">18</option>
+															<option value="19">19</option>
+															<option value="20">20</option>
+															<option value="21">21</option>
+															<option value="22">22</option>
+															<option value="23">23</option>
+															<option value="24">24</option>
+															<option value="25">25</option>
+															<option value="26">26</option>
+															<option value="28">28</option>
+														</select>&nbsp;or &nbsp;&nbsp; <select id="licenNo1_1" class=""
+															title="지역">
+															<option value="">지역</option>
+															<option value="서울">서울</option>
+															<option value="경기">경기</option>
+															<option value="인천">인천</option>
+															<option value="부산">부산</option>
+															<option value="대구">대구</option>
+															<option value="대전">대전</option>
+															<option value="광주">광주</option>
+															<option value="울산">울산</option>
+															<option value="경남">경남</option>
+															<option value="경북">경북</option>
+															<option value="전북">전북</option>
+															<option value="전남">전남</option>
+															<option value="충남">충남</option>
+															<option value="충북">충북</option>
+															<option value="강원">강원</option>
+															<option value="제주">제주</option>
+														</select>
+													</p> <input type="text" class="" title="면허번호 10자리"
+													name="licenNo2" id="licenNo2" value="" />
+												</td>
+											</tr>
+
+											<tr>
+												<th scope="row">발급일</th>
+
+												<td><input title="발급연도" type="text" class=""
+													name="licenIssueDtYear" id="licenIssueDtYear" value=""
+													maxlength="4" /> <span>년</span> <input title="발급월"
+													type="text" class="" name="licenIssueDtMonth"
+													id="licenIssueDtMonth" value="" maxlength="2" /> <span>월</span>
+													<input title="발급일" type="text" class=""
+													name="licenIssueDtDay" id="licenIssueDtDay" value=""
+													maxlength="2" /> <span>일</span></td>
+											</tr>
+
+											<tr>
+												<th scope="row">갱신기간<br />만료일
+												</th>
+												<td><input title="갱신기간 만료 연도" type="text" class=""
+													name="licenLimitDtYear" id="licenLimitDtYear" value=""
+													maxlength="4" /> <span>년</span> <input title="갱신기간 만료 월"
+													type="text" class="" name="licenLimitDtMonth"
+													id="licenLimitDtMonth" value="" maxlength="2" " /> <span>월</span>
+													<input title="갱신기간 만료일" type="text" class=""
+													name="licenLimitDtDay" id="licenLimitDtDay" value=""
+													maxlength="2" /> <span>일</span></td>
+											</tr>
+
+											<tr>
+												<th scope="row">주소</th>
+												<td>
+													<p class="mgb3">
+														<input type="text" class="" title="우편번호" name="zipCode"
+															id="zipCode" readonly="readonly" value="" /> <a href="#"
+															class="btnTbl01 ml5"
+															style="width: 50px; text-align: center;"><span>주소찾기</span></a>
+													</p> <input type="text" class="" title="주소" name="address1"
+													id="address1" style="width: 80%;" value=""
+													readonly="readonly" />
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">상세주소</th>
+												<td><input type="text" class="" title="상세주소"
+													name="address2" id="address2" style="width: 80%;" value="" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
 							<div class="btnArea02">
 								<a href="#" id="sInfo" class="btnP01"
 									onclick="javascript:return false;">수정</a>
 							</div>
+
 						</div>
 
 
