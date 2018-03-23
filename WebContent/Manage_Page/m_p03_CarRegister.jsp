@@ -35,6 +35,9 @@
 	color:white;
 	text-align: center;   
 	width: 10%;}
+	
+	.level1 :nth-child(4) .fly {background: #ffb505 !important;}
+	
 	</style>
 	
   <script type="text/javascript">
@@ -62,15 +65,6 @@
 
 
 
-<div class="wrap">
-
-<div class="header">
-라젠카 관리자 페이지
-
-</div>		<!-- header end -->
-
-
-<div class="container">
 
 
 
@@ -124,6 +118,15 @@
 	</ul>
 </div>		<!-- sideMenu end -->
 
+<div class="wrap">
+
+<div class="header">
+라젠카 관리자 페이지
+
+</div>		<!-- header end -->
+
+
+<div class="container">
 
 
 <div class="content">
@@ -137,39 +140,61 @@
 		 <table class="table1">
 			<tr>
 				<th>기간</th>
-				<th>회원 계정</th>
+				<th>등록 상태</th>
 				<th>정렬</th>
 			</tr>
 			<tr>
-				<td class="left">
-				달력필요!
-				<form id="pickerForm">
-					<fieldset>
-						<div class="rangePicker futureRange">
-							<label for="start_date">From:</label>
-							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" />
-							<label for="end_date">To:</label>
-							<input type="text" name="end_date" id="end_date" value="yyyy/mm/dd" />
-						</div>
-					</fieldset>
-				</form>
-				</td>
-				<td>
-				<form ></form>
+				<td class="left">	<!-- 기간 -->
+				
+				<div class="demo">
+				기간을 선택하세요. <input id="date-range0" size="30" value=""> 
+				</div>
 				
 				</td>
-				<td class="right">cell</td>
+				
+				<td>		
+				  <select class="sort">
+				    <option>등록 
+				    <option>미등록
+				  </select>
+				</td>
+
+				<td class="right">		<!-- 정렬 -->
+				  <select class="sort">
+				    <option>등록 날짜
+				    <option>예약 유무
+				  </select>
+				</td>
 			</tr>		
-			<tr>
-				<th>렌트 차량</th>
-				<th>이용 상태</th>
-				<th>결제 상태</th>
+					
+<tr>
+				<th>차량 종류</th>
+				<th>차량 번호</th>
+				<th>예약 상태</th>
 			</tr>
+
 			<tr>
-				<td class="left">cell</td>
-				<td>cell</td>
-				<td class="right">cell</td>
-			</tr>													
+				<td class="left">
+					<select class="sort" >
+				    <option>소형
+				    <option>준중형
+				    <option>중형
+				    <option>SUV
+				    <option>대형
+				  </select>
+				</td>
+				
+				<td>
+				   <textarea rows="1" cols="20"></textarea>
+				</td>
+				
+				<td class="right">
+				  <select class="sort">
+				    <option>예약 
+				    <option>미예약 
+				  </select>
+				</td>
+			</tr>																			
 		</table>
 		
 	</div>	

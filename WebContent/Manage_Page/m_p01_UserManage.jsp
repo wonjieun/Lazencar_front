@@ -27,6 +27,8 @@
 	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
+	
+	.level1 :nth-child(2) .fly {background: #ffb505 !important;}
 	</style>
 	
   <script type="text/javascript">
@@ -58,7 +60,7 @@
 <div id="menu">
 	<ul class="level1">
 		<li><a href="#url">Home</a></li>
-		<li><a class="fly" href="#url">회원 관리</a>
+		<li><a class="fly"  href="#url">회원 관리</a>
 			<ul>
 				<li><a href="#url">회원목록 조회</a></li>
 			</ul>

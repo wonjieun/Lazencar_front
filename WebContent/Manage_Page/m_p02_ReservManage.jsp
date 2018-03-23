@@ -27,6 +27,9 @@
 	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
+	
+	.level1 :nth-child(3) .fly {background: #ffb505 !important;}
+	
 	</style>
 	
   <script type="text/javascript">
@@ -46,25 +49,12 @@
 			draggingClass:"dragging", 
 			onResize:onSampleResized});
 		
-	});	
+	});
+	
   </script>
 
 </head>
 <body>
-
-
-
-<div class="wrap">
-
-<div class="header">
-라젠카 관리자 페이지
-
-</div>		<!-- header end -->
-
-
-<div class="container">
-
-
 
 <div id="menu">
 	<ul class="level1">
@@ -75,7 +65,7 @@
 			</ul>
 		</li>
 		
-		<li><a class="fly" href="#url">예약 관리</a>
+		<li><a class="fly " href="#url">예약 관리</a>
 			<ul>
 				<li><a href="#url">예약목록 조회</a></li>
 			</ul>
@@ -115,6 +105,18 @@
 		
 	</ul>
 </div>		<!-- sideMenu end -->
+
+<div class="wrap">
+
+<div class="header">
+라젠카 관리자 페이지
+
+</div>		<!-- header end -->
+
+
+<div class="container">
+
+
 
 
 

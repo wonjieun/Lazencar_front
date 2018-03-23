@@ -27,7 +27,6 @@
 #menu ul li:hover > ul a {background: white; width: 72x; }	/*메인메뉴 hover 시 하위메뉴*/
 #menu ul li:hover > ul:hover a:hover {background:#ffb505; color: white; border:1px solid #ddd;}	/*메인메뉴 hover 시 하위메뉴*/
 
-
 /*content 상단 제목*/
 .subtit {
 	padding-bottom: 8px;
@@ -57,6 +56,8 @@
 }
 
 .clear {clear: both;}
+
+.menuBack {background-color: pink;}
 
 /*테이블*/
 .table1{

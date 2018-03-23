@@ -27,6 +27,8 @@
 	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
+	
+	.level1 :nth-child(5) .fly {background: #ffb505 !important;}
 	</style>
 	
   <script type="text/javascript">
@@ -52,16 +54,6 @@
 </head>
 <body>
 
-
-<div class="wrap">
-
-<div class="header">
-라젠카 관리자 페이지
-
-</div>		<!-- header end -->
-
-
-<div class="container">
 
 
 
@@ -116,6 +108,16 @@
 </div>		<!-- sideMenu end -->
 
 
+<div class="wrap">
+
+<div class="header">
+라젠카 관리자 페이지
+
+</div>		<!-- header end -->
+
+
+<div class="container">
+
 
 <div class="content">
          <div class="subtop-content bg_subvisual_02_01">
@@ -133,23 +135,25 @@
 			</tr>
 			<tr>
 				<td class="left">
-				달력필요!
-				<form id="pickerForm">
-					<fieldset>
-						<div class="rangePicker futureRange">
-							<label for="start_date">From:</label>
-							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" /><br>
-							<label for="end_date">To:</label>
-							<input type="text" name="end_date" id="end_date" value="yyyy/mm/dd" />
-						</div>
-					</fieldset>
-				</form>
+				<div class="demo">
+				기간을 선택하세요. <input id="date-range0" size="30" value=""> 
+				</div>
 				</td>
-				<td>
-				<form ></form>
 				
+				<td>
+				 <select class="sort">
+				    <option>안내
+				    <option>공지 
+				    <option>이벤트
+				  </select>
 				</td>
-				<td class="right">cell</td>
+				
+				<td class="right">
+				<select class="sort">
+				    <option>등록 날짜
+				    <option>조회수
+				</select>
+				</td>
 			</tr>											
 		</table>
 		

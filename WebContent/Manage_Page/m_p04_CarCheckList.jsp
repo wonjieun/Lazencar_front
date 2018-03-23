@@ -35,6 +35,8 @@
 	color:white;
 	text-align: center;   
 	width: 10%;}
+	
+	.level1 :nth-child(4) .fly {background: #ffb505 !important;}
 	</style>
 	
   <script type="text/javascript">
@@ -60,16 +62,6 @@
 
 <body>
 
-
-<div class="wrap">
-
-<div class="header">
-라젠카 관리자 페이지
-
-</div>		<!-- header end -->
-
-
-<div class="container">
 
 
 
@@ -124,6 +116,16 @@
 </div>		<!-- sideMenu end -->
 
 
+<div class="wrap">
+
+<div class="header">
+라젠카 관리자 페이지
+
+</div>		<!-- header end -->
+
+
+<div class="container">
+
 
 <div class="content">
          <div class="subtop-content bg_subvisual_02_01">
@@ -141,23 +143,31 @@
 			</tr>
 			<tr>
 				<td class="left">
-				달력필요!
-				<form id="pickerForm">
-					<fieldset>
-						<div class="rangePicker futureRange">
-							<label for="start_date">From:</label>
-							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" /><br>
-							<label for="end_date">To:</label>
-							<input type="text" name="end_date" id="end_date" value="yyyy/mm/dd" />
-						</div>
-					</fieldset>
-				</form>
+				<div class="demo">
+				기간을 선택하세요. <input id="date-range0" size="30" value=""> 
+				</div>
 				</td>
-				<td>
-				<form ></form>
 				
+				<td>
+				<select class="sort" >
+				    <option>S
+				    <option>A+
+				    <option>A
+				    <option>B
+				    <option>C
+				    <option>D
+				    <option>F
+				  </select>
 				</td>
-				<td class="right">cell</td>
+				
+				<td class="right">
+				<select class="sort" >
+				    <option>차량 등록일자
+				    <option>차량 점검일자
+				    <option>차량 예약상태
+				    <option>차량 등급
+				  </select>
+				</td>
 			</tr>		
 			<tr>
 				<th>차종</th>
@@ -165,9 +175,25 @@
 				<th>예약 상태</th>
 			</tr>
 			<tr>
-				<td class="left">cell</td>
-				<td>cell</td>
-				<td class="right">cell</td>
+				<td class="left">
+					<select class="sort" >
+				    <option>소형
+				    <option>준중형
+				    <option>중형
+				    <option>SUV
+				    <option>대형
+				  </select>
+				</td>
+				
+				<td>
+				   <textarea rows="1" cols="20"></textarea>
+				</td>
+				<td class="right">
+				  <select class="sort">
+				    <option>예약 
+				    <option>미예약 
+				  </select>
+				</td>
 			</tr>													
 		</table>
 		
@@ -187,34 +213,89 @@
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
+				<td>
+				<div class="demo">
+				점검 기간을 선택하세요.
+				<input id="date-range0" size="30" value=""> 
+				</div>
+				</td>
+				<td>
+				<select class="sort" >
+				    <option>S
+				    <option>A+
+				    <option>A
+				    <option>B
+				    <option>C
+				    <option>D
+				    <option>F
+				  </select>
+				</td>
 				<td class="right"><input type="checkbox"></td>
 			</tr>		
 			<tr>
 				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
+				<td>
+				<div class="demo">
+				점검 기간을 선택하세요.
+				<input id="date-range0" size="30" value=""> 
+				</div>
+				</td>
+				<td>
+				<select class="sort" >
+				    <option>S
+				    <option>A+
+				    <option>A
+				    <option>B
+				    <option>C
+				    <option>D
+				    <option>F
+				  </select>
+				</td>
 				<td class="right"><input type="checkbox"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
+				<td>
+				<div class="demo">
+				점검 기간을 선택하세요.
+				<input id="date-range0" size="30" value=""> 
+				</div>
+				</td>
+				<td>
+				<select class="sort" >
+				    <option>S
+				    <option>A+
+				    <option>A
+				    <option>B
+				    <option>C
+				    <option>D
+				    <option>F
+				  </select>
+				</td>
 				<td class="right"><input type="checkbox"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
+				<td>
+				<div class="demo">
+				점검 기간을 선택하세요.
+				<input id="date-range0" size="30" value=""> 
+				</div>
+				</td>
+				<td>
+				<select class="sort" >
+				    <option>S
+				    <option>A+
+				    <option>A
+				    <option>B
+				    <option>C
+				    <option>D
+				    <option>F
+				  </select>
+				</td>
 				<td class="right"><input type="checkbox"></td>
 			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>											
+											
 		</table>
 		</div>
 		

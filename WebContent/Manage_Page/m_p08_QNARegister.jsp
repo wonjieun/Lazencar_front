@@ -28,6 +28,8 @@
 	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
+	
+	.level1 :nth-child(7) .fly {background: #ffb505 !important;}
 	</style>
 	
   <script type="text/javascript">
@@ -54,16 +56,6 @@
 <body>
 
 
-
-<div class="wrap">
-
-<div class="header">
-라젠카 관리자 페이지
-
-</div>		<!-- header end -->
-
-
-<div class="container">
 
 
 
@@ -118,6 +110,16 @@
 </div>		<!-- sideMenu end -->
 
 
+<div class="wrap">
+
+<div class="header">
+라젠카 관리자 페이지
+
+</div>		<!-- header end -->
+
+
+<div class="container">
+
 
 <div class="content">
          <div class="subtop-content bg_subvisual_02_01">
@@ -134,29 +136,37 @@
 			</tr>
 			<tr>
 				<td class="left">
-				달력필요!
-				<form id="pickerForm">
-					<fieldset>
-						<div class="rangePicker futureRange">
-							<label for="start_date">From:</label>
-							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" /><br>
-							<label for="end_date">To:</label>
-							<input type="text" name="end_date" id="end_date" value="yyyy/mm/dd" />
-						</div>
-					</fieldset>
-				</form>
+					<div class="demo">
+					기간을 선택하세요.<br> <input id="date-range0" size="30" value=""> 
+					</div>
 				</td>
-				<td class="right">cell</td>
-			</tr>		
-						<tr>
-				<th>정렬</th>
+				
+				<td class="right">
+					<textarea rows="2" cols="30"></textarea>
+				</td>
+				</tr>		
+			
+			<tr>
 				<th>카테고리</th>
+				<th>답변상태</th>
 			</tr>
 			<tr>
 				<td class="left">
-
+					<select class="sort">
+					    <option>가입/탈퇴
+					    <option>예약/취소
+					    <option>쿠폰/포인트
+					    <option>요금/결제
+					    <option>사용/반납
+					    <option>보험/사고
+					</select>
 				</td>
-				<td class="right">cell</td>
+				
+				<td class="right">
+					<select class="sort">
+					    <option>답변 완료
+					    <option>답변 대기
+					</select>
 			</tr>										
 		</table>
 		
@@ -200,6 +210,7 @@
 		<button type="button">수정</button>
 		<button type="submit">완료</button>
 		</div>
+		
 		<div class="clear"></div>
 
 		<div class="paging">

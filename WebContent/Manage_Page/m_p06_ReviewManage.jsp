@@ -35,6 +35,8 @@
 	color:white;
 	text-align: center;   
 	width: 10%;}
+	
+	.level1 :nth-child(6) .fly {background: #ffb505 !important;}
 	</style>
 	
   <script type="text/javascript">
@@ -62,15 +64,6 @@
 
 
 
-<div class="wrap">
-
-<div class="header">
-라젠카 관리자 페이지
-
-</div>		<!-- header end -->
-
-
-<div class="container">
 
 
 
@@ -124,6 +117,15 @@
 	</ul>
 </div>		<!-- sideMenu end -->
 
+<div class="wrap">
+
+<div class="header">
+라젠카 관리자 페이지
+
+</div>		<!-- header end -->
+
+
+<div class="container">
 
 
 <div class="content">
@@ -141,29 +143,36 @@
 			</tr>
 			<tr>
 				<td class="left">
-				달력필요!
-				<form id="pickerForm">
-					<fieldset>
-						<div class="rangePicker futureRange">
-							<label for="start_date">From:</label>
-							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" /><br>
-							<label for="end_date">To:</label>
-							<input type="text" name="end_date" id="end_date" value="yyyy/mm/dd" />
-						</div>
-					</fieldset>
-				</form>
+					<div class="demo">
+					기간을 선택하세요.<br> <input id="date-range0" size="30" value=""> 
+					</div>
 				</td>
-				<td class="right">cell</td>
-			</tr>		
-						<tr>
+				
+				<td class="right">
+					<textarea rows="2" cols="30"></textarea>
+				</td>
+				</tr>		
+
+			<tr>
 				<th>정렬</th>
 				<th>카테고리</th>
 			</tr>
 			<tr>
 				<td class="left">
-
+					<select class="sort">
+					    <option>등록 날짜
+					    <option>조회수
+					    <option>댓글수
+					</select>
 				</td>
-				<td class="right">cell</td>
+				
+				<td class="right">
+					<select class="sort">
+					    <option>말
+					    <option>머
+					    <option>리
+					</select>
+				</td>
 			</tr>										
 		</table>
 		
