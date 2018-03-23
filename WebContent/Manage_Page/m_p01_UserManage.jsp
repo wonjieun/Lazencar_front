@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 
@@ -9,7 +11,6 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
   <link rel="stylesheet" type="text/css" href="./css/main.css" />  
-    <link rel="stylesheet" type="text/css" href="./css/paging.css" />  
   <script  src="./js/jquery.js"></script>
   <script  src="./js/colResizable-1.5.min.js"></script>
 
@@ -33,19 +34,7 @@
 	});	
   </script>
 
-<style type="text/css">
-#table2 th:last-child{
-   background:#f1c40f;
-   height:30px;
-   background-repeat:no-repeat;
-   color:white;
-   text-align: center;   
-   width: 10%;
-}
-</style>
-
 </head>
-
 <body>
 
 
@@ -115,9 +104,10 @@
 
 
 <div class="content">
-         <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">차량 점검 일지</h3>
-          <p class="subtxt"><strong>차량 점검일정을 관리합니다.</strong><br />조회할 차량 조건을 선택하고 검색버튼을 누르시면 차량의 점검일정을 볼 수 있습니다.</p>
+ 
+        <div class="subtop-content bg_subvisual_02_01">
+          <h3 class="subtit">회원목록 조회</h3>
+          <p class="subtxt"><strong>회원목록을 조회하고 관리합니다.</strong><br />조회할 회원조건을 선택하고 검색버튼을 누르시면 해당 회원목록을 볼 수 있습니다.</p>
         </div>
         
 	<div class="center" >
@@ -125,7 +115,7 @@
 		 <table class="table1">
 			<tr>
 				<th>기간</th>
-				<th>차량 등급</th>
+				<th>회원 계정</th>
 				<th>정렬</th>
 			</tr>
 			<tr>
@@ -135,7 +125,7 @@
 					<fieldset>
 						<div class="rangePicker futureRange">
 							<label for="start_date">From:</label>
-							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" /><br>
+							<input type="text" name="start_date" id="start_date" value="yyyy/mm/dd" />
 							<label for="end_date">To:</label>
 							<input type="text" name="end_date" id="end_date" value="yyyy/mm/dd" />
 						</div>
@@ -149,9 +139,9 @@
 				<td class="right">cell</td>
 			</tr>		
 			<tr>
-				<th>차종</th>
-				<th>차량 번호</th>
+				<th>렌트 차량</th>
 				<th>예약 상태</th>
+				<th>결제 상태</th>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
@@ -170,57 +160,31 @@
 			
 			<tr>
 				<th>no</th>
-				<th>점검 날짜</th>
-				<th>차량 등급</th>
-				<th>등록</th>
+				<th>상세 정보</th>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right">cell</td>
 			</tr>		
 			<tr>
 				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right">cell</td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right">cell</td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right">cell</td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td>cell</td>
-				<td>cell</td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right">cell</td>
 			</tr>											
 		</table>
 		</div>
 		
-		<div class="btnSave">
-		<button type="reset">초기화</button>
-		<button type="submit">완료</button>
-		</div>
-		
-		<div class="clear"></div>
-
-		<div class="paging">
-				<a href="#" class="page_first"><img src="./images/page_first.gif" alt="처음" /></a>
-				<a href="#" class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a>
-				<strong>1</strong>
-				<a href="#" class="page_next"><img src="./images/page_next.gif" alt="다음" /></a>
-				<a href="#" class="page_end"><img src="./images/page_end.gif" alt="마지막" /></a>
-		</div>	
 
 </div>		<!-- content end -->
 

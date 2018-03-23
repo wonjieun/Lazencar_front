@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 
@@ -33,17 +35,6 @@
 	});	
   </script>
   
-  <style type="text/css">
-#table2 th:last-child{
-   background:#f1c40f;
-   height:30px;
-   background-repeat:no-repeat;
-   color:white;
-   text-align: center;   
-   width: 10%;
-}
-</style>
-
 </head>
 
 <body>
@@ -116,8 +107,8 @@
 
 <div class="content">
          <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">문의 내역 확인</h3>
-          <p class="subtxt"><strong>회원의 문의 내역을 관리합니다.</strong><br />조회할 문의내역 조건을 선택하고 검색버튼을 누르시면 문의내역의 현황을 볼 수 있습니다.</p>
+          <h3 class="subtit">공지사항 등록</h3>
+          <p class="subtxt"><strong>공지사항을 관리합니다.</strong><br />조회할 공지사항 조건을 선택하고 검색버튼을 누르시면 공지사항의 목록을 볼 수 있으며<br>새로운 공지사항을 등록/삭제할 수 있습니다.</p>
         </div>
         
 	<div class="center" >
@@ -125,7 +116,8 @@
 		 <table class="table1">
 			<tr>
 				<th>기간</th>
-				<th>회원계정</th>
+				<th>카테고리</th>
+				<th>정렬</th>
 			</tr>
 			<tr>
 				<td class="left">
@@ -141,65 +133,55 @@
 					</fieldset>
 				</form>
 				</td>
-				<td class="right">cell</td>
-			</tr>		
-						<tr>
-				<th>카테고리</th>
-				<th>답변상태</th>
-			</tr>
-			<tr>
-				<td class="left">
-
+				<td>
+				<form ></form>
+				
 				</td>
 				<td class="right">cell</td>
-			</tr>										
+			</tr>											
 		</table>
 		
 	</div>	
 	
 		<button class="btnSearch" type="button">검색</button>
 		<div class="clear"></div>
-
+		
 	<div>
 		 <table id="table2">
 			
 			<tr>
 				<th>no</th>
 				<th>상세정보</th>
-				<th>답변여부</th>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td></td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right"></td>
 			</tr>		
 			<tr>
 				<td class="left">cell</td>
-				<td></td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td></td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td></td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right"></td>
 			</tr>
 			<tr>
 				<td class="left">cell</td>
-				<td></td>
-				<td class="right"><input type="checkbox"></td>
+				<td class="right"></td>
 			</tr>											
 		</table>
 		</div>
 		
 		<div class="btnSave">
-		<button type="reset">초기화</button>
+		<button type="button">글쓰기</button>
+		<button type="button">수정</button>
 		<button type="submit">완료</button>
 		</div>
+		
 		<div class="clear"></div>
 
 		<div class="paging">
