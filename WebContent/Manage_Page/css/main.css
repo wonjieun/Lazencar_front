@@ -2,14 +2,14 @@
 
 .header {color: #f1c40f; height: 50px; text-align: center; font-size: 30px;}
 
-#menu {width:250px; height:800px; margin:10px; float:left; position:relative; background-color: #ddd;}
+#menu {width:250px; height:100%; margin-top:-8px;  float:left; position:fixed; background-color: #ddd;}
 
 #menu ul {margin:0; padding:0; list-style:none; white-space:nowrap; text-align:left;  padding:1px 1px 0 1px;}
 
 #menu li {margin:0; padding:0; list-style:none;}
 #menu li {display:inline-block; display:inline;}
 #menu ul {position:absolute; left:-9999px;}
-#menu ul.level1 {position:absolute; left:0; top:0px; background-color: #f1c40f; height: 800px;}
+#menu ul.level1 {position:fixed; left:0; top:0px; background-color: #f1c40f; height: 100%;}
 
 
 #menu a {display:block; font:normal 11px verdana,arial,sans-serif; color:#000; line-height:22px; text-decoration:none;padding:10px 30px 10px 30px; border-bottom:1px solid #ddd; margin-top: 10px; margin-bottom: 10px;} 
@@ -153,3 +153,10 @@ td.bottom{
 label{
 	color:#0361ae;
 }
+
+
+/*table1 cell 요소*/
+.sort{width: 150px; height: 30px;}
+
+.carSort{width: 100px; height: 22px; float: left; margin-left: 15px;}
+.carText{float: right; margin-right: 15px;}
