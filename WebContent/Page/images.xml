@@ -50,19 +50,7 @@
 	<![CDATA[/images/car_06.jpg]]>
 	</src>
 	</item>
-	
-	<item>
-	<src>
-	<![CDATA[/images/car_07.jpg]]>
-	</src>
-	</item>
 
-	<item>
-	<src>
-	<![CDATA[/images/car_08.jpg]]>
-	</src>
-	</item>
-	
 </images>
 
 </node>
