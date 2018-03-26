@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 
@@ -7,40 +9,7 @@
 <meta charset="UTF-8">
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
-
-<style type="text/css">
-@charset "UTF-8";
-
-.header {color: #f1c40f; height: 50px; text-align: center; font-size: 30px;}
-
-#menu {width:250px; height:600px; margin:10px; float:left; position:relative; background-color: #ddd;}
-
-#menu ul {margin:0; padding:0; list-style:none; white-space:nowrap; text-align:left; background:url(/data/201011/IJ12908740279361/opaque.png); padding:1px 1px 0 1px;}
-
-#menu li {margin:0; padding:0; list-style:none;}
-#menu li {display:inline-block; display:inline;}
-#menu ul {position:absolute; left:-9999px;}
-#menu ul.level1 {position:absolute; left:0; top:0px; background-color: #f1c40f; height: 600px;}
-
-
-#menu a {display:block; font:normal 11px verdana,arial,sans-serif; color:#000; line-height:22px; text-decoration:none;padding:10px 30px 10px 30px; border-bottom:1px solid #ddd; margin-top: 10px; margin-bottom: 10px;} 
-
-#menu ul li:hover > ul {visibility:visible; left:100%; margin-top:-65px; margin-left:1px}
-
-#menu a:hover ul,
-#menu a:hover a:hover ul, 
-#menu a:hover a:hover a:hover ul {left:100%; visibility:visible;}
-#menu a:hover ul ul, 
-#menu a:hover a:hover ul ul {left:-9999px;}
-
-#menu li a.fly {background: white; border:1px solid #ddd; }			/*메인메뉴*/
-#menu li:hover > a.fly {background:#ffb505; color: white;} /*메인메뉴 hover*/
-#menu ul li:hover > ul a {background: white; width: 72x; }	/*메인메뉴 hover 시 하위메뉴*/
-#menu ul li:hover > ul:hover a:hover {background:#ffb505; color: white; border:1px solid #ddd;}	/*메인메뉴 hover 시 하위메뉴*/
-
-.content {margin-top: 30px; margin-left: 300px; position: absolute; float: left;}
-</style>
-
+ <link rel="stylesheet" type="text/css" href="./css/main.css" />
 </head>
 
 
