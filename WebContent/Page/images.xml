@@ -4,7 +4,12 @@
 <config>
 
 	<width>
+<<<<<<< HEAD
 	<![CDATA[1538]]>
+=======
+
+	<![CDATA[1500]]>
+>>>>>>> 6d63244be4ebe89d4baf835939983afda3f395eb
 	</width>
 	<height>
 	<![CDATA[800]]>

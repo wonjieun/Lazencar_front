@@ -1,6 +1,7 @@
 package dto;
 
 public class Member {
+	// DB의 속성과 일치해야 한다
 	private int memNum;
 	private int memGubn;
 	private String memGrade;
