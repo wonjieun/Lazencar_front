@@ -4,7 +4,7 @@
 <config>
 
 	<width>
-	<![CDATA[1500]]>
+	<![CDATA[1538]]>
 	</width>
 	<height>
 	<![CDATA[800]]>
@@ -49,19 +49,7 @@
 	<![CDATA[/images/car_06.jpg]]>
 	</src>
 	</item>
-	
-	<item>
-	<src>
-	<![CDATA[/images/car_07.jpg]]>
-	</src>
-	</item>
 
-	<item>
-	<src>
-	<![CDATA[/images/car_08.jpg]]>
-	</src>
-	</item>
-	
 </images>
 
 </node>
