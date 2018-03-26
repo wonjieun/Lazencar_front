@@ -1191,7 +1191,7 @@ function checkNumber(){
 								console.log("--"+data.memPw);
 								console.log(msg);
 								var showPwHtml = "";
-								if (memPw != "" || memPw != null) {
+								if (memPw != "" && memPw != null) {
 									showPwHtml = "비밀번호는 " + memPw + " 입니다.";
 // 								}else if(memPw == "" || memPw==null){
 								}else{
