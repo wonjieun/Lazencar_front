@@ -1084,10 +1084,8 @@ function checkNumber(){
     }
 }
 	
-	$(document).ready(
-			function() {
-				$("#btnOk_id").click(
-						function() {
+	$(document).ready(function() {
+		$("#btnOk_id").click(function() {
 
 							var name_id = $("#name_id").val();
 							var email_id = $("#email1_id").val()

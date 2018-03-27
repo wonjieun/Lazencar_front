@@ -7,7 +7,19 @@ public class Member {
 	private String memId;
 	private String memPw;
 	private String memName;
+	private String memPhone;
+	private String memJumin;
+	private String memEmail;
+	private String memAddr;
+	private boolean memLicense;
 	
+	
+	public String getMemAddr() {
+		return memAddr;
+	}
+	public void setMemAddr(String memAddr) {
+		this.memAddr = memAddr;
+	}
 	public int getMemNum() {
 		return memNum;
 	}
@@ -50,10 +62,10 @@ public class Member {
 	public void setMemPhone(String memPhone) {
 		this.memPhone = memPhone;
 	}
-	public int getMemJumin() {
+	public String getMemJumin() {
 		return memJumin;
 	}
-	public void setMemJumin(int memJumin) {
+	public void setMemJumin(String memJumin) {
 		this.memJumin = memJumin;
 	}
 	public String getMemEmail() {
@@ -68,8 +80,4 @@ public class Member {
 	public void setMemLicense(boolean memLicense) {
 		this.memLicense = memLicense;
 	}
-	private String memPhone;
-	private int memJumin;
-	private String memEmail;
-	private boolean memLicense;
 }
