@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+.header {color: #f1c40f; height: 50px; text-align: center; font-size: 30px;}
+
+#menu {width:250px; height:100%; margin-top:-8px;  float:left; position:fixed; background-color: #ddd;}
+
+#menu ul {margin:0; padding:0; list-style:none; white-space:nowrap; text-align:left;  padding:1px 1px 0 1px;}
+
+#menu li {margin:0; padding:0; list-style:none;}
+#menu li {display:inline-block; display:inline;}
+#menu ul {position:absolute; left:-9999px;}
+#menu ul.level1 {position:fixed; left:0; top:0px; background-color: #f1c40f; height: 100%;}
+
+
+#menu a {display:block; font:normal 11px verdana,arial,sans-serif; color:#000; line-height:22px; text-decoration:none;padding:10px 30px 10px 30px; border-bottom:1px solid #ddd; margin-top: 10px; margin-bottom: 10px;} 
+
+#menu ul li:hover > ul {visibility:visible; left:100%; margin-top:-64px; margin-left:1px}
+
+#menu a:hover ul,
+#menu a:hover a:hover ul, 
+#menu a:hover a:hover a:hover ul {left:100%; visibility:visible;}
+#menu a:hover ul ul, 
+#menu a:hover a:hover ul ul {left:-9999px;}
+
+#menu li a.fly {background: white; border:1px solid #ddd; }			/*메인메뉴*/
+#menu li:hover > a.fly {background:#ffb505; color: white;} /*메인메뉴 hover*/
+#menu ul li:hover > ul a {background: white; width: 72x; }	/*메인메뉴 hover 시 하위메뉴*/
+#menu ul li:hover > ul:hover a:hover {background:#ffb505; color: white; border:1px solid #ddd;}	/*메인메뉴 hover 시 하위메뉴*/
+
+/*content 상단 제목*/
+.subtit {
+	padding-bottom: 8px;
+	font-weight: bold;
+	font-size: 25px;
+	color: #3c3c3c;
+	margin: 5px;
+}
+.subtxt {
+	font-size: 15px;
+	line-height: 19px;
+	color: #767676;
+	margin-bottom: 20px;
+}
+.subtxt strong {
+	color: #3c3c3c;
+}
+
+.btnSearch {display: block; float:right; margin-right: 10%; margin-top: 15px; margin-bottom: 20px;}
+
+.btnSave {display: block; float:right; margin-right: 5%; margin-top: 15px; margin-bottom: 20px;}
+
+.content {margin-top: 15px; margin-left: 300px; position: absolute; float: left;}
+
+.center{
+	text-align:left;
+}
+
+.clear {clear: both;}
+
+.menuBack {background-color: pink;}
+
+/*테이블*/
+.table1{
+	width:80%;
+	max-width:1200px;
+	margin: 20px auto;
+	border="0"; 
+	cellpadding="0"; 
+	cellspacing="0";
+}
+
+#table2{
+	width:90%;
+	max-width:1200px;
+	margin: 20px auto;
+	border="0"; 
+	cellpadding="0"; 
+	cellspacing="0";
+}
+
+/* resizable 위치 보정 */
+.JCLRgrips {
+	margin-left: 5%;
+}
+
+.table1 th{
+   background:#f1c40f;
+   height:30px;
+   background-repeat:no-repeat;
+   color:white;
+   text-align: center;   
+   width: 26%;
+}
+
+#table2 th:first-child{
+   background:#f1c40f;
+   height:30px;
+   background-repeat:no-repeat;
+   color:white;
+   text-align: center;   
+   width: 10%;
+}
+
+#table2 th{
+   background:#f1c40f;
+   height:30px;
+   background-repeat:no-repeat;
+   color:white;
+   text-align: center;   
+}
+
+.table1 td{
+	text-indent:5px;
+	color:#444;
+	border-bottom:1px solid #bbb;
+	border-left:1px solid #bbb;
+	height: 70px;
+	text-align: center; 
+}
+
+#table2 td{
+	text-indent:5px;
+	color:#444;
+	border-bottom:1px solid #bbb;
+	border-left:1px solid #bbb;
+	height: 30px;
+	text-align: center; 
+}
+
+td.left{
+	border-left:1px solid #bbb;
+}
+
+td.right{
+	border-right:1px solid #bbb;
+}
+
+td.bottom{
+	border-bottom:1px solid #bbb;
+}
+
+.dragging .grip{
+	background-position-x:-40px;
+}
+
+.tableText{
+	position:relative;
+	width:10%;
+}
+
+#table2Txt{
+	float:right;	
+}
+label{
+	color:#0361ae;
+}
+
+
+/*table1 cell 요소*/
+.sort{width: 150px; height: 30px;}
+
+.carSort{width: 100px; height: 22px; float: left; margin-left: 15px;}
+.carText{float: right; margin-right: 15px;}
