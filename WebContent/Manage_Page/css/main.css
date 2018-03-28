@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.header {color: #f1c40f; height: 50px; text-align: center; font-size: 30px;}
+.header {color: #f1c40f; height: 50px; text-align: center; font-size: 30px; margin-left: 300px;}
 
 #menu {width:250px; height:100%; margin-top:-8px;  float:left; position:fixed; background-color: #ddd;}
 

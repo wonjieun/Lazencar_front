@@ -15,17 +15,6 @@
 
 <body>
 
-
-
-<div class="wrap">
-
-<div class="header">
-라젠카 관리자 페이지
-
-</div>		<!-- header end -->
-
-
-<div class="container">
 <div id="menu">
    <ul class="level1">
       <li><a href="./home.jsp">Home</a></li>
@@ -83,6 +72,17 @@
 		
 	</ul>
 </div>		<!-- sideMenu end -->
+
+
+<div class="wrap">
+
+<div class="header">
+라젠카 관리자 페이지
+
+</div>		<!-- header end -->
+
+
+<div class="container">
 <div class="content">
 	<p>
 	이곳은 라젠카 관리자를 위한 전용 페이지입니다.<br>

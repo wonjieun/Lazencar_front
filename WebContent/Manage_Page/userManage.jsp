@@ -12,43 +12,71 @@
 
 	<link rel="stylesheet" type="text/css" href="./css/main.css" />
 	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
-	<link rel="stylesheet" href="./css/daterangepicker.css" />
 
-	<script  src="./js/jquery.js"></script>
-	<script  src="./js/colResizable-1.5.min.js"></script>
-
-	<script src="./js/Date_moment.min.js"></script>
-	<script src="./js/Date_rangepicker.js"></script>
-	<script src="./js/Date_demo.js"></script>
+	<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 	
 	<style>
-	.demo { margin:30px 0;}
-	.date-picker-wrapper .month-wrapper table .day.lalala { background-color:orange; }
-	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
-	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
-	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
-	
 	.level1 :nth-child(2) .fly {background: #ffb505 !important;}
 	</style>
 	
   <script type="text/javascript">
-	$(function(){	
-
-		var onSampleResized = function(e){
-			var columns = $(e.currentTarget).find("th");
-			var msg = "columns widths: ";
-			columns.each(function(){ msg += $(this).width() + "px; "; })
-			$("#table2Txt").html(msg);
-			
-		};	
 	
-		$("#table2").colResizable({
-			liveDrag:true, 
-			gripInnerHtml:"<div class='grip'></div>", 
-			draggingClass:"dragging", 
-			onResize:onSampleResized});
+	$(document).ready(function(){
+		$("#searchMember").click(function(){
+			var constraint;		//카테고리에 따른 조건 지정 변수
+			
+			var category = $("#category").val();
+			var content = $("#search_content").val();
+			var sort = $("#sort").val();
+			
+			
+			if(category=="회원 계정"){
+				constraint = mem_id;		//dto에서 mem_id를 꺼내옴.
+			} else if(category=="출생 년도"){
+				constraint = "19"+mem_jumin;		//19+주민번호 앞 2글자 빼ㅇ기
+			} else if(category=="면허 여부"){
+				constraint = mem_license
+			} else{
+// 				showAll
+			}
+			
+			
+			//입력 데이터 확인 코드
+			console.log("카테고리 선택 : "+category);
+			console.log("검색내용 : "+content);
+			console.log("정렬  : "+sort);
+			
+			
+		});
+		//각 입력칸들의 데이터를 받아와서
+// 		console.log();  받아와지는지확인하고
+		$.ajax({
+			type : "POST",
+			url : "/userManage.do",
+			data : {
+				memId:mem_id,
+				memPw:mem_pw,
+				memName:mem_name,
+				memJumin:mem_jumin,
+				memPhone:mem_phone,
+				memAddr:mem_addr,
+				memEmail:mem_email,
+				memLicense:mem_license
+				},
+			dataType : "json",
+			success : function(data) {
+				alert("회원목록을 불러옵니다.");
+
+			
+			},
+			error : function(e) {
+				console.log("------error------");
+				console.log(e.responseText);
+			}
+			});
 		
-	});	
+		
+	});
   </script>
 
 </head>
@@ -123,9 +151,6 @@
 <div class="container">
 
 
-
-
-
 <div class="content">
  
         <div class="subtop-content bg_subvisual_02_01">
@@ -137,62 +162,38 @@
 						
 		 <table class="table1">
 			<tr>
-				<th>회원 계정</th>
-				<th>출생 년도</th>
+				<th>카테고리</th>
+				<th>검색 내용</th>
 				<th>정렬</th>
 			</tr>
 			<tr>
-				<td class="left">	<!-- 회원 계정 -->
-				<textarea rows="2" cols="30"></textarea>
+				<td class="left">
+				<select class="sort" id="category">
+				    <option value="회원 계정">회원 계정
+				    <option value="출생 년도">출생 년도
+				    <option value="면허 여부">면허 여부
+				  </select>
 				</td>
 				
 				<td>		
-				<textarea rows="2" cols="30"></textarea>
+				<textarea rows="1" cols="30" id="search_content"></textarea>
 				</td>
 
 				<td class="right">		<!-- 정렬 -->
-				  <select class="sort">
-				    <option>예약 날짜
-				    <option>예약 상태
-				    <option>결제 상태
+				  <select class="sort" id="sort">
+					<option value="회원 이름">회원 이름
+				    <option value="예약 날짜">예약 날짜
+				    <option value="예약 상태">예약 상태
+				    <option value="결제 상태">결제 상태
 				  </select>
 				</td>
 			</tr>		
-
-			<tr>
-				<th>면허 여부</th>
-				<th>예약 상태</th>
-				<th>결제 상태</th>
-			</tr>
-
-			<tr>
-				<td class="left">
-					<select class="sort" >
-				    <option>면허 등록
-				    <option>면허 미등록
-				  </select>
-				</td>
-				
-				<td>
-				  <select class="sort">
-				    <option>예약 
-				    <option>미예약 
-				  </select>
-				</td>
-				
-				<td class="right">
-				  <select class="sort">
-				    <option>결제 완료
-				    <option>결제 대기
-				    <option>결제 취소
-				  </select>
-				</td>
-			</tr>													
+										
 		</table>
 		
 	</div>	
 	
-		<button class="btnSearch" type="button">검색</button>
+		<button class="btnSearch" id="searchMember" type="button">검색</button>
 		<div class="clear"></div>
 		
 	<div>
@@ -221,7 +222,31 @@
 			<tr>
 				<td class="left">cell</td>
 				<td class="right">cell</td>
-			</tr>											
+			</tr>	
+			<tr>
+				<td class="left">cell</td>
+				<td class="right">cell</td>
+			</tr>		
+			<tr>
+				<td class="left">cell</td>
+				<td class="right">cell</td>
+			</tr>		
+			<tr>
+				<td class="left">cell</td>
+				<td class="right">cell</td>
+			</tr>		
+			<tr>
+				<td class="left">cell</td>
+				<td class="right">cell</td>
+			</tr>		
+			<tr>
+				<td class="left">cell</td>
+				<td class="right">cell</td>
+			</tr>		
+			<tr>
+				<td class="left">cell</td>
+				<td class="right">cell</td>
+			</tr>												
 		</table>
 		</div>
 				<div class="clear"></div>
