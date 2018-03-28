@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import dto.Member;
 import service.MemberSignUpService;
 import service.MemberSignUpServiceImpl;
@@ -36,6 +39,13 @@ public class MemberSignUpServlet extends HttpServlet {
 		mem.setMemEmail(memEmail);
 		mem.setMemJumin(memJumin);
 		
+		
+		Gson gson = new Gson();
+
+		String msg = "ajax 성공!!!!!1";
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("msg", gson.toJson(msg));
+		response.getWriter().write(gson.toJson(jsonObject));
 		service.signUp(mem);
 		
 	}

@@ -83,7 +83,7 @@
 		<li><a class="fly" href="#url">차량 관리</a>
 			<ul>
 				<li><a href="./carRegister.jsp">차량 등록/해제</a></li>
-				<li><a href="./carCheckList.jsp">차량 점검일지</a></li>
+				<li><a href="./carCheckList.jsp">차량 정보 수정</a></li>
 			</ul>
 		</li>
 		
