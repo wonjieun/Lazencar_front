@@ -29,7 +29,7 @@
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
 	
-	.level1 :nth-child(8) .fly {background: #ffb505 !important;}
+	.level1 :nth-child(9) .fly {background: #ffb505 !important;}
 	</style>
 	
   <script type="text/javascript">
@@ -54,6 +54,7 @@
 
 </head>
 <body>
+
 <div id="menu">
    <ul class="level1">
       <li><a href="./home.jsp">Home</a></li>
@@ -97,7 +98,6 @@
 		
 		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
 			<ul>
-
 				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>
 				<li><a href="./couponDelete.jsp">쿠폰 조회/삭제</a></li>
 			</ul>
@@ -105,7 +105,6 @@
 		
 		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
-
 				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
 				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
 			</ul>
@@ -129,16 +128,16 @@
 
 <div class="content">
          <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">쿠폰 등록</h3>
-           <p class="subtxt"><strong>쿠폰을 등록합니다.</strong><br />등록할 쿠폰의 정보를 입력하고 등록할 수 있습니다.</p>
+          <h3 class="subtit">특가상품 등록</h3>
+          <p class="subtxt"><strong>특가 상품을 등록합니다.</strong><br />등록할 특가 상품의 정보를 입력하고 등록할 수 있습니다.</p>
         </div>
         
 	<div class="center" >
 						
 		 <table class="table1">
 			<tr>
-				<th>쿠폰 명</th>
-				<th>신청 가능 기간</th>
+				<th>특가 상품 명</th>
+				<th>특가 기간</th>
 			</tr>
 			<tr>
 				<td class="left">
@@ -151,22 +150,12 @@
 				</td>
 			</tr>			
 			<tr>
-				<th>제약 조건</th>
-				<th>쿠폰 이미지</th>
+				<th>특가 상품 배너 이미지</th>
+				<th>특가 상품  상세 이미지</th>
 			</tr>
 			<tr>
 				<td class="left">
-				<p>나이 : <input type="text" id="age" value="0" style="width: 25px;"> 세 이상 </p>
-				<p>사용 시간 : <input type="text" id="time" value="0" style="width: 25px;"> 시간 이상 </p>
-				<p>차종 : 
-					<select id="sort" >
-					    <option>전차종
-					    <option>소형차 이상
-					    <option>중형차 이상
-					    <option>SUV 이상
-					    <option>대형차 이상
-					</select>
-					</p>
+				<p>이미지 등록</p>
 				</td>
 				<td class="right">
 				<p>이미지 등록</p>

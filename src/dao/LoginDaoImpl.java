@@ -57,83 +57,29 @@ public class LoginDaoImpl implements LoginDao {
 		
 		return false;
 	}
+	
+	@Override
+	public int getGubn(Member m) {
+		String sql = "SELECT mem_gubn FROM TB_MEMBER"
+				+ " WHERE mem_id=?";
+		ResultSet rs = null;
+		
+		try {
+			System.out.println("ID: " + m.getMemId());
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, m.getMemId());
+			
+			rs = pst.executeQuery();
+			rs.next();
+			System.out.println(rs.getInt(1));
+			
+			// 테이블 조회시 키값이 1번째인 값 리턴
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;		
+	}
 
-	@Override
-	public boolean checkId(Member mem) {
-		// 아이디가 존재하는지 체크
-		String sql = "SELECT count(*) from TB_MEMBER";
-		ResultSet rs = null;
-		
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, mem.getMemName());
-			
-			rs = pst.executeQuery();
-			rs.next();
-			
-			int result = rs.getInt(1);
-			if(result > 0) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	@Override
-	public boolean checkPw(Member mem) {
-		// 아이디를 기준으로 비밀번호가 일치하는지 체크
-		String sql = "SELECT count(*) from TB_MEMBER"
-				+ " where MEM_ID=?";
-		ResultSet rs = null;
-		
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, mem.getMemId());
-			
-			rs = pst.executeQuery();
-			rs.next();
-			
-			int result = rs.getInt(1);
-			if(result > 0) {
-				return true;
-			} else {
-				return false;
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return false;
-	}
-	
-	@Override
-	public String getId(Member mem) {
-		String sql = "SELECT count(*) from TB_MEMBER"
-				+ " where MEM_ID=?";
-		ResultSet rs = null;
-		
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, mem.getMemId());
-			
-			pst.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	@Override
-	public String getPw(Member mem) {
-		String sql = "SELECT count(*) from TB_MEMBER"
-				+ " where MEM_PW=?";
-		ResultSet rs = null;
-		return null;
-	}
 }
