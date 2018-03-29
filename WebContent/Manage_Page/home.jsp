@@ -60,6 +60,7 @@
 			<ul>
 				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>
 				<li><a href="./couponDelete.jsp">쿠폰 조회/삭제</a></li>
+
 			</ul>
 		</li>
 		

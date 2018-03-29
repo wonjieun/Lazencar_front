@@ -55,6 +55,7 @@
 </head>
 <body>
 <div id="menu">
+
    <ul class="level1">
       <li><a href="./home.jsp">Home</a></li>
       <li><a class="fly" href="javascript:void(0);">회원 관리</a>
@@ -94,7 +95,6 @@
             <li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
          </ul>
       </li>
-		
 		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
 			<ul>
 				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>

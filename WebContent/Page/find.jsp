@@ -1084,8 +1084,10 @@ function checkNumber(){
     }
 }
 	
-	$(document).ready(function() {
-		$("#btnOk_id").click(function() {
+	$(document).ready(
+			function() {
+				$("#btnOk_id").click(
+						function() {
 
 							var name_id = $("#name_id").val();
 							var email_id = $("#email1_id").val()
@@ -1191,7 +1193,7 @@ function checkNumber(){
 								console.log("--"+data.memPw);
 								console.log(msg);
 								var showPwHtml = "";
-								if (memPw != "" && memPw != null) {
+								if (memPw != "" || memPw != null) {
 									showPwHtml = "비밀번호는 " + memPw + " 입니다.";
 // 								}else if(memPw == "" || memPw==null){
 								}else{
