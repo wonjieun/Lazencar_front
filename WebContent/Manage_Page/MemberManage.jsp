@@ -14,68 +14,77 @@
 	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
 
 	<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 	
 	<style>
 	.level1 :nth-child(2) .fly {background: #ffb505 !important;}
 	</style>
 	
   <script type="text/javascript">
-	
+	/*
+  만들어야 할 기능들
+	1. 특별한 검색조건을 지정하지 않아도 바로 회원 목록 불러오기
+	2. 검색 조건에 따른 회원 목록 정렬, 필요한 정보만 불러오기
+	3. 페이징.. 
+  */
+  
 	$(document).ready(function(){
 		$("#searchMember").click(function(){
-			var constraint;		//카테고리에 따른 조건 지정 변수
+			var memId="";		//카테고리에 따른 조건 지정 변수
+			var memJumin="";
+			var memLicense="";
 			
 			var category = $("#category").val();
 			var content = $("#search_content").val();
 			var sort = $("#sort").val();
-			
-			
-			if(category=="회원 계정"){
-				constraint = mem_id;		//dto에서 mem_id를 꺼내옴.
-			} else if(category=="출생 년도"){
-				constraint = "19"+mem_jumin;		//19+주민번호 앞 2글자 빼ㅇ기
-			} else if(category=="면허 여부"){
-				constraint = mem_license
-			} else{
-// 				showAll
-			}
-			
 			
 			//입력 데이터 확인 코드
 			console.log("카테고리 선택 : "+category);
 			console.log("검색내용 : "+content);
 			console.log("정렬  : "+sort);
 			
+			if(category=="회원 계정"){
+				memId = content;		//dto에서 mem_id를 꺼내옴.
+				return;
+			} else if(category=="출생 년도"){
+				memJumin = content;		//19+주민번호 앞 2글자 빼오기
+				return;
+			} else if(category=="면허 여부"){
+				memLicense = content;
+				return;
+			} else{
+// 				showAll
+				console.log("기준ㅇ ㅔ러");
+
+			}
 			
-		});
+			
+			
+
 		//각 입력칸들의 데이터를 받아와서
 // 		console.log();  받아와지는지확인하고
-		$.ajax({
-			type : "POST",
-			url : "/userManage.do",
-			data : {
-				memId:mem_id,
-				memPw:mem_pw,
-				memName:mem_name,
-				memJumin:mem_jumin,
-				memPhone:mem_phone,
-				memAddr:mem_addr,
-				memEmail:mem_email,
-				memLicense:mem_license
+			$.ajax({
+				type : "POST",
+				url : "/admin/userManage.do",
+				data : {
+					memId:memId,
+					memJumin:memJumin,
+					memLicense:memLicense
+					},
+				dataType : "json",
+				success : function(data) {
+					alert("회원목록을 불러옵니다.");
+	
+				
 				},
-			dataType : "json",
-			success : function(data) {
-				alert("회원목록을 불러옵니다.");
-
-			
-			},
-			error : function(e) {
-				console.log("------error------");
-				console.log(e.responseText);
-			}
-			});
+				error : function(e) {
+					console.log("------error------");
+					console.log(e.responseText);
+				}
+				});
 		
-		
+		});
 	});
   </script>
 
