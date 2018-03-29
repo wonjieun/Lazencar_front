@@ -36,6 +36,7 @@ public class MemberFindIdServlet extends HttpServlet {
 		System.out.println("이름 : "+mem.getMemName());
 		System.out.println("이메일 : "+mem.getMemEmail());
 		
+		
 		Gson gson = new Gson();
 		
 		JsonObject jsonObject = new JsonObject();

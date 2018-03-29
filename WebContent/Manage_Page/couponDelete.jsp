@@ -29,7 +29,7 @@
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
 	
-	.level1 :nth-child(7) .fly {background: #ffb505 !important;}
+	.level1 :nth-child(8) .fly {background: #ffb505 !important;}
 	</style>
 	
   <script type="text/javascript">
@@ -123,10 +123,11 @@
 <div class="container">
 
 
+
 <div class="content">
          <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">문의 답변 등록</h3>
-          <p class="subtxt"><strong>회원의 문의 내역을 관리합니다.</strong><br />조회할 문의내역 조건을 선택하고 검색버튼을 누르시면 문의내역을 볼 수 있으며 답변을 등록할 수 있습니다.</p>
+          <h3 class="subtit">쿠폰 조회/삭제</h3>
+          <p class="subtxt"><strong>쿠폰을 조회하고 삭제합니다.</strong><br />조회할 쿠폰 조건을 선택하고 검색버튼을 누르시면 쿠폰목록을 볼 수 있으며 쿠폰을 삭제할 수 있습니다.</p>
         </div>
         
 	<div class="center" >
@@ -134,49 +135,40 @@
 		 <table class="table1">
 			<tr>
 				<th>기간</th>
-				<th>회원계정</th>
+				<th>종류</th>
+				<th>정렬</th>
 			</tr>
 			<tr>
 				<td class="left">
-					<div class="demo">
+				<div class="demo">
 					기간을 선택하세요.<br> <input id="date-range0" size="30" value=""> 
 					</div>
 				</td>
 				
-				<td class="right">
-					<textarea rows="2" cols="30"></textarea>
-				</td>
-				</tr>		
-			
-			<tr>
-				<th>카테고리</th>
-				<th>답변상태</th>
-			</tr>
-			<tr>
-				<td class="left">
-					<select class="sort">
-					    <option>가입/탈퇴
-					    <option>예약/취소
-					    <option>쿠폰/포인트
-					    <option>요금/결제
-					    <option>사용/반납
-					    <option>보험/사고
+				<td>
+				<select class="sort">
+					    <option>정기 할인
+					    <option>특별 할인
+					    <option>추천인 할인
+					    <option>월별 할인
 					</select>
 				</td>
 				
 				<td class="right">
-					<select class="sort">
-					    <option>답변 완료
-					    <option>답변 대기
+				<select class="sort">
+					    <option>등록 날짜
+					    <option>쿠폰 기간
+					    <option>카테고리
+					    <option>할인율
 					</select>
-			</tr>										
+				</td>
+			</tr>						
 		</table>
 		
 	</div>	
 	
 		<button class="btnSearch" type="button">검색</button>
 		<div class="clear"></div>
-		
 	<div>
 		 <table id="table2">
 			
@@ -204,17 +196,22 @@
 				<td class="left">cell</td>
 				<td class="right"></td>
 			</tr>											
+			<tr>
+				<td class="left">cell</td>
+				<td class="right"></td>
+			</tr>															
+			<tr>
+				<td class="left">cell</td>
+				<td class="right"></td>
+			</tr>											
 		</table>
 		</div>
 		
 		<div class="btnSave">
-		<button type="button">글쓰기</button>
-		<button type="button">수정</button>
-		<button type="submit">완료</button>
+		<button type="reset">초기화</button>
+		<button type="submit">삭제</button>
 		</div>
-		
 		<div class="clear"></div>
-
 		<div class="paging">
 				<a href="#" class="page_first"><img src="./images/page_first.gif" alt="처음" /></a>
 				<a href="#" class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a>
