@@ -4,11 +4,8 @@ import dto.Member;
 
 public interface LoginDao {
 	
-	public boolean checkId(Member mem);
-	public boolean checkPw(Member mem);
+	public boolean check(Member m);
 	
-	public boolean check(Member mem);
+	public int getGubn(Member m);
 	
-	public String getId(Member mem);
-	public String getPw(Member mem);
 }

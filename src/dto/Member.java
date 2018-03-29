@@ -14,7 +14,6 @@ public class Member {
 	private String memAddr;
 	private boolean memLicense;
 	
-	
 	public String getMemAddr() {
 		return memAddr;
 	}
