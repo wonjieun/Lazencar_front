@@ -62,53 +62,58 @@
 
 <body>
 
-
-
-
 <div id="menu">
-	<ul class="level1">
-		<li><a href="#url">Home</a></li>
-		<li><a class="fly" href="#url">회원 관리</a>
+   <ul class="level1">
+      <li><a href="./home.jsp">Home</a></li>
+      <li><a class="fly" href="javascript:void(0);">회원 관리</a>
+         <ul>
+            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">예약 관리</a>
+         <ul>
+            <li><a href="./reservManage.jsp">예약목록 조회</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">차량 관리</a>
+         <ul>
+            <li><a href="./carRegister.jsp">차량 등록/해제</a></li>
+            <li><a href="./carCheckList.jsp">차량 점검일지</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">공지 사항</a>
+         <ul>
+            <li><a href="./noticeManage.jsp">공지사항 등록</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">후기 관리</a>
+         <ul>
+            <li><a href="./reviewManage.jsp">후기목록 조회</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">문의 관리</a>
+         <ul>
+            <li><a href="./qnaManage.jsp">문의 내역 확인</a></li>
+            <li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
+         </ul>
+      </li>
+		
+		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
 			<ul>
-				<li><a href="#url">회원목록 조회</a></li>
+				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>
+				<li><a href="./couponDelete.jsp">쿠폰 조회/삭제</a></li>
 			</ul>
 		</li>
 		
-		<li><a class="fly" href="#url">예약 관리</a>
+		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
-				<li><a href="#url">예약목록 조회</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">차량 관리</a>
-			<ul>
-				<li><a href="#url">차량 등록/해제</a></li>
-				<li><a href="#url">차량 점검일지</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">공지 사항</a>
-			<ul>
-				<li><a href="#url">공지사항 등록</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">후기 관리</a>
-			<ul>
-				<li><a href="#url">후기목록 조회</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">문의 관리</a>
-			<ul>
-				<li><a href="#url">문의 내역 확인</a></li>
-				<li><a href="#url">문의 답변 등록</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">쿠폰 관리</a>
-			<ul>
-				<li><a href="#url">쿠폰 등록/삭제</a></li>
+				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
+				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
 			</ul>
 		</li>
 		
