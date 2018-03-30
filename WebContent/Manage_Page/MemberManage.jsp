@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 
 <head>
@@ -29,14 +31,12 @@
 	3. 페이징.. 
   */
   
-	$(document).ready(function(){
-			
+$(document).ready(function(){
 			
 		$("#searchMember").click(function(){
 			var searchClicked="눌림";
 			var memId="";		//카테고리에 따른 조건 지정 변수
 			var memJumin="";
-			var memLicense="";
 			
 			var category = $("#category").val();
 			var content = $("#search_content").val();
@@ -59,31 +59,37 @@
 
 			}
 			
-			
-			
+		var $form = $("<form>").attr("action", "/Lazencar_front/admin/userManage.do").attr("method", "post");
+		$("<input>").attr("type", "hidden").attr("name", "searchClicked").attr("value", searchClicked).appendTo($form);
+		$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
+		$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
+		$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
+		$form.appendTo($(document.body));
+		
+		$form.submit();	
+		
 
 		//각 입력칸들의 데이터를 받아와서
 // 		console.log();  받아와지는지확인하고
-			$.ajax({
-				type : "POST",
-				url : "/admin/userManage.do",
-				data : {
-					memId:memId,
-					memJumin:memJumin,
-					memLicense:memLicense,
-					searchClicked:searchClicked
-					},
-				dataType : "json",
-				success : function(data) {
-					alert("회원목록을 불러옵니다.");
+// 			$.ajax({
+// 				type : "POST",
+// 				url : "/admin/userManage.do",
+// 				data : {
+// 					memId:memId,
+// 					memJumin:memJumin,
+// 					searchClicked:searchClicked
+// 					},
+// 				dataType : "json",
+// 				success : function(data) {
+// 					alert("회원목록을 불러옵니다.");
 	
 				
-				},
-				error : function(e) {
-					console.log("------error------");
-					console.log(e.responseText);
-				}
-				});
+// 				},
+// 				error : function(e) {
+// 					console.log("------error------");
+// 					console.log(e.responseText);
+// 				}
+// 				});
 		
 		});
 	});
@@ -96,7 +102,7 @@
       <li><a href="./home.jsp">Home</a></li>
       <li><a class="fly" href="javascript:void(0);">회원 관리</a>
          <ul>
-            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
+            <li><a href="/admin/userManage.do" >회원목록 조회</a></li>
          </ul>
       </li>
       
@@ -213,50 +219,18 @@
 				<th>no</th>
 				<th>상세 정보</th>
 			</tr>
+<c:forEach items="${list }" var="i">
 			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
+				<td>${i.memId }</td>
+				<td>${i.memPw }</td>
+				<td>${i.memName }</td>
+				<td>${i.memPhone }</td>
+				<td>${i.memJumin }</td>
+				<td>${i.memEmail }</td>
+				<td>${i.memAddr }</td>
+				<td>${i.memLicense }</td>
 			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>	
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td class="right">cell</td>
-			</tr>												
+</c:forEach>												
 		</table>
 		</div>
 				<div class="clear"></div>

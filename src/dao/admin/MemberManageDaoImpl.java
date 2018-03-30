@@ -19,9 +19,8 @@ public class MemberManageDaoImpl implements MemberManageDao {
 	private Connection conn = null;
 	private Statement st = null;
 	private PreparedStatement pst = null;
-	private List<MemberManage> list = new ArrayList<>();
+	
 	private ResultSet rs = null;
-	MemberManage mem = new MemberManage();
 	MemberSearch search = new MemberSearch();
 	private String sql = null;
 
@@ -38,27 +37,25 @@ public class MemberManageDaoImpl implements MemberManageDao {
 	}
 
 	public List memberManage(MemberSearch search) {
-		String sql = "SELECT * FROM tb_member WHERE";
-
-		//만약에 검색버튼을 누르지 않았을 경우(default) 전체 회원정보를 우선적으로 보여줌
-		getAllList(mem);
 
 		//검색버튼을 누른다면 카테고리를 구분해서 회원정보를 선택해서 보여줌
-		if (search.getClicked()=="눌림") {
-			if("회원계정"==search.getCate()) {
-				getIdList(mem);
+		if ("눌림".equals(search.getClicked())) {
+			if("회원계정".equals(search.getCate())) {
+				return getIdList(search);
 
-			} else if("출생년도"==search.getCate()) {
-				getJuminList(mem);
-				}
+			} else if("출생년도".equals(search.getCate())) {
+				return getJuminList(search);
 			}
-
+		}
+		//만약에 검색버튼을 누르지 않았을 경우(default) 전체 회원정보를 우선적으로 보여줌
+		return getAllList(search);
 	}
 	
 	  @Override
-		public List getAllList(MemberManage mem) {
+		public List getAllList(MemberSearch search) {
+		  List<MemberManage> list = new ArrayList<>();
 			// 전체 회원정보 불러오기
-		  	sql = "SELECT * FROM tb_member WHERE 1=1;";
+		  	sql = "SELECT * FROM tb_member";
 			try {
 				pst = conn.prepareStatement(sql);
 //				pst.setString(1, mem.getMemId());		요기 어떻게 고치지..
@@ -66,15 +63,17 @@ public class MemberManageDaoImpl implements MemberManageDao {
 				rs = pst.executeQuery();
 				
 				while(rs.next()) {
+					MemberManage m = new MemberManage();
+
 					//dto.setter(rs.getter("DB 컬럼명") )
-		            mem.setMemId(rs.getString("MEM_ID"));			
-		            mem.setMemPw(rs.getString("MEM_PW"));			
-		            mem.setMemName(rs.getString("MEM_NAME"));
-		            mem.setMemPhone(rs.getString("MEM_PHONE"));
-		            mem.setMemJumin(rs.getString("MEM_JUMIN"));
-		            mem.setMemEmail(rs.getString("MEM_EMAIL"));
-		            mem.setMemAddr(rs.getString("MEM_ADDR"));
-		            list.add(mem);
+		            m.setMemId(rs.getString("MEM_ID"));			
+		            m.setMemPw(rs.getString("MEM_PW"));			
+		            m.setMemName(rs.getString("MEM_NAME"));
+		            m.setMemPhone(rs.getString("MEM_PHONE"));
+		            m.setMemJumin(rs.getString("MEM_JUMIN"));
+		            m.setMemEmail(rs.getString("MEM_EMAIL"));
+		            m.setMemAddr(rs.getString("MEM_ADDR"));
+		            list.add(m);
 		         }
 				
 			} catch (SQLException e) {
@@ -85,23 +84,29 @@ public class MemberManageDaoImpl implements MemberManageDao {
 	
 	
 	@Override
-	public List getIdList(MemberManage mem) {
+	public List getIdList(MemberSearch search) {
+		List<MemberManage> list = new ArrayList<>();
 		// 회원계정으로 찾기 시 해당 아이디에 대한 정보 불러오기
-		String sql = "SELECT * FROM tb_member WHERE mem_id LIKE '%"+search.getContent()+"%';";
+		String sql = "SELECT * FROM tb_member WHERE mem_id LIKE '%' || ? || '%'";
 		try {
 			pst = conn.prepareStatement(sql);
+			pst.setString(1, search.getContent());
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {
+				MemberManage m = new MemberManage();
+
 				//dto.setter(rs.getter("DB 컬럼명") )
-	            mem.setMemId(rs.getString("MEM_ID"));	
-	            mem.setMemPw(rs.getString("MEM_PW"));
-	            mem.setMemName(rs.getString("MEM_NAME"));
-	            mem.setMemPhone(rs.getString("MEM_PHONE"));
-	            mem.setMemJumin(rs.getString("MEM_JUMIN"));
-	            mem.setMemEmail(rs.getString("MEM_EMAIL"));
-	            mem.setMemAddr(rs.getString("MEM_ADDR"));
-	            list.add(mem);
+	            m.setMemId(rs.getString("MEM_ID"));	
+	            m.setMemPw(rs.getString("MEM_PW"));
+	            m.setMemName(rs.getString("MEM_NAME"));
+	            m.setMemPhone(rs.getString("MEM_PHONE"));
+	            m.setMemJumin(rs.getString("MEM_JUMIN"));
+	            m.setMemEmail(rs.getString("MEM_EMAIL"));
+	            m.setMemAddr(rs.getString("MEM_ADDR"));
+	            list.add(m);
+	            System.out.println("id : " + m.getMemId());
+
 	         }
 			
 		} catch (SQLException e) {
@@ -112,24 +117,30 @@ public class MemberManageDaoImpl implements MemberManageDao {
 	
 	
 	@Override
-	public List getJuminList(MemberManage mem) {
+	public List getJuminList(MemberSearch search) {
+		List<MemberManage> list = new ArrayList<>();
 		// 출생년도로 찾기 시 해당 출생년도에 해당하는 회원목록 불러오기
-		String sql = "SELECT * FROM tb_member WHERE SUBSTR(mem_jumin, 0, 2) = '" + (search.getContent()).substring(2,3) + "';";
+		String sql = "SELECT * FROM tb_member WHERE SUBSTR(mem_jumin, 0, 2) = ?";
 		ResultSet rs = null;
 		try {
 			pst = conn.prepareStatement(sql);
+			System.out.println("93939393939 ----> " + search.getContent().substring(2,4) );
+			pst.setString(1, (search.getContent()).substring(2,4));
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {
+				MemberManage m = new MemberManage();
+
 				//dto.setter(rs.getter("DB 컬럼명") )
-	            mem.setMemId(rs.getString("MEM_ID"));	
-	            mem.setMemPw(rs.getString("MEM_PW"));
-	            mem.setMemName(rs.getString("MEM_NAME"));
-	            mem.setMemPhone(rs.getString("MEM_PHONE"));
-	            mem.setMemJumin(rs.getString("MEM_JUMIN"));
-	            mem.setMemEmail(rs.getString("MEM_EMAIL"));
-	            mem.setMemAddr(rs.getString("MEM_ADDR"));
-	            list.add(mem);
+	            m.setMemId(rs.getString("MEM_ID"));	
+	            m.setMemPw(rs.getString("MEM_PW"));
+	            m.setMemName(rs.getString("MEM_NAME"));
+	            m.setMemPhone(rs.getString("MEM_PHONE"));
+	            m.setMemJumin(rs.getString("MEM_JUMIN"));
+	            m.setMemEmail(rs.getString("MEM_EMAIL"));
+	            m.setMemAddr(rs.getString("MEM_ADDR"));
+	            list.add(m);
+	            
 	         }
 			
 		} catch (SQLException e) {
