@@ -263,6 +263,7 @@ a.nvalinks-rev:hover {
 	color: #f1c40f;
 	background-color: white;
 }
+
 /* 좀 더 긴 메뉴 스타일 설정 */
 .longLink {
 	width: 200px;
@@ -280,8 +281,11 @@ a.nvalinks-rev:hover {
 
 #topMenu:hover .topMenuLi:hover .submenu {
 	height: 100px;
-} /* 한 메뉴당 하위메뉴 하나만*/
+}
+
+ /* 한 메뉴당 하위메뉴 하나만*/
 /* #topMenu:hover .topMenuLi .submenu {height: 180px;}		/*메뉴 전체 드롭다운 	헤더 전체 드롭다운은 어떻게..*/
+
 .submenu {
 	background: white;
 }
@@ -304,6 +308,7 @@ a.nvalinks-rev:hover {
 	display: block;
 	clear: both
 } /*대체 뭘하려는걸까*/
+
 .contentbox {
 	float: right;
 	width: 750px
@@ -829,14 +834,10 @@ a.hoverline:hover {
 	margin: 20px 0 10px 0;
 }
 
-/* * { */
-/* } */
 #content_sub {
 	font-family: 'NanumBarunGothic', 'Nanum Gothic', Dotum, sans-serif;
 	font-size: 13px;
 	color: #6d6e72;
-<<<<<<< HEAD
-=======
 }
 
 #login {
@@ -844,7 +845,6 @@ a.hoverline:hover {
 }
 
 #content_sub {
->>>>>>> branch 'master' of https://github.com/wonjieun/Lazencar_front.git
 	width: 100%;
 	margin: 0 auto;
 	background: #fff;
@@ -937,6 +937,7 @@ a.hoverline:hover {
 	font-size: 14px;
 	background: #fa9e3f;
 }
+
 /*
 .login_frm_detail a {
 	float: right;
@@ -984,7 +985,8 @@ a {
 }
 </style>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <script type="text/javascript">
 	//현재 서버 시간
@@ -1050,56 +1052,68 @@ a {
 */
 
 /* 로그인 입력값 점검 */
-	function f_validate() {
-		$(".join_hidden").hide();
-	
-		if ($("#id").val() == null || $("#id").val() == "") {
-			$("#alert_login").css("display", "inline-block");
-			document.getElementById("id").focus();
-			return false;
-		}
-	
-		if ($("#password").val() == null || $("#password").val() == "") {
-			$("#alert_login").css("display", "inline-block");
-			document.getElementById("password").focus();
-			return false;
-		}
-		
-		return true;
+function f_validate() {
+	// 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때
+	$(".join_hidden").hide();
+
+	if ($("#id").val() == null || $("#id").val() == "") {
+		$("#alert_login").css("display", "inline-block");
+		document.getElementById("id").focus();
+		return false;
+	}
+
+	if ($("#password").val() == null || $("#password").val() == "") {
+		$("#alert_login").css("display", "inline-block");
+		document.getElementById("password").focus();
+		return false;
 	}
 	
-	$("#login_confirm").click(function() {
+	return true;
+}
+
+
+// 아이디, 비밀번호 확인
+$(document).ready( function() {
+	
+	$("#login_confirm").click( function() {
+
+		f_validate();
+		
 		if( $("#id").val()==null || $("#id").val()=="" )
 			return;
 	
 		var id = $("#id").val();
-		var password = $("#password").val();
+		var pw = $("#password").val();
 		
 		$.ajax({
 			type: "POST"
 			, url: "/login/login.do"
 			, data: {
 					memId:id,
-					memPassword:password
+					memPw:pw
 				}
+			// json방식으로 파싱한다
 			, dataType: "json"
 			, success: function( data ) {
-					var cnt = JSON.parse(data.cnt);
-					var list = JSON.parse(data.list);
+				var check = data.check;
+				var gubn = data.gubn;
+				if( check ) {
+					alert("로그인 성공");
+					if( gubn===0 ) location.href="/Manage_Page/home.jsp";
+					if( gubn===1 ) location.href="/Page/main.html";
 					
-					$("#recommend").val(cnt);
+// 					location.href="/Page/main.html";
 					
-					var html = "";
-					for(var i=0; i<list.length; i++) {
-						html+="<strong>" + list[i].recommendId
-								+ "</strong> ";
-					}
-					$("#recommendList").html(html);
+				} else {
+					alert("로그인 실패");
+				}
+				
 			}
 			, error: function(e) {
 				console.log("----- error -----");
 				console.log(e.responseText);
 			}
+		});
 	});
 });
 </script>
@@ -1107,7 +1121,7 @@ a {
 <!-- <link type="text/css" rel="stylesheet" media="all" -->
 <!-- 	href="./css/master.css" /> -->
 
-<title>요금안내 &lt; 라젠카 소개</title>
+<title>로그인</title>
 
 </head>
 
@@ -1210,7 +1224,8 @@ a {
 				<input type="password" id="password" name="password" onkeypress="f_login();" />
 			</div>
 
-			<a href="javascript:f_validate();" id="login_confirm">로그인</a>
+<!-- ***더 좋은 방법을 생각해보자 -->
+			<a href="javascript:void(0);" id="login_confirm">로그인</a>
 
 			<div>
 				<div>
@@ -1249,11 +1264,8 @@ a {
 
 
 			</div>
-
 			<!-- // End #container -->
-
 			<!-- Begin #footer -->
-
 			<div id="footer">
 
 				<div class="footer_box01">
@@ -1383,11 +1395,8 @@ a {
 				</div>
 
 			</div>
-
 			<!-- // End #footer -->
-
 		</div>
-
 		<!-- // End #wrap -->
 </body>
 

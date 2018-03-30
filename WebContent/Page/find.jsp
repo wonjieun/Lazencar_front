@@ -1118,10 +1118,12 @@ function checkNumber(){
 									dataType : "json",
 									success : function(data) {
 										console.log("아이디찾기Ajax success");
+										
 										var memId = JSON.parse(data.memId);
 										var msg = JSON.parse(data.msg);
 										console.log("---"+memId);
 										console.log("---"+msg);
+										
 										var showIdHtml = "";
 										if (memId != "" && memId!=null) {
 											showIdHtml = "아이디는 " + memId + " 입니다.";

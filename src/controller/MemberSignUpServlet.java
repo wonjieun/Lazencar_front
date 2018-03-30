@@ -11,38 +11,42 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import dto.Member;
-import service.MemberFindService;
-import service.MemberFindServiceImpl;
+import service.MemberSignUpService;
+import service.MemberSignUpServiceImpl;
 
-/**
- * Servlet implementation class MemberFindServlet
- */
-@WebServlet("/login/findId.do")
-//아이디값 받아오는 서블릿만들기
-public class MemberFindIdServlet extends HttpServlet {
+@WebServlet("/signUp.do")
+public class MemberSignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private MemberFindService service = new MemberFindServiceImpl();
+		MemberSignUpService service = new MemberSignUpServiceImpl();
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/json; charset=utf-8");
 		
+		String memId = request.getParameter("memId");
+		String memPw = request.getParameter("memPw");
 		String memName = request.getParameter("memName");
+		String memPhone = request.getParameter("memPhone");
+		String memAddr = request.getParameter("memAddr");
 		String memEmail = request.getParameter("memEmail");
+		String memJumin = request.getParameter("memJumin");
 		
 		Member mem = new Member();
+		mem.setMemId(memId);
+		mem.setMemPw(memPw);
 		mem.setMemName(memName);
+		mem.setMemPhone(memPhone);
+		mem.setMemAddr(memAddr);
 		mem.setMemEmail(memEmail);
-		System.out.println("----입력값 확인 ----");
-		System.out.println("이름 : "+mem.getMemName());
-		System.out.println("이메일 : "+mem.getMemEmail());
+		mem.setMemJumin(memJumin);
 		
 		
 		Gson gson = new Gson();
-		
-		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("memId", gson.toJson(service.getMemId(mem)));
-		jsonObject.addProperty("msg", gson.toJson(service.getMsg(mem)));
-		response.getWriter().write(gson.toJson(jsonObject));
-	}
 
+		String msg = "ajax 성공!!!!!1";
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("msg", gson.toJson(msg));
+		response.getWriter().write(gson.toJson(jsonObject));
+		service.signUp(mem);
+		
+	}
 }
