@@ -1,9 +1,9 @@
-package dao.admin;
+package dao.adminDao;
 
 import java.util.List;
 
-import dto.admin.MemberManage;
-import dto.admin.MemberSearch; 
+import dto.adminDto.MemberManage;
+import dto.adminDto.MemberSearch; 
 
 public interface MemberManageDao {
 	
