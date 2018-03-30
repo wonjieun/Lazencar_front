@@ -10,16 +10,13 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-<link rel="stylesheet" type="text/css" href="./css/main.css" />
-<link rel="stylesheet" type="text/css" href="./css/paging.css" />
-<link rel="stylesheet" href="./css/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Manage_Page/css/paging.css" />
+<link rel="stylesheet" href="/Manage_Page/css/daterangepicker.css" />
 
-<script src="./js/jquery.js"></script>
-<script src="./js/colResizable-1.5.min.js"></script>
+<script src="/Manage_Page/js/jquery.js"></script>
+<script src="/Manage_Page/js/colResizable-1.5.min.js"></script>
 
-<script src="./js/Date_moment.min.js"></script>
-<script src="./js/Date_rangepicker.js"></script>
-<!-- <script src="./js/Date_demo.js"></script> -->
 
 <style>
 .demo {
@@ -95,7 +92,7 @@
 
 			} else {
 				var carLCD = $("#carLCD").val();
-				var carName = $("#carName").val(); //mem_pw2는 비밀번호를 확인한 다음값이기 때문에 2로 값을불러옴
+				var carName = $("#carName").val(); 
 				var carNum = $("#carNum").val();
 				var carCategory = $("#carCategory").val();
 				var carOil = $("#carOil").val();
@@ -158,7 +155,7 @@
 			<li><a class="fly" href="#url">차량 관리</a>
 				<ul>
 					<li><a href="./carRegister.jsp">차량 등록</a></li>
-					<li><a href="./carCheckList.jsp">차량 점검일지</a></li>
+					<li><a href="/admin/carCheckList.do">차량정보수정</a></li>
 				</ul></li>
 
 			<li><a class="fly" href="#url">공지 사항</a>
