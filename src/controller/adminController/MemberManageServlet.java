@@ -1,4 +1,4 @@
-package controller.admin;
+package controller.adminController;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.admin.MemberManage;
-import dto.admin.MemberSearch;
-import service.admin.MemberManageService;
-import service.admin.MemberManageServiceImpl;
+import dto.adminDto.MemberManage;
+import dto.adminDto.MemberSearch;
+import service.adminService.MemberManageService;
+import service.adminService.MemberManageServiceImpl;
 
 /*
  * Servlet implementation class userManage

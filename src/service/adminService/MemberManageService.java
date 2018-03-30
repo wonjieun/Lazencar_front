@@ -1,8 +1,8 @@
-package service.admin;
+package service.adminService;
 
 import java.util.List;
 
-import dto.admin.MemberSearch;
+import dto.adminDto.MemberSearch;
 
 public interface MemberManageService {
 	  public List memberManage(MemberSearch search);

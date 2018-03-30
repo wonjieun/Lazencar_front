@@ -1,4 +1,4 @@
-package dto.admin;
+package dto.adminDto;
 
 public class MemberSearch {
 	

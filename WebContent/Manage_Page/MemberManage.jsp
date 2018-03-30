@@ -217,7 +217,7 @@ $(document).ready(function(){
 			
 			<tr>
 				<th class="left">아이디</th>
-				<th>비밀번호</th>
+				<th>이름</th>
 				<th>전화번호</th>
 				<th>주민번호</th>
 				<th>이메일</th>

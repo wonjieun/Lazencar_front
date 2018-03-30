@@ -1,4 +1,4 @@
-package dto.admin;
+package dto.adminDto;
 
 public class MemberManage {
 	// DB의 속성과 일치해야 한다

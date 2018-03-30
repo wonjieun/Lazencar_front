@@ -1,4 +1,4 @@
-package dao.admin;
+package dao.adminDao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,8 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.admin.MemberManage;
-import dto.admin.MemberSearch;
+import dto.adminDto.MemberManage;
+import dto.adminDto.MemberSearch;
 
 public class MemberManageDaoImpl implements MemberManageDao {
 	private final String url = "jdbc:oracle:thin:@localhost:1521:xe";
