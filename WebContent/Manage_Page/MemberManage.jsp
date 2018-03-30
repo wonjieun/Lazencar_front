@@ -12,8 +12,8 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
+	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/paging.css" />  
 
 	<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -59,7 +59,7 @@ $(document).ready(function(){
 
 			}
 			
-		var $form = $("<form>").attr("action", "/Lazencar_front/admin/userManage.do").attr("method", "post");
+		var $form = $("<form>").attr("action", "/admin/userManage.do").attr("method", "post");
 		$("<input>").attr("type", "hidden").attr("name", "searchClicked").attr("value", searchClicked).appendTo($form);
 		$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
 		$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
@@ -220,30 +220,35 @@ $(document).ready(function(){
 		 <table id="table2">
 			
 			<tr>
-				<th>no</th>
-				<th>상세 정보</th>
-			</tr>
+				<th class="left">아이디</th>
+				<th>비밀번호</th>
+				<th>전화번호</th>
+				<th>주민번호</th>
+				<th>이메일</th>
+				<th>주소</th>
+				<th class="right">면허여부</th>
+			</tr> 
 <c:forEach items="${list }" var="i">
 			<tr>
-				<td>${i.memId }</td>
-				<td>${i.memPw }</td>
+				<td class="left">${i.memId }</td>
+<%-- 				<td>${i.memPw }</td> --%>
 				<td>${i.memName }</td>
 				<td>${i.memPhone }</td>
 				<td>${i.memJumin }</td>
 				<td>${i.memEmail }</td>
 				<td>${i.memAddr }</td>
-				<td>${i.memLicense }</td>
+				<td class="right">${i.memLicense }</td>
 			</tr>
 </c:forEach>												
 		</table>
 		</div>
 				<div class="clear"></div>
 		<div class="paging">
-				<a href="#" class="page_first"><img src="./images/page_first.gif" alt="처음" /></a>
-				<a href="#" class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a>
+				<a href="#" class="page_first"><img src="/Manage_Page/images/page_first.gif" alt="처음" /></a>
+				<a href="#" class="page_prev"><img src="/Manage_Page/images/page_prev.gif" alt="이전" /></a>
 				<strong>1</strong>
-				<a href="#" class="page_next"><img src="./images/page_next.gif" alt="다음" /></a>
-				<a href="#" class="page_end"><img src="./images/page_end.gif" alt="마지막" /></a>
+				<a href="#" class="page_next"><img src="/Manage_Page/images/page_next.gif" alt="다음" /></a>
+				<a href="#" class="page_end"><img src="/Manage_Page/images/page_end.gif" alt="마지막" /></a>
 		</div>	
 		
 
