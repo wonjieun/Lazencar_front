@@ -4,7 +4,6 @@ public class MemberManage {
 	// DB의 속성과 일치해야 한다
 	private String memId;
 	private String memPw;
-	private int memGubn;
 	private String memName;
 	private String memPhone;
 	private String memJumin;
@@ -17,12 +16,6 @@ public class MemberManage {
 	}
 	public void setMemAddr(String memAddr) {
 		this.memAddr = memAddr;
-	}
-	public int getMemGubn() {
-		return memGubn;
-	}
-	public void setMemGubn(int memGubn) {
-		this.memGubn = memGubn;
 	}
 	public String getMemId() {
 		return memId;

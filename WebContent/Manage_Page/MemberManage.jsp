@@ -30,7 +30,10 @@
   */
   
 	$(document).ready(function(){
+			
+			
 		$("#searchMember").click(function(){
+			var searchClicked="눌림";
 			var memId="";		//카테고리에 따른 조건 지정 변수
 			var memJumin="";
 			var memLicense="";
@@ -45,17 +48,14 @@
 			console.log("정렬  : "+sort);
 			
 			if(category=="회원 계정"){
-				memId = content;		//dto에서 mem_id를 꺼내옴.
+				memId = content;		
 				return;
 			} else if(category=="출생 년도"){
-				memJumin = content;		//19+주민번호 앞 2글자 빼오기
-				return;
-			} else if(category=="면허 여부"){
-				memLicense = content;
+				memJumin = content;		
 				return;
 			} else{
 // 				showAll
-				console.log("기준ㅇ ㅔ러");
+				console.log("기준 ㅇㅔ러");
 
 			}
 			
@@ -70,7 +70,8 @@
 				data : {
 					memId:memId,
 					memJumin:memJumin,
-					memLicense:memLicense
+					memLicense:memLicense,
+					searchClicked:searchClicked
 					},
 				dataType : "json",
 				success : function(data) {
@@ -177,10 +178,9 @@
 			</tr>
 			<tr>
 				<td class="left">
-				<select class="sort" id="category">
-				    <option value="회원 계정">회원 계정
-				    <option value="출생 년도">출생 년도
-				    <option value="면허 여부">면허 여부
+				<select class="sort" id="category" name="category">
+				    <option value="회원계정">회원 계정
+				    <option value="출생년도">출생 년도
 				  </select>
 				</td>
 				
@@ -189,11 +189,12 @@
 				</td>
 
 				<td class="right">		<!-- 정렬 -->
-				  <select class="sort" id="sort">
-					<option value="회원 이름">회원 이름
-				    <option value="예약 날짜">예약 날짜
-				    <option value="예약 상태">예약 상태
-				    <option value="결제 상태">결제 상태
+				  <select class="sort" id="sort" name="sort">
+					<option value="회원이름">회원 이름
+				    <option value="면허여부">면허 여부
+				    <option value="예약날짜">예약 날짜
+				    <option value="예약상태">예약 상태
+				    <option value="결제상태">결제 상태
 				  </select>
 				</td>
 			</tr>		
@@ -202,7 +203,7 @@
 		
 	</div>	
 	
-		<button class="btnSearch" id="searchMember" type="button">검색</button>
+		<button class="btnSearch" id="searchMember" type="button" >검색</button>
 		<div class="clear"></div>
 		
 	<div>

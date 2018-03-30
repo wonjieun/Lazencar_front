@@ -1,9 +1,10 @@
 package service.admin;
 
-import dto.admin.MemberManage;
+import java.util.List;
+
+import dto.admin.MemberSearch;
 
 public interface MemberManageService {
-	public String getMemId(MemberManage mem);
-	public String getMemId(MemberManage mem);
+	  public List memberManage(MemberSearch search);
 
 }
