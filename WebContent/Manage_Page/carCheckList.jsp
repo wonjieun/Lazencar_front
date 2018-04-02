@@ -1,25 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import ="dto.Car" %>
+<%@ page import ="dao.adminDao.CarCheckListDaoImpl" %>
+<%@ page import ="java.util.ArrayList" %>
+<%@ page import ="java.util.List" %>
+<%@ page import ="dao.adminDao.CarCheckListDao" %>
+<!DOCTYPE html>
 
 <html>
 
 <head>
 
-<meta charset="UTF-8">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
-	<link rel="stylesheet" href="./css/daterangepicker.css" />
+	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/paging.css" />  
+	<link rel="stylesheet" href="/Manage_Page/css/daterangepicker.css" />
 
-	<script  src="./js/jquery.js"></script>
-	<script  src="./js/colResizable-1.5.min.js"></script>
-
-	<script src="./js/Date_moment.min.js"></script>
-	<script src="./js/Date_rangepicker.js"></script>
-	<script src="./js/Date_demo.js"></script>
+	<script  src="/Manage_Page/js/jquery.js"></script>
+	<script type="text/javascript"
+	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 	
 	<style>
 	.demo { margin:30px 0;}
@@ -28,6 +30,14 @@
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
 	
+	#table2 th:first-child{
+	    background: #f1c40f;
+	    height: 30px;
+	    background-repeat: no-repeat;
+	    color: white;
+	    text-align: center;
+	    width: 20%;
+	}
 	#table2 th:last-child{
 	background:#f1c40f;
 	height:30px;
@@ -37,9 +47,50 @@
 	width: 10%;}
 	
 	.level1 :nth-child(4) .fly {background: #ffb505 !important;}
+	
+	
+	tr.hiddenTr{
+ 	display:none;  
+/*  	display:table-row;  */
+	}
+	tr.hiddenTr td{
+		padding: 15px 0 15px 100px;
+	
+	}
+	tr.hiddenTr td div{    
+	text-align: left;
+	float: left; 
+	width: 33%;
+	margin-left:30px;
+	}
+	tr.hiddenTr td div font{
+		font-size:17px;
+	}
+	tr.hiddenTr td div button{
+		text-align:right;
+	}
 	</style>
 	
   <script type="text/javascript">
+  
+  //리스트 하단에 추가로 출력해주기 위해서 토글 함수 생성
+  	function showDetail(id){
+		  obj = document.getElementById(id);
+		  
+		  if(obj.style.display == "none"){
+			  obj.style.display = "table-row";
+		  }else{
+			  obj.style.display="none";
+		  }
+  	}
+//   	검색창에 값이 있는가 판별
+	function checkSearch_content(){
+		if($("#search_content").val()==''){
+			return false;
+		}else{
+			return true;
+		}
+	}
 	$(function(){	
 
 		var onSampleResized = function(e){
@@ -48,18 +99,42 @@
 			columns.each(function(){ msg += $(this).width() + "px; "; })
 			$("#table2Txt").html(msg);
 			
-		};	
-	
-		$("#table2").colResizable({
-			liveDrag:true, 
-			gripInnerHtml:"<div class='grip'></div>", 
-			draggingClass:"dragging", 
-			onResize:onSampleResized});
+		};
+	});
+// 	검색 및 정렬하는 ajax
+$(document).ready(function(){
+	$("#searchCar").click(function(){
+		var carName,carCondi,carCategory;
+		var category =$("#category").val();
+		var sort=$("#sort").val();
+		var content=$("#search_content").val();
+		var clicked="clicked";
 		
-	});	
+		console.log("카테고리:"+category);
+		console.log("정렬기준:"+sort);
+		console.log("입력내용:"+content);
+		if(checkSearch_content()==true){
+			console.log("내용있음");
+			
+			var $form = $("<form>").attr("action", "/admin/carCheckList.do").attr("method", "post");
+			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "clicked").attr("value", clicked).appendTo($form);
+			$form.appendTo($(document.body));
+			
+			$form.submit();	
+			
+			
+		}else{
+			alert("검색어를 입력하세요");
+			console.log("내용을 채워주세요");
+		}
+	});
+	
+});
   </script>
 </head>
-
 <body>
 
 <div id="menu">
@@ -79,8 +154,8 @@
       
       <li><a class="fly" href="javascript:void(0);">차량 관리</a>
          <ul>
-            <li><a href="./carRegister.jsp">차량 등록/해제</a></li>
-            <li><a href="./carCheckList.jsp">차량 점검일지</a></li>
+            <li><a href="./carRegister.jsp">차량 등록</a></li>
+            <li><a href="/admin/carCheckList.do">차량 수정</a></li>
          </ul>
       </li>
       
@@ -114,6 +189,7 @@
 			<ul>
 				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
 				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
+
 			</ul>
 		</li>
 		
@@ -138,193 +214,109 @@
           <p class="subtxt"><strong>차량 점검일정을 관리합니다.</strong><br />조회할 차량 조건을 선택하고 검색버튼을 누르시면 차량의 점검일정을 볼 수 있습니다.</p>
         </div>
         
-	<div class="center" >
-						
-		 <table class="table1">
-			<tr>
-				<th>기간</th>
-				<th>차량 등급</th>
-				<th>정렬</th>
-			</tr>
-			<tr>
-				<td class="left">
-				<div class="demo">
-				기간을 선택하세요. <input id="date-range0" size="30" value=""> 
+	<div class="center">
+					<table class="table1">
+						<tr>
+							<th>카테고리</th>
+							<th>검색 내용</th>
+							<th>정렬</th>
+						</tr>
+						<tr>
+							<td class="left"><select class="sort" id="category">
+									<option value="car_Name">차량모델명</option>
+									<option value="car_Category">차량종류</option>
+									<option value="car_Condi">차량상태</option>
+							</select></td>
+							<td><input size='30' id="search_content"></textarea>
+							</td>
+							<td class="right">
+								<!-- 정렬 --> <select class="sort" id="sort">
+									<option value="car_Num">차량번호</option>
+									<option value="car_Category">차랑종류</option>
+									<option value="car_Condi">차량상태</option>
+									<option value="car_LCD">최근점검일</option>
+							</select>
+							</td>
+						</tr>
+					</table>
 				</div>
-				</td>
-				
-				<td>
-				<select class="sort" >
-				    <option>S
-				    <option>A+
-				    <option>A
-				    <option>B
-				    <option>C
-				    <option>D
-				    <option>F
-				  </select>
-				</td>
-				
-				<td class="right">
-				<select class="sort" >
-				    <option>차량 등록일자
-				    <option>차량 점검일자
-				    <option>차량 예약상태
-				    <option>차량 등급
-				  </select>
-				</td>
-			</tr>		
-			<tr>
-				<th>차종</th>
-				<th>차량 번호</th>
-				<th>예약 상태</th>
-			</tr>
-			<tr>
-				<td class="left">
-					<select class="sort" >
-				    <option>소형
-				    <option>준중형
-				    <option>중형
-				    <option>SUV
-				    <option>대형
-				  </select>
-				</td>
-				
-				<td>
-				   <textarea rows="1" cols="20"></textarea>
-				</td>
-				<td class="right">
-				  <select class="sort">
-				    <option>예약 
-				    <option>미예약 
-				  </select>
-				</td>
-			</tr>													
-		</table>
-		
-	</div>	
-	
-		<button class="btnSearch" type="button">검색</button>
-		<div class="clear"></div>
-		
-	<div>
-		 <table id="table2">
-			
-			<tr>
-				<th>no</th>
-				<th>점검 날짜</th>
-				<th>차량 등급</th>
-				<th>등록</th>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td>
-				<div class="demo">
-				점검 기간을 선택하세요.
-				<input id="date-range0" size="30" value=""> 
-				</div>
-				</td>
-				<td>
-				<select class="sort" >
-				    <option>S
-				    <option>A+
-				    <option>A
-				    <option>B
-				    <option>C
-				    <option>D
-				    <option>F
-				  </select>
-				</td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td>
-				<div class="demo">
-				점검 기간을 선택하세요.
-				<input id="date-range0" size="30" value=""> 
-				</div>
-				</td>
-				<td>
-				<select class="sort" >
-				    <option>S
-				    <option>A+
-				    <option>A
-				    <option>B
-				    <option>C
-				    <option>D
-				    <option>F
-				  </select>
-				</td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td>
-				<div class="demo">
-				점검 기간을 선택하세요.
-				<input id="date-range0" size="30" value=""> 
-				</div>
-				</td>
-				<td>
-				<select class="sort" >
-				    <option>S
-				    <option>A+
-				    <option>A
-				    <option>B
-				    <option>C
-				    <option>D
-				    <option>F
-				  </select>
-				</td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td>
-				<div class="demo">
-				점검 기간을 선택하세요.
-				<input id="date-range0" size="30" value=""> 
-				</div>
-				</td>
-				<td>
-				<select class="sort" >
-				    <option>S
-				    <option>A+
-				    <option>A
-				    <option>B
-				    <option>C
-				    <option>D
-				    <option>F
-				  </select>
-				</td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>
-											
-		</table>
-		</div>
-		
-		<div class="btnSave">
-		<button type="reset">초기화</button>
-		<button type="submit">완료</button>
-		</div>
-		
-		<div class="clear"></div>
+				<button class="btnSearch" id="searchCar" type="button">차량 검색</button>
+				<div class="clear"></div>
+				<div>
+					<table id="table2">
+					<thead>
+						<tr>
+							<th>차량번호</th>
+							<th>차량모델명</th>
+							<th>차량상태</th>
+							<th>차량종류</th>
+							<th>유종</th>
+							<th>차량 최종 점검일</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
 
-		<div class="paging">
-				<a href="#" class="page_first"><img src="./images/page_first.gif" alt="처음" /></a>
-				<a href="#" class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a>
-				<strong>1</strong>
-				<a href="#" class="page_next"><img src="./images/page_next.gif" alt="다음" /></a>
-				<a href="#" class="page_end"><img src="./images/page_end.gif" alt="마지막" /></a>
-		</div>	
+							
+						<c:forEach items="${list }" begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
+								
+							<tr>
+								<td id="td_carId">${i.carNum }</td>
+								<td>${i.carName }</td>
+								<td>${i.carCondi }</td>
+								<td>${i.carCategory }</td>
+								<td>${i.carOil }</td>
+								<td>${i.carLCD }</td>								<td>
+								<button id="btn_listDown" onclick="showDetail('hiddenTr_${listNumber.count}');" style="margin:auto 0;">수정</button><br>
+								<button id="btn_delete" style="margin:auto 0;">삭제</button>
+								</td>
+							</tr>
+							<tr class="hiddenTr" id="hiddenTr_${listNumber.count }">
+								<td colspan="7">
+								<div style="width:90px" >
+								<font>차랑번호: </font><br>
+								<font>차량모델명: </font><br>
+								<font>차량상태: </font><br>
+								<font>차량종류:</font><br>
+								<font>유종: </font><br>
+								<font>최종점검일: </font>
+								</div>
+								<div>
+									<font>${i.carNum }</font><br>
+									<font>${i.carName }</font><br>
+											<select class="sort" id="carCondi"	name="condiSelect">
+											<option>${i.carCondi }</option>
+											<option value="대기중">대기중</option>
+											<option value="예약중">예약중</option>
+											<option value="점검중">점검중</option>
+											<option value="수리중">수리중</option>
+									</select><br>
+									<font>${i.carCategory }</font><br>
+									<font>${i.carOil }</font><br>
+									<input value="${i.carLCD }"/><br>
+								</div>
+								<div>
+									<button id="btn_update">수정완료</button>
+								</div>
+								</td>
+							</tr>	
+						</c:forEach>
+							
+
+					</tbody>
+						
+					</table>
+				</div>
+				
+				<jsp:include page="/Manage_Page/util/paging.jsp" />
+			</div>
 
 </div>		<!-- content end -->
 
 </div>		<!-- container end -->
 
 
-</div>		<!-- wrap end -->
+
 
 </body>
 </html>

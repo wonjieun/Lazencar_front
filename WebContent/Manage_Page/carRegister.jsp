@@ -1,25 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 
 <head>
 
-<meta charset="UTF-8">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-<link rel="stylesheet" type="text/css" href="./css/main.css" />
-<link rel="stylesheet" type="text/css" href="./css/paging.css" />
-<link rel="stylesheet" href="./css/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Manage_Page/css/paging.css" />
+<link rel="stylesheet" href="/Manage_Page/css/daterangepicker.css" />
 
-<script src="./js/jquery.js"></script>
-<script src="./js/colResizable-1.5.min.js"></script>
+<script src="/Manage_Page/js/jquery.js"></script>
+<script src="/Manage_Page/js/colResizable-1.5.min.js"></script>
 
-<script src="./js/Date_moment.min.js"></script>
-<script src="./js/Date_rangepicker.js"></script>
-<!-- <script src="./js/Date_demo.js"></script> -->
 
 <style>
 .demo {
@@ -95,7 +91,7 @@
 
 			} else {
 				var carLCD = $("#carLCD").val();
-				var carName = $("#carName").val(); //mem_pw2는 비밀번호를 확인한 다음값이기 때문에 2로 값을불러옴
+				var carName = $("#carName").val(); 
 				var carNum = $("#carNum").val();
 				var carCategory = $("#carCategory").val();
 				var carOil = $("#carOil").val();
@@ -213,21 +209,6 @@
         </div>
         
 	<div class="center" >
-						
-		 <table class="table1">
-			<tr>
-				<th>기간</th>
-				<th>등록 상태</th>
-				<th>정렬</th>
-			</tr>
-			<tr>
-				<td class="left">	<!-- 기간 -->
-				
-				<div class="demo">
-				기간을 선택하세요. <input id="date-range0" size="30" value=""> 
-				</div>
-
-				<div class="center">
 
 					<table class="table1">
 						<tr>
