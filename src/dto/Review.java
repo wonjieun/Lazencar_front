@@ -60,5 +60,5 @@ public class Review {
 	public void setRev_hit(int rev_hit) {
 		this.rev_hit = rev_hit;
 	}
-
+}
 
