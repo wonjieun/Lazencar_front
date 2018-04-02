@@ -191,5 +191,70 @@ public class CarCheckListDaoImpl implements CarCheckListDao{
 	}
 		return list;
 	}
+//	@Override
+//	public String checkButton(CarManage cm) {
+//		if(cm.getUpdateOrDelete().equals("deleteCar")) {
+//			return "deleteCar";
+//		}else
+//			return "updateCar";
+//	}
+//	@Override
+//	public void updateCar(CarManage cm) {
+//		PreparedStatement pst = null;
+//		ResultSet rs = null;
+//		List<Car> list = new ArrayList<>();
+//		String sql = "SELECT * FROM tb_car WHERE ? LIKE '%' || ? || '%' order by ?";
+//		try {
+//			pst = conn.prepareStatement(sql);
+//			pst.setString(1, cm.getContent());
+//			rs = pst.executeQuery();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}finally {
+//			try {
+//				if(rs!=null)rs.close();
+//				if(pst!=null)pst.close();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//	}
+//	}
+//	@Override
+//	public void deleteCar(CarManage cm) {
+//		PreparedStatement pst = null;
+//		ResultSet rs = null;
+//		List<Car> list = new ArrayList<>();
+//		String sql = "SELECT * FROM tb_car WHERE ? LIKE '%' || ? || '%' order by ?";
+//		try {
+//			pst = conn.prepareStatement(sql);
+//			pst.setString(1, cm.getContent());
+//			rs = pst.executeQuery();
+//			
+//			while(rs.next()) {
+//				Car car = new Car();
+//				car.setCarNum(rs.getString("car_Num"));
+//				car.setCarName(rs.getString("car_Name"));
+//				car.setCarCategory(rs.getString("car_category"));
+//				car.setCarCondi(rs.getString("car_Condi"));
+//				car.setCarLCD(rs.getString("car_LCD"));
+//				car.setCarOil(rs.getString("car_Oil"));
+//				
+//				list.add(car);
+//	         }
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}finally {
+//			try {
+//				if(rs!=null)rs.close();
+//				if(pst!=null)pst.close();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//	}
+//	}
 
 }

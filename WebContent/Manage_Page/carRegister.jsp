@@ -122,7 +122,7 @@
 					error : function(e) {
 // 						alert("입력 형식을 확인해주세요.");
 						console.log("------error------");
-						console.log(e.responseText);
+// 						console.log(e.responseText);
 					}
 				});
 			}

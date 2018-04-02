@@ -1223,7 +1223,6 @@ $(document).ready( function() {
 				<span>비밀번호</span>
 				<input type="password" id="password" name="password" onkeypress="f_login();" />
 			</div>
-
 <!-- ***더 좋은 방법을 생각해보자 -->
 			<a href="javascript:void(0);" id="login_confirm">로그인</a>
 

@@ -131,7 +131,34 @@ $(document).ready(function(){
 			console.log("내용을 채워주세요");
 		}
 	});
-	
+	//삭제 버튼 눌렸을시 실행
+	$("#btn_delete").click(function(){
+		var font_carNum = $("#font_carNum").val();
+		var btnEdit ="deleteCar";
+		
+		var $form2 = $("<form>").attr("action","/admin/carCheckList.do").attr("method","post");
+		$("<input>").attr("type","hidden").attr("name","font_carNum").attr("value",font_carNum).appendTo($form2);
+		$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form2);
+		$form2.appendTo($(document.body));
+		
+		$form2.submit();	
+	});
+	//수정완료 버튼 눌렀을시 실행
+	$("#btn_update").click(function(){
+		var font_carNum = $("#font_carNum").val();
+		var font_carCondi = $("#font_carCondi").val();
+		var font_carLCD = $("#font_carLCD").val();
+		var btnEdit = "updateCar";
+		
+		var $form3 = $("<form>").attr("action","/admin/carCheckList.do").attr("method","post");
+		$("<input>").attr("type","hidden").attr("name","font_carNum").attr("value",font_carNum).appendTo($form3);
+		$("<input>").attr("type","hidden").attr("name","font_carCondi").attr("value",font_carCondi).appendTo($form3);
+		$("<input>").attr("type","hidden").attr("name","font_carLCD").attr("value",font_carLCD).appendTo($form3);
+		$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form3);
+		$form3.appendTo($(document.body));
+		
+		$form3.submit();	
+	})
 });
   </script>
 </head>
@@ -282,9 +309,9 @@ $(document).ready(function(){
 								<font>최종점검일: </font>
 								</div>
 								<div>
-									<font>${i.carNum }</font><br>
+									<font id="font_carNum">${i.carNum }</font><br>
 									<font>${i.carName }</font><br>
-											<select class="sort" id="carCondi"	name="condiSelect">
+											<select class="sort" id="font_carCondi"	name="condiSelect">
 											<option>${i.carCondi }</option>
 											<option value="대기중">대기중</option>
 											<option value="예약중">예약중</option>
@@ -293,7 +320,7 @@ $(document).ready(function(){
 									</select><br>
 									<font>${i.carCategory }</font><br>
 									<font>${i.carOil }</font><br>
-									<input value="${i.carLCD }"/><br>
+									<input id="font_carLCD value="${i.carLCD }"/><br>
 								</div>
 								<div>
 									<button id="btn_update">수정완료</button>

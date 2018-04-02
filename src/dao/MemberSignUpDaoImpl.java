@@ -30,8 +30,8 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 	}
 	@Override
 	public void insertAllData(Member mem) {
-		String sql = "INSERT INTO TB_MEMBER(MEM_ID,MEM_PW, MEM_NAME, MEM_PHONE, MEM_JUMIN, MEM_EMAIL, MEM_ADDR)"
-				+ " VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO TB_MEMBER(MEM_ID,MEM_PW, MEM_NAME, MEM_PHONE, MEM_JUMIN, MEM_EMAIL, MEM_ADDR,MEM_GUBN)"
+				+ " VALUES(?,?,?,?,?,?,?,?)";
 		//Id, Pw, Name, Phone, Jumin(int), Email, Addr순서
 		ResultSet rs = null;
 		
@@ -44,6 +44,8 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 			pst.setString(5, mem.getMemJumin());
 			pst.setString(6, mem.getMemEmail());
 			pst.setString(7, mem.getMemAddr());
+			pst.setInt(8, 1);
+			
 			
 			pst.executeUpdate();
 		} catch (SQLException e) {

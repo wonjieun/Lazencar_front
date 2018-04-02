@@ -35,6 +35,7 @@ public class CarCheckListServlet extends HttpServlet {
 		response.setContentType("text/json; charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
 		
+		//검색할 키워드 저장 및 확인
 		String category = request.getParameter("category");
 		String sort = request.getParameter("sort");
 		String content = request.getParameter("content");
@@ -50,10 +51,21 @@ public class CarCheckListServlet extends HttpServlet {
 		cm.setContent(content);
 		cm.setClicked(clicked);
 
-		System.out.println("cm:"+cm.getCategory());
-		System.out.println("cm:"+cm.getSort());
-		System.out.println("cm:"+cm.getContent());
-		System.out.println("cm:"+cm.getClicked());
+//		System.out.println("cm:"+cm.getCategory());
+//		System.out.println("cm:"+cm.getSort());
+//		System.out.println("cm:"+cm.getContent());
+//		System.out.println("cm:"+cm.getClicked());
+//		//수정 및 삭제할 키워드 저장 및 확인
+//		String key_carNum=request.getParameter("font_carNum");
+//		String key_carCondi=request.getParameter("font_carCondi");
+//		String key_carLCD=request.getParameter("font-carLCD");
+//		String editCar=request.getParameter("btnEdit");
+//		cm.setKey_carNum(key_carNum);
+//		cm.setKey_carCondi(key_carCondi);
+//		cm.setKey_carLCD(key_carLCD);
+//		System.out.println(cm.getKey_carNum()+","+cm.getKey_carCondi()+","+cm.getKey_carLCD());
+		
+		
 
 		//페이징 ▽
 		Paging paging =null;
@@ -76,9 +88,5 @@ public class CarCheckListServlet extends HttpServlet {
 		request.setAttribute("paging", paging);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/Manage_Page/carCheckList.jsp").forward(request, response);
-		
-		
-		
 	}
-
 }

@@ -18,7 +18,12 @@ import service.MemberSignUpServiceImpl;
 public class MemberSignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 		MemberSignUpService service = new MemberSignUpServiceImpl();
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/Page/signUp.html").forward(req, resp);
 	
+	}
+		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/json; charset=utf-8");
 		

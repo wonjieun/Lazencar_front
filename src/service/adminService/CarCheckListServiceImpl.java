@@ -14,6 +14,13 @@ public class CarCheckListServiceImpl implements CarCheckListService {
 	// public List getCarList(Paging paging) {
 	@Override
 	public List getCarList(Paging paging, CarManage cm) {
+//		if(dao.checkButton(cm).equals("update")) {
+//			dao.updateCar(cm);
+//			return dao.getList(paging, cm);
+//		}else if(dao.checkButton(cm).equals("delete")) {
+//			dao.deleteCar(cm);
+//			return dao.getList(paging, cm);
+//		}else
 		return dao.getList(paging, cm);
 	}
 }
