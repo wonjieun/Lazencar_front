@@ -173,23 +173,19 @@ public class Member {
 	}
 
 	private boolean memLicense;
-<<<<<<< HEAD
 	
 	public String getMemAddr() {
 		return memAddr;
-=======
+	}
 
 	public String getMemPhone1() {
 		return memPhone1;
->>>>>>> fcdc0e01c52bff2b64cfb46166407a781cfa3469
 	}
 
 	public void setMemPhone1(String memPhone1) {
 		this.memPhone1 = memPhone1;
 	}
-<<<<<<< HEAD
-=======
-
+	
 	public String getMemPhone2() {
 		return memPhone2;
 	}
@@ -239,16 +235,10 @@ public class Member {
 		this.memEmail2 = memEmail2;
 	}
 
-
-	public String getMemAddr() {
-		return memAddr;
-	}
-
 	public void setMemAddr(String memAddr) {
 		this.memAddr = memAddr;
 	}
 
->>>>>>> fcdc0e01c52bff2b64cfb46166407a781cfa3469
 	public String getMemId() {
 		return memId;
 	}
