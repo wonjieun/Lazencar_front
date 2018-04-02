@@ -38,7 +38,6 @@ public class MemberFindIdServlet extends HttpServlet {
 		
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("memId", gson.toJson(service.getMemId(mem)));
-		jsonObject.addProperty("msg", gson.toJson(service.getMsg(mem)));
 		response.getWriter().write(gson.toJson(jsonObject));
 	}
 

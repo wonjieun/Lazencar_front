@@ -9,7 +9,6 @@ public class MemberSignUpServiceImpl implements MemberSignUpService {
 
 	@Override
 	public void signUp(Member mem) {
-		dao.insertAllData(mem);
-		
+		dao.insertAllData(mem);	
 	}
 }
