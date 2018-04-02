@@ -1052,95 +1052,67 @@ a {
 */
 
 /* 로그인 입력값 점검 */
-	function f_validate() {
-	
-		// 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때
-		$(".join_hidden").hide();
-	
-		if ($("#id").val() == null || $("#id").val() == "") {
-			$("#alert_login").css("display", "inline-block");
-			document.getElementById("id").focus();
-			return false;
-		}
-	
-		if ($("#password").val() == null || $("#password").val() == "") {
-			$("#alert_login").css("display", "inline-block");
-			document.getElementById("password").focus();
-			return false;
-		}
-		
-		return true;
+function f_validate() {
+	// 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때
+	$(".join_hidden").hide();
+
+	if ($("#id").val() == null || $("#id").val() == "") {
+		$("#alert_login").css("display", "inline-block");
+		document.getElementById("id").focus();
+		return false;
 	}
 
+	if ($("#password").val() == null || $("#password").val() == "") {
+		$("#alert_login").css("display", "inline-block");
+		document.getElementById("password").focus();
+		return false;
+	}
+	
+	return true;
+}
 
 
-// 세션 받기
-// session = request.getSession();
-// String sessionId = (String) session.getAttribute("id");
-<%-- var check ="<%=sessionid  %>"; --%>
-
-
-	// 아이디, 비밀번호 확인
+// 아이디, 비밀번호 확인
 $(document).ready( function() {
-		$("#login_confirm").click(function() {
-			if( $("#id").val()==null || $("#id").val()=="" )
-				return;
+	
+	$("#login_confirm").click( function() {
+
+		f_validate();
 		
-			var id = $("#id").val();
-			var pw = $("#password").val();
-			
-			$.ajax({
-				type: "POST"
-				, url: "/login/login.do"
-				, data: {
-						memId:id,
-						memPw:pw
-					}
-				// json방식으로 파싱한다
-				, dataType: "json"
-				, success: function( data ) {
-					// data 파싱을 자동으로 했다
-					// 파싱을 하지 않으면 문자열 형식으로 받아온다
-					// 파싱을 하면 js가 data를 데이터를 객체 형태로 읽는다
-					
-// {array: Array(1), object: {…}, check: false}
-//   array: Array(1)
-//     0: "Array test"
-//     length: 1
-//     __proto__: Array(0)
-//   check: false
-//   object:
-// 	   Object test: 123
-//     __proto__: Object
-//   __proto__: Object
-// 				console.log(data);
-
-					// check가 json형식이 아니라 boolean이기 때문에 
-					// 파싱해주지 않아도 된다.
-					var check = data.check;
-					
-					// data.check를 객체 형식으로 파싱한다.
-// 				var check = JSON.parse(data.check);
-					
-					var obj = data.object;
-					console.log(check);
-					console.log(id);
-					console.log(data.array);
-					if( check ) {
-// 						alert("로그인 성공");
-
-						// 메인 페이지로 이동(redirect)
-						location.href="/Page/p01_main.html";
-						
-					} else {
-						alert("로그인 실패");
-					}
-					
+		if( $("#id").val()==null || $("#id").val()=="" )
+			return;
+	
+		var id = $("#id").val();
+		var pw = $("#password").val();
+		
+		$.ajax({
+			type: "POST"
+			, url: "/login/login.do"
+			, data: {
+					memId:id,
+					memPw:pw
 				}
-				, error: function(e) {
-					console.log("----- error -----");
-					console.log(e.responseText);
+			// json방식으로 파싱한다
+			, dataType: "json"
+			, success: function( data ) {
+				var check = data.check;
+				var gubn = data.gubn;
+				if( check ) {
+					alert("로그인 성공");
+					if( gubn===0 ) location.href="/Manage_Page/home.jsp";
+					if( gubn===1 ) location.href="/Page/main.html";
+					
+// 					location.href="/Page/main.html";
+					
+				} else {
+					alert("로그인 실패");
 				}
+				
+			}
+			, error: function(e) {
+				console.log("----- error -----");
+				console.log(e.responseText);
+			}
 		});
 	});
 });
@@ -1252,7 +1224,8 @@ $(document).ready( function() {
 				<input type="password" id="password" name="password" onkeypress="f_login();" />
 			</div>
 
-			<a href="javascript:f_validate();" id="login_confirm">로그인</a>
+<!-- ***더 좋은 방법을 생각해보자 -->
+			<a href="javascript:void(0);" id="login_confirm">로그인</a>
 
 			<div>
 				<div>

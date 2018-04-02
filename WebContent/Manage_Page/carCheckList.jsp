@@ -12,8 +12,7 @@
 
 <head>
 
-<meta  http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
@@ -21,7 +20,6 @@
 	<link rel="stylesheet" href="/Manage_Page/css/daterangepicker.css" />
 
 	<script  src="/Manage_Page/js/jquery.js"></script>
-	<script  src="/Manage_Page/js/colResizable-1.5.min.js"></script>
 	<script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 	
@@ -106,30 +104,28 @@
 // 	검색 및 정렬하는 ajax
 $(document).ready(function(){
 	$("#searchCar").click(function(){
-		var searchItem =$("#category").val();
-		var orderItem=$("#sort").val();
-		console.log(searchItem);
-		console.log(orderItem);
+		var carName,carCondi,carCategory;
+		var category =$("#category").val();
+		var sort=$("#sort").val();
+		var content=$("#search_content").val();
+		var clicked="clicked";
 		
+		console.log("카테고리:"+category);
+		console.log("정렬기준:"+sort);
+		console.log("입력내용:"+content);
 		if(checkSearch_content()==true){
 			console.log("내용있음");
-			$.ajax({
-				type:"POST",
-				url:"/admin/carCheckList.do",
-				data:{
-					searchItem:searchItem,
-					orderItem:orderItem
-				},
-				dataType:"json",
-				success:function(data){
-					alert("ajax 성공");
-				},
-				error:function(e){
-					console.log("---------error--------");
-					console.log("수신 실패");
-				}
-				
-			});
+			
+			var $form = $("<form>").attr("action", "/admin/carCheckList.do").attr("method", "post");
+			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "clicked").attr("value", clicked).appendTo($form);
+			$form.appendTo($(document.body));
+			
+			$form.submit();	
+			
+			
 		}else{
 			alert("검색어를 입력하세요");
 			console.log("내용을 채워주세요");
@@ -141,54 +137,59 @@ $(document).ready(function(){
 </head>
 <body>
 
-
-
-
 <div id="menu">
-	<ul class="level1">
-		<li><a href="./home.jsp">Home</a></li>
-		<li><a class="fly" href="#url">회원 관리</a>
+   <ul class="level1">
+      <li><a href="./home.jsp">Home</a></li>
+      <li><a class="fly" href="javascript:void(0);">회원 관리</a>
+         <ul>
+            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">예약 관리</a>
+         <ul>
+            <li><a href="./reservManage.jsp">예약목록 조회</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">차량 관리</a>
+         <ul>
+            <li><a href="./carRegister.jsp">차량 등록</a></li>
+            <li><a href="/admin/carCheckList.do">차량 수정</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">공지 사항</a>
+         <ul>
+            <li><a href="./noticeManage.jsp">공지사항 등록</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">후기 관리</a>
+         <ul>
+            <li><a href="./reviewManage.jsp">후기목록 조회</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">문의 관리</a>
+         <ul>
+            <li><a href="./qnaManage.jsp">문의 내역 확인</a></li>
+            <li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
+         </ul>
+      </li>
+		
+		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
 			<ul>
-				<li><a href="./userManage.jsp">회원목록 조회</a></li>
+				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>
+				<li><a href="./couponDelete.jsp">쿠폰 조회/삭제</a></li>
 			</ul>
 		</li>
 		
-		<li><a class="fly" href="#url">예약 관리</a>
+		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
-				<li><a href="./reservManage.jsp">예약목록 조회</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">차량 관리</a>
-			<ul>
-				<li><a href="./
-				carRegister.jsp">차량 등록/해제</a></li>
-				<li><a href="/admin/carCheckList.do">차량 정보 수정</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">공지 사항</a>
-			<ul>
-				<li><a href="./noticeManage.jsp">공지사항 등록</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">후기 관리</a>
-			<ul>
-				<li><a href="./reviewManage.jsp">후기목록 조회</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">문의 관리</a>
-			<ul>
-				<li><a href="./qnaManage.jsp">문의 내역 확인</a></li>
-				<li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">쿠폰 관리</a>
-			<ul>
-				<li><a href="./couponRegister.jsp">쿠폰 등록/삭제</a></li>
+				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
+				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
+
 			</ul>
 		</li>
 		
@@ -222,18 +223,18 @@ $(document).ready(function(){
 						</tr>
 						<tr>
 							<td class="left"><select class="sort" id="category">
-									<option value="carName">차량이름</option>
-									<option value="carCategory">차량종류</option>
-									<option value="carCondi">차량상태</option>
+									<option value="car_Name">차량모델명</option>
+									<option value="car_Category">차량종류</option>
+									<option value="car_Condi">차량상태</option>
 							</select></td>
-							<td><textarea rows="1" cols="30" id="search_content"></textarea>
+							<td><input size='30' id="search_content"></textarea>
 							</td>
 							<td class="right">
 								<!-- 정렬 --> <select class="sort" id="sort">
-									<option value="carNum">차량번호</option>
-									<option value="carCategory">차랑종류</option>
-									<option value="carCondi">차량상태</option>
-									<option value="carLCD">최근점검일</option>
+									<option value="car_Num">차량번호</option>
+									<option value="car_Category">차랑종류</option>
+									<option value="car_Condi">차량상태</option>
+									<option value="car_LCD">최근점검일</option>
 							</select>
 							</td>
 						</tr>
@@ -307,17 +308,7 @@ $(document).ready(function(){
 					</table>
 				</div>
 				
-				<%-- 페이징 불러오기 (Manage_Page/util에 있음) --%>
 				<jsp:include page="/Manage_Page/util/paging.jsp" />
-<!-- 				<div class="clear"></div> -->
-<!-- 				<div class="paging"> -->
-<!-- 					<a href="#" class="page_first"><img -->
-<!-- 						src="./images/page_first.gif" alt="처음" /></a> <a href="#" -->
-<!-- 						class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a> -->
-<!-- 					<strong>1</strong> <a href="#" class="page_next"><img -->
-<!-- 						src="./images/page_next.gif" alt="다음" /></a> <a href="#" -->
-<!-- 						class="page_end"><img src="./images/page_end.gif" alt="마지막" /></a> -->
-<!-- 				</div> -->
 			</div>
 
 </div>		<!-- content end -->

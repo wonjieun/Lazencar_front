@@ -3,21 +3,34 @@ package dto.adminDto;
 public class CarManage {
 	
 
-	private String searchItem;
-	private String orderItem;
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getSort() {
+		return sort;
+	}
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getClicked() {
+		return clicked;
+	}
+	public void setClicked(String clicked) {
+		this.clicked = clicked;
+	}
 	
-
-	public String getSearchItem() {
-		return searchItem;
-	}
-	public void setSearchItem(String searchItem) {
-		this.searchItem = searchItem;
-	}
-	public String getOrderItem() {
-		return orderItem;
-	}
-	public void setOrderItem(String orderItem) {
-		this.orderItem = orderItem;
-	}
+	private String category;
+	private String sort;
+	private String content;
+	private String clicked;
 	
 }

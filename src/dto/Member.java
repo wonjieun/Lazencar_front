@@ -2,9 +2,6 @@ package dto;
 
 public class Member {
 	// DB의 속성과 일치해야 한다
-	private int memNum;
-	private int memGubn;
-	private String memGrade;
 	private String memId;
 	private String memPw;
 	private String memName;
@@ -14,30 +11,11 @@ public class Member {
 	private String memAddr;
 	private boolean memLicense;
 	
-	
 	public String getMemAddr() {
 		return memAddr;
 	}
 	public void setMemAddr(String memAddr) {
 		this.memAddr = memAddr;
-	}
-	public int getMemNum() {
-		return memNum;
-	}
-	public void setMemNum(int memNum) {
-		this.memNum = memNum;
-	}
-	public int getMemGubn() {
-		return memGubn;
-	}
-	public void setMemGubn(int memGubn) {
-		this.memGubn = memGubn;
-	}
-	public String getMemGrade() {
-		return memGrade;
-	}
-	public void setMemGrade(String memGrade) {
-		this.memGrade = memGrade;
 	}
 	public String getMemId() {
 		return memId;

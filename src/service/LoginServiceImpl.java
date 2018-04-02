@@ -7,8 +7,6 @@ import dto.Member;
 public class LoginServiceImpl implements LoginService {
 
 	private LoginDao dao = new LoginDaoImpl();
-//	public String memId = null;
-//	public String memPw = null;
 	
 	@Override
 	public boolean check(Member mem) {
@@ -16,5 +14,10 @@ public class LoginServiceImpl implements LoginService {
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public int getGubn(Member m) {
+		return dao.getGubn(m);
 	}
 }

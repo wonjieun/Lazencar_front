@@ -54,54 +54,60 @@
 
 </head>
 <body>
-
-
-
-
 <div id="menu">
-	<ul class="level1">
-		<li><a href="./home.jsp">Home</a></li>
-		<li><a class="fly" href="#url">회원 관리</a>
+   <ul class="level1">
+      <li><a href="./home.jsp">Home</a></li>
+      <li><a class="fly" href="javascript:void(0);">회원 관리</a>
+         <ul>
+            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">예약 관리</a>
+         <ul>
+            <li><a href="./reservManage.jsp">예약목록 조회</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">차량 관리</a>
+         <ul>
+            <li><a href="./carRegister.jsp">차량 등록/해제</a></li>
+            <li><a href="./carCheckList.jsp">차량 점검일지</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">공지 사항</a>
+         <ul>
+            <li><a href="./noticeManage.jsp">공지사항 등록</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">후기 관리</a>
+         <ul>
+            <li><a href="./reviewManage.jsp">후기목록 조회</a></li>
+         </ul>
+      </li>
+      
+      <li><a class="fly" href="javascript:void(0);">문의 관리</a>
+         <ul>
+            <li><a href="./qnaManage.jsp">문의 내역 확인</a></li>
+            <li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
+         </ul>
+      </li>
+		
+		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
 			<ul>
-				<li><a href="./userManage.jsp">회원목록 조회</a></li>
+
+				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>
+				<li><a href="./couponDelete.jsp">쿠폰 조회/삭제</a></li>
 			</ul>
 		</li>
 		
-		<li><a class="fly" href="#url">예약 관리</a>
+		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
-				<li><a href="./reservManage.jsp">예약목록 조회</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">차량 관리</a>
-			<ul>
-				<li><a href="./carRegister.jsp">차량 등록/해제</a></li>
-				<li><a href="./carCheckList.jsp">차량 점검일지</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">공지 사항</a>
-			<ul>
-				<li><a href="./noticeManage.jsp">공지사항 등록</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">후기 관리</a>
-			<ul>
-				<li><a href="./reviewManage.jsp">후기목록 조회</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">문의 관리</a>
-			<ul>
-				<li><a href="./qnaManage.jsp">문의 내역 확인</a></li>
-				<li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="#url">쿠폰 관리</a>
-			<ul>
-				<li><a href="./couponRegister.jsp">쿠폰 등록/삭제</a></li>
+
+				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
+				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
 			</ul>
 		</li>
 		
@@ -123,91 +129,56 @@
 
 <div class="content">
          <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">쿠폰 등록/삭제</h3>
-          <p class="subtxt"><strong>쿠폰을 등록하고 삭제합니다.</strong><br />조회할 쿠폰 조건을 선택하고 검색버튼을 누르시면 쿠폰목록을 볼 수 있으며<br>쿠폰을 등록/삭제할 수 있습니다.</p>
+          <h3 class="subtit">쿠폰 등록</h3>
+           <p class="subtxt"><strong>쿠폰을 등록합니다.</strong><br />등록할 쿠폰의 정보를 입력하고 등록할 수 있습니다.</p>
         </div>
         
 	<div class="center" >
 						
 		 <table class="table1">
 			<tr>
-				<th>기간</th>
-				<th>종류</th>
-				<th>정렬</th>
+				<th>쿠폰 명</th>
+				<th>신청 가능 기간</th>
 			</tr>
 			<tr>
 				<td class="left">
+				<input type="text" />
+				</td>
+				<td class="right">
 				<div class="demo">
 					기간을 선택하세요.<br> <input id="date-range0" size="30" value=""> 
 					</div>
 				</td>
-				
-				<td>
-				<select class="sort">
-					    <option>정기 할인
-					    <option>특별 할인
-					    <option>추천인 할인
-					    <option>월별 할인
+			</tr>			
+			<tr>
+				<th>제약 조건</th>
+				<th>쿠폰 이미지</th>
+			</tr>
+			<tr>
+				<td class="left">
+				<p>나이 : <input type="text" id="age" value="0" style="width: 25px;"> 세 이상 </p>
+				<p>사용 시간 : <input type="text" id="time" value="0" style="width: 25px;"> 시간 이상 </p>
+				<p>차종 : 
+					<select id="sort" >
+					    <option>전차종
+					    <option>소형차 이상
+					    <option>중형차 이상
+					    <option>SUV 이상
+					    <option>대형차 이상
 					</select>
+					</p>
 				</td>
-				
 				<td class="right">
-				<select class="sort">
-					    <option>등록 날짜
-					    <option>쿠폰 기간
-					    <option>카테고리
-					    <option>할인율
-					</select>
+				<p>이미지 등록</p>
 				</td>
-			</tr>						
+			</tr>				
 		</table>
 		
 	</div>	
 	
-		<button class="btnSearch" type="button">검색</button>
-		<div class="clear"></div>
-	<div>
-		 <table id="table2">
-			
-			<tr>
-				<th>no</th>
-				<th>상세정보</th>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>											
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>															
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>											
-		</table>
-		</div>
-		
 		<div class="btnSave">
-		<button type="button">쿠폰 등록</button>
-		<button type="button">수정</button>
-		<button type="submit">완료</button>
+		<button type="reset">초기화</button>
+		<button type="submit" id="submit">등록</button>
 		</div>
 		<div class="clear"></div>
 		<div class="paging">
