@@ -957,7 +957,7 @@ a {
 }
 
 /* 로그인 에러 */
-#alert_login {
+#alert_id, #alert_pw, #alert_login {
 	display: none;
 /* 	display: inline-block; */
 	word-spacing: -1px;
@@ -989,29 +989,14 @@ a {
  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <script type="text/javascript">
-	//현재 서버 시간
 
-	var curYear = "2018"; //현재 년
-	var curMonth = "3"; //현재 월
-	var curDay = "6"; //현재 일
-	var curHour = "18"; //현재 시간
-	var curMinute = "21"; //현재 분
-	var ___isLogin___ = "false"; //로그인 여부
-	var __ciYn__ = "";
-	var _globalFullContextSSL = "https://www.greencar.co.kr";
-	var ___isCorpChk___ = "";
-	var _ssoDomain = 'member.lpoint.com';
-	var _joinReturnUrl = 'https://www.greencar.co.kr/login/';
-	var _fullImgHostAddr = '';
-	var _birth = "";
-
-	function f_login() {
-		if (event.keyCode != 13) {
-			return false;
-		} else {
-			fnLogin();
-		}
+function f_login() {
+	if (event.keyCode != 13) {
+		return false;
+	} else {
+		fnLogin();
 	}
+}
 	
 /* KH정보교육원 로그인 화면 / 로그인 버튼 관련 기능
 	function fnLogin() {
@@ -1021,7 +1006,7 @@ a {
 			var params = {
 				id : $('#id').val(),
 				password : $('#password').val(),
-						   member_flag	: $('input[name=member_flag]:checked').val()
+				member_flag	: $('input[name=member_flag]:checked').val()
 			};
 			$.ajax({
 				url : '/login/loginCheck.kh',
@@ -1051,19 +1036,21 @@ a {
 	}
 */
 
-/* 로그인 입력값 점검 */
+/* 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때 */
 function f_validate() {
-	// 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때
 	$(".join_hidden").hide();
+	
+	var id = $("#id").val();
+	var pw = $("#password").val();
 
-	if ($("#id").val() == null || $("#id").val() == "") {
-		$("#alert_login").css("display", "inline-block");
+	if ( id==null || id=="") {
+		$("#alert_id").css("display", "inline-block");
 		document.getElementById("id").focus();
 		return false;
 	}
 
-	if ($("#password").val() == null || $("#password").val() == "") {
-		$("#alert_login").css("display", "inline-block");
+	if ( pw==null || pw=="") {
+		$("#alert_pw").css("display", "inline-block");
 		document.getElementById("password").focus();
 		return false;
 	}
@@ -1077,43 +1064,46 @@ $(document).ready( function() {
 	
 	$("#login_confirm").click( function() {
 
-		f_validate();
+		if( f_validate() ) {
 		
-		if( $("#id").val()==null || $("#id").val()=="" )
-			return;
-	
-		var id = $("#id").val();
-		var pw = $("#password").val();
-		
-		$.ajax({
-			type: "POST"
-			, url: "/login/login.do"
-			, data: {
-					memId:id,
-					memPw:pw
-				}
-			// json방식으로 파싱한다
-			, dataType: "json"
-			, success: function( data ) {
-				var check = data.check;
-				var gubn = data.gubn;
-				if( check ) {
-					alert("로그인 성공");
-					if( gubn===0 ) location.href="/Manage_Page/home.jsp";
-					if( gubn===1 ) location.href="/Page/main.html";
+			var id = $("#id").val();
+			var pw = $("#password").val();
+			var params = {
+				id : $('#id').val(),	
+				password : $('#password').val()
+			};
+			
+			$.ajax({
+				type: "POST"
+				, url: "/login/login.do"
+				, data: {
+						memId:id,
+						memPw:pw
+					}
+				, dataType: "json"
+				, success: function( data ) {
+					var check = data.check;
+					var gubn = data.gubn;
+					if( check ) {
+	// 				alert("로그인 성공");
+						// 관리자
+						if( gubn===0 ) location.href="/Manage_Page/home.jsp";
+						// 고객
+						if( gubn===1 ) location.href="/Page/main.html";
+						
+					} else {
+	// 				alert("로그인 실패");
+						$("#alert_login").css("display", "inline-block");
+						document.getElementById("id").focus();
+					}
 					
-// 					location.href="/Page/main.html";
-					
-				} else {
-					alert("로그인 실패");
 				}
-				
-			}
-			, error: function(e) {
-				console.log("----- error -----");
-				console.log(e.responseText);
-			}
-		});
+				, error: function(e) {
+					console.log("----- error -----");
+					console.log(e.responseText);
+				}
+			});
+		}
 	});
 });
 </script>
@@ -1232,6 +1222,8 @@ $(document).ready( function() {
 					<a href="javascrpt:void(0);" id="findLayer">아이디/비밀번호 찾기</a>
 				</div>
 				<div>
+					<span class="join_hidden" id="alert_id">아이디를 입력하세요.</span>
+					<span class="join_hidden" id="alert_pw">비밀번호를 입력하세요.</span>
 					<span class="join_hidden" id="alert_login">아이디 또는 비밀번호를 잘못 입력하였습니다.</span>
 				</div>
 
