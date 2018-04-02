@@ -12,7 +12,7 @@ import java.util.List;
 import dto.Car;
 import dto.adminDto.CarManage;
 import dto.adminDto.MemberManage;
-import dto.adminDto.MemberSearch;
+import dto.adminDto.MemberManage;
 import util.Paging;
 
 public class CarCheckListDaoImpl implements CarCheckListDao{

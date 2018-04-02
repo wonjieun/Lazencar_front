@@ -9,15 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ReviewDao;
+import dao.ReviewDaoImpl;
+import dao.adminDao.MemberManageDao;
+import dao.adminDao.MemberManageDaoImpl;
+import dto.Paging;
+import dto.Review;
 import dto.adminDto.MemberManage;
-import dto.adminDto.MemberSearch;
+import dto.adminDto.MemberManage;
 import service.adminService.MemberManageService;
 import service.adminService.MemberManageServiceImpl;
 
 /*
  * Servlet implementation class userManage
  */
-@WebServlet("/admin/userManage.do")
+@WebServlet("/admin/memberManage.do")
 public class MemberManageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -32,11 +38,12 @@ public class MemberManageServlet extends HttpServlet {
 	  String sort = request.getParameter("sort");
 	  String clicked = request.getParameter("searchClicked");
 	  
-	  MemberSearch memSearch = new MemberSearch();
+	  MemberManage memSearch = new MemberManage();
 	  
 	  memSearch.setCate(category);
 	  memSearch.setContent(content);
 	  memSearch.setSort(sort);
+	  
 	  memSearch.setClicked(clicked);
 	  
 	  System.out.println("1. " + memSearch.getClicked());
@@ -53,7 +60,7 @@ public class MemberManageServlet extends HttpServlet {
 //	  System.out.println("list : " + list.get(0).getMemId());
 	  request.setAttribute("list", list);
 	  
-	  request.getRequestDispatcher("/Manage_Page/MemberManage.jsp").forward(request, response);
+	  request.getRequestDispatcher("/Manage_Page/memberManage.jsp").forward(request, response);
 	  
 	}
 	
@@ -61,12 +68,15 @@ public class MemberManageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		List<MemberManage> list = service.memberManage(new MemberSearch());
+		List<MemberManage> list = service.memberManage(new MemberManage());
 		
 		System.out.println(list.size());
 		
 		req.setAttribute("list", list);
-		req.getRequestDispatcher("/Manage_Page/MemberManage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/Manage_Page/memberManage.jsp").forward(req, resp);
+		
+		
+		
 	}
 	  
 	  

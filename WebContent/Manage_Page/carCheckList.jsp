@@ -91,6 +91,7 @@
 			return true;
 		}
 	}
+	
 	$(function(){	
 
 		var onSampleResized = function(e){

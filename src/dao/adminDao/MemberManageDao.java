@@ -3,26 +3,21 @@ package dao.adminDao;
 import java.util.List;
 
 import dto.adminDto.MemberManage;
-import dto.adminDto.MemberSearch; 
+import util.Paging;
 
 public interface MemberManageDao {
 	
 	//관리자가 검색한 내용을 받아와서 해당 내용에 대한 사용자 정보 받아오기
 	
-	public List getAllList(MemberSearch search);
-	public List getIdList(MemberSearch search);
-	public List getJuminList(MemberSearch search); 
-	public List memberManage(MemberSearch search);
+	public List getAllList(Paging paging);
+	public List getIdList(Paging paging,MemberManage search);
+	public List getJuminList(Paging paging,MemberManage search); 
+	public List memberManage(Paging paging, MemberManage search);
 	
+	//검색버튼 눌렸는지 확인
+	boolean doSearch(MemberManage search);
+
 	
-	
-//	public String getId(MemberManage mem);
-//	public String getName(MemberManage mem);
-//	public String getPhone(MemberManage mem);
-//	public String getJumin(MemberManage mem);
-//	public String getEmail(MemberManage mem);
-//	public String getAddr(MemberManage mem);
-//	public String getLicense(MemberManage mem);
 	
 	
 }

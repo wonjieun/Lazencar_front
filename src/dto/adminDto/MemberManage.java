@@ -1,63 +1,37 @@
 package dto.adminDto;
 
 public class MemberManage {
-	// DB의 속성과 일치해야 한다
-	private String memId;
-	private String memPw;
-	private String memName;
-	private String memPhone;
-	private String memJumin;
-	private String memEmail;
-	private String memAddr;
-	private boolean memLicense;
 	
-	public String getMemAddr() {
-		return memAddr;
+	private String cate;
+	private String content;
+	private String sort;
+	private String clicked; 
+	
+	public String getClicked() {
+		return clicked;
 	}
-	public void setMemAddr(String memAddr) {
-		this.memAddr = memAddr;
+	public void setClicked(String clicked) {
+		this.clicked = clicked;
 	}
-	public String getMemId() {
-		return memId;
+	public String getCate() {
+		return cate;
 	}
-	public void setMemId(String memId) {
-		this.memId = memId;
+	public void setCate(String cate) {
+		this.cate = cate;
 	}
-	public String getMemPw() {
-		return memPw;
+	public String getContent() {
+		return content;
 	}
-	public void setMemPw(String memPw) {
-		this.memPw = memPw;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getMemName() {
-		return memName;
+	public String getSort() {
+		return sort;
 	}
-	public void setMemName(String memName) {
-		this.memName = memName;
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
-	public String getMemPhone() {
-		return memPhone;
-	}
-	public void setMemPhone(String memPhone) {
-		this.memPhone = memPhone;
-	}
-	public String getMemJumin() {
-		return memJumin;
-	}
-	public void setMemJumin(String memJumin) {
-		this.memJumin = memJumin;
-	}
-	public String getMemEmail() {
-		return memEmail;
-	}
-	public void setMemEmail(String memEmail) {
-		this.memEmail = memEmail;
-	}
-	public boolean isMemLicense() {
-		return memLicense;
-	}
-	public void setMemLicense(boolean memLicense) {
-		this.memLicense = memLicense;
-	}
+	
+	
 	
 }
