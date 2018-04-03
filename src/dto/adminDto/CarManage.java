@@ -57,10 +57,10 @@ public class CarManage {
 	public void setKey_carLCD(String key_carLCD) {
 		this.key_carLCD = key_carLCD;
 	}
-	public String getUpdateOrDelete() {
+	public String getEditCar() {
 		return editCar;
 	}
-	public void setUpdateOrDelete(String editCar) {
+	public void setEditCar(String editCar) {
 		this.editCar = editCar;
 	}
 }

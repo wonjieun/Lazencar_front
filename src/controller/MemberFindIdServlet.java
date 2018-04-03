@@ -22,7 +22,11 @@ import service.MemberFindServiceImpl;
 public class MemberFindIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberFindService service = new MemberFindServiceImpl();
-	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		req.getRequestDispatcher("/Page/find.jsp").forward(req, resp);
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/json; charset=utf-8");
 		
@@ -42,6 +46,7 @@ public class MemberFindIdServlet extends HttpServlet {
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("memId", gson.toJson(service.getMemId(mem)));
 		jsonObject.addProperty("msg", gson.toJson(service.getMsg(mem)));
+		jsonObject.addProperty("memEmail", gson.toJson(mem.getMemEmail()));
 		response.getWriter().write(gson.toJson(jsonObject));
 	}
 

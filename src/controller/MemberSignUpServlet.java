@@ -34,6 +34,8 @@ public class MemberSignUpServlet extends HttpServlet {
 		String memAddr = request.getParameter("memAddr");
 		String memEmail = request.getParameter("memEmail");
 		String memJumin = request.getParameter("memJumin");
+		String btnName = request.getParameter("btnName");
+		
 		
 		Member mem = new Member();
 		mem.setMemId(memId);
@@ -43,15 +45,22 @@ public class MemberSignUpServlet extends HttpServlet {
 		mem.setMemAddr(memAddr);
 		mem.setMemEmail(memEmail);
 		mem.setMemJumin(memJumin);
+		mem.setBtnName(btnName);
+		
 		
 		
 		Gson gson = new Gson();
 
-		String msg = "ajax 성공!!!!!1";
+		service.signUp(mem);
+
+		//확인용 콘솔메시지
+		System.out.println(mem.getMemId()+" : "+memId);
+		System.out.println(mem.getBtnName()+" : "+btnName);
+		System.out.println("mem.getMsg"+ mem.getMsg());
+		//end
+		String msg = mem.getMsg();
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("msg", gson.toJson(msg));
 		response.getWriter().write(gson.toJson(jsonObject));
-		service.signUp(mem);
-		
 	}
 }

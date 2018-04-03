@@ -11,6 +11,24 @@ public class Member {
 	private String memAddr;
 	private boolean memLicense;
 	
+	//아이디 중복 검사를 위해 추가한 멤버필드
+	private String btnName;
+	private String msg;
+	private boolean memCheck;
+	public String getBtnName() {
+		return btnName;
+	}
+	public void setBtnName(String btnName) {
+		this.btnName = btnName;
+	}
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	//아이디 중복검사 끝
+	
 	public String getMemAddr() {
 		return memAddr;
 	}
@@ -59,4 +77,12 @@ public class Member {
 	public void setMemLicense(boolean memLicense) {
 		this.memLicense = memLicense;
 	}
+	public boolean getMemCheck() {
+		return memCheck;
+	}
+	public void setMemCheck(boolean memCheck) {
+		this.memCheck = memCheck;
+	}
+	
+	
 }

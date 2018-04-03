@@ -10,17 +10,18 @@ import dto.adminDto.CarManage;
 public class CarCheckListServiceImpl implements CarCheckListService {
 	CarCheckListDao dao = new CarCheckListDaoImpl();
 
-	// @Override
-	// public List getCarList(Paging paging) {
 	@Override
 	public List getCarList(Paging paging, CarManage cm) {
-//		if(dao.checkButton(cm).equals("update")) {
-//			dao.updateCar(cm);
-//			return dao.getList(paging, cm);
-//		}else if(dao.checkButton(cm).equals("delete")) {
-//			dao.deleteCar(cm);
-//			return dao.getList(paging, cm);
-//		}else
 		return dao.getList(paging, cm);
 	}
+
+	@Override
+	public void editCarData(CarManage cm) {
+		if(cm.getEditCar().equals("updateCar")) {
+			dao.updateCar(cm);
+		}else if(cm.getEditCar().equals("deleteCar")) {
+			dao.deleteCar(cm);
+		}
+	}
 }
+

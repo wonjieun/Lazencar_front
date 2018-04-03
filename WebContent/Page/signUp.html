@@ -388,7 +388,6 @@ a.nvalinks-rev:hover {
 /* 	background: url(/Page/images/icons/left_menu_on.png) no-repeat right center; */
 /* 	color: #fff */
 /* } */
-
 .side_sns {
 	margin-top: 60px;
 	padding: 0 0 20px 20px;
@@ -1107,28 +1106,25 @@ a.btnTbl01 {
 	font-family: 'NanumGothicBold';
 	vertical-align: middle;
 }
-.alert_pwCheck{
+
+.alert_pwCheck {
 	color: red;
-    font-size: 7pt;
-    margin-left: 15px;
+	font-size: 7pt;
+	margin-left: 15px;
 }
 /* -----회원가입 CSS END----- */
 </style>
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript">
-	//현재 서버 시간
+<!-- 	select text input 스크립트  start -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
-	var curYear = "2018"; //현재 년
-
-	var curMonth = "3"; //현재 월
-
-	var curDay = "6"; //현재 일
-
-	var curHour = "18"; //현재 시간
-
-	var curMinute = "21"; //현재 분
+<script>
+	$(function() {
+		$("#postcodify_search_button").postcodifyPopUp();
+	});
 
 	var ___isLogin___ = "false"; //로그인 여부
 
@@ -1145,12 +1141,143 @@ a.btnTbl01 {
 	var _fullImgHostAddr = '';
 
 	var _birth = "";
+
+	function getSelectValue(form) {
+		// 	 form.EMAIL_2.value = form.emailSelect.options[form.emailSelect.selectedIndex].text;
+		form.EMAIL_2.value = form.emailSelect.options[form.emailSelect.selectedIndex].value;
+	}
+
+	//비밀번호 두번째 입력창(확인창)에 비밀번호가 다를 경우 경고 메시지 띄우기.
+	
+
+	//필수 입력 데이터들이 모두 입력 되었는지 확인하는 메서드(return false / true)
+	function checkAllDataInsert() {
+		if ($("#mem_id").val() != "" && $("#mem_pw1").val() != ""
+				&& $("#mem_pw2").val() != "" && $("#mem_name").val() != ""
+				&& $("#mem_jumin1").val() != "" && $("#mem_jumin2").val() != ""
+				&& $("#mem_addr1").val() != "" && $("#mem_addr2").val() != ""
+				&& $("#mem_phone1").val() != "" && $("#mem_phone2").val() != ""
+				&& $("#mem_phone3").val() != "" && $("#mem_email1").val() != ""
+				&& $("#mem_email2").val() != "") {
+			//모든 칸이 채워져 있으면 return true
+			return true;
+		} else {
+			return false;
+		}
+	}
+	$(document).ready(
+			//아이디 중복체크 버튼 눌렀을떄.
+			function() {
+				$("#btn_idDupCheck").click(function() {
+					console.log("버튼눌림");
+					if($("#mem_id").val() != null && $("#mem_id").val() != ""){
+						
+						var btnName = "btn_idDupCheck";
+						var mem_id = $("#mem_id").val();
+						console.log("아이디 : " + mem_id);
+	
+						$.ajax({
+							type : "POST",
+							url : "/signUp.do",
+							data : {
+								btnName : btnName,
+								memId : mem_id
+							},
+							dataType : "json",
+							success : function(data) {
+								var msg = JSON.parse(data.msg);
+								
+								alert(msg);
+							},
+							error : function(e) {
+								console.log("------error------");
+								console.log(e.responseText);
+							}
+						});
+					
+					}else alert("아이디를 입력해주세요");
+				});
+				//아이디 중복버튼 끝
+				
+				//회원가입 버튼 눌렀을때 반응.	값을 테이블속성명으로 지정해서 받아 ajax post로 전송			
+				$("#btn_signUp").click(
+						function() {
+							//모든값이 채워져있을때만 (true) 발동하게 변경. false면 alert 발생
+							if (checkAllDataInsert() == true) {
+								var btnName = "btn_signUp";
+								var mem_id = $("#mem_id").val();
+								var mem_pw = $("#mem_pw2").val(); //mem_pw2는 비밀번호를 확인한 다음값이기 때문에 2로 값을불러옴
+								var mem_name = $("#mem_name").val();
+								var mem_jumin = $("#mem_jumin1").val()
+										+ $("#mem_jumin2").val();
+								var mem_phone = $("#mem_phone1").val()
+										+ $("#mem_phone2").val()
+										+ $("#mem_phone3").val();
+								var mem_addr = $("#mem_addr1").val()
+										+ $("#mem_addr2").val();
+								var mem_email = $("#mem_email1").val() + "@"
+										+ $("#mem_email2").val();
+								//입력 데이터 확인 코드
+								console.log("눌린버튼" + btnName);
+								console.log("아이디 : " + mem_id);
+								console.log("패스워드 : " + mem_pw);
+								console.log("이름  : " + mem_name);
+								console.log("주민 : " + mem_jumin);
+								console.log("핸드폰 : " + mem_phone);
+								console.log("주소 : " + mem_addr);
+								console.log("이메일 : " + mem_email);
+
+								$.ajax({
+									type : "POST",
+									url : "/signUp.do",
+									data : {
+										btnName : btnName,
+										memId : mem_id,
+										memPw : mem_pw,
+										memName : mem_name,
+										memJumin : mem_jumin,
+										memPhone : mem_phone,
+										memAddr : mem_addr,
+										memEmail : mem_email
+									},
+									dataType : "json",
+									success : function(data) {
+										var msg = JSON.parse(data.msg);
+										
+										alert(msg);
+									},
+									error : function(e) {
+										console.log("------error------");
+										console.log(e.responseText);
+									}
+								});
+
+							} else {
+								alert("필수 항목을 모두 채워주세요.");
+								return;
+							}
+						});
+				
+				$("#mem_pw1").blur(function(){
+					var memPw1 = $("#mem_pw1").val().length;
+					console.log(memPw1);
+					if(memPw1 < 10){
+						alert("최소 9자 이상이여야 합니다.");
+					}else{
+						$("#mem_pw2").blur(function() {
+							var memPw1 = $("#mem_pw1").val();
+							var memPw2 = $("#mem_pw2").val();
+							if (memPw1 == memPw2) {
+								$("#alert_pwCheck").html("비밀번호 확인완료.");
+							} else {
+								$("#alert_pwCheck").html("비밀번호가 다릅니다.");
+							}
+						});
+					}
+				});
+			});
 </script>
-
-
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-
+<!-- 	select text input 스크립트  end -->
 <!-- <link type="text/css" rel="stylesheet" media="all" -->
 <!-- 	href="./css/master.css" /> -->
 
@@ -1332,30 +1459,28 @@ a.btnTbl01 {
 											<tr>
 												<th><em title="필수입력">*</em><label for="">사용자
 														아이디</label></th>
-												<td><span class="formatIn"> 
-												<input type="text" id="mem_id" name="ID" class="itext w100 eng" 
-												title="아이디를 입력하세요." maxlength="10" /> 
-												<a href="#" id="idDupCheck" class="btnTbl01 ml5">확인</a>	</span>
-														 <span class="exp ml10" id="idDupCheck_msg">회원id 중복확인 메시지 띄우기.</span>
-												</td>
+												<td><span class="formatIn"> <input type="text"
+														id="mem_id" name="ID" class="itext w100 eng"
+														title="아이디를 입력하세요." maxlength="10" /> <a href="#"
+														id="btn_idDupCheck" class="btnTbl01 ml5">중복확인</a>
+												</span> <span class="exp ml10" id="idDupCheck_msg"></span></td>
 											</tr>
 											<tr>
 												<th><em title="필수입력">*</em><label for="">비밀번호</label></th>
-												<td><span class="formatIn">
-												<input type="password" id="mem_pw1" name="PASSWORD" class="itext w100 eng"
-														title="비밀번호를 입력하세요." maxlength="20" /></span> 
-														<span class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span>
-												</td>
+												<td><span class="formatIn"> <input
+														type="password" id="mem_pw1" name="PASSWORD"
+														class="itext w100 eng" title="비밀번호를 입력하세요." maxlength="20" /></span>
+													<span class="exp ml10">최소 9자 최대 20자 까지 입력 가능 합니다.
+														이어야 합니다.</span></td>
 											</tr>
 											<tr>
-												<th><em title="필수입력">*</em><label for="">비밀번호 확인</label></th>
-												<td><span class="formatIn">
-												<input
-														type="password" id="mem_pw2" name="PASSWORD2" class="itext w100 eng"
-														title="비밀번호를 재입력하세요." maxlength="20" /></span>
-													<span
-													class="alert_pwCheck" id="alert_pwCheck"></span>
-												</td>
+												<th><em title="필수입력">*</em><label for="">비밀번호
+														확인</label></th>
+												<td><span class="formatIn"> <input
+														type="password" id="mem_pw2" name="PASSWORD2"
+														class="itext w100 eng" title="비밀번호를 재입력하세요."
+														maxlength="20" /></span> <span class="alert_pwCheck"
+													id="alert_pwCheck"></span></td>
 											</tr>
 										</tbody>
 									</table>
@@ -1375,62 +1500,57 @@ a.btnTbl01 {
 										<tbody>
 											<tr>
 												<th><em title="필수입력">*</em>한글 성명</th>
-												<td><span class="formatIn"> 
-												<input type="text" id="mem_name" name="NAME" class="itext w100 eng" title="이름입력."
-														maxlength="10" />
+												<td><span class="formatIn"> <input type="text"
+														id="mem_name" name="NAME" class="itext w100 eng"
+														title="이름입력." maxlength="10" />
 												</span></td>
 											</tr>
 
 											<tr>
 												<th><em title="필수입력">*</em>주민번호</th>
-												<td><span class="formatIn">
-												<input type="text"
-														name="NAME" id="mem_jumin1" class="itext w100 eng" title="주민번호 앞자리."
-														maxlength="10" /> - 
-												<input type="text" name="NAME" id="mem_jumin2"
-														class="itext w100 eng" title="주민번호 뒷자리." maxlength="10" />
+												<td><span class="formatIn"> <input type="text"
+														name="NAME" id="mem_jumin1" class="itext w100 eng"
+														title="주민번호 앞자리." maxlength="6" /> - <input type="text"
+														name="NAME" id="mem_jumin2" class="itext w100 eng"
+														title="주민번호 뒷자리." maxlength="7" />
 
 												</span></td>
 											</tr>
 
 											<tr>
 												<th><em title="필수입력">*</em>휴대폰번호</th>
-												<td><span class="formatIn"> 
-												<input type="text" id="mem_phone1"
-														name="NAME" class="itext w100 eng" title="휴대폰번호 앞자리."
-														maxlength="3" /> -
-												<input type="text" name="NAME" id="mem_phone2"
-														class="itext w100 eng" title="휴대폰번호 중간자리." maxlength="4" /> - 
-												<input type="text" name="NAME" id="mem_phone3"
-														class="itext w100 eng" title="휴대폰번호 뒷자리." maxlength="10" />
+												<td><span class="formatIn"> <input type="text"
+														id="mem_phone1" name="NAME" class="itext w100 eng"
+														title="휴대폰번호 앞자리." maxlength="3" /> - <input type="text"
+														name="NAME" id="mem_phone2" class="itext w100 eng"
+														title="휴대폰번호 중간자리." maxlength="4" /> - <input type="text"
+														name="NAME" id="mem_phone3" class="itext w100 eng"
+														title="휴대폰번호 뒷자리." maxlength="4" />
 												</span></td>
 											</tr>
 											<tr>
 												<th><em title="필수입력">*</em>주소</th>
-												<td><span class="formatIn">
-												<input type="text" 
-														name="HOMEZIP_1" class="itext w50 eng postcodify_postcode5" maxlength="6" readonly="readonly" />
-														<a href="#zipCode"
+												<td><span class="formatIn"> <input type="text"
+														name="HOMEZIP_1"
+														class="itext w50 eng postcodify_postcode5" maxlength="6"
+														readonly="readonly" /> <a href="#zipCode"
 														id="postcodify_search_button" class="btnTbl01 ml5">우편번호검색</a></span>
 													<p class="formatIn tblp">
 														<input type="text" name="HOMEADDR1" id="mem_addr1"
 															class="itext w200 kor postcodify_address" maxlength="50" />
 														<input type="text" name="HOMEADDR2" id="mem_addr2"
-														class="itext w200 kor" maxlength="50" />
+															class="itext w200 kor" maxlength="50" />
 													</p></td>
 											</tr>
 											<tr>
 												<th><em title="필수입력">*</em> 이메일</th>
 												<td>
 													<form name="form">
-														<span class="formatIn">
-														<input type="text" id="mem_email1"
-															name="EMAIL_1" class="itext w100 eng" maxlength="30" />
-															<span
-															class="ml5">@</span>
-															<input type="text" id="mem_email2"
-															name="EMAIL_2" class="itext w150 ml5 eng" maxlength="20" /> 
-															<select
+														<span class="formatIn"> <input type="text"
+															id="mem_email1" name="EMAIL_1" class="itext w100 eng"
+															maxlength="30" /> <span class="ml5">@</span> <input
+															type="text" id="mem_email2" name="EMAIL_2"
+															class="itext w150 ml5 eng" maxlength="20" /> <select
 															name="emailSelect" onChange="getSelectValue(this.form);"
 															class="ml5">
 																<option value="">직접입력</option>
@@ -1439,9 +1559,10 @@ a.btnTbl01 {
 																<option value="gmail.com">gmail.com</option>
 																<option value="hanmail.net">hanmail.net</option>
 																<option value="msn.com">msn.com</option>
-																<option value="naver.com">naver.com</option> 
+																<option value="naver.com">naver.com</option>
 																<option value="nate.com">nate.com</option>
-														</select> </span>
+														</select>
+														</span>
 
 
 
@@ -1458,7 +1579,8 @@ a.btnTbl01 {
 
 							</div>
 							<div class="btnArea02">
-								<a href="javascript:void(0);" onclick="btn_signUp;" id="btn_signUp" class="btnP01">입력완료</a>
+								<a href="javascript:void(0);" onclick="btn_signUp;"
+									id="btn_signUp" class="btnP01">입력완료</a>
 							</div>
 						</div>
 						<!-- charges-wrap -->
@@ -1510,7 +1632,8 @@ a.btnTbl01 {
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-								src="/Page/images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+								src="/Page/images/common/img_partner_seoul.gif"
+								alt="공유서울 나눔카 예약하기" /></a></li>
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
@@ -1595,9 +1718,9 @@ a.btnTbl01 {
 							alt="2016년 한국산업의 브랜드파워 1위" /> <img
 							src="/Page/images/common/img_emblem_brandstar.jpg"
 							alt="2016년 대한민국 브랜드스타" /> <img
-							src="/Page/images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
-
-						<img src="/Page/images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
+							src="/Page/images/common/img_emblem_award.jpg"
+							alt="모바일 어워드 코리아 2016" /> <img
+							src="/Page/images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
 
 					</div>
 
@@ -1614,111 +1737,7 @@ a.btnTbl01 {
 	<!-- // End #wrap -->
 
 
-	<!-- 	select text input 스크립트  start -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-	<script>
-		$(function() {
-			$("#postcodify_search_button").postcodifyPopUp();
-		});
-	</script>
 
-	<script>
-		function getSelectValue(form) {
-			// 	 form.EMAIL_2.value = form.emailSelect.options[form.emailSelect.selectedIndex].text;
-			form.EMAIL_2.value = form.emailSelect.options[form.emailSelect.selectedIndex].value;
-		}
-		
-		//비밀번호 두번째 입력창(확인창)에 비밀번호가 다를 경우 경고 메시지 띄우기.
-		$("#mem_pw2").blur(function(){
-			var memPw1 = $("#mem_pw1").val();
-			var memPw2 = $("#mem_pw2").val();
-			if(memPw1 == memPw2){
-				$("#alert_pwCheck").html("비밀번호 확인완료.");
-			}else{
-				$("#alert_pwCheck").html("비밀번호가 다릅니다.");
-			}
-		});
-		$("#idDupCheck").click(function(){
-			//사용자 아이디 중복 체크 버튼 눌렀을시 반응.
-		});
-		
-		//필수 입력 데이터들이 모두 입력 되었는지 확인하는 메서드(return false / true)
-		function checkAllDataInsert(){
-			if($("#mem_id").val()!= ""
-			&& $("#mem_pw1").val() != ""
-			&& $("#mem_pw2").val() != ""
-			&& $("#mem_name").val() != ""
-			&& $("#mem_jumin1").val() != ""
-			&& $("#mem_jumin2").val() != ""
-			&& $("#mem_addr1").val() !=""
-			&& $("#mem_addr2").val() !=""
-			&& $("#mem_phone1").val() !=""
-			&& $("#mem_phone2").val() !=""
-			&& $("#mem_phone3").val() !=""
-			&& $("#mem_email1").val() !=""
-			&& $("#mem_email2").val() !="")
-			{
-			 //모든 칸이 채워져 있으면 return true
-			 return true;
-			}else{
-				return false;
-			}
-		}
-		$(document).ready(function(){
-
-			//회원가입 버튼 눌렀을때 반응.	값을 테이블속성명으로 지정해서 받아 ajax post로 전송			
-			$("#btn_signUp").click(function(){
-				//모든값이 채워져있을때만 (true) 발동하게 변경. false면 alert 발생
-				if(checkAllDataInsert()==true){
-					var mem_id = $("#mem_id").val();
-					var mem_pw = $("#mem_pw2").val(); //mem_pw2는 비밀번호를 확인한 다음값이기 때문에 2로 값을불러옴
-					var mem_name = $("#mem_name").val();
-					var mem_jumin = $("#mem_jumin1").val() + $("#mem_jumin2").val();
-					var mem_phone = $("#mem_phone1").val()+$("#mem_phone2").val()+$("#mem_phone3").val();
-					var mem_addr = $("#mem_addr1").val()+$("#mem_addr2").val();
-					var mem_email = $("#mem_email1").val()+"@"+$("#mem_email2").val();
-					//입력 데이터 확인 코드
-					console.log("아이디 : "+mem_id);
-					console.log("패스워드 : "+mem_pw);
-					console.log("이름  : "+mem_name);
-					console.log("주민 : "+mem_jumin);
-					console.log("핸드폰 : "+mem_phone);
-					console.log("주소 : "+mem_addr);
-					console.log("이메일 : "+mem_email);
-					
-					$.ajax({
-						type : "POST",
-						url : "/signUp.do",
-						data : {
-							memId:mem_id,
-							memPw:mem_pw,
-							memName:mem_name,
-							memJumin:mem_jumin,
-							memPhone:mem_phone,
-							memAddr:mem_addr,
-							memEmail:mem_email
-							},
-						dataType : "json",
-						success : function(data) {
-							alert("회원가입 성공");
-						},
-						error : function(e) {
-							console.log("------error------");
-							console.log(e.responseText);
-						}
-						});
-					
-					
-					
-				}else{
-					alert("필수 항목을 모두 채워주세요.");
-					return;
-				}
-			});
-		});
-	</script>
-	<!-- 	select text input 스크립트  end -->
 
 </body>
 
