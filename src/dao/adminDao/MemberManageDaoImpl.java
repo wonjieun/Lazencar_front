@@ -44,6 +44,20 @@ public class MemberManageDaoImpl implements MemberManageDao {
 	2. 컨텐트 박스에 검색내용을 적고 검새버튼을 눌렀을 경우
 	 -> 사용자가 검색한 내용이 없을 경우 alert 띄우기
 	 -> 출생년도가 4글자가 아닐 경우, 숫자를 적지 않은 경우 검색 허용 X, alert 띄우기
+	 
+	3. 정렬 속성!! 조인 필요
+	--스칼라 서브쿼리
+	SELECT 
+	empno, 
+	ename, 
+	deptno,
+    (SELECT dname FROM dept WHERE emp.deptno = dept.deptno) AS dname,
+    (SELECT loc FROM dept WHERE emp.deptno = dept.deptno) AS LOCATION
+	FROM emp
+	ORDER BY deptno, empno;
+ 
+	 
+	 
 	*/
 	
 	@Override

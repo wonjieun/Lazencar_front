@@ -15,7 +15,7 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-	<link rel="stylesheet" type="text/css" href="./css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
 <!-- 	<link rel="stylesheet" type="text/css" href="./css/paging.css" />   -->
 	
 	<style>
@@ -26,6 +26,7 @@
 
 </head>
 <body>
+
 <div id="menu">
    <ul class="level1">
       <li><a href="./home.jsp">Home</a></li>
@@ -93,6 +94,14 @@
 
 
 <div class="container">
+
+
+<%
+	List<Image> images = (List)request.getAttribute("images");
+	for(Image i : images){ %>
+		<a href="/FileDoenload?type=i&no="<%=i.getNo() %>"><%=i.getNo() %> <%=i.getImage() %></a><br>
+<% } %>
+
 
 
 

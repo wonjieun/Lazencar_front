@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.adminDao.FileDao;
+import dao.adminDao.PromotionRegisterDao;
 import dto.adminDto.Image;
 
 @WebServlet("/FileDownload")
@@ -23,7 +23,7 @@ public class FileDownloadController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FileDao dao = new FileDao();
+		PromotionRegisterDao dao = new PromotionRegisterDao();
 
 		String type = request.getParameter("type");
 		String no = request.getParameter("no");

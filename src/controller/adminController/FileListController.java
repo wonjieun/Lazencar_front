@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.adminDao.FileDao;
+import dao.adminDao.PromotionRegisterDao;
 import dto.adminDto.Image;
 
-@WebServlet("/FileList")
+@WebServlet("/admin/promotionList.do")
 @SuppressWarnings("serial")
 public class FileListController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FileDao dao = new FileDao();
+		PromotionRegisterDao dao = new PromotionRegisterDao();
 		
 		List<Image> images = dao.getImage();
 		
@@ -29,6 +29,6 @@ public class FileListController extends HttpServlet {
 		
 		request.setAttribute("images", images);
 		
-		request.getRequestDispatcher("/Manage_Page/PromotionList.jsp").forward(request, response);
+		request.getRequestDispatcher("/Manage_Page/promotionList.jsp").forward(request, response);
 	}
 }

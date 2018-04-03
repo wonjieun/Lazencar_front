@@ -17,15 +17,20 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import dao.adminDao.FileDao;
+import dao.adminDao.PromotionRegisterDao;
+import dao.adminDao.PromotionRegisterDaoImpl;
+import service.adminService.CarRegisterService;
+import service.adminService.CarRegisterServiceImpl;
 
-@WebServlet("/FileUpload")
+@WebServlet("/admin/promotionRegister.do")
 @SuppressWarnings("serial")
 public class FileUploadController extends HttpServlet {
-
+	private static final long serialVersionUID = 1L;
+	CarRegisterService service = new CarRegisterServiceImpl();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/Manage_Page/PromotionRegister.jsp").forward(req, resp);			//main.jsp에서 forward를 통해 받는다.
+		req.getRequestDispatcher("/Manage_Page/promotionRegister.jsp").forward(req, resp);			//main.jsp에서 forward를 통해 받는다.
 	}
 	
 	@Override
@@ -73,12 +78,14 @@ public class FileUploadController extends HttpServlet {
 				String fileName = item.getName();
 				String contentType = item.getContentType();
 
-				FileDao dao = new FileDao();
+				PromotionRegisterDao dao = new PromotionRegisterDaoImpl();
 
 				if(contentType.contains("image")) {
 //					System.out.println("name:" + "/upload/"+up.getName());
 
 					// 중복된 파일이름에 대한 처리 필요
+//					있으면 파일이름 + _new Date
+					
 					
 					File up = new File(getServletContext().getRealPath("upload"), fileName);
 					try {
@@ -93,6 +100,6 @@ public class FileUploadController extends HttpServlet {
 			}
 		}
 
-		response.sendRedirect("/FileList");
+		response.sendRedirect("/admin/promotionList.do");
 	}
 }

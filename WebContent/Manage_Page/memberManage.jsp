@@ -61,15 +61,15 @@ $(document).ready(function() {
 		
 		if(checkSearch_content()==true){
 			
-		if (category == "mem_Id") {
-			memId = content;
-			return;
-		} else if (category == "mem_Jumin") {
-			memJumin = content;
-			return;
-		} else {
-			console.log("기준 에러");
-		}
+			if (category == "mem_Id") {
+				memId = content;
+				return;
+			} else if (category == "mem_Jumin") {
+				memJumin = content;
+				return;
+			} else {
+				console.log("기준 에러");
+			}
 
 		var $form = $("<form>").attr("action","/admin/memberManage.do").attr("method", "post");
 		$("<input>").attr("type", "hidden").attr("name", "searchClicked").attr("value", searchClicked).appendTo($form);
@@ -190,7 +190,7 @@ $(document).ready(function() {
 									<option value="mem_License">면허 여부
 <!-- 									<option value="rev">예약 날짜 		join 필요 -->
 <!-- 									<option value="예약상태">예약 상태	join 필요 -->
-<!-- 									<option value="결제상태">결제 상태 	join 필요-->
+<!-- 									<option value="결제상태">결제 상태 	dto에 예약 테이블 dao에서  join 필요-->
 							</select>
 							</td>
 						</tr>

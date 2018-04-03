@@ -1,8 +1,8 @@
 package dto.adminDto;
 
 public class Image {
-	int no;
-	String image;
+	private int no;
+	private String image;
 	
 	public int getNo() {
 		return no;
