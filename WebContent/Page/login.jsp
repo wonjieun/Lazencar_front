@@ -283,8 +283,9 @@ a.nvalinks-rev:hover {
 	height: 100px;
 }
 
-/* 한 메뉴당 하위메뉴 하나만*/
+ /* 한 메뉴당 하위메뉴 하나만*/
 /* #topMenu:hover .topMenuLi .submenu {height: 180px;}		/*메뉴 전체 드롭다운 	헤더 전체 드롭다운은 어떻게..*/
+
 .submenu {
 	background: white;
 }
@@ -307,6 +308,7 @@ a.nvalinks-rev:hover {
 	display: block;
 	clear: both
 } /*대체 뭘하려는걸까*/
+
 .contentbox {
 	float: right;
 	width: 750px
@@ -900,8 +902,7 @@ a.hoverline:hover {
 
 .login_frm_detail {
 	padding: 23px 0 17px;
-	margin: 0 0 20px;
-	border-top: 1px solid #ececec;
+	margin: 0 0 20px; border-top : 1px solid #ececec;
 	border-bottom: 1px solid #ececec;
 	color: #6e6e6e;
 	overflow: hidden;
@@ -958,11 +959,10 @@ a {
 /* 로그인 에러 */
 #alert_login {
 	display: none;
-	/* 	display: inline-block; */
+/* 	display: inline-block; */
 	word-spacing: -1px;
 	padding-left: 60px;
-	padding-bottom: 0;
-	color: red;
+	padding-bottom: 0; color : red;
 	font-size: 11px;
 	line-height: 2;
 	clear: both;
@@ -986,7 +986,7 @@ a {
 </style>
 
 <script type="text/javascript"
-	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <script type="text/javascript">
 	//현재 서버 시간
@@ -1130,7 +1130,7 @@ $(document).ready( function() {
 // 						alert("로그인 성공");
 
 						// 메인 페이지로 이동(redirect)
-						location.href="/Page/main.jsp";
+						location.href="/Page/p01_main.html";
 						
 					} else {
 						alert("로그인 실패");
@@ -1227,202 +1227,204 @@ $(document).ready( function() {
 			</div>
 
 		</div>
-
 		<!-- // End #header -->
 		<!-- Begin #container -->
 		<div id="container">
 			<div class="content-wrap">
 
-				<div id="content_sub" onmouseover="fnPrevDept();">
-					<div id="content_sub_wrap">
-						<div id="content_right">
+<div id="content_sub" onmouseover="fnPrevDept();">
+<div id="content_sub_wrap">
+<div id="content_right">
 
-							<div class="subject">
-								<span>로그인</span>
-							</div>
-
-							<div id="login">
-								<div class="login_frm">
-									<div class="login_frm_detail">
-										<div class="left">
-
-											<div style="float: left; width: 285px; height: 70px;">
-												<span>아이디</span> <input type="text" id="id" name="id"
-													onkeypress="f_login();" /><br> <span>비밀번호</span> <input
-													type="password" id="password" name="password"
-													onkeypress="f_login();" />
-											</div>
-
-											<a href="javascript:f_validate();" id="login_confirm">로그인</a>
-
-											<div>
-												<div>
-													<a href="javascrpt:void(0);" id="findLayer">아이디/비밀번호 찾기</a>
-												</div>
-												<div>
-													<span class="join_hidden" id="alert_login">아이디 또는
-														비밀번호를 잘못 입력하였습니다.</span>
-												</div>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<span id="login_sns">▶ SNS계정 로그인</span><br>
-
-							<div style="padding-top: 5px;">
-								<a href="javascript:void(0);"> <img
-									src="./images/login/facebook.PNG" alt="" />
-								</a> <a href="javascript:void(0);"> <img
-									src="./images/login/kakao.PNG" alt="" />
-								</a> <br> <a href="javascript:void(0);"> <img
-									src="./images/login/naver.PNG" alt="" />
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-
-
-			</div>
-
-		</div>
-		<!-- // End #container -->
-		<!-- Begin #footer -->
-		<div id="footer">
-
-			<div class="footer_box01">
-
-				<div class="footer_inner">
-
-					<ul class="footer_family">
-
-						<li><a
-							href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
-							target="_blank">장기렌터카</a></li>
-
-						<li><a
-							href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
-							target="_blank">단기렌터카</a></li>
-
-						<li><a
-							href="https://www.lotterentacar.net/kor/long/usedList.do"
-							target="_blank">중고차렌터카</a></li>
-
-						<li><a
-							href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
-							target="_blank">내차팔기</a></li>
-
-						<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
-
-					</ul>
-
-					<ul class="footer_partner">
-
-						<li><a
-							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-								src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
-
-						<li><a
-							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
-								src="./images/common/img_partner_suwon.gif"
-								alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
-
-						<li><a
-							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
-								src="./images/common/img_partner_incheon.gif"
-								alt="인천광역시 라젠카 예약하기" /></a></li>
-
-					</ul>
-
-				</div>
-
-			</div>
-
-			<div class="footer_box02">
-
-				<div class="footer_inner">
-
-					<ul class="footer_sns">
-
-						<li><a class="facebook"
-							href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
-								페이스북</a></li>
-
-						<li><a class="blog" href="http://blog.naver.com/greencar_co"
-							target="_blank">라젠카 블로그</a></li>
-
-						<li><a class="instagram"
-							href="https://www.instagram.com/greencar_kr/" target="_blank">라젠카
-								인스타그램</a></li>
-
-					</ul>
-
-					<ul class="footer_links">
-
-						<li><a href="http://www.greencar.co.kr/service/company/">회사소개</a></li>
-
-						<li><a href="http://www.greencar.co.kr/alliance/">제휴신청</a></li>
-
-						<li><a href="http://www.greencar.co.kr/service/useclause/">회원이용약관</a></li>
-
-						<li><a href="http://www.greencar.co.kr/service/personalinfo/"
-							class="point">개인정보처리방침</a></li>
-
-						<li><a href="http://www.greencar.co.kr/service/carclause/">자동차대여
-								표준약관</a></li>
-
-						<li><a href="http://www.greencar.co.kr/service/location/">위치기반
-								서비스 이용약관</a></li>
-
-						<li><a href="http://www.greencar.co.kr/service/sitemap/">사이트맵</a></li>
-
-					</ul>
-
-					<div class="footer_info">
-
-						<div class="info">
-
-							<span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
-								: 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
-
-						</div>
-
-						<div class="addr">
-
-							<span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
-								010-9550-0167</span> <span>FAX : 02-9550-0167</span>
-
-						</div>
-
-						<span class="copy">Copyright &#169; 2018 LazenCar. All
-							Rights Reserved.</span>
-
-					</div>
-
-					<div class="footer_emblem">
-
-						<img src="./images/common/img_emblem_brandpower.jpg"
-							alt="2016년 한국산업의 브랜드파워 1위" /> <img
-							src="./images/common/img_emblem_brandstar.jpg"
-							alt="2016년 대한민국 브랜드스타" /> <img
-							src="./images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
-						<img src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-		<!-- // End #footer -->
+	<div class="subject">
+		<span>로그인</span>
 	</div>
-	<!-- // End #wrap -->
+
+	<div id="login">
+	<div class="login_frm">
+	<div class="login_frm_detail">
+		<div class="left">
+
+			<div style="float: left; width: 285px; height: 70px;">
+				<span>아이디</span>
+				<input type="text" id="id" name="id" onkeypress="f_login();" /><br>
+				<span>비밀번호</span>
+				<input type="password" id="password" name="password" onkeypress="f_login();" />
+			</div>
+
+			<a href="javascript:f_validate();" id="login_confirm">로그인</a>
+
+			<div>
+				<div>
+					<a href="javascrpt:void(0);" id="findLayer">아이디/비밀번호 찾기</a>
+				</div>
+				<div>
+					<span class="join_hidden" id="alert_login">아이디 또는 비밀번호를 잘못 입력하였습니다.</span>
+				</div>
+
+			</div>
+		</div>
+		</div>
+		</div>
+	</div>
+	
+	<span id="login_sns">▶ SNS계정 로그인</span><br>
+	
+	<div style="padding-top: 5px;">
+		<a href="javascript:void(0);">
+		<img src="./images/login/facebook.PNG" alt="" />
+		</a>
+		<a href="javascript:void(0);">
+		<img src="./images/login/kakao.PNG" alt="" />
+		</a> <br>
+		<a href="javascript:void(0);">
+		<img src="./images/login/naver.PNG" alt="" />
+		</a>
+	</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+			</div>
+			<!-- // End #container -->
+			<!-- Begin #footer -->
+			<div id="footer">
+
+				<div class="footer_box01">
+
+					<div class="footer_inner">
+
+						<ul class="footer_family">
+
+							<li><a
+								href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
+								target="_blank">장기렌터카</a></li>
+
+							<li><a
+								href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
+								target="_blank">단기렌터카</a></li>
+
+							<li><a
+								href="https://www.lotterentacar.net/kor/long/usedList.do"
+								target="_blank">중고차렌터카</a></li>
+
+							<li><a
+								href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
+								target="_blank">내차팔기</a></li>
+
+							<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
+
+						</ul>
+
+						<ul class="footer_partner">
+
+							<li><a
+								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
+									src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+
+							<li><a
+								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
+									src="./images/common/img_partner_suwon.gif"
+									alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
+
+							<li><a
+								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
+									src="./images/common/img_partner_incheon.gif"
+									alt="인천광역시 라젠카 예약하기" /></a></li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+				<div class="footer_box02">
+
+					<div class="footer_inner">
+
+						<ul class="footer_sns">
+
+							<li><a class="facebook"
+								href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
+									페이스북</a></li>
+
+							<li><a class="blog" href="http://blog.naver.com/greencar_co"
+								target="_blank">라젠카 블로그</a></li>
+
+							<li><a class="instagram"
+								href="https://www.instagram.com/greencar_kr/" target="_blank">라젠카
+									인스타그램</a></li>
+
+						</ul>
+
+						<ul class="footer_links">
+
+							<li><a href="http://www.greencar.co.kr/service/company/">회사소개</a></li>
+
+							<li><a href="http://www.greencar.co.kr/alliance/">제휴신청</a></li>
+
+							<li><a href="http://www.greencar.co.kr/service/useclause/">회원이용약관</a></li>
+
+							<li><a
+								href="http://www.greencar.co.kr/service/personalinfo/"
+								class="point">개인정보처리방침</a></li>
+
+							<li><a href="http://www.greencar.co.kr/service/carclause/">자동차대여
+									표준약관</a></li>
+
+							<li><a href="http://www.greencar.co.kr/service/location/">위치기반
+									서비스 이용약관</a></li>
+
+							<li><a href="http://www.greencar.co.kr/service/sitemap/">사이트맵</a></li>
+
+						</ul>
+
+						<div class="footer_info">
+
+							<div class="info">
+
+								<span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
+									: 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
+
+							</div>
+
+							<div class="addr">
+
+								<span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
+									010-9550-0167</span> <span>FAX : 02-9550-0167</span>
+
+							</div>
+
+							<span class="copy">Copyright &#169; 2018 LazenCar. All
+								Rights Reserved.</span>
+
+						</div>
+
+						<div class="footer_emblem">
+
+							<img src="./images/common/img_emblem_brandpower.jpg"
+								alt="2016년 한국산업의 브랜드파워 1위" /> <img
+								src="./images/common/img_emblem_brandstar.jpg"
+								alt="2016년 대한민국 브랜드스타" /> <img
+								src="./images/common/img_emblem_award.jpg"
+								alt="모바일 어워드 코리아 2016" /> <img
+								src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+			<!-- // End #footer -->
+		</div>
+		<!-- // End #wrap -->
 </body>
 
 </html>

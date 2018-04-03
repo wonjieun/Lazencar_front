@@ -1,17 +1,5 @@
-<%@page import="java.lang.ProcessBuilder.Redirect"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="dao.MemberModifyDataDao"%>
-<%@ page import="dao.MemberModifyDataDaoImpl"%>
-<%@ page import="dto.Member"%>
-<%
-		if(session.getAttribute("id") == null){
-			response.sendRedirect("login.jsp");
-		}else{
-			String id = session.getAttribute("id").toString();
-			MemberModifyDataDao dao = new MemberModifyDataDaoImpl();
-			Member mem = dao.getMemData(id);
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -1336,8 +1324,7 @@ a.btnTbl01 {
 
 								<p>탈퇴 확인을 위해 귀하의 비밀번호를 입력하여 주십시오.</p>
 								<div>
-									<input type="hidden" id="mem_id" name="mem_id" value="<%=mem.getMemId()%>"></input>
-									<input type="password" id="mem_pw" name="mem_pw"></input>
+									<input type="text" id="checkPw" name="checkPw"></input>
 								</div>
 								<!--// E:table -->
 							</div>
@@ -1511,38 +1498,11 @@ a.btnTbl01 {
 				return true;
 			}
 		}
-		
-		$("#btn_delete").click(function() {
-			var mem_id = $("#mem_id").val();
-			var mem_pw = $("#mem_pw").val();
-			if (checkValue() == true) {
-				
-				$.ajax({
-					type : "POST",
-					url : "/delete.do",
-					dataType : "json",
-					data : {
-						memId : mem_id,
-						memPw : mem_pw
-					},
 
-					success : function(data) {
-						var check = data.check;
-						console.log(check);
-						if(check){
-						alert("회원 삭제 성공");
-						<%session.invalidate();%>//세션 종료
-						location.href="/Page/main.jsp";	//메인페이지로 되돌아감
-						
-						} else{
-						alert("비밀번호 불일치")
-						}
-					},
-					error : function(e) {
-						console.log("------error------");
-						console.log(e.responseText);
-					}
-				});
+		$("#btn_delete").click(function() {
+
+			if (checkValue() == true) {
+				alert("회원 탈퇴")
 			} else {
 				alert("비밀번호를 입력해주세요");
 				return;
@@ -1554,4 +1514,3 @@ a.btnTbl01 {
 </body>
 
 </html>
-<%}%>
