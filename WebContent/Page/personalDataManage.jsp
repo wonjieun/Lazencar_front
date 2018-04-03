@@ -1,13 +1,18 @@
+<%@page import="javax.websocket.SendResult"%>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="dao.MemberModifyDataDao"%>
 <%@ page import="dao.MemberModifyDataDaoImpl"%>
 <%@ page import="dto.Member"%>
 <%
-	String id = "sneerdog";
-
-	MemberModifyDataDao dao = new MemberModifyDataDaoImpl();
-	Member mem = dao.getMemData(id);
+		if(session.getAttribute("id") == null){
+			response.sendRedirect("login.jsp");
+		}else{
+			String id = session.getAttribute("id").toString();
+			MemberModifyDataDao dao = new MemberModifyDataDaoImpl();
+			Member mem = dao.getMemData(id);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -1345,7 +1350,7 @@ ul.tabs li.current {
 					<div class="bodystart">
 
 						<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
-
+		
 						<div class="charges-wrap">
 							<ul class="tabs">
 								<li class="tabLink current" data-tab="tab1">개인정보 수정</li>
@@ -1506,11 +1511,11 @@ ul.tabs li.current {
 											</tr>
 											<tr>
 												<th scope="row">면허 종류</th>
-												<td><select id="licen_type" name="licen_type" class="">
-														<option value="" selected='selected'>선택</option>
-														<option value="2">2종 보통</option>
-														<option value="1">1종 보통</option>
-														<option value="0">1종 대형</option>
+												<td><select id="licen_type" name="licen_type" class="" >
+														<option value="" >선택</option>
+														<option value="2" >2종 보통</option>
+														<option value="1" >1종 보통</option>
+														<option value="0" >1종 대형</option>
 												</select></td>
 											</tr>
 
@@ -1520,7 +1525,7 @@ ul.tabs li.current {
 													<p class="mgb3">
 														<select id="licen_no1" name="licen_no1" class=""
 															title="코드">
-															<option value="" selected='selected'>코드</option>
+															<option value="">코드</option>
 															<option value="11">11</option>
 															<option value="12">12</option>
 															<option value="13">13</option>
@@ -1856,6 +1861,7 @@ ul.tabs li.current {
 		}
 		$("#btn_LicenData").click(function() {
 			if (checkLicenData()) {
+				var mem_id = $("#mem_id").val();
 				var mem_name = $("#mem_name").val();
 				var mem_jumin = $("#mem_jumin1").val() + $("#mem_jumin2").val();
 				var licen_type = $("#licen_type").val();
@@ -1877,6 +1883,7 @@ ul.tabs li.current {
 					url : "/LicenData.do",
 					dataType : "json",
 					data : {
+						memId : mem_id,
 						memName : mem_name,
 						memJumin : mem_jumin,
 						licenType : licen_type,
@@ -1960,4 +1967,5 @@ ul.tabs li.current {
 
 </html>
 
-
+<%} %>
+<!-- 로그인 세션 끄읕~ -->
