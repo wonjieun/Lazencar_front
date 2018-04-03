@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,33 +17,25 @@
 <script src="./js/main.js"></script>
 
 <script type="text/javascript">
-   //현재 서버 시간
+//현재 서버 시간
+var curYear = "2018"; //현재 년
+var curMonth = "3"; //현재 월
+var curDay = "6"; //현재 일
+var curHour = "18"; //현재 시간
+var curMinute = "21"; //현재 분
+var ___isLogin___ = "false"; //로그인 여부
+var __ciYn__ = "";
+var _globalFullContextSSL = "https://www.greencar.co.kr";
+var ___isCorpChk___ = "";
+var _ssoDomain = 'member.lpoint.com';
+var _joinReturnUrl = 'https://www.greencar.co.kr/login/';
+var _fullImgHostAddr = '';
+var _birth = "";
 
-   var curYear = "2018"; //현재 년
-
-   var curMonth = "3"; //현재 월
-
-   var curDay = "6"; //현재 일
-
-   var curHour = "18"; //현재 시간
-
-   var curMinute = "21"; //현재 분
-
-   var ___isLogin___ = "false"; //로그인 여부
-
-   var __ciYn__ = "";
-
-   var _globalFullContextSSL = "https://www.greencar.co.kr";
-
-   var ___isCorpChk___ = "";
-
-   var _ssoDomain = 'member.lpoint.com';
-
-   var _joinReturnUrl = 'https://www.greencar.co.kr/login/';
-
-   var _fullImgHostAddr = '';
-
-   var _birth = "";
+$(document).ready(function() {
+	$("")
+	
+});
 </script>
 
 </head>
@@ -85,12 +81,15 @@
                </h1>
 
                <div class="nvalinks">
-
-                  <a href="javascript:void(0);" onclick="openLapComLogin();">로그인</a>
-
-                  <a href="https://www.greencar.co.kr/member/index.jsp">회원가입</a> <a
-                     class="nvalinks-rev"
-                     href="https://www.greencar.co.kr/reserve/index.do">라젠카 예약하기</a>
+<c:if test="${empty session.id }">
+                  <a href="/Page/login.html" onclick="openLapComLogin();">로그인</a>
+                  <a href="/Page/signUp.jsp">회원가입</a>
+</c:if>
+<c:if test="${!empty session.id }">
+            			<a href="/login/logout.do">로그아웃</a>
+            			<a href="#">마이페이지</a>
+</c:if>
+                  <a class="nvalinks-rev" href="/Page/reservation.html">라젠카 예약하기</a>
 
                </div>
       <nav id="topMenu" > 
@@ -289,128 +288,6 @@
 
 		<!-- // End #footer -->
 
-<!--아름 →  script 작성 -->
-<script type="text/javascript">
-(function(){
-	
-	var current = 0;
-	var max = 0;
-	var container;
-	var xml;
-	var interval;
-	var xml;
-	var amimateTarget = null;
-	var iWidth;
-	var iHeight;
-	
-	function init() {
-		container = jQuery(".slide ul");
-		max = container.children().length;
-		
-		events();
-		
-		interval = setInterval(next, 3000);
-		
-		config_load();
-	}
-	function config_load() {
-		var obj = {};
-		//obj.url = "/xml/images.xml"
-		obj.dataType = "text";
-		obj.type = "get";
-		obj.success = loadComplete;
-		obj.fail = loadFail;
-		jQuery.ajax(obj);
-	}
-	function loadComplete($arg1, $arg2) {
-		if($arg2 == "success") {
-			var data = jQuery.parseXML($arg1);
-			xml = jQuery(data);
-			
-			setting();
-		}
-	}
-	function loadFail($arg1, $arg2, $arg3) {
-		console.log([$arg1, $arg2, $arg3]);
-	}
-	function setting() {
-		var li = "";
-		xml.find("images").find("item").each(function(i) {
-			var self = jQuery(this);
-			li += '<li><img src="'+self.find("src").text()+'" alt="" /></li>';
-		})
-		
-		iWidth = xml.find("config").find("width").text();
-		iHeight = xml.find("config").find("height").text();
-		
-		jQuery(".slide").css("width", iWidth+"px");
-		jQuery(".slide").css("height", iHeight+"px");
-		
-		container.append(li);
-		max = container.children().length;
-		container.css("margin-left", "-1538px");
-		container.prepend(container.children()[max-1]);
-		
-		events();
-		
-		interval = setInterval(next, 3000);
-	}
-	
-	function events() {
-		jQuery("button.prev").on("click", prev);
-		jQuery("button.next").on("click", next);
-		
-		jQuery(window).on("keydown", keydown);
-	}
-	
-	function prev(e) {
-		current--;
-		if( current < 0 ) current = max-1;
-		animate("prev");
-	}
-	function next(e) {
-		current++;
-		if( current > max-1 ) current = 0;
-		animate("next");
-		
-	}	
-	function animate($direction) {
-		/*var moveX = current * 600;
-		TweenMax.to(container, 0.8, {marginLeft:-moveX, ease:Expo.easeOut});
-		
-		//timer
-		clearInterval(interval);
-		interval = setInterval(next, 3000); */
-		
-		if(amimateTarget != null) {
-			TweenMax.killTweensOf(amimateTarget);
-			amimateTarget.css("margin-left", "0");
-		}
-		if($direction == "next") {
-			jQuery(container.children()[1]).css("margin-left", iWidth+"px");
-			container.append(container.children()[0]);
-			
-		} else if ($direction == "prev" ){
-			container.prepend(container.children()[max-1]);
-			jQuery(container.children()[0]).css("margin-left", (-iWidth)+"px");
-		} 
-		amimateTarget = jQuery(container.children()[0]);
-		TweenMax.to(amimateTarget, 0.8, {marginLeft:0, ease:Expo.easeOut});
-		
-	}
-	function keydown(e) {
-		
-		if(e.which == 39 /*right*/) {
-			next();
-		} else if(e.which == 37 /*left*/) {
-			prev();
-		}
-	}
-	
-	jQuery(document).ready(init);
-
-})();
-</script>
 </body>
 
 </html>

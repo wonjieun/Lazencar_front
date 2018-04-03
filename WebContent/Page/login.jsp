@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 
 <style type="text/css">
 
@@ -1108,9 +1108,6 @@ $(document).ready( function() {
 });
 </script>
 
-<!-- <link type="text/css" rel="stylesheet" media="all" -->
-<!-- 	href="./css/master.css" /> -->
-
 <title>로그인</title>
 
 </head>
@@ -1119,8 +1116,7 @@ $(document).ready( function() {
 	<!-- Begin #wrap -->
 	<div id="wrap">
 		<div class="top_banner join" style="display: none;">
-			<!-- // free 클래스 삭제 (2015-12-30) -->
-
+			
 			<div class="cont">
 
 				<a href="https://www.greencar.co.kr/member/index.jsp"

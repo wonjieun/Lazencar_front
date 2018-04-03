@@ -24,6 +24,11 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private LoginService service = new LoginServiceImpl();
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/json; charset=utf-8");
@@ -57,7 +62,6 @@ public class LoginServlet extends HttpServlet {
 		if(check) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", mem.getMemId());
-			
 		}
 		out.write(gson.toJson(jsonObject));
 	}
