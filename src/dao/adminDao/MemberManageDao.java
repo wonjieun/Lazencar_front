@@ -7,8 +7,10 @@ import util.Paging;
 
 public interface MemberManageDao {
 	
+	//총 회원수 반환
+	public int getTotal(MemberManage search);
+
 	//관리자가 검색한 내용을 받아와서 해당 내용에 대한 사용자 정보 받아오기
-	
 	public List getAllList(Paging paging);
 	public List getIdList(Paging paging,MemberManage search);
 	public List getJuminList(Paging paging,MemberManage search); 
@@ -21,3 +23,5 @@ public interface MemberManageDao {
 	
 	
 }
+
+

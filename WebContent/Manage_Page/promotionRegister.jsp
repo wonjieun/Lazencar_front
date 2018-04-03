@@ -12,45 +12,11 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
-	<link rel="stylesheet" href="./css/daterangepicker.css" />
-
-	<script  src="./js/jquery.js"></script>
-	<script  src="./js/colResizable-1.5.min.js"></script>
-
-	<script src="./js/Date_moment.min.js"></script>
-	<script src="./js/Date_rangepicker.js"></script>
-	<script src="./js/Date_demo.js"></script>
 	
 	<style>
-	.demo { margin:30px 0;}
-	.date-picker-wrapper .month-wrapper table .day.lalala { background-color:orange; }
-	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
-	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
-	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
-	
 	.level1 :nth-child(9) .fly {background: #ffb505 !important;}
 	</style>
 	
-  <script type="text/javascript">
-	$(function(){	
-
-		var onSampleResized = function(e){
-			var columns = $(e.currentTarget).find("th");
-			var msg = "columns widths: ";
-			columns.each(function(){ msg += $(this).width() + "px; "; })
-			$("#table2Txt").html(msg);
-			
-		};	
-	
-		$("#table2").colResizable({
-			liveDrag:true, 
-			gripInnerHtml:"<div class='grip'></div>", 
-			draggingClass:"dragging", 
-			onResize:onSampleResized});
-		
-	});	
-  </script>
 
 </head>
 <body>
@@ -60,7 +26,7 @@
       <li><a href="./home.jsp">Home</a></li>
       <li><a class="fly" href="javascript:void(0);">회원 관리</a>
          <ul>
-            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
+            <li><a href="/admin/memberManage.do" >회원목록 조회</a></li>
          </ul>
       </li>
       
@@ -136,29 +102,31 @@
 						
 		 <table class="table1">
 			<tr>
-				<th>특가 상품 명</th>
-				<th>특가 기간</th>
+				<th>특가 시작일</th>
+				<th>특가 종료일</th>
 			</tr>
 			<tr>
 				<td class="left">
 				<input type="text" />
 				</td>
 				<td class="right">
-				<div class="demo">
-					기간을 선택하세요.<br> <input id="date-range0" size="30" value=""> 
-					</div>
+				<input type="text" />				
 				</td>
 			</tr>			
 			<tr>
-				<th>특가 상품 배너 이미지</th>
-				<th>특가 상품  상세 이미지</th>
+				<th>특가 상품 명</th>
+				<th>특가 상품  이미지</th>
 			</tr>
 			<tr>
 				<td class="left">
-				<p>이미지 등록</p>
+				<input type="text" />
 				</td>
 				<td class="right">
-				<p>이미지 등록</p>
+				<form action="/FileUpload" method="post" enctype="multipart/form-data">
+					<label>특가 배너 이미지 : <input type="file" name="file1" /></label><br>
+					<label>특가 상세 이미지 : <input type="file" name="file2" /></label><br>
+					<button>파일 업로드</button>
+				</form>
 				</td>
 			</tr>				
 		</table>
@@ -187,3 +155,4 @@
 
 </body>
 </html>
+
