@@ -51,8 +51,8 @@ public class MemberModifyDataServlet extends HttpServlet {
 		mem.setLicenLimitDate(licenLimitDate);
 		mem.setLicenAddr(licenAddr);
 		
-		System.out.println("test");
-		System.out.println(mem.getMemName());
+//		System.out.println("test");
+//		System.out.println(mem.getMemName());
 		service.modifyData(mem);
 		
 		Gson gson = new Gson();

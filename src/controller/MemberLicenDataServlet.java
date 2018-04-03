@@ -23,6 +23,7 @@ public class MemberLicenDataServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/json; charset=utf-8");
 		
+		String memId = request.getParameter("memId");
 		String memName = request.getParameter("memName");
 		String memJumin = request.getParameter("memJumin");
 		String licenType = request.getParameter("licenType");
@@ -33,6 +34,7 @@ public class MemberLicenDataServlet extends HttpServlet {
 		
 		
 		Member mem = new Member();
+		mem.setMemId(memId);
 		mem.setMemName(memName);
 		mem.setMemJumin(memJumin);
 		mem.setLicenType(licenType);
