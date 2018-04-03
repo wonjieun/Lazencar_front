@@ -48,30 +48,31 @@ public class MemberLicenDataDaoImpl implements MemberLicenDataDao {
 			int result = rs.getInt(1);
 			if(result==0) {
 				String sql3 = "INSERT INTO"
-						+ " TB_LICENSE(MEM_NAME, MEM_JUMIN, LICEN_TYPE, LICEN_NUM, LICEN_ISSUEDATE, LICEN_LIMITDATE, LICEN_ADDR)"
-						+ " VALUES( ?, ?, ?, ?, ?, ?, ?)";
+						+ " TB_LICENSE(MEM_ID, MEM_NAME, MEM_JUMIN, LICEN_TYPE, LICEN_NUM, LICEN_ISSUEDATE, LICEN_LIMITDATE, LICEN_ADDR)"
+						+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 					pst = conn.prepareStatement(sql3);
-					pst.setString(1, mem.getMemName());
-					pst.setString(2, mem.getMemJumin());
-					pst.setString(3, mem.getLicenType());
-					pst.setString(4, mem.getLicenNum());
-					pst.setString(5, mem.getLicenIssueDate());
-					pst.setString(6, mem.getLicenLimitDate());
-					pst.setString(7, mem.getLicenAddr());
+					pst.setString(1, mem.getMemId());
+					pst.setString(2, mem.getMemName());
+					pst.setString(3, mem.getMemJumin());
+					pst.setString(4, mem.getLicenType());
+					pst.setString(5, mem.getLicenNum());
+					pst.setString(6, mem.getLicenIssueDate());
+					pst.setString(7, mem.getLicenLimitDate());
+					pst.setString(8, mem.getLicenAddr());
 					pst.executeUpdate();
 				
 				
 			} else {
 					String sql2 = "UPDATE TB_LICENSE SET"
 							+ " LICEN_TYPE=?, LICEN_NUM=?, LICEN_ISSUEDATE=?, LICEN_LIMITDATE=?, LICEN_ADDR=?"
-							+ " WHERE MEM_JUMIN=?";
+							+ " WHERE MEM_ID=?";
 					pst = conn.prepareStatement(sql2);
 					pst.setString(1, mem.getLicenType());
 					pst.setString(2, mem.getLicenNum());
 					pst.setString(3, mem.getLicenIssueDate());
 					pst.setString(4, mem.getLicenLimitDate());
 					pst.setString(5, mem.getLicenAddr());
-					pst.setString(6, mem.getMemJumin());
+					pst.setString(6, mem.getMemId());
 					System.out.println("여기까지..?");
 					pst.executeUpdate();
 			}
