@@ -10,54 +10,54 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
-	<link rel="stylesheet" href="./css/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="./css/main.css" />
+<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
+<link rel="stylesheet" href="./css/daterangepicker.css" />
 
-	<script  src="./js/jquery.js"></script>
-	<script  src="./js/colResizable-1.5.min.js"></script>
+<script src="./js/jquery.js"></script>
+<script src="./js/colResizable-1.5.min.js"></script>
 
-	<script src="./js/Date_moment.min.js"></script>
-	<script src="./js/Date_rangepicker.js"></script>
-	<script src="./js/Date_demo.js"></script>
+<script src="./js/Date_moment.min.js"></script>
+<script src="./js/Date_rangepicker.js"></script>
+<script src="./js/Date_demo.js"></script>
 	
-	<style>
-	.demo { margin:30px 0;}
-	.date-picker-wrapper .month-wrapper table .day.lalala { background-color:orange; }
-	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
-	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
-	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
-	
-	#table2 th:last-child{
-	background:#f1c40f;
-	height:30px;
-	background-repeat:no-repeat;
-	color:white;
-	text-align: center;   
-	width: 10%;}
-	
-	.level1 :nth-child(7) .fly {background: #ffb505 !important;}
-	</style>
-	
-  <script type="text/javascript">
-	$(function(){	
+<style type="text/css">
+.demo { margin:30px 0;}
+.date-picker-wrapper .month-wrapper table .day.lalala { background-color:orange; }
+.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
+.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
+.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
 
-		var onSampleResized = function(e){
-			var columns = $(e.currentTarget).find("th");
-			var msg = "columns widths: ";
-			columns.each(function(){ msg += $(this).width() + "px; "; })
-			$("#table2Txt").html(msg);
-			
-		};	
+#table2 th:last-child{
+background:#f1c40f;
+height:30px;
+background-repeat:no-repeat;
+color:white;
+text-align: center;   
+width: 10%;}
+
+.level1 :nth-child(7) .fly {background: #ffb505 !important;}
+</style>
 	
-		$("#table2").colResizable({
-			liveDrag:true, 
-			gripInnerHtml:"<div class='grip'></div>", 
-			draggingClass:"dragging", 
-			onResize:onSampleResized});
+<script type="text/javascript">
+$(function(){	
+
+	var onSampleResized = function(e){
+		var columns = $(e.currentTarget).find("th");
+		var msg = "columns widths: ";
+		columns.each(function(){ msg += $(this).width() + "px; "; })
+		$("#table2Txt").html(msg);
 		
-	});	
-  </script>
+	};	
+
+	$("#table2").colResizable({
+		liveDrag:true, 
+		gripInnerHtml:"<div class='grip'></div>", 
+		draggingClass:"dragging", 
+		onResize:onSampleResized});
+	
+});	
+ </script>
 </head>
 
 <body>
