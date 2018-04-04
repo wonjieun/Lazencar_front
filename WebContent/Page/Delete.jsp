@@ -1,12 +1,25 @@
+<%@page import="java.lang.ProcessBuilder.Redirect"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="dao.MemberModifyDataDao"%>
+<%@ page import="dao.MemberModifyDataDaoImpl"%>
+<%@ page import="dto.Member"%>
+<%
+		if(session.getAttribute("id") == null){
+			response.sendRedirect("login.jsp");
+		}else{
+			String id = session.getAttribute("id").toString();
+			MemberModifyDataDao dao = new MemberModifyDataDaoImpl();
+			Member mem = dao.getMemData(id);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>로그인</title>
+<title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 <style type="text/css">
+@charset "UTF-8";
 
 /* 전체 스타일 설정 */
 #header *, #footer *, .sidebar * {
@@ -62,7 +75,7 @@
 .hgroup .logo a span {
 	display: block;
 	padding-top: 48px;
-	background: url('/Page/images/common/logo.png') no-repeat 0 0;
+	background: url('./images/common/logo.png') no-repeat 0 0;
 	font: 0/0 dotum;
 	color: transparent
 }
@@ -77,7 +90,7 @@
 	float: left;
 	height: 40px;
 	padding-left: 13px;
-	background: url('/Page/images/main/bg_dot.png') no-repeat 6px center;
+	background: url('./images/main/bg_dot.png') no-repeat 6px center;
 	font-size: 13px;
 	line-height: 40px;
 	letter-spacing: -0.05em;
@@ -178,7 +191,7 @@ a.nvalinks-rev:hover {
 }
 
 #header.sub .nvalinks a {
-	background: url('/Page/images/main/bg_dot02.png') no-repeat 6px center;
+	background: url('./images/main/bg_dot02.png') no-repeat 6px center;
 	color: #636363
 }
 
@@ -208,6 +221,27 @@ a.nvalinks-rev:hover {
 
 #header.sub .navi-sublist li a:hover {
 	color: #f1c40f
+}
+
+.nav-sub-wrap {
+	overflow: hidden;
+	height: 0;
+	z-index: 5555;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding-top: 80px;
+	-webkit-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+	-moz-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+	-o-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+	transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1)
+}
+
+.nav-sub-wrap.on {
+	height: 222px;
+	background: #fff;
+	border-bottom: 1px solid #e2e2e2
 }
 
 /*탑메뉴*/
@@ -263,7 +297,6 @@ a.nvalinks-rev:hover {
 	color: #f1c40f;
 	background-color: white;
 }
-
 /* 좀 더 긴 메뉴 스타일 설정 */
 .longLink {
 	width: 200px;
@@ -281,11 +314,8 @@ a.nvalinks-rev:hover {
 
 #topMenu:hover .topMenuLi:hover .submenu {
 	height: 100px;
-}
-
- /* 한 메뉴당 하위메뉴 하나만*/
+} /* 한 메뉴당 하위메뉴 하나만*/
 /* #topMenu:hover .topMenuLi .submenu {height: 180px;}		/*메뉴 전체 드롭다운 	헤더 전체 드롭다운은 어떻게..*/
-
 .submenu {
 	background: white;
 }
@@ -300,7 +330,7 @@ a.nvalinks-rev:hover {
 	position: relative;
 	width: 1060px;
 	margin: 0 auto;
-	padding: 80px 0 340px
+	padding: 80px 0 100px
 }
 
 .content-wrap:after {
@@ -308,7 +338,6 @@ a.nvalinks-rev:hover {
 	display: block;
 	clear: both
 } /*대체 뭘하려는걸까*/
-
 .contentbox {
 	float: right;
 	width: 750px
@@ -327,6 +356,47 @@ a.nvalinks-rev:hover {
 	font-size: 28px;
 	font-weight: 500;
 	color: #f1c40f
+}
+
+.leftMenu li a {
+	display: block;
+	height: 48px;
+	padding: 0 20px;
+	border-bottom: 1px solid #e2e2e2;
+	cursor: pointer
+}
+
+.leftMenu li a:hover {
+	margin-top: -1px;
+	border-bottom-color: #f1c40f;
+	background-color: #f1c40f
+}
+
+.leftMenu li:first-child a:hover {
+	margin-top: 0
+}
+
+.leftMenu li.top a {
+	border-top: 1px solid #e2e2e2
+}
+
+.leftMenu li.top a:hover {
+	border-top-color: #f1c40f
+}
+
+.leftMenu li a span {
+	display: block;
+	height: 48px;
+	line-height: 49px;
+	font-size: 16px;
+	color: #4d4c4c;
+	font-weight: 500;
+	background: url(./images/icons/left_menu_off.gif) no-repeat right center
+}
+
+.leftMenu li a:hover span {
+	background: url(./images/icons/left_menu_on.png) no-repeat right center;
+	color: #fff
 }
 
 .side_sns {
@@ -359,7 +429,7 @@ a.nvalinks-rev:hover {
 	width: 34px;
 	height: 34px;
 	margin-left: 10px;
-	background: url('/Page/images/common/icon_sns.png') no-repeat;
+	background: url('./images/common/icon_sns.png') no-repeat;
 	font: 0/0 dotum;
 	color: transparent;
 	vertical-align: top
@@ -414,6 +484,31 @@ a.nvalinks-rev:hover {
 	padding-top: 34px
 }
 
+.location_in {
+	display: none
+}
+
+.location_in:after {
+	content: "";
+	display: block;
+	clear: both
+}
+
+.location_in p {
+	float: right;
+	padding-left: 18px;
+	background: url(./images/icons/home.gif) no-repeat 0 3px;
+	font-size: 13px
+}
+
+.location_in p span {
+	margin: 0 4px
+}
+
+.location_in p strong {
+	margin: 0 4px
+}
+
 .subtop-content {
 	padding-top: 22px;
 	height: 135px
@@ -426,7 +521,7 @@ a.nvalinks-rev:hover {
 
 .subtit {
 	padding-bottom: 8px;
-	background: url(/Page/images/common/bg_subtit.gif) no-repeat 0 bottom;
+	background: url(./images/common/bg_subtit.gif) no-repeat 0 bottom;
 	font-weight: bold;
 	font-size: 32px;
 	color: #3c3c3c
@@ -434,7 +529,7 @@ a.nvalinks-rev:hover {
 
 .subtit2 {
 	padding-bottom: 8px;
-	background: url(/Page/images/common/bg_subtit.gif) no-repeat 0 bottom;
+	background: url(./images/common/bg_subtit.gif) no-repeat 0 bottom;
 	font-weight: bold;
 	font-size: 18px;
 	font-family: "맑은고딕";
@@ -464,6 +559,10 @@ a.nvalinks-rev:hover {
 #mini-title {
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.addr p {
+	line-height: 2.0;
 }
 
 /* footer */
@@ -560,7 +659,7 @@ a.nvalinks-rev:hover {
 	display: block;
 	width: 100%;
 	height: 100%;
-	background: url('/Page/images/common/icon_sns.png') no-repeat;
+	background: url('./images/common/icon_sns.png') no-repeat;
 	font: 0/0 dotum;
 	color: transparent
 }
@@ -579,7 +678,7 @@ a.nvalinks-rev:hover {
 
 .footer_links li {
 	padding-left: 17px;
-	background: url('/Page/images/common/bg_bar_footer.gif') no-repeat 8px
+	background: url('./images/common/bg_bar_footer.gif') no-repeat 8px
 		center
 }
 
@@ -747,6 +846,7 @@ a.hoverline:hover {
 /* 요금안내 */
 .charges-wrap {
 	font-size: 13px;
+	margin-bottom: 300px;
 }
 
 .charges-wrap h4 {
@@ -754,7 +854,7 @@ a.hoverline:hover {
 	font-size: 18px;
 	color: #f1c40f;
 	font-weight: bold;
-	background: url("/Page/images/common/blt01.gif") left 6px no-repeat;
+	background: url("./images/common/blt01.gif") left 6px no-repeat;
 }
 
 .charges-wrap h4.mgtop {
@@ -818,7 +918,7 @@ a.hoverline:hover {
 
 .green-charges-txt li {
 	padding-left: 10px;
-	background: url("/Page/images/common/blt04.gif") left 6px no-repeat;
+	background: url("./images/common/blt04.gif") left 6px no-repeat;
 	padding-bottom: 15px;
 }
 
@@ -834,299 +934,256 @@ a.hoverline:hover {
 	margin: 20px 0 10px 0;
 }
 
-#content_sub {
-	font-family: 'NanumBarunGothic', 'Nanum Gothic', Dotum, sans-serif;
-	font-size: 13px;
-	color: #6d6e72;
+/* -----회원가입 CSS START----- */
+caption#caption {
+	height: 26px;
+	padding: 5px;
+	background: #f9f9f9;
+	border-bottom: 1px solid;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(222, 222, 222);
+	color: #777777;
+	text-align: left;
 }
 
-#login {
-	padding-bottom: 10px;
+h1 {
+	
 }
 
-#content_sub {
+h3 {
+	margin-bottom: 30px;
+	margin-top: 3px;
+	color: #4c4c4c;
+	font-size: 28px;
+	font-family: 'NanumGothicBold';
+}
+
+h4 {
+	margin-bottom: 25px;
+	color: #4c4c4c;
+	font-size: 18px;
+	font-family: 'NanumGothicBold';
+}
+
+h5 {
+	margin-bottom: 10px;
+	color: #4c4c4c;
+	font-size: 16px;
+	font-family: 'NanumGothicBold';
+}
+
+h6 {
+	margin-bottom: 10px;
+	color: #4c4c4c;
+	font-size: 14px;
+	font-family: 'NanumGothicBold';
+}
+
+/* section guide */
+.section01 {
+	margin-bottom: 25px;
+}
+
+.section02 {
+	margin-bottom: 35px;
+}
+
+.section03 {
+	margin-bottom: 7px;
+}
+
+/* space guide */
+.ml5 {
+	margin-left: 5px !important;
+}
+
+.ml10 {
+	margin-left: 10px !important;
+}
+
+.tblp {
+	margin-top: 5px !important;
+}
+
+/* table guide */
+.tbl01 {
+	overflow: hidden;
+	border-top: 1px solid #f2c60f;
+	border-bottom: 1px solid #dedede;
+}
+
+.tbl01 table {
 	width: 100%;
-	margin: 0 auto;
-	background: #fff;
-	position: relative;
-	margin-top: 40px;
+	margin-bottom: -1px;
 }
 
-#content_sub_wrap {
-	width: 1060px;
-	margin: 0 auto;
-	overflow: hidden;
+.tbl01 .caption {
+	height: 26px;
+	padding: 5px 0 0 20px;
+	background: #f9f9f9;
+	border-bottom: 1px solid #dedede;
+	color: #777777;
+	text-align: left;
+	font-family: 'NanumGothicBold';
 }
 
-#content_right {
-	width: 730px;
-	float: right;
-	padding-top: 150px;
+.tbl01 th {
+	height: 19px;
+	padding: 8px 0 9px 20px;
+	background: #f9f9f9;
+	border-right: 1px solid #ebebeb;
+	text-align: left;
+	vertical-align: top;
+	font-family: 'NanumGothicBold';
 }
 
-.subject {
-	overflow: auto;
-}
-
-.subject span {
-	float: left;
-	font-size: 25px;
-	font-weight: bold;
-	color: black;
-	font-family: 'NanumBarunGothic', 'Nanum Gothic', '돋움', Dotum, sans-serif;
-	letter-spacing: -2px;
-	padding: 17px 0;
-}
-
-.login_title span {
-	display: block;
-	color: black;
-	font-size: 20px;
-	margin-bottom: 5px;
-}
-
-/*
-.login {
-	border-top: 2px solid #574528;
-	border-bottom: 1px solid #574528;
-	padding: 40px 0;
-	overflow: hidden;
-}
-*/
-
-/* 로그인 전체 폼(title 아래) */
-.login_frm {
-	/* 	float: left; */
-	width: 410px;
-}
-
-.login_frm_detail {
-	padding: 23px 0 17px;
-	margin: 0 0 20px; border-top : 1px solid #ececec;
-	border-bottom: 1px solid #ececec;
-	color: #6e6e6e;
-	overflow: hidden;
-	border-top: 1px solid #ececec;
-}
-
-/* 아이디, 비밀번호 */
-.login_frm_detail .left span {
+.tbl01 th em {
 	display: inline-block;
-	line-height: 29px;
-	padding-bottom: 10px;
+	margin-right: 3px;
+	color: #ba262a;
 }
 
-/* 아이디, 비밀번호 입력 칸 */
-.login_frm_detail .left input {
-	border: 1px solid #ececec;
-	height: 27px;
-	line-height: 27px;
-	padding-left: 10px;
-	width: 212px;
-	float: right;
+.tbl01 td {
+	height: 19px;
+	padding: 8px 20px 9px 20px;
+	border-bottom: 1px solid #dedede;
+	vertical-align: top;
 }
 
-/* 로그인 */
-#login_confirm {
-	float: right;
-	height: 70px;
-	line-height: 70px;
-	width: 115px;
+.tbl01 td .formatIn {
+	display: inline-block;
+	margin-top: 0;
+}
+
+/* input guide */
+.w50 {
+	width: 45px;
+}
+
+.w80 {
+	width: 75px;
+}
+
+.w100 {
+	width: 94px;
+}
+
+.w150 {
+	width: 145px;
+}
+
+.w200 {
+	width: 195px;
+}
+
+.w250 {
+	width: 245px;
+}
+
+/* button guide */
+.btnArea02 {
+	margin-top: 25px;
 	text-align: center;
-	color: #fff;
-	font-size: 14px;
-	background: #fa9e3f;
 }
 
-/*
-.login_frm_detail a {
-	float: right;
-	height: 63px;
-	line-height: 63px;
-	width: 100px;
+.btnArea02 a {
+	margin-right: 3px;
+}
+
+/* button member */
+a.btnP01 {
+	display: inline-block;
+	height: 25px;
+	padding: 0px 24px 0 24px;
+	background: #f6d85d;
+	border: 1px solid #c8ad55;
+	color: #ffffff;
+	font-family: 'NanumGothicBold';
 	text-align: center;
-	color: #fff;
-	font-size: 14px;
-	background: #fa9e3f;
-}
-*/
-
-/* 로그인, 아이디/비밀번호 찾기 */
-a {
-	TEXT-DECORATION: none;
+	vertical-align: middle;
+	line-height: 25px;
 }
 
-/* 로그인 에러 */
-#alert_id, #alert_pw, #alert_login {
-	display: none;
-/* 	display: inline-block; */
-	word-spacing: -1px;
-	padding-left: 60px;
-	padding-bottom: 0; color : red;
-	font-size: 11px;
-	line-height: 2;
-	clear: both;
+/* button table  */
+a.btnTbl01 {
+	line-height: 150%;
+	display: inline-block;
+	height: 20px;
+	padding: 0 4px 0 4px;
+	background: #a2a2a2;
+	border: 1px solid #949494;
+	color: #ffffff;
+	font-family: 'NanumGothicBold';
+	vertical-align: middle;
+}
+
+.alert_pwCheck {
 	color: red;
+	font-size: 7pt;
+	margin-left: 15px;
 }
-
-#findLayer {
-	float: right;
-	display: inline-block;
-	word-spacing: -1px;
-	font-size: 12px;
-	padding-top: 4px;
-}
-
-#login_sns {
-	font-weight: bold;
-	color: #fa9e3f;
-	font-size: 14px;
-	word-spacing: -1px;
-}
+/* -----회원가입 CSS END----- */
 </style>
 
 <script type="text/javascript"
- src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
+	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
+	//현재 서버 시간
 
-function f_login() {
-	if (event.keyCode != 13) {
-		return false;
-	} else {
-		fnLogin();
-	}
-}
-	
-/* KH정보교육원 로그인 화면 / 로그인 버튼 관련 기능
-	function fnLogin() {
-		var member_flag1 = $('input[name=member_flag]:checked').val();
+	var curYear = "2018"; //현재 년
 
-		if (f_validate()) {
-			var params = {
-				id : $('#id').val(),
-				password : $('#password').val(),
-				member_flag	: $('input[name=member_flag]:checked').val()
-			};
-			$.ajax({
-				url : '/login/loginCheck.kh',
-				dataType : 'json',
-				type : 'post',
-				data : params,
-				success : function(data, textStatus) {
-					if (data['result'] == '2') {
-						if (member_flag1 == 'T') {
-							location.href = "/login/mypage.kh";
-						} else {
-							location.href = "/main/main.kh";
-						}
-					} else if (data['result'] == '3') {
-						$("#alert_flag").css("display", "block");
-					} else if (data['result'] == '4') {
-						alert("이미 접속한 아이디입니다.");
-					} else {
-						$("#alert_idpw").css("display", "block");
-					}
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					alert('오류가 발생했습니다\n[' + textStatus + ']\n' + errorThrown);
-				}
-			});
-		}
-	}
-*/
+	var curMonth = "3"; //현재 월
 
-/* 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때 */
-function f_validate() {
-	$(".join_hidden").hide();
-	
-	var id = $("#id").val();
-	var pw = $("#password").val();
+	var curDay = "6"; //현재 일
 
-	if ( id==null || id=="") {
-		$("#alert_id").css("display", "inline-block");
-		document.getElementById("id").focus();
-		return false;
-	}
+	var curHour = "18"; //현재 시간
 
-	if ( pw==null || pw=="") {
-		$("#alert_pw").css("display", "inline-block");
-		document.getElementById("password").focus();
-		return false;
-	}
-	
-	return true;
-}
+	var curMinute = "21"; //현재 분
 
+	var ___isLogin___ = "false"; //로그인 여부
 
-// 아이디, 비밀번호 확인
-$(document).ready( function() {
-	
-	$("#login_confirm").click( function() {
+	var __ciYn__ = "";
 
-		if( f_validate() ) {
-		
-			var id = $("#id").val();
-			var pw = $("#password").val();
-			var params = {
-				id : $('#id').val(),	
-				password : $('#password').val()
-			};
-			
-			$.ajax({
-				type: "POST"
-				, url: "/login/login.do"
-				, data: {
-						memId:id,
-						memPw:pw
-					}
-				, dataType: "json"
-				, success: function( data ) {
-					var check = data.check;
-					var gubn = data.gubn;
-					if( check ) {
-// 					alert("로그인 성공");
-						// 관리자
-						if( gubn===0 ) {
-							location.href="/Manage_Page/home.jsp";
-						}
-						// 고객
-						if( gubn===1 ) {
-							location.href="/Page/main.jsp";
-						}
-<%-- 						console.log('<%=request.getSession().getAttribute("id")%>'); --%>
-// 						console.log("JS ID : ${sessionScope.id};")
-					} else {
-// 					alert("로그인 실패");
-						$("#alert_login").css("display", "inline-block");
-						document.getElementById("id").focus();
-					}
-					
-				}
-				, error: function(e) {
-					console.log("----- error -----");
-					console.log(e.responseText);
-				}
-			});
-		}
-	});
-});
+	var _globalFullContextSSL = "https://www.greencar.co.kr";
+
+	var ___isCorpChk___ = "";
+
+	var _ssoDomain = 'member.lpoint.com';
+
+	var _joinReturnUrl = 'https://www.greencar.co.kr/login/';
+
+	var _fullImgHostAddr = '';
+
+	var _birth = "";
 </script>
 
-<title>로그인</title>
+
+<script type="text/javascript" src="./js/lib/jquery-1.9.1.js"></script>
+
+
+<!-- <link type="text/css" rel="stylesheet" media="all" -->
+<!-- 	href="./css/master.css" /> -->
+
+<title>요금안내 &lt; 라젠카 소개</title>
 
 </head>
 
 <body>
+
+
 	<!-- Begin #wrap -->
+
 	<div id="wrap">
+
 		<div class="top_banner join" style="display: none;">
-			
+			<!-- // free 클래스 삭제 (2015-12-30) -->
+
 			<div class="cont">
 
 				<a href="https://www.greencar.co.kr/member/index.jsp"
 					target="_blank"><img
-					src="/Page/images/common/top_banner_160825.gif"
+					src="./images/common/top_banner_160825.gif"
 					alt="신규가입시 3시간 무료쿠폰 전원증정" /></a>
 
 
@@ -1138,8 +1195,13 @@ $(document).ready( function() {
 			</div>
 
 		</div>
+
 		<!-- [e]top_banner -->
+
+
+
 		<!-- Begin #header -->
+
 		<div id="header" class="sub">
 
 			<div class="hgroup">
@@ -1190,201 +1252,306 @@ $(document).ready( function() {
 			</div>
 
 		</div>
+
 		<!-- // End #header -->
+
+
+
 		<!-- Begin #container -->
+
 		<div id="container">
+
 			<div class="content-wrap">
 
-<div id="content_sub" onmouseover="fnPrevDept();">
-<div id="content_sub_wrap">
-<div id="content_right">
+				<div class="sidebar">
+					<!-- 왼쪽 메뉴 -->
 
-	<div class="subject">
-		<span>로그인</span>
-	</div>
 
-	<div id="login">
-	<div class="login_frm">
-	<div class="login_frm_detail">
-		<div class="left">
 
-			<div style="float: left; width: 285px; height: 70px;">
-				<span>아이디</span>
-				<input type="text" id="id" name="id" onkeypress="f_login();" /><br>
-				<span>비밀번호</span>
-				<input type="password" id="password" name="password" onkeypress="f_login();" />
-			</div>
-<!-- ***더 좋은 방법을 생각해보자 -->
-			<a href="javascript:void(0);" id="login_confirm">로그인</a>
+					<h2 class="left-tit">마이 페이지</h2>
 
-			<div>
-				<div>
-					<a href="/login/findId.do" id="findLayer">아이디/비밀번호 찾기</a>
-				</div>
-				<div>
-					<span class="join_hidden" id="alert_id">아이디를 입력하세요.</span>
-					<span class="join_hidden" id="alert_pw">비밀번호를 입력하세요.</span>
-					<span class="join_hidden" id="alert_login">아이디 또는 비밀번호를 잘못 입력하였습니다.</span>
-				</div>
+					<ul class="leftMenu">
 
-			</div>
-		</div>
-		</div>
-		</div>
-	</div>
-	
-	<span id="login_sns">▶ SNS계정 로그인</span><br>
-	
-	<div style="padding-top: 5px;">
-		<a href="javascript:void(0);">
-		<img src="/Page/images/login/facebook.PNG" alt="" />
-		</a>
-		<a href="javascript:void(0);">
-		<img src="/Page/images/login/kakao.PNG" alt="" />
-		</a> <br>
-		<a href="javascript:void(0);">
-		<img src="/Page/images/login/naver.PNG" alt="" />
-		</a>
-	</div>
-</div>
-</div>
-</div>
+						<li class="top"><a href="#"><span>예약확인</span></a></li>
 
-			</div>
-			<!-- // End #container -->
-			<!-- Begin #footer -->
-			<div id="footer">
+						<li><a href="#"><span>개인정보 관리</span></a></li>
 
-				<div class="footer_box01">
+						<li><a href="#"><span>쿠폰</span></a></li>
 
-					<div class="footer_inner">
+						<li><a href="#"><span>1:1문의</span></a></li>
 
-						<ul class="footer_family">
+						<li><a href="#" class='on'><span>회원탈퇴</span></a></li>
 
-							<li><a
-								href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
-								target="_blank">장기렌터카</a></li>
+					</ul>
 
-							<li><a
-								href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
-								target="_blank">단기렌터카</a></li>
 
-							<li><a
-								href="https://www.lotterentacar.net/kor/long/usedList.do"
-								target="_blank">중고차렌터카</a></li>
 
-							<li><a
-								href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
-								target="_blank">내차팔기</a></li>
 
-							<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
+					<div class="side_sns">
 
-						</ul>
+						<span class="tit">SNS<em></em></span> <a class="facebook"
+							href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
+							페이스북</a> <a class="blog" href="http://blog.naver.com/greencar_co"
+							target="_blank">라젠카 블로그</a> <a class="instagram"
+							href="https://www.instagram.com/greencar_kr" target="_blank">라젠카
+							인스타그램</a>
 
-						<ul class="footer_partner">
+					</div>
 
-							<li><a
-								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-									src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+					<div class="side_cscenter">
 
-							<li><a
-								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
-									src="./images/common/img_partner_suwon.gif"
-									alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
-
-							<li><a
-								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
-									src="./images/common/img_partner_incheon.gif"
-									alt="인천광역시 라젠카 예약하기" /></a></li>
-
-						</ul>
+						<span class="tit">고객센터</span> <span class="tel">010-9550-0167</span>
 
 					</div>
 
 				</div>
 
-				<div class="footer_box02">
+				<div class="contentbox">
+					<!-- contentbox로 묶기 -->
 
-					<div class="footer_inner">
 
-						<ul class="footer_sns">
+					<div class="location">
+						<div class="location_in">
+							<p>
+								<span>그린카 소개</span>&gt; <strong>요금안내</strong>
+							</p>
+						</div>
+					</div>
+					<div class="subtop-content bg_subvisual_02_01">
+						<h3 class="subtit">회원 탈퇴</h3>
+						<p class="subtxt"></p>
+					</div>
+					<div>
+						<h4>회원 탈퇴 확인</h4>
+					</div>
 
-							<li><a class="facebook"
-								href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
-									페이스북</a></li>
+					<div class="bodystart">
 
-							<li><a class="blog" href="http://blog.naver.com/greencar_co"
-								target="_blank">라젠카 블로그</a></li>
+						<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
 
-							<li><a class="instagram"
-								href="https://www.instagram.com/greencar_kr/" target="_blank">라젠카
-									인스타그램</a></li>
+						<div class="charges-wrap">
 
-						</ul>
+							<div class="section02">
+								<!-- S:table //-->
 
-						<ul class="footer_links">
-
-							<li><a href="http://www.greencar.co.kr/service/company/">회사소개</a></li>
-
-							<li><a href="http://www.greencar.co.kr/alliance/">제휴신청</a></li>
-
-							<li><a href="http://www.greencar.co.kr/service/useclause/">회원이용약관</a></li>
-
-							<li><a
-								href="http://www.greencar.co.kr/service/personalinfo/"
-								class="point">개인정보처리방침</a></li>
-
-							<li><a href="http://www.greencar.co.kr/service/carclause/">자동차대여
-									표준약관</a></li>
-
-							<li><a href="http://www.greencar.co.kr/service/location/">위치기반
-									서비스 이용약관</a></li>
-
-							<li><a href="http://www.greencar.co.kr/service/sitemap/">사이트맵</a></li>
-
-						</ul>
-
-						<div class="footer_info">
-
-							<div class="info">
-
-								<span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
-									: 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
-
+								<p>탈퇴 확인을 위해 귀하의 비밀번호를 입력하여 주십시오.</p>
+								<div>
+									<input type="hidden" id="mem_id" name="mem_id" value="<%=mem.getMemId()%>"></input>
+									<input type="password" id="mem_pw" name="mem_pw"></input>
+								</div>
+								<!--// E:table -->
 							</div>
 
-							<div class="addr">
-
-								<span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
-									010-9550-0167</span> <span>FAX : 02-9550-0167</span>
-
+							<div class="btnArea02">
+								<a href="javascript:void(0);" onclick="btn_delete;"
+									id="btn_delete" class="btnP01">탈퇴하기</a>
 							</div>
+						</div>
+						<!-- charges-wrap -->
 
-							<span class="copy">Copyright &#169; 2018 LazenCar. All
-								Rights Reserved.</span>
+					</div>
+					<!-- // bodyend -->
+				</div>
+				<!-- // end contentBox -->
+
+			</div>
+			<!-- // End #content-wrap -->
+
+		</div>
+		<!-- // End #container -->
+
+
+		<!-- Begin #footer -->
+
+		<div id="footer">
+
+
+			<div class="footer_box01">
+
+				<div class="footer_inner">
+
+					<ul class="footer_family">
+
+						<li><a
+							href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
+							target="_blank">장기렌터카</a></li>
+
+						<li><a
+							href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
+							target="_blank">단기렌터카</a></li>
+
+						<li><a
+							href="https://www.lotterentacar.net/kor/long/usedList.do"
+							target="_blank">중고차렌터카</a></li>
+
+						<li><a
+							href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
+							target="_blank">내차팔기</a></li>
+
+						<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
+
+					</ul>
+
+					<ul class="footer_partner">
+
+						<li><a
+							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
+								src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+
+						<li><a
+							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
+								src="./images/common/img_partner_suwon.gif"
+								alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
+
+						<li><a
+							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
+								src="./images/common/img_partner_incheon.gif"
+								alt="인천광역시 라젠카 예약하기" /></a></li>
+
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="footer_box02">
+
+				<div class="footer_inner">
+
+					<ul class="footer_sns">
+
+						<li><a class="facebook"
+							href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
+								페이스북</a></li>
+
+						<li><a class="blog" href="http://blog.naver.com/greencar_co"
+							target="_blank">라젠카 블로그</a></li>
+
+						<li><a class="instagram"
+							href="https://www.instagram.com/greencar_kr/" target="_blank">라젠카
+								인스타그램</a></li>
+
+					</ul>
+
+					<ul class="footer_links">
+
+						<li><a href="http://www.greencar.co.kr/service/company/">회사소개</a></li>
+
+						<li><a href="http://www.greencar.co.kr/alliance/">제휴신청</a></li>
+
+						<li><a href="http://www.greencar.co.kr/service/useclause/">회원이용약관</a></li>
+
+						<li><a href="http://www.greencar.co.kr/service/personalinfo/"
+							class="point">개인정보처리방침</a></li>
+
+						<li><a href="http://www.greencar.co.kr/service/carclause/">자동차대여
+								표준약관</a></li>
+
+						<li><a href="http://www.greencar.co.kr/service/location/">위치기반
+								서비스 이용약관</a></li>
+
+						<li><a href="http://www.greencar.co.kr/service/sitemap/">사이트맵</a></li>
+
+					</ul>
+
+					<div class="footer_info">
+
+						<div class="info">
+
+							<span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
+								: 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
 
 						</div>
 
-						<div class="footer_emblem">
+						<div class="addr">
 
-							<img src="./images/common/img_emblem_brandpower.jpg"
-								alt="2016년 한국산업의 브랜드파워 1위" /> <img
-								src="./images/common/img_emblem_brandstar.jpg"
-								alt="2016년 대한민국 브랜드스타" /> <img
-								src="./images/common/img_emblem_award.jpg"
-								alt="모바일 어워드 코리아 2016" /> <img
-								src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
+							<span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
+								010-9550-0167</span> <span>FAX : 02-9550-0167</span>
 
 						</div>
+
+						<span class="copy">Copyright &#169; 2018 LazenCar. All
+							Rights Reserved.</span>
+
+					</div>
+
+					<div class="footer_emblem">
+
+						<img src="./images/common/img_emblem_brandpower.jpg"
+							alt="2016년 한국산업의 브랜드파워 1위" /> <img
+							src="./images/common/img_emblem_brandstar.jpg"
+							alt="2016년 대한민국 브랜드스타" /> <img
+							src="./images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
+
+						<img src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
 
 					</div>
 
 				</div>
 
 			</div>
-			<!-- // End #footer -->
+
 		</div>
-		<!-- // End #wrap -->
+
+		<!-- // End #footer -->
+
+	</div>
+
+	<!-- // End #wrap -->
+
+
+	<!-- 	select text input 스크립트  start -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	<script>
+		function checkValue() {
+			if ($("#checkPw").val() == "") {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		
+		$("#btn_delete").click(function() {
+			var mem_id = $("#mem_id").val();
+			var mem_pw = $("#mem_pw").val();
+			if (checkValue() == true) {
+				
+				$.ajax({
+					type : "POST",
+					url : "/delete.do",
+					dataType : "json",
+					data : {
+						memId : mem_id,
+						memPw : mem_pw
+					},
+
+					success : function(data) {
+						var check = data.check;
+						console.log(check);
+						if(check){
+						alert("회원 삭제 성공");
+						<%session.invalidate();%>//세션 종료
+						location.href="/Page/main.jsp";	//메인페이지로 되돌아감
+						
+						} else{
+						alert("비밀번호 불일치")
+						}
+					},
+					error : function(e) {
+						console.log("------error------");
+						console.log(e.responseText);
+					}
+				});
+			} else {
+				alert("비밀번호를 입력해주세요");
+				return;
+			}
+		});
+	</script>
+	<!-- 	select text input 스크립트  end -->
+
 </body>
 
 </html>
+<%}%>
