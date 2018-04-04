@@ -35,6 +35,7 @@ function checkCarDataInsert() {
 	}
 }
 
+//초기화, 전송 버튼
 $(document).ready(function() {
 	$("#reset").click(function() {
 		$("#f")[0].reset();
@@ -187,4 +188,5 @@ $(document).ready(function() {
 
 </body>
 </html>
+
 

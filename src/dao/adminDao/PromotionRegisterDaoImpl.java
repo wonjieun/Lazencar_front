@@ -6,13 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.commons.fileupload.FileItem;
 
-import dto.Car;
-import dto.adminDto.Image;
 import dto.adminDto.PromotionManage;
 
 public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
@@ -33,69 +29,59 @@ public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
 	public void insertAllData(PromotionManage pro) {
-		String sql = "INSERT INTO TB_EVENT(EVE_NUM, EVE_NAME, EVE_START, EVE_END"
-				+ ", EVE_BANNER_IMG, EVE_BANNER_ORG, EVE_DETAIL_IMG, EVE_DETAIL_ORG)"
-				+" VALUES(?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO TB_EVENT(EVE_NUM, EVE_NAME, EVE_START, EVE_END, EVE_BANNER_IMG, EVE_DETAIL_IMG)"
+				+ " VALUES(UP_COU_NUM.nextval,?,?,?,?,?)";
 		ResultSet rs = null;
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, pro.getNo());
-			pst.setString(2, pro.getName());
-			pst.setString(3, pro.getStartDate());
-			pst.setString(4, pro.getEndDate());
-			pst.setString(5, pro.getBannerImg());
-			pst.setString(6, pro.getBannerOrg());
-			pst.setString(7, pro.getDetailImg());
-			pst.setString(8, pro.getDetailOrg());
-			
+			pst.setString(1, pro.getName());
+			pst.setString(2, pro.getStartDate());
+			pst.setString(3, pro.getEndDate());			
+			pst.setString(4, pro.getBannerImg());			
+			pst.setString(5, pro.getDetailImg());			
 			pst.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void insertImage(String imgPath) {
-		PreparedStatement pst = null;
-		String sql = "INSERT INTO image_file (no, image) VALUES(seq_image.nextval, ?)";
-		
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, imgPath);
-			
-			pst.executeUpdate();
-			
-		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(conn!=null)	conn.close();
+				if(pst!=null)	pst.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 	
+	
+	
+	
+	/*
+	
+	
+
 	public List getImage() {
 		Statement st = null;
-		String sql = "SELECT no, image FROM image_file ORDER BY no";
-		List<Image> list = new ArrayList<>();
+		String sql = "SELECT EVE_NAME, EVE_SATART_DATE, EVE_END_DATE,"
+				+ " EVE_BANNER_IMG, EVE_BANNER_ORG, EVE_DETAIL_IMG, EVE_DETAIL_ORG"
+				+ " FROM TB_EVENT ORDER BY EVE_NUM";
+		List<PromotionManage> list = new ArrayList<>();
 		
 		try {
 			st = conn.createStatement();
-			
 			ResultSet rs = st.executeQuery(sql);
 			
-			
 			while( rs.next() ) {
-				Image img = new Image();
-				img.setNo(rs.getInt("no"));
-				img.setImage(rs.getString("image"));
-				
-				list.add(img);
+				PromotionManage dto = new PromotionManage();
+				dto.setName(rs.getString("EVE_NAME"));
+				dto.setStartDate(rs.getString("EVE_START_DATE"));
+				dto.setEndDate(rs.getString("EVE_END_DATE"));
+				dto.setBannerImg(rs.getString("EVE_BANNER_IMG"));
+				dto.setBannerOrg(rs.getString("EVE_BANNER_ORG"));
+				dto.setDetailImg(rs.getString("EVE_DETAIL_IMG"));
+				dto.setDetailImg(rs.getString("EVE_DETAIL_ORG"));
+				list.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,11 +95,13 @@ public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 		
 		return list;
 	}
-	public Image getImage(int no) {
+	public PromotionManage getImage(String name) {
 		Statement st = null;
-		String sql = "SELECT no, image FROM image_file WHERE no="+no;
+		String sql = "SELECT EVE_NAME, EVE_SATART_DATE, EVE_END_DATE,"
+				+ " EVE_BANNER_IMG, EVE_BANNER_ORG, EVE_DETAIL_IMG, EVE_DETAIL_ORG"
+				+ " FROM TB_EVENT WHERE EVE_NAME="+name;
 		
-		Image img = null;
+		PromotionManage dto = null;
 		
 		try {
 			st = conn.createStatement();
@@ -121,9 +109,14 @@ public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 			ResultSet rs = st.executeQuery(sql);
 			
 			rs.next();
-			img = new Image();
-			img.setNo(rs.getInt("no"));
-			img.setImage(rs.getString("image"));
+			dto = new PromotionManage();
+			dto.setName(rs.getString("EVE_NAME"));
+			dto.setStartDate(rs.getString("EVE_START_DATE"));
+			dto.setEndDate(rs.getString("EVE_END_DATE"));
+			dto.setBannerImg(rs.getString("EVE_BANNER_IMG"));
+			dto.setBannerOrg(rs.getString("EVE_BANNER_ORG"));
+			dto.setDetailImg(rs.getString("EVE_DETAIL_IMG"));
+			dto.setDetailImg(rs.getString("EVE_DETAIL_ORG"));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -135,7 +128,11 @@ public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 			}
 		}
 		
-		return img;
+		return dto;
 	}
-
+	*/
+	
+	
+	
 }
+

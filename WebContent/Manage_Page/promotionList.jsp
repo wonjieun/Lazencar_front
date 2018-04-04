@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <%@ page import="java.util.List" %>
-<%@ page import="dto.adminDto.Image" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="dto.adminDto.PromotionManage" %>
+<%@ page import="dao.adminDao.PromotionRegisterDao" %>
+<%@ page import="dao.adminDao.PromotionRegisterDaoImpl" %>
+
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -15,13 +21,70 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
 <!-- 	<link rel="stylesheet" type="text/css" href="./css/paging.css" />   -->
 	
-	<style>
-	.level1 :nth-child(9) .fly {background: #ffb505 !important;}
-	</style>
+<style>
+.level1 :nth-child(9) .fly {background: #ffb505 !important;}
+</style>
 	
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script> 
+<script type="text/javascript">
+  
+  //초기화 버튼
+  $(document).ready(function(){
+	  
+  });
+  
+  
+  
+  
+  //리스트 하단에 추가로 출력해주기 위해서 토글 함수 생성
+  	function showDetail(id){
+		  obj = document.getElementById(id);
+		  
+		  if(obj.style.display == "none"){
+			  obj.style.display = "table-row";
+		  }else{
+			  obj.style.display="none";
+		  }
+  	}
+
+  //   	검색창에 값이 있는가 판별
+	function checkSearch_content(){
+		if($("#search_content").val()==''){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+// 	검색 및 정렬하는 ajax
+$(document).ready(function(){
+	$("#searchPro").click(function(){
+		var clicked="clicked";
+		var content=$("#search_content").val();
+
+		console.log("입력내용:"+content);
+		
+		if(checkSearch_content()==true){
+			console.log("내용있음");
+			
+			var $form = $("<form>").attr("action", "/admin/promotionList.do").attr("method", "post");
+			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "clicked").attr("value", clicked).appendTo($form);
+			$form.appendTo($(document.body));
+			
+			$form.submit();	
+			
+		}else{
+			alert("검색어를 입력하세요");
+			console.log("내용을 채워주세요");
+		}
+	});
+	
+});
+  </script>
  
 
 </head>
@@ -77,8 +140,8 @@
 		
 		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
-				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
-				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
+				<li><a href="/admin/promotionRegister.do">특가 등록</a></li>
+				<li><a href="/admin/promotionList.do">특가 조회/삭제</a></li>
 			</ul>
 		</li>
 		
@@ -95,13 +158,11 @@
 
 <div class="container">
 
-
 <%
-	List<Image> images = (List)request.getAttribute("images");
-	for(Image i : images){ %>
-		<a href="/FileDoenload?type=i&no="<%=i.getNo() %>"><%=i.getNo() %> <%=i.getImage() %></a><br>
+	List<PromotionManage> dto = (List)request.getAttribute("dto");
+	for(PromotionManage i : dto){ %>
+		<a href="/FileDownload?type=i&no="<%=i.getName() %>"><%=i.getName() %> <%=i.getBannerImg() %></a><br>
 <% } %>
-
 
 
 
@@ -125,59 +186,45 @@
 					</table>
 	</div>	
 	
-		<button class="btnSearch" type="button">검색</button>
+		<button class="btnSearch" id="saerchPro" type="button">검색</button>
 		<div class="clear"></div>
 	<div>
 		 <table id="table2">
+			<thead>
+			<tr>
+				<th>특가 상품 명</th>
+				<th>특가 상품 시작일</th>
+				<th>특가 상품 종료일</th>
+				<th>특가 상품 배너 이미지</th>
+				<th>특가 상품 상세 이미지</th>
+			</tr>
+			</thead>
+			
+			<tbody>
+			
+			<c:forEach items="${list }" begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
 			
 			<tr>
-				<th>no</th>
-				<th>상세정보</th>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
+<%-- 				${i.dto 변수명 } --%>
+				<td class="left">${i.name }</td>
+				<td>${i.StartDate }</td>
+				<td>${i.EndDate }</td>
+				<td>${i.BannerOrg }</td>
+				<td>${i.DetailOrg }</td>
 				<td class="right"></td>
-			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>											
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>															
-			<tr>
-				<td class="left">cell</td>
-				<td class="right"></td>
-			</tr>											
-		</table>
+			</tr>	
+			
+			</c:forEach>
+			</tbody>
+			
+			</table>
 		</div>
 		
 		<div class="btnSave">
-		<button type="reset">초기화</button>
+		<button typ="reset">초기화</button>
 		<button type="submit">삭제</button>
 		</div>
 		<div class="clear"></div>
-		
-<!-- 		<div class="paging"> -->
-<!-- 				<a href="#" class="page_first"><img src="./images/page_first.gif" alt="처음" /></a> -->
-<!-- 				<a href="#" class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a> -->
-<!-- 				<strong>1</strong> -->
-<!-- 				<a href="#" class="page_next"><img src="./images/page_next.gif" alt="다음" /></a> -->
-<!-- 				<a href="#" class="page_end"><img src="./images/page_end.gif" alt="마지막" /></a> -->
-<!-- 		</div>	 -->
 		
 		<jsp:include page="/Manage_Page/util/paging.jsp" />
 
@@ -190,3 +237,4 @@
 
 </body>
 </html>
+
