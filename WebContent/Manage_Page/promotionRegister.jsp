@@ -47,6 +47,7 @@ $(document).ready(function() {
 		} else {
 			
 			$("#f").submit();
+// 			alert("등록완료")		여기 말고 controller에서 
 		}
 	});
 });
@@ -107,8 +108,8 @@ $(document).ready(function() {
 		
 		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
-				<li><a href="./admin/promotionRegister.do">특가 등록</a></li>
-				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
+				<li><a href="/admin/promotionRegister.do">특가 등록</a></li>
+				<li><a href="/admin/promotionList.do">특가 조회/삭제</a></li>
 			</ul>
 		</li>
 		

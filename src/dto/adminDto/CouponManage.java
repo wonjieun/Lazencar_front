@@ -1,0 +1,49 @@
+package dto.adminDto;
+
+public class CouponManage {
+	private int no;					//COUPON_NUM
+	private String name;			//COUPON_NAME
+	private String StartDate;		//COUPON_START_DATE
+	private String EndDate;			//COUPON_END_DATE
+	private String BannerImg;		//EVE_BANNER_IMG
+	private String DetailImg;		//EVE_DETAIL_IMG
+	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getStartDate() {
+		return StartDate;
+	}
+	public void setStartDate(String startDate) {
+		StartDate = startDate;
+	}
+	public String getEndDate() {
+		return EndDate;
+	}
+	public void setEndDate(String endDate) {
+		EndDate = endDate;
+	}
+	public String getBannerImg() {
+		return BannerImg;
+	}
+	public void setBannerImg(String bannerImg) {
+		BannerImg = bannerImg;
+	}
+	public String getDetailImg() {
+		return DetailImg;
+	}
+	public void setDetailImg(String detailImg) {
+		DetailImg = detailImg;
+	}
+	
+	
+	}

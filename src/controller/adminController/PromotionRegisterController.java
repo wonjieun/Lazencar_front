@@ -22,14 +22,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import dao.adminDao.PromotionRegisterDao;
 import dao.adminDao.PromotionRegisterDaoImpl;
 import dto.adminDto.PromotionManage;
-import service.adminService.CarRegisterService;
-import service.adminService.CarRegisterServiceImpl;
 
 @WebServlet("/admin/promotionRegister.do")
 @SuppressWarnings("serial")
-public class FileUploadController extends HttpServlet {
+public class PromotionRegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	CarRegisterService service = new CarRegisterServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
