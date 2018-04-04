@@ -6,9 +6,9 @@ import dto.Member;
 
 public class MemberSignUpServiceImpl implements MemberSignUpService {
 	MemberSignUpDao dao = new MemberSignUpDaoImpl();
-
+	String msg = "";
 	@Override
 	public void signUp(Member mem) {
-		dao.insertAllData(mem);	
+		dao.doSignUp(mem);
 	}
 }

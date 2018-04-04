@@ -23,9 +23,9 @@ public class CarRegisterServlet extends HttpServlet {
 		CarRegisterService service = new CarRegisterServiceImpl();
 	
 	@Override
-		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			doPost(req,resp);
-		}
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			req.getRequestDispatcher("/Manage_Page/carRegister.jsp").forward(req, resp);
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/json; charset=utf-8");
@@ -62,6 +62,5 @@ public class CarRegisterServlet extends HttpServlet {
 		response.getWriter().write(gson.toJson(jsonObject));
 		service.carRegister(car);
 	
-//		request.getRequestDispatcher("/Manage_Page/carRegister.jsp").forward(request, response);
 	}
 }

@@ -19,5 +19,7 @@ public interface CarCheckListDao {
 
 	//검색 버튼 눌렸나 확인하는 메서드
 	boolean doSearch(CarManage cm);
-
+	//차량 수정 및 삭제 메서드
+	public void updateCar(CarManage cm);
+	public void deleteCar(CarManage cm);
 }

@@ -19,6 +19,7 @@ import service.adminService.MemberManageServiceImpl;
  */
 @WebServlet("/admin/userManage.do")
 public class MemberManageServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	
 	private MemberManageService service = new MemberManageServiceImpl();
