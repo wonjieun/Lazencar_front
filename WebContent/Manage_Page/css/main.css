@@ -2,7 +2,7 @@
 
 .header {color: #f1c40f; height: 50px; text-align: center; font-size: 30px; margin-left: 300px;}
 
-#menu {width:250px; height:100%; margin-top:-8px;  float:left; position:fixed; background-color: #ddd;}
+#menu {width:237px; height:100%; margin-top:-8px; float:left; position:fixed; background-color: #ddd;}
 
 #menu ul {margin:0; padding:0; list-style:none; white-space:nowrap; text-align:left;  padding:1px 1px 0 1px;}
 
@@ -12,7 +12,7 @@
 #menu ul.level1 {position:fixed; left:0; top:0px; background-color: #f1c40f; height: 100%;}
 
 
-#menu a {display:block; font:normal 11px verdana,arial,sans-serif; color:#000; line-height:22px; text-decoration:none;padding:10px 30px 10px 30px; border-bottom:1px solid #ddd; margin-top: 10px; margin-bottom: 10px;} 
+#menu a {display:block; font:normal 11px verdana,arial,sans-serif; color:#000; line-height:22px; text-decoration:none;padding:10px 30px 10px 30px; margin-top: 10px; margin-bottom: 10px;} 
 
 #menu ul li:hover > ul {visibility:visible; left:100%; margin-top:-64px; margin-left:1px}
 
@@ -24,7 +24,7 @@
 
 #menu li a.fly {background: white; border:1px solid #ddd; }			/*메인메뉴*/
 #menu li:hover > a.fly {background:#ffb505; color: white;} /*메인메뉴 hover*/
-#menu ul li:hover > ul a {background: white; width: 72x; }	/*메인메뉴 hover 시 하위메뉴*/
+#menu ul li:hover > ul a {background: white; width: 70x; }	/*메인메뉴 hover 시 하위메뉴*/
 #menu ul li:hover > ul:hover a:hover {background:#ffb505; color: white; border:1px solid #ddd;}	/*메인메뉴 hover 시 하위메뉴*/
 
 /*content 상단 제목*/

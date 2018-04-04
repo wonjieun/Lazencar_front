@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
-
-<meta charset="UTF-8">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 <style type="text/css">
@@ -320,11 +318,7 @@ a.nvalinks-rev:hover {
 	position: relative;
 	width: 1060px;
 	margin: 0 auto;
-<<<<<<< HEAD:WebContent/Page/introduction2.html
-	padding: 50px 0 100px
-=======
 	padding: 80px 0 0 0;
->>>>>>> df2e99c32657019a228eb5da53c1b51994caae81:WebContent/Page/p11_SignUp_layout.html
 }
 
 .content-wrap:after {
@@ -332,7 +326,6 @@ a.nvalinks-rev:hover {
 	display: block;
 	clear: both
 } /*대체 뭘하려는걸까*/
-
 .contentbox {
 	float: right;
 	width: 750px
@@ -929,82 +922,10 @@ a.hoverline:hover {
 	margin: 20px 0 10px 0;
 }
 
-/* -----회원가입 CSS START----- */
-caption#caption {
-	height: 26px;
-	padding: 5px;
-	background: #f9f9f9;
-	border-bottom: 1px solid;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: rgb(222, 222, 222);
-	color: #777777;
-	text-align: left;
-}
-
-h1 {
-	
-}
-
-h3 {
-	margin-bottom: 30px;
-	margin-top: 3px;
-	color: #4c4c4c;
-	font-size: 28px;
-	font-family: 'NanumGothicBold';
-}
-
-h4 {
-	margin-bottom: 25px;
-	color: #4c4c4c;
-	font-size: 18px;
-	font-family: 'NanumGothicBold';
-}
-
-h5 {
-	margin-bottom: 10px;
-	color: #4c4c4c;
-	font-size: 16px;
-	font-family: 'NanumGothicBold';
-}
-
-h6 {
-	margin-bottom: 10px;
-	color: #4c4c4c;
-	font-size: 14px;
-	font-family: 'NanumGothicBold';
-}
-
-/* section guide */
-.section01 {
-	margin-bottom: 25px;
-}
-
-.section02 {
-	margin-bottom: 35px;
-}
-
-.section03 {
-	margin-bottom: 7px;
-}
-
-/* space guide */
-.ml5 {
-	margin-left: 5px !important;
-}
-
-.ml10 {
-	margin-left: 10px !important;
-}
-
-.tblp {
-	margin-top: 5px !important;
-}
-
-/* table guide */
+/* 쿠폰 css start */
 .tbl01 {
 	overflow: hidden;
-	border-top: 1px solid #f2c60f;
+	border-top: 1.5px solid #f6d247;
 	border-bottom: 1px solid #dedede;
 }
 
@@ -1013,108 +934,26 @@ h6 {
 	margin-bottom: -1px;
 }
 
-.tbl01 .caption {
-	height: 26px;
+.tbl01 .checkTblHd {
+	height: 30px;
 	padding: 5px 0 0 20px;
-	background: #f9f9f9;
+	background: #efd985;
 	border-bottom: 1px solid #dedede;
-	color: #777777;
-	text-align: left;
-	font-family: 'NanumGothicBold';
-}
-
-.tbl01 th {
-	height: 19px;
-	padding: 8px 0 9px 20px;
-	background: #f9f9f9;
-	border-right: 1px solid #ebebeb;
-	text-align: left;
-	vertical-align: top;
-	font-family: 'NanumGothicBold';
-}
-
-.tbl01 th em {
-	display: inline-block;
-	margin-right: 3px;
-	color: #ba262a;
-}
-
-.tbl01 td {
-	height: 19px;
-	padding: 8px 20px 9px 20px;
-	border-bottom: 1px solid #dedede;
-	vertical-align: top;
-}
-
-.tbl01 td .formatIn {
-	display: inline-block;
-	margin-top: 0;
-}
-
-/* input guide */
-.w50 {
-	width: 45px;
-}
-
-.w80 {
-	width: 75px;
-}
-
-.w100 {
-	width: 94px;
-}
-
-.w150 {
-	width: 145px;
-}
-
-.w200 {
-	width: 195px;
-}
-
-.w250 {
-	width: 245px;
-}
-
-/* button guide */
-.btnArea02 {
-	margin-top: 25px;
-	text-align: center;
-}
-
-.btnArea02 a {
-	margin-right: 3px;
-}
-
-/* button member */
-a.btnP01 {
-	display: inline-block;
-	height: 25px;
-	padding: 0px 24px 0 24px;
-	background: #f6d85d;
-	border: 1px solid #c8ad55;
 	color: #ffffff;
-	font-family: 'NanumGothicBold';
 	text-align: center;
-	vertical-align: middle;
-	line-height: 25px;
-}
-
-/* button table  */
-a.btnTbl01 {
-	line-height: 150%;
-	display: inline-block;
-	height: 20px;
-	padding: 0 4px 0 4px;
-	background: #a2a2a2;
-	border: 1px solid #949494;
-	color: #ffffff;
 	font-family: 'NanumGothicBold';
-	vertical-align: middle;
 }
 
-/* -----회원가입 CSS END----- */
+.tbl01 .checkTblBd td {
+	text-align: center;
+	height: 26px;
+}
 </style>
+
+
+
+
+
 
 <script type="text/javascript">
 	//현재 서버 시간
@@ -1256,17 +1095,19 @@ a.btnTbl01 {
 
 
 
-					<h2 class="left-tit">라젠카 소개</h2>
+					<h2 class="left-tit">마이 페이지</h2>
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>라젠카란?</span></a></li>
+						<li class="top"><a href="#"><span>예약확인</span></a></li>
 
-						<li><a href="#"><span>이용안내</span></a></li>
+						<li><a href="#"><span>개인정보 관리</span></a></li>
 
-						<li><a href="#"><span>요금안내</span></a></li>
+						<li><a href="#"><span>쿠폰</span></a></li>
 
-						<li><a href="#" class='on'><span>찾아오시는길</span></a></li>
+						<li><a href="#"><span>1:1문의</span></a></li>
+
+						<li><a href="#" class='on'><span>회원탈퇴</span></a></li>
 
 					</ul>
 
@@ -1302,54 +1143,43 @@ a.btnTbl01 {
 							</p>
 						</div>
 					</div>
-					<div class="subtop-content bg_subvisual_02_01">
-						<h3 class="subtit">회원가입</h3>
-						<p class="subtxt"></p>
+					<div class="subtop-content">
+						<h3 class="subtit">쿠폰</h3>
 					</div>
-					<div>
-						<h4>회원정보 입력</h4>
-					</div>
-
 					<div class="bodystart">
 
 						<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
 
 						<div class="charges-wrap">
+
 							<div class="section02">
 								<!-- S:table //-->
-								<h6>필수 입력 사항</h6>
+
+								<h6>쿠폰 보유 현황</h6>
 								<div class="tbl01">
-									<table summary="아이디 및 비밀번호 정보 입력 테이블">
-										<caption class="caption">아이디 및 비밀번호 정보</caption>
-										<colgroup>
-											<col width="22%" />
-											<col width="78%" />
-										</colgroup>
-										<tbody>
-											<tr>
-												<th><em title="필수입력">*</em><label for="">사용자
-														아이디</label></th>
-												<td><span class="formatIn"> <input type="text"
-														name="ID" class="itext w100 eng" title="아이디를 입력하세요."
-														maxlength="10" /> <a href="#" id="idDupCheck"
-														class="btnTbl01 ml5">확인</a>
-												</span></td>
+									<table
+										style="border-bottom: 1px solid; border-collapse: collapse;">
+										<thead style="height: 500px;">
+											<tr class="checkTblHd">
+												<th scope="col" width="36" style="border-right: 1px solid;"></th>
+												<th scope="col" width="360" style="border-right: 1px solid;">쿠폰</th>
+												<th scope="col" width="236" style="border-right: 1px solid;">사용조건</th>
+												<th scope="col" width="118">유효기간</th>
 											</tr>
-											<tr>
-												<th><em title="필수입력">*</em><label for="">비밀번호</label></th>
-												<td><span class="formatIn"><input
-														type="password" name="PASSWORD" class="itext w100 eng"
-														title="비밀번호를 입력하세요." maxlength="20" /></span> <span
-													class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span>
+										</thead>
+										<tbody class="checkTblBd">
+											<tr style="border-bottom: 1px solid #e9e9e9;">
+												<td scope="row" style="border-right: 1px solid #e9e9e9;">1</td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;"></td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;"></td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;">
 												</td>
 											</tr>
-											<tr>
-												<th><em title="필수입력">*</em><label for="">비밀번호
-														확인</label></th>
-												<td><span class="formatIn"><input
-														type="password" name="PASSWORD2" class="itext w100 eng"
-														title="비밀번호를 재입력하세요." maxlength="20" /></span> <span
-													class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span>
+											<tr style="border-bottom: 1px solid #e9e9e9;">
+												<td scope="row" style="border-right: 1px solid #e9e9e9;">2</td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;"></td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;"></td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;">
 												</td>
 											</tr>
 										</tbody>
@@ -1357,191 +1187,12 @@ a.btnTbl01 {
 								</div>
 								<!--// E:table -->
 							</div>
-							<div class="section02">
-								<!-- S:table //-->
-
-								<div class="tbl01">
-									<table summary="사용자 정보 입력 테이블">
-										<caption class="caption">사용자 정보</caption>
-										<colgroup>
-											<col width="22%" />
-											<col width="78%" />
-										</colgroup>
-										<tbody>
-											<tr>
-												<th><em title="필수입력">*</em>한글 성명</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="이름입력."
-														maxlength="10" />
-												</span></td>
-											</tr>
-
-											<tr>
-												<th><em title="필수입력">*</em>주민번호</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="주민번호 앞자리."
-														maxlength="6" style="width: 60px" /> - <input type="text"
-														name="NAME" class="itext w100 eng" title="주민번호 뒷자리."
-														maxlength="7" style="width: 60px" />
-
-												</span></td>
-											</tr>
-
-											<tr>
-												<th><em title="필수입력">*</em>휴대폰번호</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="휴대폰번호 앞자리."
-														maxlength="3" style="width: 35px; text-align: center;" />
-														- <input type="text" name="NAME" class="itext w100 eng"
-														title="휴대폰번호 중간자리." maxlength="4"
-														style="width: 45px; text-align: center;" /> - <input
-														type="text" name="NAME" class="itext w100 eng"
-														title="휴대폰번호 뒷자리." maxlength="4"
-														style="width: 45px; text-align: center;" />
-												</span></td>
-											</tr>
-											<tr>
-												<th><em title="필수입력">*</em>주소</th>
-												<td><span class="formatIn"><input type="text"
-														name="HOMEZIP_1"
-														class="itext w50 eng postcodify_postcode5" maxlength="6"
-														readonly="readonly" /><a href="#zipCode"
-														id="postcodify_search_button" class="btnTbl01 ml5">우편번호검색</a></span>
-													<p class="formatIn tblp">
-														<input type="text" name="HOMEADDR1"
-															class="itext w200 kor postcodify_address" maxlength="50" />
-														<input type="text" name="HOMEADDR2" class="itext w200 kor"
-															maxlength="50" />
-													</p></td>
-											</tr>
-											<tr>
-												<th><em title="필수입력">*</em> 이메일</th>
-												<td>
-													<form name="form">
 
 
 
-														<span class="formatIn"><input type="text"
-															name="EMAIL_1" class="itext w100 eng" maxlength="30" /><span
-															class="ml5">@</span><input type="text" name="EMAIL_2"
-															class="itext w150 ml5 eng" maxlength="20" /> <select
-															name="emailSelect" onChange="getSelectValue(this.form);"
-															class="ml5">
-																<option value="">직접입력</option>
-																<option value="daum.net">daum.net</option>
-																<option value="empal.com">empal.com</option>
-																<option value="gmail.com">gmail.com</option>
-																<option value="hanmail.net">hanmail.net</option>
-																<option value="msn.com">msn.com</option>
-																<option value="naver.com">naver.com</option>
-																<option value="nate.com">nate.com</option>
-														</select> </span>
 
-
-
-													</form>
-
-												</td>
-											</tr>
-
-										</tbody>
-									</table>
-
-
-								</div>
-
-							</div>
-
-							<!-- 							<div class="section02"> -->
-							<!-- 								<h6>선택 입력 사항</h6> -->
-							<!-- 								S:table // -->
-							<!-- 								<div class="tbl01"> -->
-							<!-- 									<table summary="근무지 정보 입력 테이블"> -->
-							<!-- 										<caption class="caption">근무지 정보</caption> -->
-							<!-- 										<colgroup> -->
-							<!-- 											<col width="22%" /> -->
-							<!-- 											<col width="78%" /> -->
-							<!-- 										</colgroup> -->
-							<!-- 										<tbody> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">직업</label></th> -->
-							<!-- 												<td><select id="job" name="JOBCODE"> -->
-							<!-- 														<option value="0">선택하세요</option> -->
-							<!-- 														<option value="1">무직</option> -->
-							<!-- 														<option value="2">한량</option> -->
-							<!-- 														<option value="3">취준생</option> -->
-							<!-- 														<option value="4">백수</option> -->
-							<!-- 												</select></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">회사명</label></th> -->
-							<!-- 												<td><input type="text" name="COMPANY" -->
-							<!-- 													class="itext w250 kor" maxlength="20" /></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">부서/직위</label></th> -->
-							<!-- 												<td><input type="text" name="DEPT" -->
-							<!-- 													class="itext w115 kor" maxlength="10" /> <span class="ml5">/</span><input -->
-							<!-- 													type="text" name="POSITION" class="itext w115 ml5 kor" -->
-							<!-- 													maxlength="10" /></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th>직장 전화번호</th> -->
-							<!-- 												<td><span class="formatIn"> <select class="w80" -->
-							<!-- 														name="OFFICETEL1"></select> <input type="text" -->
-							<!-- 														name="OFFICETEL2_1" class="itext w50 eng" maxlength="4" /> -->
-							<!-- 														<span class="ml5">-</span> <input type="text" -->
-							<!-- 														name="OFFICETEL2_2" class="itext w50 ml5 eng" -->
-							<!-- 														maxlength="4" /> -->
-							<!-- 												</span></td> -->
-							<!-- 											</tr> -->
-
-							<!-- 										</tbody> -->
-							<!-- 									</table> -->
-							<!-- 								</div> -->
-							<!-- 								// E:table -->
-							<!-- 							</div> -->
-							<!-- 							<div class="section02"> -->
-							<!-- 								S:table // -->
-							<!-- 								<div class="tbl01"> -->
-							<!-- 									<table summary="부가 정보 입력 테이블"> -->
-							<!-- 										<caption class="caption">부가 정보</caption> -->
-							<!-- 										<colgroup> -->
-							<!-- 											<col width="22%" /> -->
-							<!-- 											<col width="78%" /> -->
-							<!-- 										</colgroup> -->
-							<!-- 										<tbody> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">최근렌터카 사용목적</label></th> -->
-							<!-- 												<td><select id="usePurpose" name="USETYPE"> -->
-							<!-- 														<option value="0">선택하세요</option> -->
-							<!-- 														<option value="1">아</option> -->
-							<!-- 														<option value="2">진짜</option> -->
-							<!-- 														<option value="3">하기가</option> -->
-							<!-- 														<option value="4">싫다</option> -->
-							<!-- 												</select></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">희망 렌트 차종</label></th> -->
-							<!-- 												<td><select id="hopeKind" name="WANTEDCAR"> -->
-							<!-- 														<option value="0">선택하세요</option> -->
-							<!-- 														<option value="1">아</option> -->
-							<!-- 														<option value="2">진짜</option> -->
-							<!-- 														<option value="3">하기가</option> -->
-							<!-- 														<option value="4">싫다</option> -->
-							<!-- 												</select></td> -->
-							<!-- 											</tr> -->
-							<!-- 										</tbody> -->
-							<!-- 									</table> -->
-							<!-- 								</div> -->
-							<!-- 								// E:table -->
-							<!-- 							</div> -->
-							<div class="btnArea02">
-								<a href="#" id="sInfo" class="btnP01"
-									onclick="javascript:return false;">입력완료</a>
-							</div>
 						</div>
-						<!-- s-wrap -->
+						<!-- charges-wrap -->
 
 					</div>
 					<!-- // bodyend -->
@@ -1557,12 +1208,8 @@ a.btnTbl01 {
 
 			<!-- Begin #footer -->
 
-<<<<<<< HEAD:WebContent/Page/introduction2.html
-			<div class="footer_box01">
-=======
 			<div id="footer">
 
->>>>>>> df2e99c32657019a228eb5da53c1b51994caae81:WebContent/Page/p11_SignUp_layout.html
 
 				<div class="footer_box01">
 
