@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
-
-<meta charset="UTF-8">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 <style type="text/css">
@@ -320,11 +318,7 @@ a.nvalinks-rev:hover {
 	position: relative;
 	width: 1060px;
 	margin: 0 auto;
-<<<<<<< HEAD:WebContent/Page/introduction2.html
-	padding: 50px 0 100px
-=======
-	padding: 80px 0 0 0;
->>>>>>> df2e99c32657019a228eb5da53c1b51994caae81:WebContent/Page/p11_SignUp_layout.html
+	padding: 80px 0 100px
 }
 
 .content-wrap:after {
@@ -332,7 +326,6 @@ a.nvalinks-rev:hover {
 	display: block;
 	clear: both
 } /*대체 뭘하려는걸까*/
-
 .contentbox {
 	float: right;
 	width: 750px
@@ -1112,10 +1105,16 @@ a.btnTbl01 {
 	font-family: 'NanumGothicBold';
 	vertical-align: middle;
 }
-
+.alert_pwCheck{
+	color: red;
+    font-size: 7pt;
+    margin-left: 15px;
+}
 /* -----회원가입 CSS END----- */
 </style>
 
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 	//현재 서버 시간
 
@@ -1315,8 +1314,10 @@ a.btnTbl01 {
 						<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
 
 						<div class="charges-wrap">
+
 							<div class="section02">
 								<!-- S:table //-->
+
 								<h6>필수 입력 사항</h6>
 								<div class="tbl01">
 									<table summary="아이디 및 비밀번호 정보 입력 테이블">
@@ -1329,27 +1330,29 @@ a.btnTbl01 {
 											<tr>
 												<th><em title="필수입력">*</em><label for="">사용자
 														아이디</label></th>
-												<td><span class="formatIn"> <input type="text"
-														name="ID" class="itext w100 eng" title="아이디를 입력하세요."
-														maxlength="10" /> <a href="#" id="idDupCheck"
-														class="btnTbl01 ml5">확인</a>
-												</span></td>
-											</tr>
-											<tr>
-												<th><em title="필수입력">*</em><label for="">비밀번호</label></th>
-												<td><span class="formatIn"><input
-														type="password" name="PASSWORD" class="itext w100 eng"
-														title="비밀번호를 입력하세요." maxlength="20" /></span> <span
-													class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span>
+												<td><span class="formatIn"> 
+												<input type="text" id="mem_id" class="w100" 
+												title="아이디를 입력하세요." maxlength="10" /> 
+												<a href="#" id="idDupCheck" class="btnTbl01 ml5">확인</a>	</span>
+														 <span class="exp ml10" id="idDupCheck_msg">회원id 중복확인 메시지 띄우기.</span>
 												</td>
 											</tr>
 											<tr>
-												<th><em title="필수입력">*</em><label for="">비밀번호
-														확인</label></th>
-												<td><span class="formatIn"><input
-														type="password" name="PASSWORD2" class="itext w100 eng"
-														title="비밀번호를 재입력하세요." maxlength="20" /></span> <span
-													class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span>
+												<th><em title="필수입력">*</em><label for="">비밀번호</label></th>
+												<td><span class="formatIn">
+												<input type="password" id="mem_pw1" class="w100"
+														title="비밀번호를 입력하세요." maxlength="20" /></span> 
+														<span class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span>
+												</td>
+											</tr>
+											<tr>
+												<th><em title="필수입력">*</em><label for="">비밀번호 확인</label></th>
+												<td><span class="formatIn">
+												<input
+														type="password" id="mem_pw2" class="w100"
+														title="비밀번호를 재입력하세요." maxlength="20" /></span>
+													<span
+													class="alert_pwCheck" id="alert_pwCheck"></span>
 												</td>
 											</tr>
 										</tbody>
@@ -1370,62 +1373,63 @@ a.btnTbl01 {
 										<tbody>
 											<tr>
 												<th><em title="필수입력">*</em>한글 성명</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="이름입력."
+												<td><span class="formatIn"> 
+												<input type="text" id="mem_name" class="w100" title="이름입력."
 														maxlength="10" />
 												</span></td>
 											</tr>
 
 											<tr>
 												<th><em title="필수입력">*</em>주민번호</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="주민번호 앞자리."
-														maxlength="6" style="width: 60px" /> - <input type="text"
-														name="NAME" class="itext w100 eng" title="주민번호 뒷자리."
-														maxlength="7" style="width: 60px" />
+												<td><span class="formatIn">
+												<input type="text"
+														 id="mem_jumin1" class="w100" title="주민번호 앞자리."
+														maxlength="6" /> - 
+												<input type="text" id="mem_jumin2"
+														class="w100" title="주민번호 뒷자리." maxlength="7" />
 
 												</span></td>
 											</tr>
 
 											<tr>
 												<th><em title="필수입력">*</em>휴대폰번호</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="휴대폰번호 앞자리."
-														maxlength="3" style="width: 35px; text-align: center;" />
-														- <input type="text" name="NAME" class="itext w100 eng"
-														title="휴대폰번호 중간자리." maxlength="4"
-														style="width: 45px; text-align: center;" /> - <input
-														type="text" name="NAME" class="itext w100 eng"
-														title="휴대폰번호 뒷자리." maxlength="4"
-														style="width: 45px; text-align: center;" />
+												<td><span class="formatIn"> 
+												<input type="text" id="mem_phone1"
+														class="w100" title="휴대폰번호 앞자리."
+														maxlength="3" /> -
+												<input type="text" id="mem_phone2"
+														class="w100" title="휴대폰번호 중간자리." maxlength="4" /> - 
+												<input type="text" id="mem_phone3"
+														class="w100" title="휴대폰번호 뒷자리." maxlength="4" />
 												</span></td>
 											</tr>
 											<tr>
 												<th><em title="필수입력">*</em>주소</th>
-												<td><span class="formatIn"><input type="text"
-														name="HOMEZIP_1"
-														class="itext w50 eng postcodify_postcode5" maxlength="6"
-														readonly="readonly" /><a href="#zipCode"
+												<td><span class="formatIn">
+												<input type="text" 
+														name="homeZipCode" id="homeZipCode" class="w50" maxlength="6" readonly="readonly" />
+														<a href="#homeZipCode"
 														id="postcodify_search_button" class="btnTbl01 ml5">우편번호검색</a></span>
 													<p class="formatIn tblp">
-														<input type="text" name="HOMEADDR1"
-															class="itext w200 kor postcodify_address" maxlength="50" />
-														<input type="text" name="HOMEADDR2" class="itext w200 kor"
-															maxlength="50" />
+														<input type="text" name="mem_addr1" id="mem_addr1"
+															class="w200 kor" maxlength="50" />
+														<input type="text" name="mem_addr2" id="mem_addr2"
+														class="w200 kor" maxlength="50" />
 													</p></td>
 											</tr>
 											<tr>
 												<th><em title="필수입력">*</em> 이메일</th>
 												<td>
 													<form name="form">
-
-
-
-														<span class="formatIn"><input type="text"
-															name="EMAIL_1" class="itext w100 eng" maxlength="30" /><span
-															class="ml5">@</span><input type="text" name="EMAIL_2"
-															class="itext w150 ml5 eng" maxlength="20" /> <select
-															name="emailSelect" onChange="getSelectValue(this.form);"
+														<span class="formatIn">
+														<input type="text" id="mem_email1"
+															name="EMAIL_1" class="w100" maxlength="30" />
+															<span
+															class="ml5">@</span>
+															<input type="text" id="mem_email2"
+															name="EMAIL_2" class="w150 ml5" maxlength="20" /> 
+															<select
+															name="emailSelect" id="emailSelect"
 															class="ml5">
 																<option value="">직접입력</option>
 																<option value="daum.net">daum.net</option>
@@ -1446,102 +1450,13 @@ a.btnTbl01 {
 
 										</tbody>
 									</table>
-
-
 								</div>
-
 							</div>
-
-							<!-- 							<div class="section02"> -->
-							<!-- 								<h6>선택 입력 사항</h6> -->
-							<!-- 								S:table // -->
-							<!-- 								<div class="tbl01"> -->
-							<!-- 									<table summary="근무지 정보 입력 테이블"> -->
-							<!-- 										<caption class="caption">근무지 정보</caption> -->
-							<!-- 										<colgroup> -->
-							<!-- 											<col width="22%" /> -->
-							<!-- 											<col width="78%" /> -->
-							<!-- 										</colgroup> -->
-							<!-- 										<tbody> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">직업</label></th> -->
-							<!-- 												<td><select id="job" name="JOBCODE"> -->
-							<!-- 														<option value="0">선택하세요</option> -->
-							<!-- 														<option value="1">무직</option> -->
-							<!-- 														<option value="2">한량</option> -->
-							<!-- 														<option value="3">취준생</option> -->
-							<!-- 														<option value="4">백수</option> -->
-							<!-- 												</select></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">회사명</label></th> -->
-							<!-- 												<td><input type="text" name="COMPANY" -->
-							<!-- 													class="itext w250 kor" maxlength="20" /></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">부서/직위</label></th> -->
-							<!-- 												<td><input type="text" name="DEPT" -->
-							<!-- 													class="itext w115 kor" maxlength="10" /> <span class="ml5">/</span><input -->
-							<!-- 													type="text" name="POSITION" class="itext w115 ml5 kor" -->
-							<!-- 													maxlength="10" /></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th>직장 전화번호</th> -->
-							<!-- 												<td><span class="formatIn"> <select class="w80" -->
-							<!-- 														name="OFFICETEL1"></select> <input type="text" -->
-							<!-- 														name="OFFICETEL2_1" class="itext w50 eng" maxlength="4" /> -->
-							<!-- 														<span class="ml5">-</span> <input type="text" -->
-							<!-- 														name="OFFICETEL2_2" class="itext w50 ml5 eng" -->
-							<!-- 														maxlength="4" /> -->
-							<!-- 												</span></td> -->
-							<!-- 											</tr> -->
-
-							<!-- 										</tbody> -->
-							<!-- 									</table> -->
-							<!-- 								</div> -->
-							<!-- 								// E:table -->
-							<!-- 							</div> -->
-							<!-- 							<div class="section02"> -->
-							<!-- 								S:table // -->
-							<!-- 								<div class="tbl01"> -->
-							<!-- 									<table summary="부가 정보 입력 테이블"> -->
-							<!-- 										<caption class="caption">부가 정보</caption> -->
-							<!-- 										<colgroup> -->
-							<!-- 											<col width="22%" /> -->
-							<!-- 											<col width="78%" /> -->
-							<!-- 										</colgroup> -->
-							<!-- 										<tbody> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">최근렌터카 사용목적</label></th> -->
-							<!-- 												<td><select id="usePurpose" name="USETYPE"> -->
-							<!-- 														<option value="0">선택하세요</option> -->
-							<!-- 														<option value="1">아</option> -->
-							<!-- 														<option value="2">진짜</option> -->
-							<!-- 														<option value="3">하기가</option> -->
-							<!-- 														<option value="4">싫다</option> -->
-							<!-- 												</select></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">희망 렌트 차종</label></th> -->
-							<!-- 												<td><select id="hopeKind" name="WANTEDCAR"> -->
-							<!-- 														<option value="0">선택하세요</option> -->
-							<!-- 														<option value="1">아</option> -->
-							<!-- 														<option value="2">진짜</option> -->
-							<!-- 														<option value="3">하기가</option> -->
-							<!-- 														<option value="4">싫다</option> -->
-							<!-- 												</select></td> -->
-							<!-- 											</tr> -->
-							<!-- 										</tbody> -->
-							<!-- 									</table> -->
-							<!-- 								</div> -->
-							<!-- 								// E:table -->
-							<!-- 							</div> -->
 							<div class="btnArea02">
-								<a href="#" id="sInfo" class="btnP01"
-									onclick="javascript:return false;">입력완료</a>
+								<a href="javascript:void(0);" onclick="btn_signUp;" id="btn_signUp" class="btnP01">입력완료</a>
 							</div>
 						</div>
-						<!-- s-wrap -->
+						<!-- charges-wrap -->
 
 					</div>
 					<!-- // bodyend -->
@@ -1551,147 +1466,142 @@ a.btnTbl01 {
 			</div>
 			<!-- // End #content-wrap -->
 
+		</div>
+		<!-- // End #container -->
 
-			<!-- // End #container -->
+
+		<!-- Begin #footer -->
+
+		<div id="footer">
 
 
-			<!-- Begin #footer -->
-
-<<<<<<< HEAD:WebContent/Page/introduction2.html
 			<div class="footer_box01">
-=======
-			<div id="footer">
 
->>>>>>> df2e99c32657019a228eb5da53c1b51994caae81:WebContent/Page/p11_SignUp_layout.html
+				<div class="footer_inner">
 
-				<div class="footer_box01">
+					<ul class="footer_family">
 
-					<div class="footer_inner">
+						<li><a
+							href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
+							target="_blank">장기렌터카</a></li>
 
-						<ul class="footer_family">
+						<li><a
+							href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
+							target="_blank">단기렌터카</a></li>
 
-							<li><a
-								href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
-								target="_blank">장기렌터카</a></li>
+						<li><a
+							href="https://www.lotterentacar.net/kor/long/usedList.do"
+							target="_blank">중고차렌터카</a></li>
 
-							<li><a
-								href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
-								target="_blank">단기렌터카</a></li>
+						<li><a
+							href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
+							target="_blank">내차팔기</a></li>
 
-							<li><a
-								href="https://www.lotterentacar.net/kor/long/usedList.do"
-								target="_blank">중고차렌터카</a></li>
+						<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
 
-							<li><a
-								href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
-								target="_blank">내차팔기</a></li>
+					</ul>
 
-							<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
+					<ul class="footer_partner">
 
-						</ul>
+						<li><a
+							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
+								src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
 
-						<ul class="footer_partner">
+						<li><a
+							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
+								src="./images/common/img_partner_suwon.gif"
+								alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
 
-							<li><a
-								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-									src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+						<li><a
+							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
+								src="./images/common/img_partner_incheon.gif"
+								alt="인천광역시 라젠카 예약하기" /></a></li>
 
-							<li><a
-								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
-									src="./images/common/img_partner_suwon.gif"
-									alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
-
-							<li><a
-								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
-									src="./images/common/img_partner_incheon.gif"
-									alt="인천광역시 라젠카 예약하기" /></a></li>
-
-						</ul>
-
-					</div>
+					</ul>
 
 				</div>
 
-				<div class="footer_box02">
+			</div>
 
-					<div class="footer_inner">
+			<div class="footer_box02">
 
-						<ul class="footer_sns">
+				<div class="footer_inner">
 
-							<li><a class="facebook"
-								href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
-									페이스북</a></li>
+					<ul class="footer_sns">
 
-							<li><a class="blog" href="http://blog.naver.com/greencar_co"
-								target="_blank">라젠카 블로그</a></li>
+						<li><a class="facebook"
+							href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
+								페이스북</a></li>
 
-							<li><a class="instagram"
-								href="https://www.instagram.com/greencar_kr/" target="_blank">라젠카
-									인스타그램</a></li>
+						<li><a class="blog" href="http://blog.naver.com/greencar_co"
+							target="_blank">라젠카 블로그</a></li>
 
-						</ul>
+						<li><a class="instagram"
+							href="https://www.instagram.com/greencar_kr/" target="_blank">라젠카
+								인스타그램</a></li>
 
-						<ul class="footer_links">
+					</ul>
 
-							<li><a href="http://www.greencar.co.kr/service/company/">회사소개</a></li>
+					<ul class="footer_links">
 
-							<li><a href="http://www.greencar.co.kr/alliance/">제휴신청</a></li>
+						<li><a href="http://www.greencar.co.kr/service/company/">회사소개</a></li>
 
-							<li><a href="http://www.greencar.co.kr/service/useclause/">회원이용약관</a></li>
+						<li><a href="http://www.greencar.co.kr/alliance/">제휴신청</a></li>
 
-							<li><a
-								href="http://www.greencar.co.kr/service/personalinfo/"
-								class="point">개인정보처리방침</a></li>
+						<li><a href="http://www.greencar.co.kr/service/useclause/">회원이용약관</a></li>
 
-							<li><a href="http://www.greencar.co.kr/service/carclause/">자동차대여
-									표준약관</a></li>
+						<li><a href="http://www.greencar.co.kr/service/personalinfo/"
+							class="point">개인정보처리방침</a></li>
 
-							<li><a href="http://www.greencar.co.kr/service/location/">위치기반
-									서비스 이용약관</a></li>
+						<li><a href="http://www.greencar.co.kr/service/carclause/">자동차대여
+								표준약관</a></li>
 
-							<li><a href="http://www.greencar.co.kr/service/sitemap/">사이트맵</a></li>
+						<li><a href="http://www.greencar.co.kr/service/location/">위치기반
+								서비스 이용약관</a></li>
 
-						</ul>
+						<li><a href="http://www.greencar.co.kr/service/sitemap/">사이트맵</a></li>
 
-						<div class="footer_info">
+					</ul>
 
-							<div class="info">
+					<div class="footer_info">
 
-								<span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
-									: 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
+						<div class="info">
 
-							</div>
-
-							<div class="addr">
-
-								<span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
-									010-9550-0167</span> <span>FAX : 02-9550-0167</span>
-
-							</div>
-
-							<span class="copy">Copyright &#169; 2018 LazenCar. All
-								Rights Reserved.</span>
+							<span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
+								: 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
 
 						</div>
 
-						<div class="footer_emblem">
+						<div class="addr">
 
-							<img src="./images/common/img_emblem_brandpower.jpg"
-								alt="2016년 한국산업의 브랜드파워 1위" /> <img
-								src="./images/common/img_emblem_brandstar.jpg"
-								alt="2016년 대한민국 브랜드스타" /> <img
-								src="./images/common/img_emblem_award.jpg"
-								alt="모바일 어워드 코리아 2016" /> <img
-								src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
+							<span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
+								010-9550-0167</span> <span>FAX : 02-9550-0167</span>
 
 						</div>
+
+						<span class="copy">Copyright &#169; 2018 LazenCar. All
+							Rights Reserved.</span>
+
+					</div>
+
+					<div class="footer_emblem">
+
+						<img src="./images/common/img_emblem_brandpower.jpg"
+							alt="2016년 한국산업의 브랜드파워 1위" /> <img
+							src="./images/common/img_emblem_brandstar.jpg"
+							alt="2016년 대한민국 브랜드스타" /> <img
+							src="./images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
+
+						<img src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
 
 					</div>
 
 				</div>
 
 			</div>
+
 		</div>
+
 		<!-- // End #footer -->
 
 	</div>
@@ -1703,21 +1613,110 @@ a.btnTbl01 {
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 	<script>
-		$(function() {
-			$("#postcodify_search_button").postcodifyPopUp();
-		});
+		//주소검색
+		$(function() { $("#postcodify_search_button").postcodifyPopUp({
+        insertPostcode5 : "#homeZipCode",
+        insertAddress : "#mem_addr1",
+        insertDetails : "#mem_addr2"
+    }); });
 	</script>
 
 	<script>
-		function getSelectValue(form) {
-			// 	 form.EMAIL_2.value = form.emailSelect.options[form.emailSelect.selectedIndex].text;
-			form.EMAIL_2.value = form.emailSelect.options[form.emailSelect.selectedIndex].value;
+
+		
+		//비밀번호 두번째 입력창(확인창)에 비밀번호가 다를 경우 경고 메시지 띄우기.
+		$("#mem_pw2").blur(function(){
+			var memPw1 = $("#mem_pw1").val();
+			var memPw2 = $("#mem_pw2").val();
+			if(memPw1 == memPw2){
+				$("#alert_pwCheck").html("비밀번호 확인완료.");
+			}else{
+				$("#alert_pwCheck").html("비밀번호가 다릅니다.");
+			}
+		});
+		$("#idDupCheck").click(function(){
+			//사용자 아이디 중복 체크 버튼 눌렀을시 반응.
+		});
+		
+		//필수 입력 데이터들이 모두 입력 되었는지 확인하는 메서드(return false / true)
+		function checkAllDataInsert(){
+			if($("#mem_id").val()!= ""
+			&& $("#mem_pw1").val() != ""
+			&& $("#mem_pw2").val() != ""
+			&& $("#mem_name").val() != ""
+			&& $("#mem_jumin1").val() != ""
+			&& $("#mem_jumin2").val() != ""
+			&& $("#mem_addr1").val() !=""
+			&& $("#mem_addr2").val() !=""
+			&& $("#mem_phone1").val() !=""
+			&& $("#mem_phone2").val() !=""
+			&& $("#mem_phone3").val() !=""
+			&& $("#mem_email1").val() !=""
+			&& $("#mem_email2").val() !="")
+			{
+			 //모든 칸이 채워져 있으면 return true
+			 return true;
+			}else{
+				return false;
+			}
 		}
+		$(document).ready(function(){
+			
+			// 이메일 셀렉트
+			$("#emailSelect").on("change", function(){
+				form.EMAIL_2.value = $(this).val();
+			});
+			
+			//회원가입 버튼 눌렀을때 반응.	값을 테이블속성명으로 지정해서 받아 ajax post로 전송			
+			$("#btn_signUp").click(function(){
+				//모든값이 채워져있을때만 (true) 발동하게 변경. false면 alert 발생
+				if(checkAllDataInsert()==true){
+					var mem_id = $("#mem_id").val();
+					var mem_pw = $("#mem_pw2").val(); //mem_pw2는 비밀번호를 확인한 다음값이기 때문에 2로 값을불러옴
+					var mem_name = $("#mem_name").val();
+					var mem_jumin = $("#mem_jumin1").val() + $("#mem_jumin2").val();
+					var mem_phone = $("#mem_phone1").val()+$("#mem_phone2").val()+$("#mem_phone3").val();
+					var mem_addr = $("homeZipCode").val()+"/"+$("#mem_addr1").val()+"/"+$("#mem_addr2").val();
+					var mem_email = $("#mem_email1").val()+"@"+$("#mem_email2").val();
+					//입력 데이터 확인 코드
+					console.log("아이디 : "+mem_id);
+					console.log("패스워드 : "+mem_pw);
+					console.log("이름  : "+mem_name);
+					console.log("주민 : "+mem_jumin);
+					console.log("핸드폰 : "+mem_phone);
+					console.log("주소 : "+mem_addr);
+					console.log("이메일 : "+mem_email);
+					
+					$.ajax({
+						type : "POST",
+						url : "/signUp.do",
+						data : {
+							memId:mem_id,
+							memPw:mem_pw,
+							memName:mem_name,
+							memJumin:mem_jumin,
+							memPhone:mem_phone,
+							memAddr:mem_addr,
+							memEmail:mem_email
+							},
+						dataType : "json",
+						success : function(data) {
+							alert("회원가입 성공");
+						},
+						error : function(e) {
+							console.log("------error------");
+							console.log(e.responseText);
+						}
+						});
+				}else{
+					alert("필수 항목을 모두 채워주세요.");
+					return;
+				}
+			});
+		});
 	</script>
 	<!-- 	select text input 스크립트  end -->
 
 </body>
 
 </html>
-
-

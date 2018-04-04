@@ -320,11 +320,7 @@ a.nvalinks-rev:hover {
 	position: relative;
 	width: 1060px;
 	margin: 0 auto;
-<<<<<<< HEAD:WebContent/Page/introduction2.html
-	padding: 50px 0 100px
-=======
 	padding: 80px 0 0 0;
->>>>>>> df2e99c32657019a228eb5da53c1b51994caae81:WebContent/Page/p11_SignUp_layout.html
 }
 
 .content-wrap:after {
@@ -332,7 +328,6 @@ a.nvalinks-rev:hover {
 	display: block;
 	clear: both
 } /*대체 뭘하려는걸까*/
-
 .contentbox {
 	float: right;
 	width: 750px
@@ -929,7 +924,7 @@ a.hoverline:hover {
 	margin: 20px 0 10px 0;
 }
 
-/* -----회원가입 CSS START----- */
+/* 개인정보 관리 css start */
 caption#caption {
 	height: 26px;
 	padding: 5px;
@@ -970,8 +965,8 @@ h5 {
 
 h6 {
 	margin-bottom: 10px;
-	color: #4c4c4c;
-	font-size: 14px;
+	color: #ababab;
+	font-size: 12px;
 	font-family: 'NanumGothicBold';
 }
 
@@ -1005,7 +1000,7 @@ h6 {
 .tbl01 {
 	overflow: hidden;
 	border-top: 1px solid #f2c60f;
-	border-bottom: 1px solid #dedede;
+	/* 	border-bottom: 1px solid #dedede; */
 }
 
 .tbl01 table {
@@ -1043,7 +1038,7 @@ h6 {
 	height: 19px;
 	padding: 8px 20px 9px 20px;
 	border-bottom: 1px solid #dedede;
-	vertical-align: top;
+	vertical-align: middle;
 }
 
 .tbl01 td .formatIn {
@@ -1113,8 +1108,42 @@ a.btnTbl01 {
 	vertical-align: middle;
 }
 
-/* -----회원가입 CSS END----- */
+ul.tabs {
+	border-bottom: 1px solid #f2c71a;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	margin: 0px;
+}
+
+ul.tabs li {
+	background: #f2c71a73;
+	color: #222;
+	display: inline-block;
+	padding: 10px 15px;
+	cursor: pointer;
+	color: #ffff;
+}
+
+ul.tabs li.current {
+	background: #f2c71a;
+	color: #ffff;
+}
+
+.tabContent {
+	display: none;
+	padding: 15px;
+}
+
+.tabContent.current {
+	display: inherit;
+}
 </style>
+
+
+
+
+
 
 <script type="text/javascript">
 	//현재 서버 시간
@@ -1256,17 +1285,19 @@ a.btnTbl01 {
 
 
 
-					<h2 class="left-tit">라젠카 소개</h2>
+					<h2 class="left-tit">마이 페이지</h2>
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>라젠카란?</span></a></li>
+						<li class="top"><a href="#"><span>예약확인</span></a></li>
 
-						<li><a href="#"><span>이용안내</span></a></li>
+						<li><a href="#"><span>개인정보 관리</span></a></li>
 
-						<li><a href="#"><span>요금안내</span></a></li>
+						<li><a href="#"><span>쿠폰</span></a></li>
 
-						<li><a href="#" class='on'><span>찾아오시는길</span></a></li>
+						<li><a href="#"><span>1:1문의</span></a></li>
+
+						<li><a href="#" class='on'><span>회원탈퇴</span></a></li>
 
 					</ul>
 
@@ -1302,253 +1333,284 @@ a.btnTbl01 {
 							</p>
 						</div>
 					</div>
-					<div class="subtop-content bg_subvisual_02_01">
-						<h3 class="subtit">회원가입</h3>
-						<p class="subtxt"></p>
+					<div class="subtop-content">
+						<h3 class="subtit">개인정보 관리</h3>
 					</div>
-					<div>
-						<h4>회원정보 입력</h4>
-					</div>
-
 					<div class="bodystart">
 
 						<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
 
 						<div class="charges-wrap">
-							<div class="section02">
-								<!-- S:table //-->
-								<h6>필수 입력 사항</h6>
-								<div class="tbl01">
-									<table summary="아이디 및 비밀번호 정보 입력 테이블">
-										<caption class="caption">아이디 및 비밀번호 정보</caption>
-										<colgroup>
-											<col width="22%" />
-											<col width="78%" />
-										</colgroup>
-										<tbody>
-											<tr>
-												<th><em title="필수입력">*</em><label for="">사용자
-														아이디</label></th>
-												<td><span class="formatIn"> <input type="text"
-														name="ID" class="itext w100 eng" title="아이디를 입력하세요."
-														maxlength="10" /> <a href="#" id="idDupCheck"
-														class="btnTbl01 ml5">확인</a>
-												</span></td>
-											</tr>
-											<tr>
-												<th><em title="필수입력">*</em><label for="">비밀번호</label></th>
-												<td><span class="formatIn"><input
-														type="password" name="PASSWORD" class="itext w100 eng"
-														title="비밀번호를 입력하세요." maxlength="20" /></span> <span
-													class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span>
-												</td>
-											</tr>
-											<tr>
-												<th><em title="필수입력">*</em><label for="">비밀번호
-														확인</label></th>
-												<td><span class="formatIn"><input
-														type="password" name="PASSWORD2" class="itext w100 eng"
-														title="비밀번호를 재입력하세요." maxlength="20" /></span> <span
-													class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span>
-												</td>
-											</tr>
-										</tbody>
-									</table>
+							<ul class="tabs">
+								<li class="tabLink current" data-tab="tab1">개인정보 수정</li>
+								<li class="tabLink" data-tab="tab2">면허정보 관리</li>
+							</ul>
+							<div id="tab1" class="tabContent current">
+								<div class="section02">
+									<!-- S:table //-->
+									<div class="tbl01">
+
+										<table summary="">
+											<colgroup>
+												<col width="22%" />
+												<col width="78%" />
+											</colgroup>
+											<tbody>
+												<tr>
+													<th><label for="">사용자 아이디</label></th>
+													<td></td>
+												</tr>
+												<tr>
+													<th><label for="">이름(실명)</label></th>
+													<td></td>
+												</tr>
+												<tr>
+													<th><label for="">생년월일</label></th>
+													<td></td>
+												</tr>
+												<tr>
+													<th><em title="필수입력">*</em>휴대폰번호</th>
+													<td><span class="formatIn"> <input type="text"
+															name="NAME" class="itext w100 eng" title="휴대폰번호 앞자리."
+															maxlength="3" /> - <input type="text" name="NAME"
+															class="itext w100 eng" title="휴대폰번호 중간자리." maxlength="4" />
+															- <input type="text" name="NAME" class="itext w100 eng"
+															title="휴대폰번호 뒷자리." maxlength="10" />
+													</span></td>
+												</tr>
+												<tr>
+													<th><em title="필수입력">*</em>주소</th>
+													<td><span class="formatIn"><input type="text"
+															name="HOMEZIP_1"
+															class="itext w50 eng postcodify_postcode5" maxlength="6"
+															readonly="readonly" /><a href="#zipCode"
+															id="postcodify_search_button" class="btnTbl01 ml5">우편번호검색</a></span>
+														<p class="formatIn tblp">
+															<input type="text" name="HOMEADDR1"
+																class="itext w200 kor postcodify_address" maxlength="50" />
+															<input type="text" name="HOMEADDR2"
+																class="itext w200 kor" maxlength="50" />
+														</p></td>
+												</tr>
+												<tr>
+													<th><em title="필수입력">*</em> 이메일</th>
+													<td>
+														<form name="form">
+															<span class="formatIn"><input type="text"
+																name="EMAIL_1" class="itext w100 eng" maxlength="30" /><span
+																class="ml5">@</span><input type="text" name="EMAIL_2"
+																class="itext w150 ml5 eng" maxlength="20" /> <select
+																name="emailSelect" onChange="getSelectValue(this.form);"
+																class="ml5">
+																	<option value="">직접입력</option>
+																	<option value="daum.net">daum.net</option>
+																	<option value="empal.com">empal.com</option>
+																	<option value="gmail.com">gmail.com</option>
+																	<option value="hanmail.net">hanmail.net</option>
+																	<option value="msn.com">msn.com</option>
+																	<option value="naver.com">naver.com</option>
+																	<option value="nate.com">nate.com</option>
+															</select> </span>
+
+
+
+														</form>
+
+													</td>
+												</tr>
+
+											</tbody>
+										</table>
+									</div>
+									<!--// E:table -->
 								</div>
-								<!--// E:table -->
-							</div>
-							<div class="section02">
-								<!-- S:table //-->
 
-								<div class="tbl01">
-									<table summary="사용자 정보 입력 테이블">
-										<caption class="caption">사용자 정보</caption>
+								<h6>-안전한 비밀번호 관리를 위하여 월 1회 주기적으로 비밀번호를 변경하여 주시기 바랍니다.</h6>
+								<div class="section02">
+									<!-- S:table //-->
+									<div class="tbl01">
+										<table summary="">
+											<colgroup>
+												<col width="22%" />
+												<col width="78%" />
+											</colgroup>
+											<tbody>
+												<tr>
+													<th><em title="필수입력">*</em><label for="">비밀번호</label></th>
+													<td><span class="formatIn"><input
+															type="password" name="PASSWORD" class="itext w100 eng"
+															title="비밀번호를 입력하세요." maxlength="20" /></span> <span
+														class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야
+															합니다.</span></td>
+												</tr>
+												<tr>
+													<th><em title="필수입력">*</em><label for="">비밀번호
+															확인</label></th>
+													<td><span class="formatIn"><input
+															type="password" name="PASSWORD2" class="itext w100 eng"
+															title="비밀번호를 재입력하세요." maxlength="20" /></span> <span
+														class="exp ml10">* 영문,숫자,특수문자 혼합하여 6-12자 이내 이어야
+															합니다.</span></td>
+												</tr>
+											</tbody>
+										</table>
+
+									</div>
+									<!--// E:table -->
+
+								</div>
+							</div>
+
+							<div id="tab2" class="tabContent">
+								<p>주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항주의사항</p>
+								<div class="tbl01" style="font-size: 11px">
+									<table summary="운전면허증번호 성명 (실명) 생년월일" class="">
+										<caption>운전면허 정보</caption>
 										<colgroup>
-											<col width="22%" />
-											<col width="78%" />
+											<col width="45%" />
+											<col width="15%" />
+											<col width="42%" />
 										</colgroup>
 										<tbody>
 											<tr>
-												<th><em title="필수입력">*</em>한글 성명</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="이름입력."
-														maxlength="10" />
-												</span></td>
+												<td rowspan="8" class=""><img
+													src="./images/join/drive_lisence02.jpg" alt="운전면허증 예시 이미지" /></td>
+												<th scope="row">이름</th>
+												<td><input type="text" class="" title="" name="custNm"
+													id="custNm" value="" /> <!-- <p class="notice01_1">이름을 확인해주세요.</p> -->
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">주민등록번호</th>
+												<td><input type="text" class="" title="" name="birth1"
+													id="birth1" maxlength="6" style="width: 60px;" /> <span
+													class="">-</span> <input type="text" class="" title=""
+													name="birth2" id="birth2" maxlength="7"
+													style="width: 60px;" /></td>
+											</tr>
+											<tr>
+												<th scope="row">면허 종류</th>
+												<td><select id="licenType" name="licenType" class="">
+														<option value="2" selected='selected'>2종 보통</option>
+														<option value="1">1종 보통</option>
+														<option value="0">1종 대형</option>
+												</select></td>
 											</tr>
 
 											<tr>
-												<th><em title="필수입력">*</em>주민번호</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="주민번호 앞자리."
-														maxlength="6" style="width: 60px" /> - <input type="text"
-														name="NAME" class="itext w100 eng" title="주민번호 뒷자리."
-														maxlength="7" style="width: 60px" />
-
-												</span></td>
-											</tr>
-
-											<tr>
-												<th><em title="필수입력">*</em>휴대폰번호</th>
-												<td><span class="formatIn"> <input type="text"
-														name="NAME" class="itext w100 eng" title="휴대폰번호 앞자리."
-														maxlength="3" style="width: 35px; text-align: center;" />
-														- <input type="text" name="NAME" class="itext w100 eng"
-														title="휴대폰번호 중간자리." maxlength="4"
-														style="width: 45px; text-align: center;" /> - <input
-														type="text" name="NAME" class="itext w100 eng"
-														title="휴대폰번호 뒷자리." maxlength="4"
-														style="width: 45px; text-align: center;" />
-												</span></td>
-											</tr>
-											<tr>
-												<th><em title="필수입력">*</em>주소</th>
-												<td><span class="formatIn"><input type="text"
-														name="HOMEZIP_1"
-														class="itext w50 eng postcodify_postcode5" maxlength="6"
-														readonly="readonly" /><a href="#zipCode"
-														id="postcodify_search_button" class="btnTbl01 ml5">우편번호검색</a></span>
-													<p class="formatIn tblp">
-														<input type="text" name="HOMEADDR1"
-															class="itext w200 kor postcodify_address" maxlength="50" />
-														<input type="text" name="HOMEADDR2" class="itext w200 kor"
-															maxlength="50" />
-													</p></td>
-											</tr>
-											<tr>
-												<th><em title="필수입력">*</em> 이메일</th>
+												<th scope="row">면허 번호</th>
 												<td>
-													<form name="form">
-
-
-
-														<span class="formatIn"><input type="text"
-															name="EMAIL_1" class="itext w100 eng" maxlength="30" /><span
-															class="ml5">@</span><input type="text" name="EMAIL_2"
-															class="itext w150 ml5 eng" maxlength="20" /> <select
-															name="emailSelect" onChange="getSelectValue(this.form);"
-															class="ml5">
-																<option value="">직접입력</option>
-																<option value="daum.net">daum.net</option>
-																<option value="empal.com">empal.com</option>
-																<option value="gmail.com">gmail.com</option>
-																<option value="hanmail.net">hanmail.net</option>
-																<option value="msn.com">msn.com</option>
-																<option value="naver.com">naver.com</option>
-																<option value="nate.com">nate.com</option>
-														</select> </span>
-
-
-
-													</form>
-
+													<p class="mgb3">
+														<select id="licenNo1" class="" title="코드">
+															<option value="">코드</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+															<option value="13">13</option>
+															<option value="14">14</option>
+															<option value="15">15</option>
+															<option value="16">16</option>
+															<option value="17">17</option>
+															<option value="18">18</option>
+															<option value="19">19</option>
+															<option value="20">20</option>
+															<option value="21">21</option>
+															<option value="22">22</option>
+															<option value="23">23</option>
+															<option value="24">24</option>
+															<option value="25">25</option>
+															<option value="26">26</option>
+															<option value="28">28</option>
+														</select>&nbsp;or &nbsp;&nbsp; <select id="licenNo1_1" class=""
+															title="지역">
+															<option value="">지역</option>
+															<option value="서울">서울</option>
+															<option value="경기">경기</option>
+															<option value="인천">인천</option>
+															<option value="부산">부산</option>
+															<option value="대구">대구</option>
+															<option value="대전">대전</option>
+															<option value="광주">광주</option>
+															<option value="울산">울산</option>
+															<option value="경남">경남</option>
+															<option value="경북">경북</option>
+															<option value="전북">전북</option>
+															<option value="전남">전남</option>
+															<option value="충남">충남</option>
+															<option value="충북">충북</option>
+															<option value="강원">강원</option>
+															<option value="제주">제주</option>
+														</select>
+													</p> <input type="text" class="" title="면허번호 10자리"
+													name="licenNo2" id="licenNo2" value="" />
 												</td>
 											</tr>
 
+											<tr>
+												<th scope="row">발급일</th>
+
+												<td><input title="발급연도" type="text" class=""
+													name="licenIssueDtYear" id="licenIssueDtYear" value=""
+													maxlength="4" /> <span>년</span> <input title="발급월"
+													type="text" class="" name="licenIssueDtMonth"
+													id="licenIssueDtMonth" value="" maxlength="2" /> <span>월</span>
+													<input title="발급일" type="text" class=""
+													name="licenIssueDtDay" id="licenIssueDtDay" value=""
+													maxlength="2" /> <span>일</span></td>
+											</tr>
+
+											<tr>
+												<th scope="row">갱신기간<br />만료일
+												</th>
+												<td><input title="갱신기간 만료 연도" type="text" class=""
+													name="licenLimitDtYear" id="licenLimitDtYear" value=""
+													maxlength="4" /> <span>년</span> <input title="갱신기간 만료 월"
+													type="text" class="" name="licenLimitDtMonth"
+													id="licenLimitDtMonth" value="" maxlength="2" " /> <span>월</span>
+													<input title="갱신기간 만료일" type="text" class=""
+													name="licenLimitDtDay" id="licenLimitDtDay" value=""
+													maxlength="2" /> <span>일</span></td>
+											</tr>
+
+											<tr>
+												<th scope="row">주소</th>
+												<td>
+													<p class="mgb3">
+														<input type="text" class="" title="우편번호" name="zipCode"
+															id="zipCode" readonly="readonly" value="" /> <a href="#"
+															class="btnTbl01 ml5"
+															style="width: 50px; text-align: center;"><span>주소찾기</span></a>
+													</p> <input type="text" class="" title="주소" name="address1"
+													id="address1" style="width: 80%;" value=""
+													readonly="readonly" />
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">상세주소</th>
+												<td><input type="text" class="" title="상세주소"
+													name="address2" id="address2" style="width: 80%;" value="" />
+												</td>
+											</tr>
 										</tbody>
 									</table>
-
-
 								</div>
-
 							</div>
-
-							<!-- 							<div class="section02"> -->
-							<!-- 								<h6>선택 입력 사항</h6> -->
-							<!-- 								S:table // -->
-							<!-- 								<div class="tbl01"> -->
-							<!-- 									<table summary="근무지 정보 입력 테이블"> -->
-							<!-- 										<caption class="caption">근무지 정보</caption> -->
-							<!-- 										<colgroup> -->
-							<!-- 											<col width="22%" /> -->
-							<!-- 											<col width="78%" /> -->
-							<!-- 										</colgroup> -->
-							<!-- 										<tbody> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">직업</label></th> -->
-							<!-- 												<td><select id="job" name="JOBCODE"> -->
-							<!-- 														<option value="0">선택하세요</option> -->
-							<!-- 														<option value="1">무직</option> -->
-							<!-- 														<option value="2">한량</option> -->
-							<!-- 														<option value="3">취준생</option> -->
-							<!-- 														<option value="4">백수</option> -->
-							<!-- 												</select></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">회사명</label></th> -->
-							<!-- 												<td><input type="text" name="COMPANY" -->
-							<!-- 													class="itext w250 kor" maxlength="20" /></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">부서/직위</label></th> -->
-							<!-- 												<td><input type="text" name="DEPT" -->
-							<!-- 													class="itext w115 kor" maxlength="10" /> <span class="ml5">/</span><input -->
-							<!-- 													type="text" name="POSITION" class="itext w115 ml5 kor" -->
-							<!-- 													maxlength="10" /></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th>직장 전화번호</th> -->
-							<!-- 												<td><span class="formatIn"> <select class="w80" -->
-							<!-- 														name="OFFICETEL1"></select> <input type="text" -->
-							<!-- 														name="OFFICETEL2_1" class="itext w50 eng" maxlength="4" /> -->
-							<!-- 														<span class="ml5">-</span> <input type="text" -->
-							<!-- 														name="OFFICETEL2_2" class="itext w50 ml5 eng" -->
-							<!-- 														maxlength="4" /> -->
-							<!-- 												</span></td> -->
-							<!-- 											</tr> -->
-
-							<!-- 										</tbody> -->
-							<!-- 									</table> -->
-							<!-- 								</div> -->
-							<!-- 								// E:table -->
-							<!-- 							</div> -->
-							<!-- 							<div class="section02"> -->
-							<!-- 								S:table // -->
-							<!-- 								<div class="tbl01"> -->
-							<!-- 									<table summary="부가 정보 입력 테이블"> -->
-							<!-- 										<caption class="caption">부가 정보</caption> -->
-							<!-- 										<colgroup> -->
-							<!-- 											<col width="22%" /> -->
-							<!-- 											<col width="78%" /> -->
-							<!-- 										</colgroup> -->
-							<!-- 										<tbody> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">최근렌터카 사용목적</label></th> -->
-							<!-- 												<td><select id="usePurpose" name="USETYPE"> -->
-							<!-- 														<option value="0">선택하세요</option> -->
-							<!-- 														<option value="1">아</option> -->
-							<!-- 														<option value="2">진짜</option> -->
-							<!-- 														<option value="3">하기가</option> -->
-							<!-- 														<option value="4">싫다</option> -->
-							<!-- 												</select></td> -->
-							<!-- 											</tr> -->
-							<!-- 											<tr> -->
-							<!-- 												<th><label for="">희망 렌트 차종</label></th> -->
-							<!-- 												<td><select id="hopeKind" name="WANTEDCAR"> -->
-							<!-- 														<option value="0">선택하세요</option> -->
-							<!-- 														<option value="1">아</option> -->
-							<!-- 														<option value="2">진짜</option> -->
-							<!-- 														<option value="3">하기가</option> -->
-							<!-- 														<option value="4">싫다</option> -->
-							<!-- 												</select></td> -->
-							<!-- 											</tr> -->
-							<!-- 										</tbody> -->
-							<!-- 									</table> -->
-							<!-- 								</div> -->
-							<!-- 								// E:table -->
-							<!-- 							</div> -->
 							<div class="btnArea02">
 								<a href="#" id="sInfo" class="btnP01"
-									onclick="javascript:return false;">입력완료</a>
+									onclick="javascript:return false;">수정</a>
 							</div>
+
 						</div>
-						<!-- s-wrap -->
+
 
 					</div>
-					<!-- // bodyend -->
-				</div>
-				<!-- // end contentBox -->
+					<!-- charges-wrap -->
 
+				</div>
+				<!-- // bodyend -->
 			</div>
+			<!-- // end contentBox -->
+
+
 			<!-- // End #content-wrap -->
 
 
@@ -1557,12 +1619,8 @@ a.btnTbl01 {
 
 			<!-- Begin #footer -->
 
-<<<<<<< HEAD:WebContent/Page/introduction2.html
-			<div class="footer_box01">
-=======
 			<div id="footer">
 
->>>>>>> df2e99c32657019a228eb5da53c1b51994caae81:WebContent/Page/p11_SignUp_layout.html
 
 				<div class="footer_box01">
 
@@ -1693,9 +1751,7 @@ a.btnTbl01 {
 			</div>
 		</div>
 		<!-- // End #footer -->
-
 	</div>
-
 	<!-- // End #wrap -->
 
 
@@ -1715,6 +1771,22 @@ a.btnTbl01 {
 		}
 	</script>
 	<!-- 	select text input 스크립트  end -->
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$('ul.tabs li').click(function() {
+				var tab_id = $(this).attr('data-tab');
+
+				$('ul.tabs li').removeClass('current');
+				$('.tabContent').removeClass('current');
+
+				$(this).addClass('current');
+				$("#" + tab_id).addClass('current');
+			})
+
+		})
+	</script>
 
 </body>
 

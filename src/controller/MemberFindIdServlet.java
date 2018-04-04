@@ -14,9 +14,6 @@ import dto.Member;
 import service.MemberFindService;
 import service.MemberFindServiceImpl;
 
-/**
- * Servlet implementation class MemberFindServlet
- */
 @WebServlet("/login/findId.do")
 //아이디값 받아오는 서블릿만들기
 public class MemberFindIdServlet extends HttpServlet {
