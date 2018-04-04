@@ -1,6 +1,3 @@
-
-
-
 (function(){
 	
 	var current = 0;
@@ -25,7 +22,6 @@
 	}
 	function config_load() {
 		var obj = {};
-		//obj.url = "/xml/images.xml"
 		obj.dataType = "text";
 		obj.type = "get";
 		obj.success = loadComplete;

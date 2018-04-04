@@ -62,7 +62,7 @@
 .hgroup .logo a span {
 	display: block;
 	padding-top: 48px;
-	background: url('./images/common/logo.png') no-repeat 0 0;
+	background: url('/Page/images/common/logo.png') no-repeat 0 0;
 	font: 0/0 dotum;
 	color: transparent
 }
@@ -77,7 +77,7 @@
 	float: left;
 	height: 40px;
 	padding-left: 13px;
-	background: url('./images/main/bg_dot.png') no-repeat 6px center;
+	background: url('/Page/images/main/bg_dot.png') no-repeat 6px center;
 	font-size: 13px;
 	line-height: 40px;
 	letter-spacing: -0.05em;
@@ -178,7 +178,7 @@ a.nvalinks-rev:hover {
 }
 
 #header.sub .nvalinks a {
-	background: url('./images/main/bg_dot02.png') no-repeat 6px center;
+	background: url('/Page/images/main/bg_dot02.png') no-repeat 6px center;
 	color: #636363
 }
 
@@ -359,7 +359,7 @@ a.nvalinks-rev:hover {
 	width: 34px;
 	height: 34px;
 	margin-left: 10px;
-	background: url('./images/common/icon_sns.png') no-repeat;
+	background: url('/Page/images/common/icon_sns.png') no-repeat;
 	font: 0/0 dotum;
 	color: transparent;
 	vertical-align: top
@@ -426,7 +426,7 @@ a.nvalinks-rev:hover {
 
 .subtit {
 	padding-bottom: 8px;
-	background: url(./images/common/bg_subtit.gif) no-repeat 0 bottom;
+	background: url(/Page/images/common/bg_subtit.gif) no-repeat 0 bottom;
 	font-weight: bold;
 	font-size: 32px;
 	color: #3c3c3c
@@ -434,7 +434,7 @@ a.nvalinks-rev:hover {
 
 .subtit2 {
 	padding-bottom: 8px;
-	background: url(./images/common/bg_subtit.gif) no-repeat 0 bottom;
+	background: url(/Page/images/common/bg_subtit.gif) no-repeat 0 bottom;
 	font-weight: bold;
 	font-size: 18px;
 	font-family: "맑은고딕";
@@ -560,7 +560,7 @@ a.nvalinks-rev:hover {
 	display: block;
 	width: 100%;
 	height: 100%;
-	background: url('./images/common/icon_sns.png') no-repeat;
+	background: url('/Page/images/common/icon_sns.png') no-repeat;
 	font: 0/0 dotum;
 	color: transparent
 }
@@ -579,7 +579,7 @@ a.nvalinks-rev:hover {
 
 .footer_links li {
 	padding-left: 17px;
-	background: url('./images/common/bg_bar_footer.gif') no-repeat 8px
+	background: url('/Page/images/common/bg_bar_footer.gif') no-repeat 8px
 		center
 }
 
@@ -754,7 +754,7 @@ a.hoverline:hover {
 	font-size: 18px;
 	color: #f1c40f;
 	font-weight: bold;
-	background: url("./images/common/blt01.gif") left 6px no-repeat;
+	background: url("/Page/images/common/blt01.gif") left 6px no-repeat;
 }
 
 .charges-wrap h4.mgtop {
@@ -818,7 +818,7 @@ a.hoverline:hover {
 
 .green-charges-txt li {
 	padding-left: 10px;
-	background: url("./images/common/blt04.gif") left 6px no-repeat;
+	background: url("/Page/images/common/blt04.gif") left 6px no-repeat;
 	padding-bottom: 15px;
 }
 
@@ -1085,14 +1085,19 @@ $(document).ready( function() {
 					var check = data.check;
 					var gubn = data.gubn;
 					if( check ) {
-	// 				alert("로그인 성공");
+// 					alert("로그인 성공");
 						// 관리자
-						if( gubn===0 ) location.href="/Manage_Page/home.jsp";
+						if( gubn===0 ) {
+							location.href="/Manage_Page/home.jsp";
+						}
 						// 고객
-						if( gubn===1 ) location.href="/Page/main.html";
-						
+						if( gubn===1 ) {
+							location.href="/Page/main.jsp";
+						}
+<%-- 						console.log('<%=request.getSession().getAttribute("id")%>'); --%>
+// 						console.log("JS ID : ${sessionScope.id};")
 					} else {
-	// 				alert("로그인 실패");
+// 					alert("로그인 실패");
 						$("#alert_login").css("display", "inline-block");
 						document.getElementById("id").focus();
 					}
@@ -1121,7 +1126,7 @@ $(document).ready( function() {
 
 				<a href="https://www.greencar.co.kr/member/index.jsp"
 					target="_blank"><img
-					src="./images/common/top_banner_160825.gif"
+					src="/Page/images/common/top_banner_160825.gif"
 					alt="신규가입시 3시간 무료쿠폰 전원증정" /></a>
 
 
@@ -1215,7 +1220,7 @@ $(document).ready( function() {
 
 			<div>
 				<div>
-					<a href="javascrpt:void(0);" id="findLayer">아이디/비밀번호 찾기</a>
+					<a href="/login/findId.do" id="findLayer">아이디/비밀번호 찾기</a>
 				</div>
 				<div>
 					<span class="join_hidden" id="alert_id">아이디를 입력하세요.</span>
@@ -1233,23 +1238,18 @@ $(document).ready( function() {
 	
 	<div style="padding-top: 5px;">
 		<a href="javascript:void(0);">
-		<img src="./images/login/facebook.PNG" alt="" />
+		<img src="/Page/images/login/facebook.PNG" alt="" />
 		</a>
 		<a href="javascript:void(0);">
-		<img src="./images/login/kakao.PNG" alt="" />
+		<img src="/Page/images/login/kakao.PNG" alt="" />
 		</a> <br>
 		<a href="javascript:void(0);">
-		<img src="./images/login/naver.PNG" alt="" />
+		<img src="/Page/images/login/naver.PNG" alt="" />
 		</a>
 	</div>
 </div>
 </div>
 </div>
-
-
-
-
-
 
 			</div>
 			<!-- // End #container -->

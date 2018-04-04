@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,24 +14,22 @@
 <script src="./js/main.js"></script>
 
 <script type="text/javascript">
-//현재 서버 시간
-var curYear = "2018"; //현재 년
-var curMonth = "3"; //현재 월
-var curDay = "6"; //현재 일
-var curHour = "18"; //현재 시간
-var curMinute = "21"; //현재 분
-var ___isLogin___ = "false"; //로그인 여부
-var __ciYn__ = "";
-var _globalFullContextSSL = "https://www.greencar.co.kr";
-var ___isCorpChk___ = "";
-var _ssoDomain = 'member.lpoint.com';
-var _joinReturnUrl = 'https://www.greencar.co.kr/login/';
-var _fullImgHostAddr = '';
-var _birth = "";
+function login_menu() {
+// 	alert('${sessionScope.id}');
+	var id = '${sessionScope.id}';
+	
+	if ( id===null || id==="") {
+		$("#logout").hide();
+		$("#mypage").hide();
+	} else {
+		$("#signup").hide();
+		$("#login").hide();
+	}
+	
+}
 
 $(document).ready(function() {
-	$("")
-	
+	login_menu();
 });
 </script>
 
@@ -81,21 +76,17 @@ $(document).ready(function() {
                </h1>
 
                <div class="nvalinks">
-<c:if test="${empty session.id }">
-                  <a href="/Page/login.html" onclick="openLapComLogin();">로그인</a>
-                  <a href="/Page/signUp.jsp">회원가입</a>
-</c:if>
-<c:if test="${!empty session.id }">
-            			<a href="/login/logout.do">로그아웃</a>
-            			<a href="#">마이페이지</a>
-</c:if>
+                  <a href="/login/login.do" id="login">로그인</a>
+                  <a href="/Page/signUp.jsp" id="signup">회원가입</a>
+            			<a href="/login/logout.do" id="logout">로그아웃</a>
+            			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
                   <a class="nvalinks-rev" href="/Page/reservation.html">라젠카 예약하기</a>
 
                </div>
       <nav id="topMenu" > 
          <ul> 
                   <li class="topMenuLi"> 
-            <a class="menuLink" href="#">LaZencar 소개</a> 
+            <a class="menuLink" href="#">Lazencar 소개</a> 
             <ul class="submenu"> 
                <li><a href="#" class="submenuLink longLink">Lazencar란?</a></li> 
                <li><a href="#" class="submenuLink longLink">이용안내</a></li> 
