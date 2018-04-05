@@ -225,6 +225,13 @@ $(document).ready(function(){
 			</ul>
 		</li>
 		
+		<li><a class="fly" href="javascript:void(0);">결제</a>
+			<ul>
+				<li><a href="./paymentList.jsp">결제 조회</a></li>
+
+			</ul>
+		</li>
+		
 	</ul>
 </div>		<!-- sideMenu end -->
 
