@@ -35,14 +35,15 @@ public class CarCheckListServlet extends HttpServlet {
 		response.setContentType("text/json; charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
 		
+		//검색할 키워드 저장 및 확인
 		String category = request.getParameter("category");
 		String sort = request.getParameter("sort");
 		String content = request.getParameter("content");
 		String clicked = request.getParameter("clicked");
-		System.out.println(category);
-		System.out.println(sort);
-		System.out.println(content);
-		System.out.println(clicked);
+//		System.out.println(category);
+//		System.out.println(sort);
+//		System.out.println(content);
+//		System.out.println(clicked);
 		//-- CarManage에 저장
 		CarManage cm = new CarManage();
 		cm.setSort(sort);
@@ -50,11 +51,29 @@ public class CarCheckListServlet extends HttpServlet {
 		cm.setContent(content);
 		cm.setClicked(clicked);
 
-		System.out.println("cm:"+cm.getCategory());
-		System.out.println("cm:"+cm.getSort());
-		System.out.println("cm:"+cm.getContent());
-		System.out.println("cm:"+cm.getClicked());
-
+//		System.out.println("cm:"+cm.getCategory());
+//		System.out.println("cm:"+cm.getSort());
+//		System.out.println("cm:"+cm.getContent());
+//		System.out.println("cm:"+cm.getClicked());
+		
+		//수정 및 삭제할 키워드 저장 및 확인
+		String key_carNum=request.getParameter("font_carNum");
+		String key_carCondi=request.getParameter("font_carCondi");
+		String key_carLCD=request.getParameter("car_LCD");
+		String editCar=request.getParameter("btnEdit");
+		if(editCar!=null) {
+		cm.setKey_carNum(key_carNum);
+		cm.setKey_carCondi(key_carCondi);
+		cm.setKey_carLCD(key_carLCD);
+		cm.setEditCar(editCar);
+		System.out.println(cm.getKey_carNum()+","+cm.getKey_carCondi()+","+cm.getKey_carLCD());
+		System.out.println(cm.getEditCar());
+			if(editCar.equals("deleteCar")
+					||editCar.equals("updateCar")
+			) {
+				service.editCarData(cm);
+			}
+		}
 		//페이징 ▽
 		Paging paging =null;
 		List<Car> list = null;
@@ -69,16 +88,12 @@ public class CarCheckListServlet extends HttpServlet {
 			paging = new Paging(totalCount, pageNo);//총 게시물수와 페이지번호를 이용한 페이징 객체 생성
 			list = service.getCarList(paging,cm); // 페이지에 맞는 게시물 갖고오기.
 //		}
-		System.out.println("서블릿 리스트출력: "+list.toString());
-		System.out.println("서블릿 dao.getTotal()출력 :"+totalCount);
-		System.out.println("서블릿 paging.getTotalCount() 출력 :"+paging.getTotalCount());
-		System.out.println("서블릿 paging.getStartNo(), getEndNo출력:"+paging.getStartNo()+","+paging.getEndNo());
+//		System.out.println("서블릿 리스트출력: "+list.toString());
+//		System.out.println("서블릿 dao.getTotal()출력 :"+totalCount);
+//		System.out.println("서블릿 paging.getTotalCount() 출력 :"+paging.getTotalCount());
+//		System.out.println("서블릿 paging.getStartNo(), getEndNo출력:"+paging.getStartNo()+","+paging.getEndNo());
 		request.setAttribute("paging", paging);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/Manage_Page/carCheckList.jsp").forward(request, response);
-		
-		
-		
 	}
-
 }

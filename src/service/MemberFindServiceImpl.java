@@ -29,7 +29,7 @@ public class MemberFindServiceImpl implements MemberFindService {
 	public String getMsg(Member mem) {
 		if (dao.checkName(mem) && dao.checkEmail(mem)) {
 			// checkName&checkEmail이 true일때 아이디값 가져오기
-			return msg = "아이디 찾기 성공";
+			return msg = "아이디 찾기 성공, ID는 이메일로 전송됩니다.";
 		} else {
 			return msg = "이메일이나 이름이 등록된 정보와 일치하지 않습니다.";
 		}
@@ -39,7 +39,7 @@ public class MemberFindServiceImpl implements MemberFindService {
 	public String getMsg2(Member mem) {
 		if (dao.checkId(mem) && dao.checkEmail(mem) && dao.checkPhone(mem)) {
 			// checkId&checkEmail&checkPhone이 true일때 메시지값 "" 반환하기
-			return msg = "비밀번호 찾기 성공";
+			return msg = "비밀번호 찾기 성공, Password는 이메일로 전송됩니다.";
 		}
 		else {
 			return msg = "이름이나 이메일, 핸드폰번호가 등록된 정보와 일치하지 않습니다.";

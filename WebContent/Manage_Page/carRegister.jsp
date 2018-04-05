@@ -109,7 +109,7 @@
 					error : function(e) {
 // 						alert("입력 형식을 확인해주세요.");
 						console.log("------error------");
-						console.log(e.responseText);
+// 						console.log(e.responseText);
 					}
 				});
 			}
@@ -137,8 +137,8 @@
       
       <li><a class="fly" href="javascript:void(0);">차량 관리</a>
          <ul>
-            <li><a href="./carRegister.jsp">차량 등록/해제</a></li>
-            <li><a href="./carCheckList.jsp">차량 점검일지</a></li>
+            <li><a href="/admin/carRegister.do">차량 등록</a></li>
+            <li><a href="/admin/carCheckList.do">차량 정보수정</a></li>
          </ul>
       </li>
       
@@ -200,7 +200,7 @@
 					<table class="table1">
 						<tr>
 							<th>최종점검일</th>
-							<th>차량이름</th>
+							<th>차량모델명</th>
 							<th>차량분류</th>
 						</tr>
 						<tr>
