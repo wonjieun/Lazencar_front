@@ -1,6 +1,6 @@
-package dto.adminDto;
+package dto;
 
-public class PromotionManage {
+public class Promotion {
 	private int no;					//EVE_NUM
 	private String name;			//EVE_NAME
 	private String StartDate;		//EVE_START_DATE

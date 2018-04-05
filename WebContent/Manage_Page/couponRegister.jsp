@@ -11,8 +11,8 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
+	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/Manage_page/css/paging.css" />  
 
 	<style>
 	.level1 :nth-child(8) .fly {background: #ffb505 !important;}
@@ -26,6 +26,7 @@
   	if ($("#content").val() != "" 
   	 && $("#startDate").val() != "" 
   	 && $("#endDate").val() != ""
+  	 && $("#discount").val() != ""
   	 && $("#age").val() != ""
   	 && $("#time").val() != ""
   	 && $("#carKind").val() != ""
@@ -141,7 +142,7 @@
         
 	<div class="center" >
 	
-	<form id="f" action="/admin/promotionRegister.do" method="post" enctype="multipart/form-data">
+	<form id="f" action="/admin/couponRegister.do" method="post" enctype="multipart/form-data">
 		 <table class="table1">
 			<tr>
 				<th>쿠폰 명</th>
@@ -182,10 +183,11 @@
 					</p>
 				</td>
 				<td>
-				쿠폰의 할인율을 입력하세요.		<br><br>
+				쿠폰의 할인율을 입력하세요.		<br>
 				<p><input type="text" id="discount" name="discount" size="5" value="0">%</p>
 				</td>	
 				<td class="right">
+				이미지 사이즈 : 340 X 140	 (mm)<br><br>
 				<label><input type="file" name="couponImg" id="couponImg" value=""/></label><br>
 				</td>
 			</tr>				
