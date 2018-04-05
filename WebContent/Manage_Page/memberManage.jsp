@@ -220,7 +220,7 @@ $(document).ready(function() {
 							<td>${i.memPhone }</td>
 							<td>${i.memJumin }</td>
 							<td>${i.memEmail }</td>
-							<td>${i.memAddr }</td>
+							<td>${i.memAddr }</td>		<!-- list안의 변수 -->
 							<td class="right">${i.memLicense }</td>
 						</tr>
 					</c:forEach>
