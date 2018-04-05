@@ -20,7 +20,7 @@
 <script type="text/javascript">
 
 //만약 비어있는 데이터가 있다면 alert 띄워주기
-function checkCarDataInsert() {
+function checProDataInsert() {
 	if ($("#startDate").val() != "" 
 	 && $("#endDate").val() != ""
 	 && $("#content").val() != "" 
@@ -41,7 +41,7 @@ $(document).ready(function() {
 		$("#f")[0].reset();
 	});
 	$("#submit").click(function() {
-		if (checkCarDataInsert() == false) {
+		if (checkProDataInsert() == false) {
 			alert("빈칸을 모두 채워주세요.");
 			return;
 		} else {

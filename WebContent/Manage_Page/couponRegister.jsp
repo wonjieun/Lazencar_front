@@ -19,9 +19,10 @@
 	</style>
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script type="text/javascript">
+ 
+<script type="text/javascript">
 //만약 비어있는 데이터가 있다면 alert 띄워주기
-  function checkCarDataInsert() {
+  function checkCouponDataInsert() {
   	if ($("#content").val() != "" 
   	 && $("#startDate").val() != "" 
   	 && $("#endDate").val() != ""
@@ -37,23 +38,24 @@
   		return false;
   	}
   }
-
-  //초기화, 전송 버튼
+	
+//초기화, 전송 버튼
   $(document).ready(function() {
   	$("#reset").click(function() {
   		$("#f")[0].reset();
   	});
   	$("#submit").click(function() {
-  		if (checkCarDataInsert() == false) {
+  		if (checkCouponDataInsert() == false) {
   			alert("빈칸을 모두 채워주세요.");
   			return;
   		} else {
   			
   			$("#f").submit();
+//   			alert("등록완료")		여기 말고 controller에서 
   		}
   	});
   });
-  
+ 
   </script>
 
 </head>
@@ -138,7 +140,8 @@
         </div>
         
 	<div class="center" >
-	<form id="f" action="/admin/couponRegister.do" method="post" enctype="multipart/form-data">
+	
+	<form id="f" action="/admin/promotionRegister.do" method="post" enctype="multipart/form-data">
 		 <table class="table1">
 			<tr>
 				<th>쿠폰 명</th>
@@ -187,8 +190,7 @@
 				</td>
 			</tr>				
 		</table>
-	</form>
-	</div>	
+		</form>
 	
 		<div class="clear"></div>
 
@@ -197,6 +199,7 @@
 		<button id="submit" value="submit">등록</button>
 		</div>
 	
+	</div>	
 
 </div>		<!-- content end -->
 
