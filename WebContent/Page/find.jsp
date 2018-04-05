@@ -1140,6 +1140,7 @@ function checkNumber(){
 											$("<input>").attr("type","hidden").attr("name","to_email").attr("value",email).appendTo($form);
 											$("<input>").attr("type","hidden").attr("name","subtitle").attr("value","Lazencar Send your Id").appendTo($form);
 											$("<input>").attr("type","hidden").attr("name","content").attr("value","your Id is :"+memId).appendTo($form);
+											
 											$form.appendTo($(document.body));
 											
 											$form.submit();
