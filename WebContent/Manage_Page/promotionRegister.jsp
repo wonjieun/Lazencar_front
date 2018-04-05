@@ -58,6 +58,7 @@ $(document).ready(function() {
 </head>
 <body>
 
+<<<<<<< HEAD
 <div id="menu">
    <ul class="level1">
       <li><a href="./home.jsp">Home</a></li>
@@ -115,6 +116,9 @@ $(document).ready(function() {
 		
 	</ul>
 </div>		<!-- sideMenu end -->
+=======
+<jsp:include page="/Manage_Page/util/sideMenu.jsp" />
+>>>>>>> 9d64cd1c7f8c612f9af92b5a6af641ebb9bb5ce6
 
 
 <div class="wrap">
