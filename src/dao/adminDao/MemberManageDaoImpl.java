@@ -111,7 +111,7 @@ public class MemberManageDaoImpl implements MemberManageDao {
 
 				//dto.setter(rs.getter("DB 컬럼명") )
 				m.setMemId(rs.getString("MEM_ID"));			
-				m.setMemPw(rs.getString("MEM_PW"));			
+//				m.setMemPw(rs.getString("MEM_PW"));			
 				m.setMemName(rs.getString("MEM_NAME"));
 				m.setMemPhone(rs.getString("MEM_PHONE"));
 				m.setMemJumin(rs.getString("MEM_JUMIN"));

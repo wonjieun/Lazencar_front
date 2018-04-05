@@ -166,10 +166,10 @@
 			</tr>
 			<tr>
 				<td class="left">
-				<p>나이 : <input type="text" id="age" name="age" value="0" size="5"> 세 이상 </p>
-				<p>사용 시간 : <input type="text" id="time" name="time" value="0" size="5"> 시간 이상 </p>
+				<p>나이 : <input type="text" id="ageConst" name="ageConst" value="0" size="5"> 세 이상 </p>
+				<p>사용 시간 : <input type="text" id="timeConst" name="timeConst" value="0" size="5"> 시간 이상 </p>
 				<p>차종 : 
-					<select class="sort" id="carKind" name="carKind">
+					<select class="sort" id="carConst" name="carConst">
 					    <option value="All">전차종
 					    <option value="smallCar">소형차 이상
 					    <option value="mediumCar">중형차 이상
@@ -180,7 +180,7 @@
 				</td>
 				<td>
 				쿠폰의 할인율을 입력하세요.		<br><br>
-				<p><input type="text" id="content" name="content" size="5" value="0">%</p>
+				<p><input type="text" id="discount" name="discount" size="5" value="0">%</p>
 				</td>	
 				<td class="right">
 				<label><input type="file" name="couponImg" id="couponImg" value=""/></label><br>
