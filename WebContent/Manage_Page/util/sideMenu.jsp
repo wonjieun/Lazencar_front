@@ -56,16 +56,16 @@
 <body>
 <div id="menu">
    <ul class="level1">
-      <li><a href="./home.jsp">Home</a></li>
+      <li><a href="/home.jsp">Home</a></li>
       <li><a class="fly" href="javascript:void(0);">회원 관리</a>
          <ul>
-            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
+            <li><a href="/admin/memberManage.do" >회원목록 조회</a></li>
          </ul>
       </li>
       
       <li><a class="fly" href="javascript:void(0);">예약 관리</a>
          <ul>
-            <li><a href="./reservManage.jsp">예약목록 조회</a></li>
+            <li><a href="/reservManage.jsp">예약목록 조회</a></li>
          </ul>
       </li>
       
@@ -78,39 +78,39 @@
       
       <li><a class="fly" href="javascript:void(0);">공지 사항</a>
          <ul>
-            <li><a href="./noticeManage.jsp">공지사항 등록</a></li>
+            <li><a href="/noticeManage.jsp">공지사항 등록</a></li>
          </ul>
       </li>
       
       <li><a class="fly" href="javascript:void(0);">후기 관리</a>
          <ul>
-            <li><a href="./reviewManage.jsp">후기목록 조회</a></li>
+            <li><a href="/reviewManage.jsp">후기목록 조회</a></li>
          </ul>
       </li>
       
       <li><a class="fly" href="javascript:void(0);">문의 관리</a>
          <ul>
-            <li><a href="./qnaManage.jsp">문의 내역 확인</a></li>
-            <li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
+            <li><a href="/qnaManage.jsp">문의 내역 확인</a></li>
+            <li><a href="/qnaRegister.jsp">문의 답변 등록</a></li>
          </ul>
       </li>
 		
 		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
 			<ul>
-				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>
-				<li><a href="./couponDelete.jsp">쿠폰 조회/삭제</a></li>
+				<li><a href="/couponRegister.jsp">쿠폰 등록</a></li>
+				<li><a href="/couponDelete.jsp">쿠폰 조회/삭제</a></li>
 			</ul>
 		</li>
 		
 		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
-				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
-				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
+				<li><a href="/promotionRegister.jsp">특가 등록</a></li>
+				<li><a href="/promotionDelete.jsp">특가 조회/삭제</a></li>
 
 			</ul>
 		</li>
 		
-		<li><a class="fly" href="./paymentList.jsp">결제</a>
+		<li><a class="fly" href="/admin/paymentList.do">결제</a>
 		</li>
 		
 	</ul>
