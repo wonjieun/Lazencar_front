@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -90,12 +91,28 @@ public class MemberManageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Paging paging =null;
+
+		//페이징 로직 처리
+		String pageParam = req.getParameter("pageNo");
+		int pageNo=0;
+		if(pageParam != null) pageNo = Integer.parseInt(pageParam);
+
+		System.out.println("pageNo : " + pageNo);
+
+		int totalCount = dao.getTotal(search);
+		paging = new Paging(totalCount);//총 게시물수와 페이지번호를 이용한 페이징 객체 생성
+
+
 		List<MemberManage> list = null;
 		list = service.memberManage(paging, new MemberManage());
 		
 		System.out.println(list.size());
 		
+		System.out.println(paging);
+		req.setAttribute("url", req.getRequestURI());
 		req.setAttribute("list", list);
+		req.setAttribute("paging", paging);
+
 		req.getRequestDispatcher("/Manage_Page/memberManage.jsp").forward(req, resp);
 		
 		

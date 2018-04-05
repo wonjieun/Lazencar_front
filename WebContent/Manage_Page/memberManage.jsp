@@ -214,7 +214,7 @@ $(document).ready(function() {
 							<th>주소</th>
 							<th class="right">면허여부</th>
 						</tr>
-						<c:forEach items="${list }" begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
+						<c:forEach items="${list }" var="i">
 							<tr>
 								<td class="left">${i.memId }</td>
 								<td>${i.memName }</td>

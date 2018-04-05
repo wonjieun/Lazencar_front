@@ -4,7 +4,7 @@ public class MemberManage {
 	
 	private String cate;
 	private String content;
-	private String sort;
+	private String sort = "mem_Id";
 	private String clicked; 
 	
 	public String getClicked() {
