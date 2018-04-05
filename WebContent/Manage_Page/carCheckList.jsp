@@ -91,7 +91,6 @@
 			return true;
 		}
 	}
-<<<<<<< HEAD
 	//수정 버튼 눌렀을시 실행
 	function update_clicked(a){
 		if(confirm("수정하시겠습니까?")){
@@ -126,9 +125,6 @@
 		}
 		else return;
 	}
-=======
-	
->>>>>>> 32f3f6478d855cd5d88ffe8b0be38d360e6d70d9
 	$(function(){	
 
 		var onSampleResized = function(e){
