@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 
@@ -13,43 +13,47 @@
 
 	<link rel="stylesheet" type="text/css" href="./css/main.css" />
 	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
-	<link rel="stylesheet" href="./css/daterangepicker.css" />
 
-	<script  src="./js/jquery.js"></script>
-	<script  src="./js/colResizable-1.5.min.js"></script>
-
-	<script src="./js/Date_moment.min.js"></script>
-	<script src="./js/Date_rangepicker.js"></script>
-	<script src="./js/Date_demo.js"></script>
-	
 	<style>
-	.demo { margin:30px 0;}
-	.date-picker-wrapper .month-wrapper table .day.lalala { background-color:orange; }
-	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
-	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
-	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
-	
 	.level1 :nth-child(8) .fly {background: #ffb505 !important;}
 	</style>
 	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script type="text/javascript">
-	$(function(){	
+//만약 비어있는 데이터가 있다면 alert 띄워주기
+  function checkCarDataInsert() {
+  	if ($("#content").val() != "" 
+  	 && $("#startDate").val() != "" 
+  	 && $("#endDate").val() != ""
+  	 && $("#age").val() != ""
+  	 && $("#time").val() != ""
+  	 && $("#carKind").val() != ""
+  	 && $("#couponImg").val() != "") {
+  		//모든 칸이 채워져 있으면 return true
+  		console.log("체크완료 : 모두채워짐");
+  		return true;
+  	} else {
+  		console.log("체크완료 : 빈칸있음, or 실패")
+  		return false;
+  	}
+  }
 
-		var onSampleResized = function(e){
-			var columns = $(e.currentTarget).find("th");
-			var msg = "columns widths: ";
-			columns.each(function(){ msg += $(this).width() + "px; "; })
-			$("#table2Txt").html(msg);
-			
-		};	
-	
-		$("#table2").colResizable({
-			liveDrag:true, 
-			gripInnerHtml:"<div class='grip'></div>", 
-			draggingClass:"dragging", 
-			onResize:onSampleResized});
-		
-	});	
+  //초기화, 전송 버튼
+  $(document).ready(function() {
+  	$("#reset").click(function() {
+  		$("#f")[0].reset();
+  	});
+  	$("#submit").click(function() {
+  		if (checkCarDataInsert() == false) {
+  			alert("빈칸을 모두 채워주세요.");
+  			return;
+  		} else {
+  			
+  			$("#f").submit();
+  		}
+  	});
+  });
+  
   </script>
 
 </head>
@@ -59,7 +63,7 @@
       <li><a href="./home.jsp">Home</a></li>
       <li><a class="fly" href="javascript:void(0);">회원 관리</a>
          <ul>
-            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
+            <li><a href="/admin/memberManage.do" >회원목록 조회</a></li>
          </ul>
       </li>
       
@@ -71,8 +75,8 @@
       
       <li><a class="fly" href="javascript:void(0);">차량 관리</a>
          <ul>
-            <li><a href="./carRegister.jsp">차량 등록/해제</a></li>
-            <li><a href="./carCheckList.jsp">차량 점검일지</a></li>
+            <li><a href="/admin/carRegister.do">차량 등록/해제</a></li>
+            <li><a href="/admin/carCheckList.do">차량 점검일지</a></li>
          </ul>
       </li>
       
@@ -106,8 +110,8 @@
 		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
 
-				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
-				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
+				<li><a href="/admin/promotionRegister.do">특가 등록</a></li>
+				<li><a href="/admin/promotionList.do">특가 조회/삭제</a></li>
 			</ul>
 		</li>
 		
@@ -134,60 +138,65 @@
         </div>
         
 	<div class="center" >
-						
+	<form id="f" action="/admin/couponRegister.do" method="post" enctype="multipart/form-data">
 		 <table class="table1">
 			<tr>
 				<th>쿠폰 명</th>
-				<th>신청 가능 기간</th>
+				<th>쿠폰 시작일</th>
+				<th>쿠폰 종료일</th>
 			</tr>
 			<tr>
 				<td class="left">
-				<input type="text" />
+				쿠폰의 이름을 입력하세요.		<br><br>
+				<input type="text" id="content" name="content" size="30" value="">
+				</td>
+				<td>
+				쿠폰의 시작일을 입력하세요.<br><br>
+				<input type="date" id="startDate" name="startDate" size="30" value="" />
 				</td>
 				<td class="right">
-				<div class="demo">
-					기간을 선택하세요.<br> <input id="date-range0" size="30" value=""> 
-					</div>
+				쿠폰의 종료일을 입력하세요.<br><br>
+				<input type="date" id="endDate" name="endDate" size="30" value="">				
 				</td>
 			</tr>			
 			<tr>
 				<th>제약 조건</th>
+				<th>할인율</th>
 				<th>쿠폰 이미지</th>
 			</tr>
 			<tr>
 				<td class="left">
-				<p>나이 : <input type="text" id="age" value="0" style="width: 25px;"> 세 이상 </p>
-				<p>사용 시간 : <input type="text" id="time" value="0" style="width: 25px;"> 시간 이상 </p>
+				<p>나이 : <input type="text" id="age" name="age" value="0" size="5"> 세 이상 </p>
+				<p>사용 시간 : <input type="text" id="time" name="time" value="0" size="5"> 시간 이상 </p>
 				<p>차종 : 
-					<select id="sort" >
-					    <option>전차종
-					    <option>소형차 이상
-					    <option>중형차 이상
-					    <option>SUV 이상
-					    <option>대형차 이상
+					<select class="sort" id="carKind" name="carKind">
+					    <option value="All">전차종
+					    <option value="smallCar">소형차 이상
+					    <option value="mediumCar">중형차 이상
+					    <option value="SUV">SUV 이상
+					    <option value="largeCar">대형차 이상
 					</select>
 					</p>
 				</td>
+				<td>
+				쿠폰의 할인율을 입력하세요.		<br><br>
+				<p><input type="text" id="content" name="content" size="5" value="0">%</p>
+				</td>	
 				<td class="right">
-				<p>이미지 등록</p>
+				<label><input type="file" name="couponImg" id="couponImg" value=""/></label><br>
 				</td>
 			</tr>				
 		</table>
-		
+	</form>
 	</div>	
 	
-		<div class="btnSave">
-		<button type="reset">초기화</button>
-		<button type="submit" id="submit">등록</button>
-		</div>
 		<div class="clear"></div>
-		<div class="paging">
-				<a href="#" class="page_first"><img src="./images/page_first.gif" alt="처음" /></a>
-				<a href="#" class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a>
-				<strong>1</strong>
-				<a href="#" class="page_next"><img src="./images/page_next.gif" alt="다음" /></a>
-				<a href="#" class="page_end"><img src="./images/page_end.gif" alt="마지막" /></a>
-		</div>	
+
+		<div class="btnSave">
+		<button id="reset">초기화</button>
+		<button id="submit" value="submit">등록</button>
+		</div>
+	
 
 </div>		<!-- content end -->
 

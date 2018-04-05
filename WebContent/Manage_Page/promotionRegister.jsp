@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 
@@ -11,47 +11,50 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
-	<link rel="stylesheet" href="./css/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="./css/main.css" />
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>	
+<style>
+.level1 :nth-child(9) .fly {background: #ffb505 !important;}
+</style>
 
-	<script  src="./js/jquery.js"></script>
-	<script  src="./js/colResizable-1.5.min.js"></script>
+<script type="text/javascript">
 
-	<script src="./js/Date_moment.min.js"></script>
-	<script src="./js/Date_rangepicker.js"></script>
-	<script src="./js/Date_demo.js"></script>
-	
-	<style>
-	.demo { margin:30px 0;}
-	.date-picker-wrapper .month-wrapper table .day.lalala { background-color:orange; }
-	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
-	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
-	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
-	
-	.level1 :nth-child(9) .fly {background: #ffb505 !important;}
-	</style>
-	
-  <script type="text/javascript">
-	$(function(){	
+//만약 비어있는 데이터가 있다면 alert 띄워주기
+function checkCarDataInsert() {
+	if ($("#startDate").val() != "" 
+	 && $("#endDate").val() != ""
+	 && $("#content").val() != "" 
+	 && $("#bannerImg").val() != ""
+	 && $("#detailImg").val() != "") {
+		//모든 칸이 채워져 있으면 return true
+		console.log("체크완료 : 모두채워짐");
+		return true;
+	} else {
+		console.log("체크완료 : 빈칸있음, or 실패")
+		return false;
+	}
+}
 
-		var onSampleResized = function(e){
-			var columns = $(e.currentTarget).find("th");
-			var msg = "columns widths: ";
-			columns.each(function(){ msg += $(this).width() + "px; "; })
-			$("#table2Txt").html(msg);
+//초기화, 전송 버튼
+$(document).ready(function() {
+	$("#reset").click(function() {
+		$("#f")[0].reset();
+	});
+	$("#submit").click(function() {
+		if (checkCarDataInsert() == false) {
+			alert("빈칸을 모두 채워주세요.");
+			return;
+		} else {
 			
-		};	
-	
-		$("#table2").colResizable({
-			liveDrag:true, 
-			gripInnerHtml:"<div class='grip'></div>", 
-			draggingClass:"dragging", 
-			onResize:onSampleResized});
-		
-	});	
-  </script>
+			$("#f").submit();
+// 			alert("등록완료")		여기 말고 controller에서 
+		}
+	});
+});
 
+</script>	
+	
+	
 </head>
 <body>
 
@@ -60,7 +63,7 @@
       <li><a href="./home.jsp">Home</a></li>
       <li><a class="fly" href="javascript:void(0);">회원 관리</a>
          <ul>
-            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
+            <li><a href="/admin/memberManage.do" >회원목록 조회</a></li>
          </ul>
       </li>
       
@@ -105,8 +108,8 @@
 		
 		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
-				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
-				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
+				<li><a href="/admin/promotionRegister.do">특가 등록</a></li>
+				<li><a href="/admin/promotionList.do">특가 조회/삭제</a></li>
 			</ul>
 		</li>
 		
@@ -134,49 +137,48 @@
         
 	<div class="center" >
 						
+
+	<form id="f" action="/admin/promotionRegister.do" method="post" enctype="multipart/form-data">
 		 <table class="table1">
 			<tr>
-				<th>특가 상품 명</th>
-				<th>특가 기간</th>
+				<th>특가 시작일</th>
+				<th>특가 종료일</th>
 			</tr>
 			<tr>
 				<td class="left">
-				<input type="text" />
+				특가 상품의 시작일을 입력하세요.<br><br>
+				<input type="date" id="startDate" name="startDate" size="30" value="" />
 				</td>
 				<td class="right">
-				<div class="demo">
-					기간을 선택하세요.<br> <input id="date-range0" size="30" value=""> 
-					</div>
+				특가 상품의 종료일을 입력하세요.<br><br>
+				<input type="date" id="endDate" name="endDate" size="30" value="">				
 				</td>
 			</tr>			
 			<tr>
-				<th>특가 상품 배너 이미지</th>
-				<th>특가 상품  상세 이미지</th>
+				<th>특가 상품 명</th>
+				<th>특가 상품  이미지</th>
 			</tr>
 			<tr>
 				<td class="left">
-				<p>이미지 등록</p>
+				특가 상품의 이름을 입력하세요.		<br><br>
+				<input type="text" id="content" name="content" size="30" value="">
 				</td>
 				<td class="right">
-				<p>이미지 등록</p>
-				</td>
+					<label>특가 배너 이미지 : <input type="file" name="bannerImg" id="bannerImg" value=""/></label><br>
+					<label>특가 상세 이미지 : <input type="file" name="detailImg" id="detailImg" value=""/></label>
+				</td>											
 			</tr>				
 		</table>
+	</form>
 		
-	</div>	
+		<div class="clear"></div>
 	
 		<div class="btnSave">
-		<button type="reset">초기화</button>
-		<button type="submit" id="submit">등록</button>
+		<button id="reset">초기화</button>
+		<button id="submit" value="submit">등록</button>
 		</div>
-		<div class="clear"></div>
-		<div class="paging">
-				<a href="#" class="page_first"><img src="./images/page_first.gif" alt="처음" /></a>
-				<a href="#" class="page_prev"><img src="./images/page_prev.gif" alt="이전" /></a>
-				<strong>1</strong>
-				<a href="#" class="page_next"><img src="./images/page_next.gif" alt="다음" /></a>
-				<a href="#" class="page_end"><img src="./images/page_end.gif" alt="마지막" /></a>
-		</div>	
+
+	</div>	
 
 </div>		<!-- content end -->
 
@@ -187,3 +189,5 @@
 
 </body>
 </html>
+
+
