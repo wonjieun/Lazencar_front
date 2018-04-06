@@ -11,20 +11,22 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<link rel="stylesheet" type="text/css" href="./css/paging.css" />  
+	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/Manage_page/css/paging.css" />  
 
 	<style>
 	.level1 :nth-child(8) .fly {background: #ffb505 !important;}
 	</style>
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script type="text/javascript">
+ 
+<script type="text/javascript">
 //만약 비어있는 데이터가 있다면 alert 띄워주기
-  function checkCarDataInsert() {
+  function checkCouponDataInsert() {
   	if ($("#content").val() != "" 
   	 && $("#startDate").val() != "" 
   	 && $("#endDate").val() != ""
+  	 && $("#discount").val() != ""
   	 && $("#age").val() != ""
   	 && $("#time").val() != ""
   	 && $("#carKind").val() != ""
@@ -37,23 +39,24 @@
   		return false;
   	}
   }
-
-  //초기화, 전송 버튼
+	
+//초기화, 전송 버튼
   $(document).ready(function() {
   	$("#reset").click(function() {
   		$("#f")[0].reset();
   	});
   	$("#submit").click(function() {
-  		if (checkCarDataInsert() == false) {
+  		if (checkCouponDataInsert() == false) {
   			alert("빈칸을 모두 채워주세요.");
   			return;
   		} else {
   			
   			$("#f").submit();
+//   			alert("등록완료")		여기 말고 controller에서 
   		}
   	});
   });
-  
+ 
   </script>
 
 </head>
@@ -142,6 +145,7 @@
         </div>
         
 	<div class="center" >
+	
 	<form id="f" action="/admin/couponRegister.do" method="post" enctype="multipart/form-data">
 		 <table class="table1">
 			<tr>
@@ -183,16 +187,16 @@
 					</p>
 				</td>
 				<td>
-				쿠폰의 할인율을 입력하세요.		<br><br>
+				쿠폰의 할인율을 입력하세요.		<br>
 				<p><input type="text" id="discount" name="discount" size="5" value="0">%</p>
 				</td>	
 				<td class="right">
+				이미지 사이즈 : 340 X 140	 (mm)<br><br>
 				<label><input type="file" name="couponImg" id="couponImg" value=""/></label><br>
 				</td>
 			</tr>				
 		</table>
-	</form>
-	</div>	
+		</form>
 	
 		<div class="clear"></div>
 
@@ -201,6 +205,7 @@
 		<button id="submit" value="submit">등록</button>
 		</div>
 	
+	</div>	
 
 </div>		<!-- content end -->
 

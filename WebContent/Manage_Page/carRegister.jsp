@@ -13,10 +13,6 @@
 <link rel="stylesheet" type="text/css" href="/Manage_Page/css/paging.css" />
 <link rel="stylesheet" href="/Manage_Page/css/daterangepicker.css" />
 
-<script src="/Manage_Page/js/jquery.js"></script>
-<script src="/Manage_Page/js/colResizable-1.5.min.js"></script>
-
-
 <style>
 .demo {
 	margin: 30px 0;
@@ -60,17 +56,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		var onSampleResized = function(e) {
-			var columns = $(e.currentTarget).find("th");
-			var msg = "columns widths: ";
-			columns.each(function() {
-				msg += $(this).width() + "px; ";
-			})
-			$("#table2Txt").html(msg);
 
-		};
-	});
 	function checkCarDataInsert() {
 		if ($("#carLCD").val() != "" && $("#carName").val() != ""
 				&& $("#carNum").val() != "" && $("#carCategory").val() != ""
@@ -83,6 +69,7 @@
 			return false;
 		}
 	}
+	
 	$(document).ready(function() {
 		$("#btn_carRegist").click(function() {
 			if (checkCarDataInsert() == false) {

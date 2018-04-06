@@ -68,6 +68,33 @@ public class CouponRegisterDaoImpl implements CouponRegisterDao {
 		}
 	}
 	
+	@Override
+	public boolean existName(String couName) {
+		String sql = "SELECT COUNT(*) FROM TB_COUPON WHERE cou_name = '" + couName + "'";
+		
+		ResultSet rs = null;
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+
+			rs.next();
+			
+			if( rs.getInt(1) > 0 )	return true;
+			else return false;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(st!=null)	st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	
 	
 	/*
 	

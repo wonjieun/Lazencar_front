@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 import org.apache.commons.fileupload.FileItem;
 
-import dto.adminDto.PromotionManage;
+import dto.Promotion;
 
 public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 	private final String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -31,7 +31,7 @@ public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 	}
 	
 	@Override
-	public void insertAllData(PromotionManage pro) {
+	public void insertAllData(Promotion pro) {
 		String sql = "INSERT INTO TB_EVENT(EVE_NUM, EVE_NAME, EVE_START, EVE_END, EVE_BANNER_IMG, EVE_DETAIL_IMG)"
 				+ " VALUES(UP_COU_NUM.nextval,?,?,?,?,?)";
 		ResultSet rs = null;
@@ -55,7 +55,31 @@ public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 	}
 	
 	
-	
+	@Override
+	public boolean existName(String eveName) {
+		String sql = "SELECT COUNT(*) FROM TB_EVENT WHERE eve_name = '" + eveName + "'";
+		
+		ResultSet rs = null;
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+
+			rs.next();
+			
+			if( rs.getInt(1) > 0 )	return true;
+			else return false;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(st!=null)	st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 	
 	/*
 	

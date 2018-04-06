@@ -11,7 +11,7 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
-<link rel="stylesheet" type="text/css" href="./css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>	
 <style>
 .level1 :nth-child(9) .fly {background: #ffb505 !important;}
@@ -20,7 +20,7 @@
 <script type="text/javascript">
 
 //만약 비어있는 데이터가 있다면 alert 띄워주기
-function checkCarDataInsert() {
+function checkProDataInsert() {
 	if ($("#startDate").val() != "" 
 	 && $("#endDate").val() != ""
 	 && $("#content").val() != "" 
@@ -41,7 +41,7 @@ $(document).ready(function() {
 		$("#f")[0].reset();
 	});
 	$("#submit").click(function() {
-		if (checkCarDataInsert() == false) {
+		if (checkProDataInsert() == false) {
 			alert("빈칸을 모두 채워주세요.");
 			return;
 		} else {
