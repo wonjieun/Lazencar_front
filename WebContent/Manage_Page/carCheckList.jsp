@@ -201,7 +201,7 @@ $(document).ready(function(){
 									<option value="car_Category">차량종류</option>
 									<option value="car_Condi">차량상태</option>
 							</select></td>
-							<td><input size='30' id="search_content"></textarea>
+							<td><input size='30' id="search_content">
 							</td>
 							<td class="right">
 								<!-- 정렬 --> <select class="sort" id="sort">

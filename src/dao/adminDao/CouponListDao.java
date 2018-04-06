@@ -2,26 +2,27 @@ package dao.adminDao;
 
 import java.util.List;
 
-import dto.adminDto.MemberManage;
+import dto.adminDto.CouponManage;
 import util.Paging;
 
 public interface CouponListDao {
 	
-	//총 회원수 반환
-	public int getTotal(MemberManage search);
+	// 총 게시물 수 반환
+	public int getTotal(CouponManage dto);
 
-	//관리자가 검색한 내용을 받아와서 해당 내용에 대한 사용자 정보 받아오기
+	// 페이징 처리하여 게시물 리스트 가져오기
+	
 	public List getAllList(Paging paging);
-	public List getIdList(Paging paging,MemberManage search);
-	public List getJuminList(Paging paging,MemberManage search); 
-	public List memberManage(Paging paging, MemberManage search);
-	
-	//검색버튼 눌렸는지 확인
-	boolean doSearch(MemberManage search);
 
-	
-	
-	
+	public List getSearchList(Paging paging,CouponManage dto);
+
+	public List getList(Paging paging,CouponManage dto);
+
+	//검색 버튼 눌렸나 확인하는 메서드
+	boolean doSearch(CouponManage dto);
+	//차량 수정 및 삭제 메서드
+	public void updateCoupon(CouponManage dto);
+	public void deleteCoupon(CouponManage dto);
 }
 
 

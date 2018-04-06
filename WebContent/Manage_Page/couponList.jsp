@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
@@ -13,9 +13,32 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 <link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
-
 	
 <style>
+
+	tr.hiddenTr{
+ 	display:none;  
+/*  	display:table-row;  */
+	}
+	tr.hiddenTr td{
+		padding: 15px 0 15px 100px;
+	
+	}
+	tr.hiddenTr td div{    
+	text-align: left;
+	float: left; 
+	width: 33%;
+	margin-left:30px;
+	}
+	tr.hiddenTr td div font{
+		font-size:17px;
+	}
+	tr.hiddenTr td div button{
+		text-align:right;
+	}
+
+
+
 .level1 :nth-child(8) .fly {background: #ffb505 !important;}
 </style>
 
@@ -23,6 +46,98 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>	
 <script type="text/javascript">
 
+//리스트 하단에 추가로 출력해주기 위해서 토글 함수 생성
+	function showDetail(id){
+		  obj = document.getElementById(id);
+		  
+		  if(obj.style.display == "none"){
+			  obj.style.display = "table-row";
+		  }else{
+			  obj.style.display="none";
+		  }
+	}
+// 	검색창에 값이 있는가 판별
+	function checkSearch_content(){
+		if($("#search_content").val()==''){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	//수정 버튼 눌렀을시 실행
+	function update_clicked(a){
+		if(confirm("수정하시겠습니까?")){
+			var btnEdit = "updateCoupon";
+			var key_couNum = $("#key_couNum_"+a).text();		
+			var key_couName = $("#key_couName_"+a).val();
+			var key_startDate = $("#key_startDate_"+a).val();
+			var key_endDate = $("#key_endDate_"+a).val();
+			var key_ageConst = $("#key_ageConst_"+a).val();
+			var key_timeConst = $("#key_timeConst_"+a).val();
+			var key_carConst = $("#key_carConst_"+a).val();
+			var key_discount = $("#key_discount_"+a).val();
+			console.log(car_LCD);
+			
+			var $form3 = $("<form>").attr("action","/admin/couponList.do").attr("method","post");
+			$("<input>").attr("type","hidden").attr("name","key_couNum").attr("value",key_couNum).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","key_couName").attr("value",key_couName).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","key_startDate").attr("value",key_startDate).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","key_endDate").attr("value",key_endDate).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","key_ageConst").attr("value",key_ageConst).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","key_timeConst").attr("value",key_timeConst).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","key_carConst").attr("value",key_carConst).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","key_discount").attr("value",key_discount).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form3);
+			$form3.appendTo($(document.body));
+			
+			$form3.submit();
+		}else return;
+	}
+	//삭제 버튼 눌렸을시 실행
+	function delete_clicked(a){
+		if(confirm("삭제하시겠습니까?")){
+			var font_couNum = $("#key_couNum_"+a).text();
+			var btnEdit ="deleteCoupon";
+			
+			var $form2 = $("<form>").attr("action","/admin/couponList.do").attr("method","post");
+			$("<input>").attr("type","hidden").attr("name","key_couNum").attr("value",font_carNum).appendTo($form2);
+			$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form2);
+			$form2.appendTo($(document.body));
+			
+			$form2.submit();	
+		}
+		else return;
+	}
+
+//	검색 및 정렬하는 ajax
+$(document).ready(function(){
+	$("#searchCoupon").click(function(){
+		var category =$("#category").val();
+		var sort=$("#sort").val();
+		var content=$("#search_content").val();
+		var clicked="clicked";
+		
+		console.log("카테고리:"+category);
+		console.log("정렬기준:"+sort);
+		console.log("입력내용:"+content);
+		if(checkSearch_content()==true){
+			console.log("내용있음");
+			
+			var $form = $("<form>").attr("action", "/admin/couponList.do").attr("method", "post");
+			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "clicked").attr("value", clicked).appendTo($form);
+			$form.appendTo($(document.body));
+			
+			$form.submit();	
+			
+		}else{
+			alert("검색어를 입력하세요");
+			console.log("내용을 채워주세요");
+		}
+	});
+});
   
 </script>
 
@@ -74,6 +189,7 @@
 				<select class="sort" id="sort" name="sort">
 					<option value="CouponName">쿠폰 이름
 					<option value="Discount">할인율
+					<option value="CouponState">쿠폰 상태
 				</select>
 			</td>
 		</tr>
@@ -85,21 +201,76 @@
 	<div class="clear"></div>
 <div>
 	 <table id="table2">
-
+		<thead>
 		<tr>
 			<th class="left">쿠폰 이름</th>
 			<th>쿠폰 시작일</th>
 			<th>쿠폰 종료일</th>
-			<th>제약 조건</th>
+			<th colspan="3">제약 조건</th>
 			<th>할인율</th>
 			<th class="right">쿠폰 이미지</th>
 		</tr>
-		<c:forEach items="${list }" var="i">
+		</thead>
+		
+		<tbody>
+		<c:forEach items="${list }"  begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
+								
 		<tr>
-			<td class="left">cell</td>
-			<td class="right"></td>
+			<td id="key_couNum_${listNumber.count}">${i.couNum }</td>
+			<td>${i.couName }</td>
+			<td>${i.couStart }</td>
+			<td>${i.couEnd }</td>
+			<td>${i.couAgeConst }</td>
+			<td>${i.couTimeConst }</td>							
+			<td>${i.couCarConst }</td>							
+			<td>${i.couImg }</td>						
+			<td>	
+			<button id="btn_listDown" onclick="showDetail('hiddenTr_${listNumber.count}');" style="margin:auto 0;">수정</button><br>
+			<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button>
+			</td>
 		</tr>
+		<tr class="hiddenTr" id="hiddenTr_${listNumber.count }">
+			<td colspan="7">
+			<div style="width:90px" >
+			<font>쿠폰명 : </font><br>
+			<font>쿠폰 시작일 : </font><br>
+			<font>쿠폰 종료일 : </font><br>
+			<font>나이 제한 :</font><br>
+			<font>시간 제한 : </font><br>
+			<font>차종 제한: </font>
+			</div>
+			<div>
+				<textarea rows="1" cols="30" id="key_couName_${listNumber.count}">${i.couName }</textarea><br>
+				<input type="date" id="key_startDate_${listNumber.count}"/>${i.couStart }<br>
+				<input type="date" id="key_endDate_${listNumber.count}"/>${i.couEnd }<br>
+				<p>나이 : <input type="text" id="key_ageConst_${listNumber.count}" value="0" size="5"> 세 이상 </p>
+				<p>사용 시간 : <input type="text" id="key_timeConst_${listNumber.count}" value="0" size="5"> 시간 이상 </p>
+				<p>차종 : 
+					<select class="sort" id="key_carConst_${listNumber.count}" name="key_carConst">
+					    <option>${i.carConst }</option>
+					    <option value="All">전차종</option>
+					    <option value="smallCar">소형차 이상</option>
+					    <option value="mediumCar">중형차 이상</option>
+					    <option value="SUV">SUV 이상</option>
+					    <option value="largeCar">대형차 이상</option>
+					</select>
+					</p>
+				<textarea rows="1" cols="30" id="key_discount_${listNumber.count}">${i.couName }</textarea><br>	
+			</div>
+			<div>
+				<button id="btn_update_${listNumber.count }"
+				 onclick="update_clicked(${listNumber.count })">수정완료</button>
+			</div>
+			</td>
+		</tr>	
+		
+		
+		
+		
+		
+		
 		</c:forEach>
+		</tbody>
 	</table>
 	</div>
 	

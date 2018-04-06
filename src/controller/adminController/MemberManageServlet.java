@@ -27,7 +27,6 @@ import service.adminService.MemberManageServiceImpl;
  */
 @WebServlet("/admin/memberManage.do")
 public class MemberManageServlet extends HttpServlet {
-	
 	private static final long serialVersionUID = 1L;
 	
 	private MemberManageService service = new MemberManageServiceImpl();
@@ -36,7 +35,7 @@ public class MemberManageServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/json; charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 	
 	  String category = request.getParameter("category"); // select의 name이 cate, option의 value는 category로 받아짐
 	  String content = request.getParameter("content");
