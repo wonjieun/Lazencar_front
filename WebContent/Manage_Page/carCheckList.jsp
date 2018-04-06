@@ -91,7 +91,6 @@
 			return true;
 		}
 	}
-<<<<<<< HEAD
 	//수정 버튼 눌렀을시 실행
 	function update_clicked(a){
 		if(confirm("수정하시겠습니까?")){
@@ -126,9 +125,6 @@
 		}
 		else return;
 	}
-=======
-	
->>>>>>> 32f3f6478d855cd5d88ffe8b0be38d360e6d70d9
 	$(function(){	
 
 		var onSampleResized = function(e){
@@ -173,65 +169,7 @@ $(document).ready(function(){
 </head>
 <body>
 
-<div id="menu">
-   <ul class="level1">
-      <li><a href="./home.jsp">Home</a></li>
-      <li><a class="fly" href="javascript:void(0);">회원 관리</a>
-         <ul>
-            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">예약 관리</a>
-         <ul>
-            <li><a href="./reservManage.jsp">예약목록 조회</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">차량 관리</a>
-         <ul>
-            <li><a href="/admin/carRegister.do">차량 등록</a></li>
-            <li><a href="/admin/carCheckList.do">차량 정보수정</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">공지 사항</a>
-         <ul>
-            <li><a href="./noticeManage.jsp">공지사항 등록</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">후기 관리</a>
-         <ul>
-            <li><a href="./reviewManage.jsp">후기목록 조회</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">문의 관리</a>
-         <ul>
-            <li><a href="./qnaManage.jsp">문의 내역 확인</a></li>
-            <li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
-         </ul>
-      </li>
-		
-		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
-			<ul>
-				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>
-				<li><a href="./couponDelete.jsp">쿠폰 조회/삭제</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
-			<ul>
-				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
-				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
-
-			</ul>
-		</li>
-		
-	</ul>
-</div>		<!-- sideMenu end -->
-
+<jsp:include page="/Manage_Page/util/sideMenu.jsp" />
 
 <div class="wrap">
 
