@@ -5,7 +5,7 @@
     
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="dto.adminDto.PromotionManage" %>
+<%@ page import="dto.Promotion" %>
 <%@ page import="dao.adminDao.PromotionRegisterDao" %>
 <%@ page import="dao.adminDao.PromotionRegisterDaoImpl" %>
 
@@ -159,8 +159,8 @@ $(document).ready(function(){
 <div class="container">
 
 <%
-	List<PromotionManage> dto = (List)request.getAttribute("dto");
-	for(PromotionManage i : dto){ %>
+	List<Promotion> dto = (List)request.getAttribute("dto");
+	for(Promotion i : dto){ %>
 		<a href="/FileDownload?type=i&no="<%=i.getName() %>"><%=i.getName() %> <%=i.getBannerImg() %></a><br>
 <% } %>
 
