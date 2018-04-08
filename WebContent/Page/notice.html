@@ -11,7 +11,7 @@
 
 <style type="text/css">
 @charset "UTF-8";
-
+/* =================================================================================== */
 /* 전체 스타일 설정 */
 #header *, #footer *, .sidebar * 
 {
@@ -991,33 +991,9 @@ a.hoverline:hover {
 
 
 <script type="text/javascript">
-	//현재 서버 시간
 
-	var curYear = "2018"; //현재 년
 
-	var curMonth = "3"; //현재 월
-
-	var curDay = "6"; //현재 일
-
-	var curHour = "18"; //현재 시간
-
-	var curMinute = "21"; //현재 분
-
-	var ___isLogin___ = "false"; //로그인 여부
-
-	var __ciYn__ = "";
-
-	var _globalFullContextSSL = "https://www.greencar.co.kr";
-
-	var ___isCorpChk___ = "";
-
-	var _ssoDomain = 'member.lpoint.com';
-
-	var _joinReturnUrl = 'https://www.greencar.co.kr/login/';
-
-	var _fullImgHostAddr = '';
-
-	var _birth = "";
+	
 </script>
 
 
@@ -1190,22 +1166,29 @@ a.hoverline:hover {
 
 			<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
 
-	<form id="frmSearch" name="frmSearch" method="get" action="./list.do">
-					<input type="hidden" id="bbsCateId" name="bbsCateId" value="0" />
-					<div class="form-searchbox">
-						<h4><img src="./images/board/txt_tit_search.gif" alt="검색" /></h4>
-						<div class="form-search-01">
-							<select id="searchItem" name="searchItem" class="selstyle">
-								<option value="ALL" >전체</option>
-								<option value="TITLE" >제목</option>
-								<option value="CONT" >내용</option>
-							</select>
-						</div>
-						<div class="form-search-02"><input id="searchWord" name="searchWord" type="text" class="inputTxt" value="" title="검색어 입력" /></div>
-						<div class="form-search-03"><input type="image" src="./images/board/btn_form_search.gif" alt="검색" title="검색" /></div>
-					</div>		<!-- form-searchbox -->
-				</form>
-				
+	<form id="frmSearch" name="frmSearch" method="get" action="/service/list.do">
+		<input type="hidden" id="bbsCateId" name="bbsCateId" value="0" />
+		<div class="form-searchbox">
+			<h4><img src="/Page/images/board/txt_tit_search.gif" alt="검색" /></h4>
+			
+			<div class="form-search-01">
+				<select id="searchItem" name="searchItem" class="selstyle">
+					<option value="ALL" >전체</option>
+					<option value="TITLE" >제목</option>
+					<option value="CONT" >내용</option>
+				</select>
+			</div>
+			
+			<div class="form-search-02">
+				<input id="searchWord" name="searchWord" type="text" class="inputTxt" value="" title="검색어 입력" />
+			</div>
+			
+			<div class="form-search-03">
+				<input type="image" src="/Page/images/board/btn_form_search.gif" alt="검색" title="검색" />
+			</div>
+		</div>		<!-- form-searchbox -->
+	</form>
+	
 					<table summary="공지사항에 대한 번호 제목 등록일 리스트" class="boardList notice-list">
 						<caption></caption>
 						<colgroup>
@@ -1221,6 +1204,30 @@ a.hoverline:hover {
 							</tr>
 						</thead>
 						<tbody>
+
+<!-- 방법1 -->
+<%
+	List<Notice> list = request.getAttribute("list");
+	for(int i=0; i<list.size(); i++) {
+		list.get(i).getTitle();
+	}
+	
+		for(Notice i : list) {	%>
+		<tr>
+			<td><%=i.getNo()%></td>
+			<td><%=i.getNo()%></td>
+			<td><%=i.getNo()%></td>
+		</tr>
+<%	} %>
+
+<!-- 방법2 -->
+<c:forEach items="${list }" var="i">
+	<tr>
+		<td>${i.no }</td>
+		<td class="txt_l"><a href="/service/list.do?bbsCateId=0&searchItem=${i.searchItem }&searchWord=${i.searchWord }&x=38&y=26">${i.title }</a></td>
+		<td>${i.date }</td>
+	</tr>
+</c:forEach>
 						
 							<tr class="notice">
 								<td><img src="./images/board/icon_notice_txt.gif" alt="공지" /></td>
