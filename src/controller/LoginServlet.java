@@ -32,8 +32,8 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/json; charset=utf-8");
-		HttpSession session = request.getSession();
 
+		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		
 		// 사용자가 입력한 id, pw

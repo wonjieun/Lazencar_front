@@ -984,7 +984,8 @@ a {
 	word-spacing: -1px;
 }
 </style>
-
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript"
  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
@@ -1240,12 +1241,39 @@ $(document).ready( function() {
 		<a href="javascript:void(0);">
 		<img src="/Page/images/login/facebook.PNG" alt="" />
 		</a>
-		<a href="javascript:void(0);">
-		<img src="/Page/images/login/kakao.PNG" alt="" />
-		</a> <br>
-		<a href="javascript:void(0);">
-		<img src="/Page/images/login/naver.PNG" alt="" />
-		</a>
+		
+	
+			<a href="javascript:void(0);"><img src="/Page/images/login/kakao.PNG" alt="" /></a> <br>
+
+<!-- 			<a href="javascript:void(0);"><img src="/Page/images/login/naver.PNG" alt="" /></a> <br> -->
+	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+	  <div id="naver_id_login"></div>
+  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+  <script type="text/javascript">
+  	var naver_id_login = new naver_id_login(
+  			"vL_aDS4Z9bTr4P8i4TKj", "http://localhost:8090/Api/Member/callback.html");
+  	var state = naver_id_login.getUniqState();
+//   	naver_id_login.setButton("white", 2,40);
+  	naver_id_login.setDomain("http://localhost:8090");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
+  	
+  </script>
+		
+		<a href="#" id="logout">로그아웃</a>
+		<script>
+		$(document).ready(function(){
+			$("#logout").click(function(){
+				var token = 'AAAAOsvN0HEMWRB%2FKuswWuBGiTuvYwxMdvn9n6EnO%2FFe6%2FGaQH4DR0KTlEAtxGQkA0Y9BgJKDXpbt2344dcydhP%2BJv8%3D';
+				console.log(token);
+				location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
+// 				console.log("logout");t
+// 				naver_id_login.logout();
+// 				location.reload();
+			});
+		});
+		</script>
 	</div>
 </div>
 </div>
