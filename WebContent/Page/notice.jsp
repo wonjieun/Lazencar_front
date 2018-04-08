@@ -984,10 +984,6 @@ a.hoverline:hover {
 </style>
 
 
-
-
-
-
 <script type="text/javascript">
 	//현재 서버 시간
 

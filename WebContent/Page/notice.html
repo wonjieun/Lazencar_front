@@ -985,11 +985,6 @@ a.hoverline:hover {
 
 </style>
 
-
-
-
-
-
 <script type="text/javascript">
 
 
@@ -1224,7 +1219,10 @@ a.hoverline:hover {
 <c:forEach items="${list }" var="i">
 	<tr>
 		<td>${i.no }</td>
-		<td class="txt_l"><a href="/service/list.do?bbsCateId=0&searchItem=${i.searchItem }&searchWord=${i.searchWord }&x=38&y=26">${i.title }</a></td>
+		<td class="txt_l">
+			<a href="/service/list.do?bbsCateId=0&searchItem=${i.searchItem }&searchWord=${i.searchWord }&x=38&y=26">
+				${i.title }</a>
+		</td>
 		<td>${i.date }</td>
 	</tr>
 </c:forEach>
