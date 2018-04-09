@@ -18,6 +18,7 @@ import dao.adminDao.MemberManageDaoImpl;
 import util.Paging;
 import dto.Car;
 import dto.Review;
+import dto.adminDto.CouponManage;
 import dto.adminDto.MemberManage;
 import service.adminService.MemberManageService;
 import service.adminService.MemberManageServiceImpl;
@@ -42,20 +43,15 @@ public class MemberManageServlet extends HttpServlet {
 	  String sort = request.getParameter("sort");
 	  String clicked = request.getParameter("searchClicked");
 	  
+	  System.out.println("cate:"+category);
+	  System.out.println("clicked:"+clicked);
+	  System.out.println("content:"+content);
+	  
 	  //MemberSearch에 저장
 	  search.setCate(category);
 	  search.setContent(content);
 	  search.setSort(sort);
 	  search.setClicked(clicked);
-	  
-//	  System.out.println("1. " + search.getClicked());
-//	  System.out.println("2. " + search.getCate());
-//	  System.out.println("3. " + search.getContent());
-//	  System.out.println("4. " + search.getSort());
-//	  
-//	  System.out.println("param : " + content);
-//	  System.out.println("var : " + content);
-//	  System.out.println("mem : " + search.getContent());
 	  
 	  //페이징 ▽
 	  Paging paging =null;
@@ -67,14 +63,16 @@ public class MemberManageServlet extends HttpServlet {
 
 	  //페이징 로직 처리
 	  int totalCount = dao.getTotal(search);
+	  System.out.println(totalCount);
 //	  if(totalCount != 0) {
 	  paging = new Paging(totalCount, pageNo);//총 게시물수와 페이지번호를 이용한 페이징 객체 생성
-	  list = service.memberManage(paging,search); // 페이지에 맞는 게시물 갖고오기.
+	  System.out.println(paging);
+	  list = service.getList(paging,search); // 페이지에 맞는 게시물 갖고오기.
 //	  }
 	  
 	  
 	  
-	  list = service.memberManage(paging, search);
+	  list = service.getList(paging, search);
 //	  System.out.println("size : " + list.size());
 //	  System.out.println("list : " + list.get(0).getMemId());
 	  
@@ -89,22 +87,20 @@ public class MemberManageServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		Paging paging =null;
-
 		//페이징 로직 처리
-		String pageParam = req.getParameter("pageNo");
-		int pageNo=0;
-		if(pageParam != null) pageNo = Integer.parseInt(pageParam);
+		int pageNo = 0;
+		if( req.getParameter("pageNo") != null)
+			pageNo = Integer.parseInt( req.getParameter("pageNo") );
 
 		System.out.println("pageNo : " + pageNo);
 
-		int totalCount = dao.getTotal(search);
-		paging = new Paging(totalCount);//총 게시물수와 페이지번호를 이용한 페이징 객체 생성
+//		int totalCount = dao.getTotal(search);
+//		paging = new Paging(totalCount);//총 게시물수와 페이지번호를 이용한 페이징 객체 생성
 
+		Paging paging = new Paging(dao.getTotal(new MemberManage()), pageNo);
 
 		List<MemberManage> list = null;
-		list = service.memberManage(paging, new MemberManage());
+		list = service.getList(paging, new MemberManage());
 		
 		System.out.println(list.size());
 		

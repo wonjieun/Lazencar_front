@@ -11,6 +11,7 @@ import java.util.List;
 
 import dto.Coupon;
 import dto.adminDto.CouponManage;
+import dto.adminDto.MemberManage;
 import util.Paging;
 
 public class CouponListDaoImpl implements CouponListDao {
@@ -18,8 +19,6 @@ public class CouponListDaoImpl implements CouponListDao {
 	private final String username = "LAZENCAR";
 	private final String password = "saveus";
 	private Connection conn = null;
-	private Coupon cou = new Coupon();
-	
 	
 	public CouponListDaoImpl() {
 		try {
@@ -41,15 +40,23 @@ public class CouponListDaoImpl implements CouponListDao {
 		}
 	}
 
-	@Override
+	
 	public List getList(Paging paging, CouponManage dto) {
-		// 검색버튼을 누른다면 카테고리를 구분해서 회원정보를 선택해서 보여줌
+
+		//검색버튼을 누른다면 카테고리를 구분해서 회원정보를 선택해서 보여줌
 		if (doSearch(dto) == true) {
-			return getSearchList(paging, dto);
-		} else {
-			// 만약에 검색버튼을 누르지 않았을 경우(default) 전체 회원정보를 우선적으로 보여줌
-			return getAllList(paging);
+			if("CouponName".equals(dto.getCategory())) {
+				return getSearchList(paging, dto);
+
+			} else if("Discount".equals(dto.getCategory())) {
+				return getSearchList(paging, dto);
+			}
 		}
+		if (doSearch(dto) == false){
+		//만약에 검색버튼을 누르지 않았을 경우(default) 전체 회원정보를 우선적으로 보여줌
+		return getAllList(paging);
+		}
+		return getAllList(paging);
 	}
 
 	@Override
@@ -59,7 +66,9 @@ public class CouponListDaoImpl implements CouponListDao {
 		PreparedStatement pst = null;
 
 		String sql = "SELECT COUNT(*) FROM TB_COUPON";
-		String sql2 = "SELECT count(*) from tb_coupon where " + dto.getCategory() + " = ?";
+		String sql2 = "SELECT count(*) from tb_coupon WHERE " + dto.getCategory() 
+					+ " LIKE '%' || ? || '%'";
+		
 		int total = 0;
 
 		try {
@@ -96,7 +105,7 @@ public class CouponListDaoImpl implements CouponListDao {
 		String sql = "SELECT * FROM (" + " SELECT rownum rnum, b.* FROM ("
 				+ " SELECT COU_NUM, COU_NAME, COU_DISCOUNT, COU_START, COU_END,"
 				+ " COU_AGE_CONST, COU_TIME_CONST, COU_CAR_CONST, COU_IMG FROM TB_COUPON"
-				+ "	ORDER BY CAR_NUM DESC) b"
+				+ "	ORDER BY COU_NUM DESC) b"
 				+ " ORDER BY rnum" + ") WHERE rnum BETWEEN ? AND ?";
 
 		try {
@@ -107,6 +116,7 @@ public class CouponListDaoImpl implements CouponListDao {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
+				Coupon cou = new Coupon();
 				cou.setNo(rs.getInt("COU_NUM"));
 				cou.setName(rs.getString("COU_NAME"));
 				cou.setStartDate(rs.getString("COU_START"));
@@ -115,30 +125,31 @@ public class CouponListDaoImpl implements CouponListDao {
 				cou.setTimeConst(rs.getString("COU_TIME_CONST"));
 				cou.setCarConst(rs.getString("COU_CAR_CONST"));
 				cou.setCouponImg(rs.getString("COU_IMG"));
-
+				System.out.println(cou.getEndDate()+","+cou.getStartDate());
 				list.add(cou);
 			}
+			return list;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null)
-					rs.close();
-				if (pst != null)
-					pst.close();
+				if(rs!=null)	rs.close();
+				if(pst!=null)	pst.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return list;
+		return null;
 	}
 
 	@Override
 	public List getSearchList(Paging paging, CouponManage dto) {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
+		Coupon cou = new Coupon();
+		
 		List<Coupon> list = new ArrayList<>();
 		String sql = "SELECT * FROM( SELECT ROWNUM RNUM, B.* FROM(" 
 					+ " SELECT COU_NUM, COU_NAME, COU_DISCOUNT, COU_START, COU_END," 

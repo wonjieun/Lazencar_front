@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
 import dao.adminDao.CouponListDao;
 import dao.adminDao.CouponListDaoImpl;
 import dto.Coupon;
@@ -26,12 +23,26 @@ public class CouponListServlet extends HttpServlet {
 	
 	private CouponListService service = new CouponListServiceImpl();
 	private CouponListDao dao = new CouponListDaoImpl();
-	private Coupon dto = new Coupon();
-	private CouponManage cm = new CouponManage();
+			
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req,resp);
+		//페이징 로직 처리
+		int pageNo = 0;
+		if( req.getParameter("pageNo") != null)
+			pageNo = Integer.parseInt( req.getParameter("pageNo") );
+
+		System.out.println("pageNo : " + pageNo);
+		
+		Paging paging = new Paging(dao.getTotal(new CouponManage()), pageNo);
+		
+		List<Coupon> list = dao.getList(paging, new CouponManage());
+		
+		req.setAttribute("paging", paging);
+		req.setAttribute("CouponList", list);
+		
+		
+		req.getRequestDispatcher("/Manage_Page/couponList.jsp").forward(req, resp);
 	}
 	
 	
@@ -50,6 +61,7 @@ public class CouponListServlet extends HttpServlet {
 //		System.out.println(clicked);
 		
 		//CouponManage에 저장
+		CouponManage cm = new CouponManage();
 		cm.setSort(sort);
 		cm.setCategory(category);
 		cm.setContent(content);
@@ -87,18 +99,16 @@ public class CouponListServlet extends HttpServlet {
 		
 		System.out.println(cm.getEditCoupon());
 		
-		if(editCoupon.equals("deleteCoupon")
-					||editCoupon.equals("updateCoupon")
-			) {
+		if(editCoupon.equals("deleteCoupon")||editCoupon.equals("updateCoupon")	) {
 				service.editCouponData(cm);
 			}
 		}
 		//페이징 ▽
 		Paging paging =null;
-		List<Coupon> list = null;
-		
-		String pageParam = request.getParameter("pageNo");
 		int pageNo=0;
+
+		List<Coupon> list = null;
+		String pageParam = request.getParameter("pageNo");
 		if(pageParam != null) pageNo = Integer.parseInt(pageParam);
 		
 		//페이징 로직 처리

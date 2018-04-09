@@ -2,7 +2,7 @@ package dto.adminDto;
 
 	public class CouponManage {
 	private String category;
-	private String sort;
+	private String sort = "cou_num";
 	private String content;
 	private String clicked;
 

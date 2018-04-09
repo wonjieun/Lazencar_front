@@ -42,14 +42,14 @@ function checkSearch_content(){
 	}
 }
 
-$(document).ready(function() {
+$(document).ready(function() {s
 	$("#searchMember").click(function() {
 		var searchClicked = "눌림";
 		var memId = ""; //카테고리에 따른 조건 지정 변수
 		var memJumin = "";
 
 		var category = $("#category").val();
-		var content = $("#search_content").val();
+		var content = $("#content").val();
 		var sort = $("#sort").val();
 
 		//입력 데이터 확인 코드
@@ -58,25 +58,14 @@ $(document).ready(function() {
 		console.log("정렬  : " + sort);
 		
 		if(checkSearch_content()==true){
-			
-			if (category == "mem_Id") {
-				memId = content;
-				return;
-			} else if (category == "mem_Jumin") {
-				memJumin = content;
-				return;
-			} else {
-				console.log("기준 에러");
-			}
-
-		var $form = $("<form>").attr("action","/admin/memberManage.do").attr("method", "post");
-		$("<input>").attr("type", "hidden").attr("name", "searchClicked").attr("value", searchClicked).appendTo($form);
-		$("<input>").attr("type", "hidden").attr("name", "category").attr("value",category).appendTo($form);
-		$("<input>").attr("type", "hidden").attr("name", "content").attr("value",content).appendTo($form);
-		$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
-		$form.appendTo($(document.body));
-
-		$form.submit();
+			var $form = $("<form>").attr("action","/admin/memberManage.do").attr("method", "post");
+			$("<input>").attr("type", "hidden").attr("name", "searchClicked").attr("value", searchClicked).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "category").attr("value",category).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "content").attr("value",content).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
+			$form.appendTo($(document.body));
+	
+			$form.submit();
 	
 		} else{
 			alert("출생년도는 숫자 4자리로 입력해주세요. (ex. 1991)")
@@ -98,7 +87,7 @@ $(document).ready(function() {
 	<!-- header end -->
 
 
-	<div class="container">
+	<div class="contain">
 
 
 		<div class="content">
@@ -112,7 +101,6 @@ $(document).ready(function() {
 			</div>
 
 			<div class="center">
-
 				<table class="table1">
 					<tr>
 						<th>카테고리</th>
@@ -121,17 +109,16 @@ $(document).ready(function() {
 					</tr>
 
 					<tr>
-						<td class="left"><select class="sort" id="category"
-							name="category">
+						<td class="left">
+						<select class="sort" id="category">
 								<option value="mem_Id">회원 계정
 								<option value="mem_Jumin">출생 년도
 						</select></td>
 
-						<td><textarea rows="1" cols="30" id="search_content">
-						</textarea></td>
+						<td><textarea rows="1" cols="30" id="content"></textarea></td>
 
 						<td class="right">
-							<!-- 정렬 --> <select class="sort" id="sort" name="sort">
+							<!-- 정렬 --> <select class="sort" id="sort">
 								<option value="mem_Id">회원 이름
 								<option value="mem_License">면허 여부
 									<!--								<option value="rev">예약 날짜 		join 필요 -->
@@ -144,8 +131,9 @@ $(document).ready(function() {
 				</table>
 
 			</div>
-
 			<button class="btnSearch" id="searchMember" type="button">검색</button>
+
+			
 			<div class="clear"></div>
 
 			<div>

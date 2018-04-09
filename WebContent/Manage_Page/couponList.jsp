@@ -56,7 +56,6 @@
 			  obj.style.display="none";
 		  }
 	}
-// 	검색창에 값이 있는가 판별
 	function checkSearch_content(){
 		if($("#search_content").val()==''){
 			return false;
@@ -64,52 +63,6 @@
 			return true;
 		}
 	}
-	//수정 버튼 눌렀을시 실행
-	function update_clicked(a){
-		if(confirm("수정하시겠습니까?")){
-			var btnEdit = "updateCoupon";
-			var key_couNum = $("#key_couNum_"+a).text();		
-			var key_couName = $("#key_couName_"+a).val();
-			var key_startDate = $("#key_startDate_"+a).val();
-			var key_endDate = $("#key_endDate_"+a).val();
-			var key_ageConst = $("#key_ageConst_"+a).val();
-			var key_timeConst = $("#key_timeConst_"+a).val();
-			var key_carConst = $("#key_carConst_"+a).val();
-			var key_discount = $("#key_discount_"+a).val();
-			console.log(car_LCD);
-			
-			var $form3 = $("<form>").attr("action","/admin/couponList.do").attr("method","post");
-			$("<input>").attr("type","hidden").attr("name","key_couNum").attr("value",key_couNum).appendTo($form3);
-			$("<input>").attr("type","hidden").attr("name","key_couName").attr("value",key_couName).appendTo($form3);
-			$("<input>").attr("type","hidden").attr("name","key_startDate").attr("value",key_startDate).appendTo($form3);
-			$("<input>").attr("type","hidden").attr("name","key_endDate").attr("value",key_endDate).appendTo($form3);
-			$("<input>").attr("type","hidden").attr("name","key_ageConst").attr("value",key_ageConst).appendTo($form3);
-			$("<input>").attr("type","hidden").attr("name","key_timeConst").attr("value",key_timeConst).appendTo($form3);
-			$("<input>").attr("type","hidden").attr("name","key_carConst").attr("value",key_carConst).appendTo($form3);
-			$("<input>").attr("type","hidden").attr("name","key_discount").attr("value",key_discount).appendTo($form3);
-			$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form3);
-			$form3.appendTo($(document.body));
-			
-			$form3.submit();
-		}else return;
-	}
-	//삭제 버튼 눌렸을시 실행
-	function delete_clicked(a){
-		if(confirm("삭제하시겠습니까?")){
-			var font_couNum = $("#key_couNum_"+a).text();
-			var btnEdit ="deleteCoupon";
-			
-			var $form2 = $("<form>").attr("action","/admin/couponList.do").attr("method","post");
-			$("<input>").attr("type","hidden").attr("name","key_couNum").attr("value",font_carNum).appendTo($form2);
-			$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form2);
-			$form2.appendTo($(document.body));
-			
-			$form2.submit();	
-		}
-		else return;
-	}
-
-//	검색 및 정렬하는 ajax
 $(document).ready(function(){
 	$("#searchCoupon").click(function(){
 		var category =$("#category").val();
@@ -120,8 +73,20 @@ $(document).ready(function(){
 		console.log("카테고리:"+category);
 		console.log("정렬기준:"+sort);
 		console.log("입력내용:"+content);
+		
+		
+		
 		if(checkSearch_content()==true){
 			console.log("내용있음");
+			if (category == "CouponName") {
+				memId = content;
+				return;
+			} else if (category == "Discount") {
+				memJumin = content;
+				return;
+			} else {
+				console.log("기준 에러");
+			}
 			
 			var $form = $("<form>").attr("action", "/admin/couponList.do").attr("method", "post");
 			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
@@ -153,7 +118,7 @@ $(document).ready(function(){
 </div>		<!-- header end -->
 
 
-<div class="container">
+<div class="contain">
 
 
 
@@ -163,7 +128,8 @@ $(document).ready(function(){
           <p class="subtxt"><strong>쿠폰을 조회하고 삭제합니다.</strong><br />조회할 쿠폰 조건을 선택하고 검색버튼을 누르시면 쿠폰목록을 볼 수 있으며 쿠폰을 삭제할 수 있습니다.</p>
         </div>
         
-<div class="center" >
+<form action="/admin/couponList.do" method="post">
+	<div class="center" >
 
 	 <table class="table1">
 		<tr>
@@ -176,13 +142,12 @@ $(document).ready(function(){
 			<td class="left">
 				<select class="sort" id="category"	name="category">
 					<option value="CouponName">쿠폰 이름
-					<option value="CouponConst">제약 조건
+					<option value="Discount">할인율
 				</select>
 			</td>
 
 			<td>
-				<textarea rows="1" cols="30" id="search_content">
-				</textarea>
+				<textarea rows="1" cols="30" id="search_content"></textarea>
 			</td>
 
 			<td class="right">
@@ -195,15 +160,18 @@ $(document).ready(function(){
 		</tr>
 	</table>
 
-</div>	
+	</div>	
 
 	<button class="btnSearch" id="searchCoupon" type="button">검색</button>
+</form>
+	
 	<div class="clear"></div>
 <div>
 	 <table id="table2">
 		<thead>
 		<tr>
-			<th class="left">쿠폰 이름</th>
+			<th class="left">쿠폰 번호</th>
+			<th>쿠폰 이름</th>
 			<th>쿠폰 시작일</th>
 			<th>쿠폰 종료일</th>
 			<th colspan="3">제약 조건</th>
@@ -213,17 +181,18 @@ $(document).ready(function(){
 		</thead>
 		
 		<tbody>
-		<c:forEach items="${list }"  begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
-								
+		<c:forEach items="${CouponList }"  begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
+	
 		<tr>
-			<td id="key_couNum_${listNumber.count}">${i.couNum }</td>
-			<td>${i.couName }</td>
-			<td>${i.couStart }</td>
-			<td>${i.couEnd }</td>
-			<td>${i.couAgeConst }</td>
-			<td>${i.couTimeConst }</td>							
-			<td>${i.couCarConst }</td>							
-			<td>${i.couImg }</td>						
+			<td id="key_couNum_${listNumber.count}">${i.no }</td>
+			<td>${i.name }</td>
+<%-- 			<td>${i.StartDate }</td> --%>
+<%-- 			<td>${i.EndDate }</td> --%>
+			<td>${i.ageConst }</td>
+			<td>${i.timeConst }</td>							
+			<td>${i.carConst }</td>							
+			<td>${i.discount }</td>							
+			<td><img width="200px" height="150px" src="/upload/${i.couponImg }"></td>						
 			<td>	
 			<button id="btn_listDown" onclick="showDetail('hiddenTr_${listNumber.count}');" style="margin:auto 0;">수정</button><br>
 			<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button>
@@ -231,21 +200,13 @@ $(document).ready(function(){
 		</tr>
 		<tr class="hiddenTr" id="hiddenTr_${listNumber.count }">
 			<td colspan="7">
-			<div style="width:90px" >
-			<font>쿠폰명 : </font><br>
-			<font>쿠폰 시작일 : </font><br>
-			<font>쿠폰 종료일 : </font><br>
-			<font>나이 제한 :</font><br>
-			<font>시간 제한 : </font><br>
-			<font>차종 제한: </font>
-			</div>
-			<div>
-				<textarea rows="1" cols="30" id="key_couName_${listNumber.count}">${i.couName }</textarea><br>
-				<input type="date" id="key_startDate_${listNumber.count}"/>${i.couStart }<br>
-				<input type="date" id="key_endDate_${listNumber.count}"/>${i.couEnd }<br>
-				<p>나이 : <input type="text" id="key_ageConst_${listNumber.count}" value="0" size="5"> 세 이상 </p>
-				<p>사용 시간 : <input type="text" id="key_timeConst_${listNumber.count}" value="0" size="5"> 시간 이상 </p>
-				<p>차종 : 
+				<form action="/admin/couponList.do">
+				쿠폰명 : <textarea rows="1" cols="30" id="key_couName_${listNumber.count}">${i.name }</textarea><br>
+<%-- 				쿠폰 시작일 : <input type="date" id="key_startDate_${listNumber.count}"/>${i.StartDate }<br> --%>
+<%-- 				쿠폰 종료일 : <input type="date" id="key_endDate_${listNumber.count}"/>${i.EndDate }<br> --%>
+				<p>나이 제한 : <input type="text" id="key_ageConst_${listNumber.count}" value="0" size="5"> 세 이상 </p>
+				<p>시간 제한 : <input type="text" id="key_timeConst_${listNumber.count}" value="0" size="5"> 시간 이상 </p>
+				<p>차종 제한: 
 					<select class="sort" id="key_carConst_${listNumber.count}" name="key_carConst">
 					    <option>${i.carConst }</option>
 					    <option value="All">전차종</option>
@@ -255,32 +216,24 @@ $(document).ready(function(){
 					    <option value="largeCar">대형차 이상</option>
 					</select>
 					</p>
-				<textarea rows="1" cols="30" id="key_discount_${listNumber.count}">${i.couName }</textarea><br>	
-			</div>
-			<div>
-				<button id="btn_update_${listNumber.count }"
-				 onclick="update_clicked(${listNumber.count })">수정완료</button>
-			</div>
+				<p>할인율 : <input type="text" id="key_discount_${listNumber.count}" value="0" size="5">${i.discount } %</p>	
+					<div>
+						<button id="btn_update_${listNumber.count }"
+						 onclick="update_clicked(${listNumber.count })">수정완료</button>
+					</div>
+				</form>
 			</td>
 		</tr>	
-		
-		
-		
-		
-		
+
 		
 		</c:forEach>
 		</tbody>
 	</table>
 	</div>
 	
-<div class="btnSave">
-	<button type="reset">초기화</button>
-	<button type="submit">삭제</button>
-</div>
 	
 <div class="clear"></div>
-
+<jsp:include page="/Manage_Page/util/paging.jsp" />
 
 </div>		<!-- content end -->
 
