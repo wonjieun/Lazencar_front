@@ -7,9 +7,6 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<!-- 페이징 원본입니다 페이징 원본입니다 페이징 원본입니다 페이징 원본입니다 페이징 원본입니다 페이징 원본입니다 -->
-<!-- 페이징 원본입니다 페이징 원본입니다 페이징 원본입니다 페이징 원본입니다 페이징 원본입니다 페이징 원본입니다 -->
-
 <div class="paging text-center">
 	<ul class="pagination">
 		<%-- 첫 페이지 버튼 --%>
@@ -17,7 +14,7 @@
 		<c:if test="${paging.curPage ne 1 }">
 		<li>
 <%-- 		category=${category}&content=${content}&sort=${sort} --%>
-			<a href="${url }?pageNo=1">
+			<a href="${url }?pageNo=1&category=${category }&content=${content }&sort=${sort }&clicked=${clicked}">
 				<span aria-hidden="true">&larr;</span>
 			</a>
 		</c:if>
@@ -26,14 +23,14 @@
 		<%-- 첫 페이지면 금지 표시 --%>
 		<c:if test="${paging.curPage eq 1 }">
 		<li class="disabled">
-			<a href="${url }?pageNo=${paging.curPage }" aria-label="Previous">
+			<a href="${url }?pageNo=${paging.curPage }&category=${category }&content=${content }&sort=${sort }&clicked=${clicked}" aria-label="Previous">
 				<span aria-hidden="true">&laquo;</span>
 			</a>
 		</li>
 		</c:if>
 		<c:if test="${paging.curPage ne 1 }">
 		<li>
-			<a href="${url }?pageNo=${paging.curPage-1 }" aria-label="Previous">
+			<a href="${url }?pageNo=${paging.curPage-1 }&category=${category }&content=${content }&sort=${sort }&clicked=${clicked}" aria-label="Previous">
 				<span aria-hidden="true">&laquo;</span>
 			</a>
 		</li>
@@ -51,7 +48,7 @@
 			<c:if test="${paging.curPage ne page }">
 			<li>
 			</c:if>
-			<a href="${url }?pageNo=${page }">${page }</a>
+			<a href="${url }?pageNo=${page }&category=${category }&content=${content }&sort=${sort }&clicked=${clicked}">${page }</a>
 			</li>
 		</c:forEach>
 		
@@ -59,14 +56,14 @@
 		<%-- 마지막 페이지면 금지 표시 --%>
 		<c:if test="${paging.curPage eq paging.totalPage }">
 		<li class="disabled">
-			<a href="${url }?pageNo=${paging.curPage }" aria-label="Next">
+			<a href="${url }?pageNo=${paging.curPage }&category=${category }&content=${content }&sort=${sort }&clicked=${clicked}" aria-label="Next">
 				<span aria-hidden="true">&raquo;</span>
 			</a>
 		</li>
 		</c:if>
 		<c:if test="${paging.curPage ne paging.totalPage }">
 		<li>
-			<a href="${url }?pageNo=${paging.curPage+1 }" aria-label="Next">
+			<a href="${url }?pageNo=${paging.curPage+1 }&category=${category }&content=${content }&sort=${sort }&clicked=${clicked}" aria-label="Next">
 				<span aria-hidden="true">&raquo;</span>
 			</a>
 		</li>

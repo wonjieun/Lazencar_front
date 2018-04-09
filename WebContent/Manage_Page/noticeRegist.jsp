@@ -10,11 +10,10 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 <link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
-<link rel="stylesheet" type="text/css" href="/Manage_Page/css/paging.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/Manage_Page/css/paging.css" /> -->
 <link rel="stylesheet" href="/Manage_Page/css/daterangepicker.css" />
 
 <script src="/Manage_Page/js/jquery.js"></script>
-<script src="/Manage_Page/js/colResizable-1.5.min.js"></script>
 
 
 <style>
@@ -60,21 +59,20 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		var onSampleResized = function(e) {
-			var columns = $(e.currentTarget).find("th");
-			var msg = "columns widths: ";
-			columns.each(function() {
-				msg += $(this).width() + "px; ";
-			})
-			$("#table2Txt").html(msg);
+// 	$(function() {
+// 		var onSampleResized = function(e) {
+// 			var columns = $(e.currentTarget).find("th");
+// 			var msg = "columns widths: ";
+// 			columns.each(function() {
+// 				msg += $(this).width() + "px; ";
+// 			})
+// 			$("#table2Txt").html(msg);
 
-		};
-	});
-	function checkCarDataInsert() {
-		if ($("#carLCD").val() != "" && $("#carName").val() != ""
-				&& $("#carNum").val() != "" && $("#carCategory").val() != ""
-				&& $("#carOil").val() != "" && $("#carCondi").val() != "") {
+// 		};
+// 	});
+	function checkNoticeDataInsert() {
+		if ($("#notName").val() != "" 
+				&& $("#notContent").val() != "" ) {
 			//모든 칸이 채워져 있으면 return true
 			console.log("체크완료 : 모두채워짐");
 			return true;
@@ -84,47 +82,20 @@
 		}
 	}
 	$(document).ready(function() {
-		$("#btn_carRegist").click(function() {
-			if (checkCarDataInsert() == false) {
+	
+		$("#btn_notRegist").click(function() {
+			
+			console.log($("#notName").val());
+			console.log($("#notContent").val());
+			console.log($("#notFile").val());
+			console.log($("#f").val());
+			
+			if (checkNoticeDataInsert() == false) {
 				alert("빈칸을 모두 채워주세요.");
 				return;
 
 			} else {
-				var carLCD = $("#carLCD").val();
-				var carName = $("#carName").val(); 
-				var carNum = $("#carNum").val();
-				var carCategory = $("#carCategory").val();
-				var carOil = $("#carOil").val();
-				var carCondi = $("#carCondi").val();
-				//입력 데이터 확인 코드
-				console.log("최종점검일 : " + carLCD);
-				console.log("차량 명  : " + carName);
-				console.log("차량번호  : " + carNum);
-				console.log("차량 종류 : " + carCategory);
-				console.log("유종 : " + carOil);
-				console.log("차량상태 : " + carCondi);
-
-				$.ajax({
-					type : "POST",
-					url : "/admin/carRegister.do",
-					data : {
-						carLCD : carLCD,
-						carName : carName,
-						carNum : carNum,
-						carCategory : carCategory,
-						carOil : carOil,
-						carCondi : carCondi
-					},
-					dataType : "json",
-					success : function(data) {
-						alert("차량 등록 성공");
-					},
-					error : function(e) {
-// 						alert("입력 형식을 확인해주세요.");
-						console.log("------error------");
-// 						console.log(e.responseText);
-					}
-				});
+				$("#form").submit();				
 			}
 		});
 	});
@@ -153,7 +124,8 @@
         </div>
         
 	<div class="center" >
-
+		<form id="form" action="/admin/noticeRegister.do" method="post"
+			 enctype="multipart/form-data">
 					<table class="table1">
 						<tr>
 							<th>공지사항 제목</th>
@@ -162,17 +134,17 @@
 						<tr>
 							<td class="left">
 								<!-- 기간 -->
-
 								<div class="demo">
 									<h6 style="margin: 0;">제목을 입력하세요.</h6>
-									<input id="notName" size="30" value="">
+									<input type="text" id="notName" name="notName" size="30" value="">
 								</div>
 
 							</td>
 							<td>
 								<div>
-									<h6 style="margin: 0;">파일을 선택하세요</h6>
-									<input id="notFile" size="15" value="">
+									<label>첨부 파일(.img 등)</label><br>
+										<input type="file" id="notFile" name="notFile" value=""/>
+									
 								</div>
 							</td>
 						</tr>
@@ -182,11 +154,16 @@
 						</tr>
 
 						<tr>
-							<td colspan="2"><textarea rows="20" cols="120" id="notContent"></textarea></td>
+							
+							<td colspan="2">
+							<input type="text" id="notContent" name="notContent" style="width:800px; height:400px;"/>
+<!-- 							<textarea rows="20" cols="120" id="textAreaContent"></textarea> -->
+							</td>
 						</tr>
 					</table>
+					</form>
 				</div>
-				<button class="btnSearch" type="button" id="btn_carRegist">차량등록</button>
+				<button class="btnSearch" id="btn_notRegist">공지등록</button>
 				<div class="clear"></div>
 			</div>
 			<!-- content end -->
