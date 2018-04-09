@@ -44,10 +44,7 @@ function checkSearch_content(){
 
 $(document).ready(function() {s
 	$("#searchMember").click(function() {
-		var searchClicked = "눌림";
-		var memId = ""; //카테고리에 따른 조건 지정 변수
-		var memJumin = "";
-
+		var clicked = "눌림";
 		var category = $("#category").val();
 		var content = $("#content").val();
 		var sort = $("#sort").val();

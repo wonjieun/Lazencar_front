@@ -19,6 +19,11 @@ public class CouponListDaoImpl implements CouponListDao {
 	private final String username = "LAZENCAR";
 	private final String password = "saveus";
 	private Connection conn = null;
+	private Statement st = null;
+	private PreparedStatement pst = null;
+	
+	private ResultSet rs = null;
+	private String sql = null;
 	
 	public CouponListDaoImpl() {
 		try {
@@ -40,16 +45,16 @@ public class CouponListDaoImpl implements CouponListDao {
 		}
 	}
 
-	
+	@Override
 	public List getList(Paging paging, CouponManage dto) {
 
 		//검색버튼을 누른다면 카테고리를 구분해서 회원정보를 선택해서 보여줌
 		if (doSearch(dto) == true) {
-			if("CouponName".equals(dto.getCategory())) {
-				return getSearchList(paging, dto);
+			if("COU_NAME".equals(dto.getCategory())) {
+				return getNameList(paging, dto);
 
-			} else if("Discount".equals(dto.getCategory())) {
-				return getSearchList(paging, dto);
+			} else if("COU_DISCOUNT".equals(dto.getCategory())) {
+				return getDiscountList(paging, dto);
 			}
 		}
 		if (doSearch(dto) == false){
@@ -59,11 +64,111 @@ public class CouponListDaoImpl implements CouponListDao {
 		return getAllList(paging);
 	}
 
+
+
+	// 페이징 처리해서 게시물 리스트를 가져오기
+	@Override
+	public List getAllList(Paging paging) {
+		List<Coupon> list = new ArrayList<>();
+		String sql = "SELECT * FROM (" 
+				+ " SELECT rownum rnum, b.* FROM ("
+				+ " SELECT COU_NUM, COU_NAME, COU_DISCOUNT, COU_START, COU_END,"
+				+ " COU_AGE_CONST, COU_TIME_CONST, COU_CAR_CONST, COU_IMG "
+				+ " FROM TB_COUPON"
+				+ "	ORDER BY COU_NUM DESC"
+				+ ") b"
+				+ " ORDER BY rnum" 
+				+ ") WHERE rnum BETWEEN ? AND ?";
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, paging.getStartNo());
+			pst.setInt(2, paging.getEndNo());
+
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Coupon cou = new Coupon();
+				cou.setNo(rs.getInt("COU_NUM"));
+				cou.setName(rs.getString("COU_NAME"));
+				cou.setStartDate(rs.getString("COU_START"));
+				cou.setEndDate(rs.getString("COU_END"));
+				cou.setAgeConst(rs.getString("COU_AGE_CONST"));
+				cou.setTimeConst(rs.getString("COU_TIME_CONST"));
+				cou.setCarConst(rs.getString("COU_CAR_CONST"));
+				cou.setCouponImg(rs.getString("COU_IMG"));
+				list.add(cou);
+			}
+
+			return list;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)	rs.close();
+				if(pst!=null)	pst.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+//		return null;
+	}
+
+	@Override
+	public List getNameList(Paging paging, CouponManage dto) {
+		List<Coupon> list = new ArrayList<>();
+		String sql = "SELECT * FROM("
+					+ " SELECT ROWNUM RNUM, B.* FROM(" 
+					+ " SELECT COU_NUM, COU_NAME, COU_DISCOUNT, COU_START, COU_END," 
+					+ " COU_AGE_CONST, COU_TIME_CONST, COU_CAR_CONST, COU_IMG FROM TB_COUPON"
+					+ " WHERE " + dto.getCategory() + " LIKE '%' || ? || '%'"
+					+ " order by " + dto.getSort() + " )B" + " ORDER BY RNUM"
+				+ ") WHERE RNUM BETWEEN ? AND ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, dto.getContent());
+			pst.setInt(2, paging.getStartNo());
+			pst.setInt(3, paging.getEndNo());
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Coupon cou = new Coupon();
+				
+				cou.setNo(rs.getInt("COU_NUM"));
+				cou.setName(rs.getString("COU_NAME"));
+				cou.setStartDate(rs.getString("COU_START"));
+				cou.setEndDate(rs.getString("COU_END"));
+				cou.setAgeConst(rs.getString("COU_AGE_CONST"));
+				cou.setTimeConst(rs.getString("COU_TIME_CONST"));
+				cou.setCarConst(rs.getString("COU_CAR_CONST"));
+				cou.setCouponImg(rs.getString("COU_IMG"));
+
+				list.add(cou);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pst != null)
+					pst.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
 	@Override
 	public int getTotal(CouponManage dto) {
-		Statement st = null;
-		ResultSet rs = null;
-		PreparedStatement pst = null;
+
 
 		String sql = "SELECT COUNT(*) FROM TB_COUPON";
 		String sql2 = "SELECT count(*) from tb_coupon WHERE " + dto.getCategory() 
@@ -93,106 +198,6 @@ public class CouponListDaoImpl implements CouponListDao {
 
 		return total;
 	}
-
-	// 페이징 처리해서 게시물 리스트를 가져오기
-	@Override
-	public List getAllList(Paging paging) {
-		PreparedStatement pst = null;
-		ResultSet rs = null;
-
-		List<Coupon> list = new ArrayList<>();
-		// list = null;
-		String sql = "SELECT * FROM (" + " SELECT rownum rnum, b.* FROM ("
-				+ " SELECT COU_NUM, COU_NAME, COU_DISCOUNT, COU_START, COU_END,"
-				+ " COU_AGE_CONST, COU_TIME_CONST, COU_CAR_CONST, COU_IMG FROM TB_COUPON"
-				+ "	ORDER BY COU_NUM DESC) b"
-				+ " ORDER BY rnum" + ") WHERE rnum BETWEEN ? AND ?";
-
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setInt(1, paging.getStartNo());
-			pst.setInt(2, paging.getEndNo());
-
-			rs = pst.executeQuery();
-
-			while (rs.next()) {
-				Coupon cou = new Coupon();
-				cou.setNo(rs.getInt("COU_NUM"));
-				cou.setName(rs.getString("COU_NAME"));
-				cou.setStartDate(rs.getString("COU_START"));
-				cou.setEndDate(rs.getString("COU_END"));
-				cou.setAgeConst(rs.getString("COU_AGE_CONST"));
-				cou.setTimeConst(rs.getString("COU_TIME_CONST"));
-				cou.setCarConst(rs.getString("COU_CAR_CONST"));
-				cou.setCouponImg(rs.getString("COU_IMG"));
-				System.out.println(cou.getEndDate()+","+cou.getStartDate());
-				list.add(cou);
-			}
-			return list;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(rs!=null)	rs.close();
-				if(pst!=null)	pst.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public List getSearchList(Paging paging, CouponManage dto) {
-		PreparedStatement pst = null;
-		ResultSet rs = null;
-		Coupon cou = new Coupon();
-		
-		List<Coupon> list = new ArrayList<>();
-		String sql = "SELECT * FROM( SELECT ROWNUM RNUM, B.* FROM(" 
-					+ " SELECT COU_NUM, COU_NAME, COU_DISCOUNT, COU_START, COU_END," 
-					+ " COU_AGE_CONST, COU_TIME_CONST, COU_CAR_CONST, COU_IMG FROM TB_COUPON"
-					+ " WHERE " + dto.getCategory() + " LIKE '%' || ? || '%'"
-					+ " order by " + dto.getSort() + " )B" + " ORDER BY RNUM"
-				+ ") WHERE RNUM BETWEEN ? AND ?";
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, dto.getContent());
-			pst.setInt(2, paging.getStartNo());
-			pst.setInt(3, paging.getEndNo());
-			rs = pst.executeQuery();
-
-			while (rs.next()) {
-				cou.setNo(rs.getInt("COU_NUM"));
-				cou.setName(rs.getString("COU_NAME"));
-				cou.setStartDate(rs.getString("COU_START"));
-				cou.setEndDate(rs.getString("COU_END"));
-				cou.setAgeConst(rs.getString("COU_AGE_CONST"));
-				cou.setTimeConst(rs.getString("COU_TIME_CONST"));
-				cou.setCarConst(rs.getString("COU_CAR_CONST"));
-				cou.setCouponImg(rs.getString("COU_IMG"));
-
-				list.add(cou);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pst != null)
-					pst.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return list;
-	}
-
 
 	@Override
 	public void updateCoupon(CouponManage dto) {

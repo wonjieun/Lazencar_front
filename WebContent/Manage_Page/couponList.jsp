@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%@ page import="dto.Coupon"%>
+<%@ page import="dao.adminDao.CouponListDaoImpl"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 
@@ -65,34 +67,21 @@
 	}
 $(document).ready(function(){
 	$("#searchCoupon").click(function(){
-		var category =$("#category").val();
-		var sort=$("#sort").val();
-		var content=$("#search_content").val();
 		var clicked="clicked";
+		var category =$("#category").val();
+		var content = $("#search_content").val();
+		var sort = $("#sort").val();
 		
 		console.log("카테고리:"+category);
 		console.log("정렬기준:"+sort);
 		console.log("입력내용:"+content);
 		
-		
-		
 		if(checkSearch_content()==true){
-			console.log("내용있음");
-			if (category == "CouponName") {
-				memId = content;
-				return;
-			} else if (category == "Discount") {
-				memJumin = content;
-				return;
-			} else {
-				console.log("기준 에러");
-			}
-			
-			var $form = $("<form>").attr("action", "/admin/couponList.do").attr("method", "post");
+			var $form = $("<form>").attr("action", "/admin/couponList.do").attr("method", "GET");
+			$("<input>").attr("type", "hidden").attr("name", "clicked").attr("value", clicked).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
-			$("<input>").attr("type", "hidden").attr("name", "clicked").attr("value", clicked).appendTo($form);
 			$form.appendTo($(document.body));
 			
 			$form.submit();	
@@ -128,7 +117,7 @@ $(document).ready(function(){
           <p class="subtxt"><strong>쿠폰을 조회하고 삭제합니다.</strong><br />조회할 쿠폰 조건을 선택하고 검색버튼을 누르시면 쿠폰목록을 볼 수 있으며 쿠폰을 삭제할 수 있습니다.</p>
         </div>
         
-<form action="/admin/couponList.do" method="post">
+<form action="/admin/couponList.do" method="get">
 	<div class="center" >
 
 	 <table class="table1">
@@ -141,8 +130,8 @@ $(document).ready(function(){
 		<tr>
 			<td class="left">
 				<select class="sort" id="category"	name="category">
-					<option value="CouponName">쿠폰 이름
-					<option value="Discount">할인율
+					<option value="COU_NAME">쿠폰 이름
+					<option value="COU_DISCOUNT">할인율
 				</select>
 			</td>
 
@@ -152,9 +141,9 @@ $(document).ready(function(){
 
 			<td class="right">
 				<select class="sort" id="sort" name="sort">
-					<option value="CouponName">쿠폰 이름
-					<option value="Discount">할인율
-					<option value="CouponState">쿠폰 상태
+					<option value="COU_NAME">쿠폰 이름
+					<option value="COU_DISCOUNT">할인율
+<!-- 					<option value="CouponState">쿠폰 상태 -->
 				</select>
 			</td>
 		</tr>
@@ -181,17 +170,17 @@ $(document).ready(function(){
 		</thead>
 		
 		<tbody>
-		<c:forEach items="${CouponList }"  begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
+		<c:forEach items="${list }"  begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
 	
 		<tr>
 			<td id="key_couNum_${listNumber.count}">${i.no }</td>
 			<td>${i.name }</td>
 <%-- 			<td>${i.StartDate }</td> --%>
 <%-- 			<td>${i.EndDate }</td> --%>
-			<td>${i.ageConst }</td>
-			<td>${i.timeConst }</td>							
+			<td>${i.ageConst } 세 이상</td>
+			<td>${i.timeConst } 시간 이상</td>							
 			<td>${i.carConst }</td>							
-			<td>${i.discount }</td>							
+			<td>${i.discount } %</td>							
 			<td><img width="200px" height="150px" src="/upload/${i.couponImg }"></td>						
 			<td>	
 			<button id="btn_listDown" onclick="showDetail('hiddenTr_${listNumber.count}');" style="margin:auto 0;">수정</button><br>
@@ -233,7 +222,7 @@ $(document).ready(function(){
 	
 	
 <div class="clear"></div>
-<jsp:include page="/Manage_Page/util/paging.jsp" />
+<jsp:include page="/Manage_Page/util/CouponPaging.jsp" />
 
 </div>		<!-- content end -->
 
