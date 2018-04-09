@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 		// 사용자가 입력한 id, pw
 		String memId = request.getParameter("memId");
 		String memPw = request.getParameter("memPw");
+		String token = request.getParameter("token");
 		
 		// member객체에 id, pw set
 		Member mem = new Member();
@@ -48,21 +49,31 @@ public class LoginServlet extends HttpServlet {
 		// response data
 		boolean check = service.check(mem);
 		int gubn = service.getGubn(mem);
+
+		if(token != null) {
+			check = true;
+			gubn = 1;
+		}
 		
 		System.out.println("----- 입력값 확인 -----");
 		System.out.println("아이디: " + mem.getMemId());
 		System.out.println("비밀번호: " + mem.getMemPw());
 		System.out.println("구분: " + gubn);
+		System.out.println("token: " + token);
+		System.out.println("check: " + check);
 		
 		// 객체를 json으로 변경하기
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("check", check);
 		jsonObject.addProperty("gubn", gubn);
+		jsonObject.addProperty("token", token);
 		
 		if(check) {
 			session.setAttribute("id", mem.getMemId());
+			session.setAttribute("token", token);
 //			System.out.println("session:"+session.getAttribute("id"));
+//			System.out.println("session:"+session.getAttribute("token"));
 		}
 		out.write(gson.toJson(jsonObject));
 	}

@@ -663,34 +663,6 @@ botton {
    
 }
 
-/*아름 style → 초기화*/
-html, body, ul, li, botton {
-	margin: 0;
-	padding: 0;
-}
-
-img {
-	display: block;
-	border: 0;
-	
-}
-
-botton {
-	border: 0;
-	background: none;
-}
-
-/*슬라이드 요소*/
-.slide {
-	/*이미지 크기 만큼 사용 → width: 1538px;*/
-	width: 1901px;
-	overflow: hidden;
-	margin: 0 auto;
-	position: relative;
-	z-index: -999;
-	
-}
-
 /*ul 요소*/
 .slide ul {
 	/*1538*9(개) → width: 12304px;*/
