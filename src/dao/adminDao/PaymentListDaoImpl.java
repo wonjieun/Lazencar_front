@@ -38,7 +38,11 @@ public class PaymentListDaoImpl implements PaymentListDao {
 		PreparedStatement pst = null;
 
 		String sql = "SELECT COUNT(*) FROM tb_payment";
-		String sql2 = "SELECT count(*) from tb_payment where " + pm.getCategory() + " = ?";
+		String sql2 =
+//				"SELECT count(*) from tb_payment where " + pm.getCategory() + " = ?";
+				"SELECT count(*) from (" 
+				+ " SELECT * " + "  FROM TB_PAYMENT WHERE "
+				+ pm.getCategory() + " LIKE '%' || ? || '%')";
 		int total = 0;
 
 		try {

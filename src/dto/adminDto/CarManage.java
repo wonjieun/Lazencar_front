@@ -5,7 +5,6 @@ public class CarManage {
 	private String sort;
 	private String content;
 	private String clicked;
-//	private int searchCount;
 	
 	public String getCategory() {
 		return category;
@@ -64,10 +63,4 @@ public class CarManage {
 	public void setEditCar(String editCar) {
 		this.editCar = editCar;
 	}
-//	public int getSearchCount() {
-//		return searchCount;
-//	}
-//	public void setSearchCount(int searchCount) {
-//		this.searchCount = searchCount;
-//	}
 }
