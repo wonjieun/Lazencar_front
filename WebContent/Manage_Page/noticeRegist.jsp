@@ -71,7 +71,7 @@
 // 		};
 // 	});
 	function checkNoticeDataInsert() {
-		if ($("#notName").val() != "" 
+		if ($("#notTitle").val() != "" 
 				&& $("#notContent").val() != "" ) {
 			//모든 칸이 채워져 있으면 return true
 			console.log("체크완료 : 모두채워짐");
@@ -85,7 +85,7 @@
 	
 		$("#btn_notRegist").click(function() {
 			
-			console.log($("#notName").val());
+			console.log($("#notTitle").val());
 			console.log($("#notContent").val());
 			console.log($("#notFile").val());
 			console.log($("#f").val());
@@ -136,7 +136,7 @@
 								<!-- 기간 -->
 								<div class="demo">
 									<h6 style="margin: 0;">제목을 입력하세요.</h6>
-									<input type="text" id="notName" name="notName" size="30" value="">
+									<input type="text" id="notTitle" name="notTitle" size="30" value="">
 								</div>
 
 							</td>
@@ -156,7 +156,7 @@
 						<tr>
 							
 							<td colspan="2">
-							<input type="text" id="notContent" name="notContent" style="width:800px; height:400px;"/>
+							<textArea id="notContent" name="notContent" style="width:800px; height:400px;"></textArea>
 <!-- 							<textarea rows="20" cols="120" id="textAreaContent"></textarea> -->
 							</td>
 						</tr>

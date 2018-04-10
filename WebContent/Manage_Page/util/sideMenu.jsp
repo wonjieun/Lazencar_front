@@ -72,13 +72,14 @@
       <li><a class="fly" href="javascript:void(0);">차량 관리</a>
          <ul>
             <li><a href="/admin/carRegister.do">차량 등록</a></li>
-            <li><a href="/admin/carCheckList.do">차량 정보수정</a></li>
+            <li><a href="/admin/carCheckList.do">차량 조회/수정</a></li>
          </ul>
       </li>
       
       <li><a class="fly" href="javascript:void(0);">공지 사항</a>
          <ul>
             <li><a href="/admin/noticeRegister.do">공지사항 등록</a></li>
+            <li><a href="/admin/noticeList.do">공지사항 조회/수정</a></li>
          </ul>
       </li>
       

@@ -2,11 +2,10 @@ package dto;
 
 public class Notice {
 	private int notNum;
-	private String notName;
+	private String notTitle;
 	private String notContent;
 	private String notDate;
 	private String notEmail;
-	// private Byte[] notFile;
 	private String notFile;
 
 	public int getNotNum() {
@@ -17,13 +16,6 @@ public class Notice {
 		this.notNum = notNum;
 	}
 
-	public String getNotName() {
-		return notName;
-	}
-
-	public void setNotName(String notname) {
-		this.notName = notname;
-	}
 
 	public String getNotContent() {
 		return notContent;
@@ -55,5 +47,13 @@ public class Notice {
 
 	public void setNotFile(String notFile) {
 		this.notFile = notFile;
+	}
+
+	public String getNotTitle() {
+		return notTitle;
+	}
+
+	public void setNotTitle(String notTitle) {
+		this.notTitle = notTitle;
 	}
 }
