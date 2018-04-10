@@ -40,9 +40,9 @@ public class NoticeServlet extends HttpServlet {
 		n.setSearchWord(searchWord);
 		
 		for(int i=0; i<service.getTitle(n).size(); i++) {
-			System.out.println("번호: " + ((Notice)service.getTitle(n).get(i)).getNum());
-			System.out.println("제목: " + ((Notice)service.getTitle(n).get(i)).getTitle());
-			System.out.println("날짜: " + ((Notice)service.getTitle(n).get(i)).getDate());
+			System.out.println("번호: " + ((Notice)service.getTitle(n).get(i)).getNotNum());
+			System.out.println("제목: " + ((Notice)service.getTitle(n).get(i)).getNotTitle());
+			System.out.println("날짜: " + ((Notice)service.getTitle(n).get(i)).getNotDate());
 			System.out.println("----------------");
 		}
 		

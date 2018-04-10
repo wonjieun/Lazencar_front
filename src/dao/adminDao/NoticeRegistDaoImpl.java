@@ -35,7 +35,7 @@ public class NoticeRegistDaoImpl implements NoticeRegistDao{
 			
 			
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, not.getNotName());
+			pst.setString(1, not.getNotTitle());
 			pst.setString(2, not.getNotContent());
 			pst.setString(3, not.getNotFile());
 			

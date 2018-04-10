@@ -91,8 +91,8 @@ public class NoticeRegisterServlet extends HttpServlet {
 			if (item.isFormField()) { // formData(키/값 쌍) 일 경우 폼필드와 값을 가져옴
 				System.out.println("폼 필드 : " + item.getFieldName() + ", 값 : " + item.getString("UTF-8") + "<br>");
 
-				if ("notName".equals(item.getFieldName()))
-					not.setNotName(item.getString("UTF-8"));
+				if ("notTitle".equals(item.getFieldName()))
+					not.setNotTitle(item.getString("UTF-8"));
 				if ("notContent".equals(item.getFieldName()))
 					not.setNotContent(item.getString("UTF-8"));
 
@@ -131,8 +131,8 @@ public class NoticeRegisterServlet extends HttpServlet {
 					}
 				}
 			}
-			System.out.println("Name:"+not.getNotName() + "/ Content:" + not.getNotContent());
-			if (not.getNotName() != null && not.getNotContent() != null) {
+			System.out.println("Name:"+not.getNotTitle() + "/ Content:" + not.getNotContent());
+			if (not.getNotTitle() != null && not.getNotContent() != null) {
 				service.insertNotice(not);
 			}
 		}

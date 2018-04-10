@@ -47,9 +47,9 @@ public class NoticeDaoImpl implements NoticeDao {
 			while(rs.next()) {
 				Notice notice = new Notice();
 				// dto.setter(rs.getter("DB 컬럼명") )
-				notice.setNum(rs.getString("NOT_NUM"));
-				notice.setTitle(rs.getString("NOT_TITLE"));
-				notice.setDate(rs.getString("NOT_DATE"));
+				notice.setNotNum(rs.getString("NOT_NUM"));
+				notice.setNotTitle(rs.getString("NOT_TITLE"));
+				notice.setNotDate(rs.getString("NOT_DATE"));
 				list.add(notice);
 			}
 		} catch (SQLException e) {
@@ -75,11 +75,11 @@ public class NoticeDaoImpl implements NoticeDao {
 			while(rs.next()) {
 				Notice notice = new Notice();
 			// dto.setter(rs.getter("DB 컬럼명") )
-				notice.setNum(rs.getString("NOT_NUM"));
+				notice.setNotNum(rs.getString("NOT_NUM"));
 				System.out.println("num: " + rs.getString("NOT_NUM"));
-				notice.setTitle(rs.getString("NOT_TITLE"));
+				notice.setNotTitle(rs.getString("NOT_TITLE"));
 				System.out.println("title: " + rs.getString("NOT_TITLE"));
-				notice.setDate(rs.getString("NOT_DATE"));
+				notice.setNotDate(rs.getString("NOT_DATE"));
 				System.out.println("date: " + rs.getString("NOT_DATE"));
 				list.add(notice);
 			}
