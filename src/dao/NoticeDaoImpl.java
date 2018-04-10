@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.Notice;
+import util.Paging;
 
 public class NoticeDaoImpl implements NoticeDao {
 	private final String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -32,22 +33,56 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 	
 	@Override
+	public List getList() {
+		List<Notice> list = new ArrayList<>();
+		String sql = "SELECT * FROM TB_NOTICE";
+//		String sql = "SELECT * FROM TB_NOTICE";
+		ResultSet rs = null;
+		
+		try {
+			pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+//			rs.next();
+//			System.out.println(rs.getString("NOT_TITLE"));
+			while(rs.next()) {
+				Notice notice = new Notice();
+				// dto.setter(rs.getter("DB 컬럼명") )
+				notice.setNum(rs.getString("NOT_NUM"));
+				notice.setTitle(rs.getString("NOT_TITLE"));
+				notice.setDate(rs.getString("NOT_DATE"));
+				list.add(notice);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	@Override
 	public List getTitle(Notice n) {
 		List<Notice> list = new ArrayList<>();
 		String sql = "SELECT * FROM TB_NOTICE"
-				+ " WHERE NOT_NAME LIKE '%' || ? || '%'";
+				+ " WHERE NOT_TITLE LIKE '%' || ? || '%'";
 		ResultSet rs = null;
 		
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, n.getSearchWord());
 			rs = pst.executeQuery();
-			rs.next();
-			System.out.println(rs.getString("NOT_NAME"));
+//			rs.next();
+//			System.out.println(rs.getString("NOT_TITLE"));
+			while(rs.next()) {
+				Notice notice = new Notice();
 			// dto.setter(rs.getter("DB 컬럼명") )
-			n.setTitle(rs.getString("NOT_NAME"));
-			list.add(n);
-			
+				notice.setNum(rs.getString("NOT_NUM"));
+				System.out.println("num: " + rs.getString("NOT_NUM"));
+				notice.setTitle(rs.getString("NOT_TITLE"));
+				System.out.println("title: " + rs.getString("NOT_TITLE"));
+				notice.setDate(rs.getString("NOT_DATE"));
+				System.out.println("date: " + rs.getString("NOT_DATE"));
+				list.add(notice);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.Notice;
+import oracle.jdbc.proxy.annotation.Post;
 import service.NoticeService;
 import service.NoticeServiceImpl;
 
@@ -18,6 +19,12 @@ public class NoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	NoticeService service = new NoticeServiceImpl();
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
+	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -32,12 +39,17 @@ public class NoticeServlet extends HttpServlet {
 		n.setSearchItem(searchItem);
 		n.setSearchWord(searchWord);
 		
-		System.out.println("검색 제목: " + ((Notice)service.getTitle(n).get(0)).getTitle());
+		for(int i=0; i<service.getTitle(n).size(); i++) {
+			System.out.println("번호: " + ((Notice)service.getTitle(n).get(i)).getNum());
+			System.out.println("제목: " + ((Notice)service.getTitle(n).get(i)).getTitle());
+			System.out.println("날짜: " + ((Notice)service.getTitle(n).get(i)).getDate());
+			System.out.println("----------------");
+		}
 		
 		request.setAttribute("list", service.getTitle(n));
 		
 		RequestDispatcher rd = null;
-		rd = request.getRequestDispatcher("/Page/notice.html"); 
+		rd = request.getRequestDispatcher("/Page/notice.jsp"); 
 		rd.forward(request, response);
 	}
 

@@ -23,7 +23,7 @@ function login_menu() {
 	var token = '${sessionScope.token}';
 	
 // 	alert(id);
-	alert(token);
+// 	alert(token);
 	
 	if ( (id===null || id==="") && (token===null || token==="") ) {
 		$("#logout").hide();
@@ -86,18 +86,18 @@ $(document).ready(function() {
             <div class="inbox">
 
                <h1 class="logo">
-                  <a href="http://www.greencar.co.kr/"><span>라젠카</span></a>
+                  <a href="/main.do"><span>라젠카</span></a>
                </h1>
 
                <div class="nvalinks">
                   <a href="/login/login.do" id="login">로그인</a>
-                  <a href="/Page/signUp.jsp" id="signup">회원가입</a>
+                  <a href="/signUp.do" id="signup">회원가입</a>
             			<a href="/login/logout.do" id="logout">로그아웃</a>
             			<a href="/login/logout.do" id="sns_logout">로그아웃</a>
             			
             			<script type="text/javascript">
             			 	$("#logout").click(function() {
-											console.log(token);
+// 											console.log(token);
 											location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
 										});
             			 	</script>

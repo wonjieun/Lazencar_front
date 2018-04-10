@@ -11,7 +11,7 @@
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript"
  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="/Page/js/naverLogin_implicit-1.0.2-min.js"></script>
+<script src="/Page/js/naverLogin_implicit-1.0.2-min.js"></script>  
 
 <script type="text/javascript">
 
@@ -181,7 +181,7 @@ $(document).ready( function() {
 
 				<p class="close">
 					<a href="javascript:void(0)"><img
-						src="./images/common/btn_close.png" alt="닫기" /></a>
+						src="/Page/images/common/btn_close.png" alt="닫기" /></a>
 				</p>
 
 			</div>
@@ -196,14 +196,14 @@ $(document).ready( function() {
 				<div class="inbox">
 
 					<h1 class="logo">
-						<a href="http://www.greencar.co.kr/"><span>라젠카</span></a>
+						<a href="/main.do"><span>라젠카</span></a>
 					</h1>
 
 					<div class="nvalinks">
 
 						<a href="javascript:void(0);" onclick="openLapComLogin();">로그인</a>
 
-						<a href="https://www.greencar.co.kr/member/index.jsp">회원가입</a> <a
+						<a href="/signUp.do">회원가입</a> <a
 							class="nvalinks-rev"
 							href="https://www.greencar.co.kr/reserve/index.do">라젠카 예약하기</a>
 
@@ -244,7 +244,7 @@ $(document).ready( function() {
 		<div id="container">
 			<div class="content-wrap">
 
-<div id="content_sub" onmouseover="fnPrevDept();">
+<div id="content_sub">
 <div id="content_sub_wrap">
 <div id="content_right">
 
@@ -304,7 +304,7 @@ $(document).ready( function() {
 	  			"vL_aDS4Z9bTr4P8i4TKj"
 	  			, "http://localhost:8092/Api/Member/callback.html");
 //   			, "http://localhost:8092/login/loginresult.do");
-//   				, "http://localhost:8092/main.do");
+//   			, "http://localhost:8092/main.do");
   	var state = naver_id_login.getUniqState();
     naver_id_login.setButton("white", 2,40);
   	naver_id_login.setDomain("http://localhost:8092");
