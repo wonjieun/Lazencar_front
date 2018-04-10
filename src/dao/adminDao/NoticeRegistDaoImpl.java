@@ -27,9 +27,10 @@ public class NoticeRegistDaoImpl implements NoticeRegistDao{
 	
 	public void insertAllData(Notice not) {
 		PreparedStatement pst = null;
-		
-		String sql = "INSERT INTO TB_NOTICE(NOT_NUM, NOT_TITLE, NOT_CONTENT, NOT_DATE, NOT_FILE)"
-				+ " VALUES(UP_NOT_NUM.NEXTVAL, ?,?,SYSDATE,?)";
+
+		String sql = "INSERT INTO TB_NOTICE(NOT_NUM, NOT_TITLE, NOT_CONTENT, NOT_DATE,Not_email, NOT_FILE)"
+				+ " VALUES(UP_NOT_NUM.NEXTVAL, ?,?,SYSDATE,default,?)";
+
 		
 		try {
 			

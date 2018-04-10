@@ -44,6 +44,7 @@ public class CouponRegisterController extends HttpServlet {
 		CouponRegisterDao dao = new CouponRegisterDaoImpl();
 		Coupon dto = new Coupon();
 		
+		
 //		1. isMultipartContent -> 파일처리에 유효한 리퀘스트인지 확인하는 작업. 	반환 데이터 타입 : boolean
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		
@@ -87,9 +88,22 @@ public class CouponRegisterController extends HttpServlet {
 			if(item.getSize() <= 0) continue;
 			
 			if(item.isFormField()) {	//formData(키/값 쌍) 일 경우  폼필드와 값을 가져옴
-				out.print("폼 필드 : " + item.getFieldName() + ", 값 : " + item.getString("UTF-8") + "<br>");
+//				out.print("폼 필드 : " + item.getFieldName() + ", 값 : " + item.getString("UTF-8") + "<br>");
 				
-				if( "content".equals(item.getFieldName()) )		dto.setName(item.getString("UTF-8"));
+				if( "content".equals(item.getFieldName()) ) {
+					if( dao.existName(item.getString("UTF-8")) ) {
+						out.append(
+								"<script type='text/javascript'>"
+								+ "alert('이미존재하는 쿠폰 이름입니다. 다시 입력하세요.');"
+								+ "location.href='/admin/couponRegister.do'"
+								+ "</script>"
+						);
+						return;
+						
+					}
+					
+					dto.setName(item.getString("UTF-8"));
+				}
 				if( "startDate".equals(item.getFieldName()) )	dto.setStartDate(item.getString("UTF-8"));
 				if( "endDate".equals(item.getFieldName()) )		dto.setEndDate(item.getString("UTF-8"));
 				if( "discount".equals(item.getFieldName()) )	dto.setDiscount(item.getString("UTF-8"));
@@ -97,6 +111,8 @@ public class CouponRegisterController extends HttpServlet {
 				if( "timeConst".equals(item.getFieldName()) )	dto.setTimeConst(item.getString("UTF-8"));
 				if( "carConst".equals(item.getFieldName()) )	dto.setCarConst(item.getString("UTF-8"));
 
+				
+				
 			} else {	//파일일 경우 처리 
 				String contentType = item.getContentType();
 
@@ -131,6 +147,13 @@ public class CouponRegisterController extends HttpServlet {
 
 		dao.insertAllData(dto);
 
+		out.write(
+				"<script type='text/javascript'>"
+				+ "alert('등록완료');"
+				+ "location.href='/admin/couponRegister.do'"
+				+ "</script>"
+		);
+		
 //		response.sendRedirect("/admin/couponList.do");
 	}
 }

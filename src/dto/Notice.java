@@ -1,21 +1,47 @@
+
 package dto;
 
 public class Notice {
+	private String searchItem;
+	private String searchWord;
 	private int notNum;
 	private String notTitle;
 	private String notContent;
 	private String notDate;
 	private String notEmail;
 	private String notFile;
+	
+	public String getSearchItem() {
+		return searchItem;
+	}
 
-	public int getNotNum() {
+	public void setSearchItem(String searchItem) {
+		this.searchItem = searchItem;
+	}
+
+	public String getSearchWord() {
+		return searchWord;
+	}
+
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+
+	public String getNotNum() {
 		return notNum;
 	}
 
-	public void setNotNum(int notNum) {
+	public void setNotNum(String notNum) {
 		this.notNum = notNum;
 	}
 
+	public String getNotTitle() {
+		return notTitle;
+	}
+
+	public void setNotTitle(String notTitle) {
+		this.notTitle = notTitle;
+	}
 
 	public String getNotContent() {
 		return notContent;
@@ -48,12 +74,5 @@ public class Notice {
 	public void setNotFile(String notFile) {
 		this.notFile = notFile;
 	}
-
-	public String getNotTitle() {
-		return notTitle;
-	}
-
-	public void setNotTitle(String notTitle) {
-		this.notTitle = notTitle;
-	}
 }
+

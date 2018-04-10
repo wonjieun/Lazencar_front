@@ -14,9 +14,12 @@ public class LogoutServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		// id, token session 모두 삭제
 		session.invalidate(); 
-	
-		response.sendRedirect("/Page/main.jsp");
+//		System.out.println("id: " +session.getAttribute("id"));
+//		System.out.println("id: " +session.getAttribute("token"));
+		
+		response.sendRedirect("/main.do");
 	}
 
 }

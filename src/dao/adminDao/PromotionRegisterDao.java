@@ -1,12 +1,14 @@
 package dao.adminDao;
 
-import dto.adminDto.PromotionManage;
 import java.util.List;
+
+import dto.Promotion;
 
 public interface PromotionRegisterDao {
 	
-	public void insertAllData(PromotionManage pro);
+	public void insertAllData(Promotion pro);
 	
+	public boolean existName(String eveName);
 	/*
 	public List getImage();
 	public PromotionManage getImage(String name);

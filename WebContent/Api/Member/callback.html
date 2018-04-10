@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/Page/js/naverLogin_implicit-1.0.2-min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var naver_id_login = new naver_id_login("vL_aDS4Z9bTr4P8i4TKj"
+		, "http://localhost:8092/Api/Member/callback.html");
+		
+// 접근 토큰 값 출력
+// alert(naver_id_login.oauthParams.access_token);
+
+var tokenEncode = encodeURIComponent(naver_id_login.oauthParams.access_token);
+// alert(tokenEncode);
+
+// 네이버 사용자 프로필 조회
+naver_id_login.get_naver_userprofile("naverSignInCallback()");
+
+// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+function naverSignInCallback() {
+//   alert(naver_id_login.getProfileData('email'));
+//   alert(naver_id_login.getProfileData('name'));
+//   alert(naver_id_login.getProfileData('age'));
+	// 초기 로그인시 팝업창 닫기
+	window.close();
+}
+
+var id = naver_id_login.getProfileData('email');
+
+$.ajax({
+	type: "POST"
+	, url: "/login/login.do"
+	, data: {
+			token:tokenEncode,
+			memId:id
+		}
+	, dataType: "json"
+	, success: function( data ) {
+		var token = data.token;
+// 		alert(token);
+		if(token) {
+			// popup을 열어준 parents
+			// main으로 이동
+			opener.location.href="/main.do";
+		}
+	}
+	, error: function(e) {
+		console.log("----- error -----");
+		console.log(e.responseText);
+	}
+});
+
+</script>
+</body>
+</html>

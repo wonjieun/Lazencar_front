@@ -131,7 +131,9 @@ public class NoticeRegisterServlet extends HttpServlet {
 					}
 				}
 			}
-			System.out.println("Name:"+not.getNotTitle() + "/ Content:" + not.getNotContent());
+
+			System.out.println("title:"+not.getNotTitle() + "/ Content:" + not.getNotContent());
+
 			if (not.getNotTitle() != null && not.getNotContent() != null) {
 				service.insertNotice(not);
 			}
