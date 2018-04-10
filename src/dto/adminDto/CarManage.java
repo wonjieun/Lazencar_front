@@ -5,7 +5,7 @@ public class CarManage {
 	private String sort;
 	private String content;
 	private String clicked;
-
+	
 	public String getCategory() {
 		return category;
 	}
