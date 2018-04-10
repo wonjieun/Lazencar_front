@@ -8,10 +8,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
 <title>공지사항</title>
 
-<link type="text/css" rel="stylesheet" href="/Page/css/notice.css" >
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/master.css?v=180322">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/calendar.css">
+
 <script type="text/javascript"
  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
@@ -1920,12 +1922,12 @@ a.hoverline:hover {
 
 					<div class="bodystart">
 
+						<!-- 공지사항 검색 -->
 						<form id="frmSearch" name="frmSearch" method="get" action="/service/list.do">
-							<input type="hidden" id="bbsCateId" name="bbsCateId" value="0" />
 							<div class="form-searchbox">
-								<h4>
-									<img src="/Page/images/board/txt_tit_search.gif" alt="검색" />
-								</h4>
+								<h4><img src="/Page/images/board/txt_tit_search.gif" alt="검색" /></h4>
+								
+								<!-- 검색 카테고리 -->
 								<div class="form-search-01">
 									<select id="searchItem" name="searchItem" class="selstyle">
 										<option value="ALL">전체</option>
@@ -1933,10 +1935,13 @@ a.hoverline:hover {
 										<option value="CONT">내용</option>
 									</select>
 								</div>
+								
+								<!-- 검색어 입력 -->
 								<div class="form-search-02">
-									<input id="searchWord" name="searchWord" type="text"
-										class="inputTxt" value="" title="검색어 입력" />
+									<input id="searchWord" name="searchWord" type="text" class="inputTxt" value="" />
 								</div>
+								
+								<!-- 검색 버튼 -->
 								<div class="form-search-03">
 									<input type="image" src="/Page/images/board/btn_form_search.gif"
 										alt="검색" title="검색" />
@@ -1944,8 +1949,6 @@ a.hoverline:hover {
 							</div>
 						</form>
 						
-						
-
 						<table summary="공지사항에 대한 번호 제목 등록일 리스트" class="boardList notice-list">
 							<caption></caption>
 							<colgroup>
@@ -1966,13 +1969,13 @@ a.hoverline:hover {
 							
 <c:forEach items="${list }" var="i">
 	<tr>
-		<td>${i.num }</td>
+		<td>${i.notNum }</td>
 		<td class="txt_l">
-<%-- 			<a href="/service/list.do?bbsCateId=0&searchItem=${i.searchItem }&searchWord=${i.searchWord }"> --%>
-			<a href="#">
-				${i.title }</a>
+<%-- 			<a href="/service/list.do?searchItem=${i.searchItem }&searchWord=${i.searchWord }&x=0&y=0"> --%>
+			<a href="/service/notice.do?num=${i.notNum }">
+				${i.notTitle }</a>
 		</td>
-		<td>${i.date }</td>
+		<td>${i.notDate }</td>
 	</tr>
 </c:forEach>
 

@@ -89,6 +89,37 @@ public class NoticeDaoImpl implements NoticeDao {
 		
 		return list;
 	}
+	
+	@Override
+	public List getNotice(Notice n) {
+		List<Notice> list = new ArrayList<>();
+		String sql = "SELECT * FROM TB_NOTICE"
+				+ " WHERE NOT_NUM=?";
+		ResultSet rs = null;
+		
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, n.getNotNum());
+			rs = pst.executeQuery();
+//			rs.next();
+//			System.out.println(rs.getString("NOT_TITLE"));
+			while(rs.next()) {
+				Notice notice = new Notice();
+			// dto.setter(rs.getter("DB 컬럼명") )
+				notice.setNotTitle(rs.getString("NOT_TITLE"));
+				System.out.println("title: " + rs.getString("NOT_TITLE"));
+				notice.setNotDate(rs.getString("NOT_DATE"));
+				System.out.println("date: " + rs.getString("NOT_DATE"));
+				notice.setNotContent(rs.getString("NOT_CONTENT"));
+				System.out.println("date: " + rs.getString("NOT_CONTENT"));
+				list.add(notice);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }
 
 

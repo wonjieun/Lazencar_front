@@ -89,9 +89,7 @@ var token;
 $(document).ready( function() {
 	
 	$("#login_confirm").click( function() {
-
 		if( f_validate() ) {
-		
 			var id = $("#id").val();
 			var pw = $("#password").val();
 			var params = {

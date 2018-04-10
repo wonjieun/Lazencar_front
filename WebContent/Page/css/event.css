@@ -288,13 +288,12 @@ h4.review-title {
 .boardList-best-view tr.content td .sns_share {
 	margin-bottom:30px;
 }
-.boardList-best-view tr.content p {
-	font-size:13px;
-	padding-bottom:10px;
-}	
 .boardList-best-view tr.content td .txt-wrap {
 	width:710px;
 	margin-top:0;
+	
+	font-size:13px;
+	padding-bottom:10px;
 }
 .boardList-best-view tr.content td .txt-wrap img {
 	display:block;
