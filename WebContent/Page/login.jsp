@@ -7,14 +7,93 @@
 <title>로그인</title>
 
 <link type="text/css" rel="stylesheet" href="/Page/css/login.css" >
+
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+	
 <script type="text/javascript"
- src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+ 
 <script src="/Page/js/naverLogin_implicit-1.0.2-min.js"></script>  
 
 <script type="text/javascript">
+/* 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때 */
+function f_validate() {
+	$(".join_hidden").hide();
+	
+	var id = $("#id").val();
+	var pw = $("#password").val();
 
+	if ( id==null || id=="") {
+		$("#alert_id").css("display", "inline-block");
+		document.getElementById("id").focus();
+		return false;
+	}
+
+	if ( pw==null || pw=="") {
+		$("#alert_pw").css("display", "inline-block");
+		document.getElementById("password").focus();
+		return false;
+	}
+	
+	return true;
+}
+
+var token;
+
+// 아이디, 비밀번호 확인
+$(document).ready( function() {
+	
+		$("#login_confirm").click( function() {
+			console.log(f_validate());
+			if( f_validate() ) {
+				var id = $("#id").val();
+				var pw = $("#password").val();
+				var params = {
+					id : $('#id').val(),	
+					password : $('#password').val()
+				};
+				
+				$.ajax({
+					type: "POST"
+					, url: "/login/login.do"
+					, data: {
+							memId:id,
+							memPw:pw
+						}
+					, dataType: "json"
+					, success: function( data ) {
+						var check = data.check;
+						var gubn = data.gubn;
+						token = data.token;
+						if( check ) {
+	// 					alert("로그인 성공");
+							// 관리자
+							if( gubn===0 ) {
+								location.href="/admin/memberManage.do";
+							}
+							// 고객
+							if( gubn===1 ) {
+								location.href="/main.do";
+							}
+						} else {
+	// 					alert("로그인 실패");
+							$("#alert_login").css("display", "inline-block");
+							document.getElementById("id").focus();
+						}
+						
+					}
+					, error: function(e) {
+						console.log("----- error -----");
+						console.log(e.responseText);
+					}
+				});
+			}
+		});
+});
+
+
+/*
 function f_login() {
 	if (event.keyCode != 13) {
 		return false;
@@ -23,7 +102,7 @@ function f_login() {
 	}
 }
 	
-/* KH정보교육원 로그인 화면 / 로그인 버튼 관련 기능
+ KH정보교육원 로그인 화면 / 로그인 버튼 관련 기능
 	function fnLogin() {
 		var member_flag1 = $('input[name=member_flag]:checked').val();
 
@@ -61,78 +140,6 @@ function f_login() {
 	}
 */
 
-/* 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때 */
-function f_validate() {
-	$(".join_hidden").hide();
-	
-	var id = $("#id").val();
-	var pw = $("#password").val();
-
-	if ( id==null || id=="") {
-		$("#alert_id").css("display", "inline-block");
-		document.getElementById("id").focus();
-		return false;
-	}
-
-	if ( pw==null || pw=="") {
-		$("#alert_pw").css("display", "inline-block");
-		document.getElementById("password").focus();
-		return false;
-	}
-	
-	return true;
-}
-
-var token;
-
-// 아이디, 비밀번호 확인
-$(document).ready( function() {
-	
-	$("#login_confirm").click( function() {
-		if( f_validate() ) {
-			var id = $("#id").val();
-			var pw = $("#password").val();
-			var params = {
-				id : $('#id').val(),	
-				password : $('#password').val()
-			};
-			
-			$.ajax({
-				type: "POST"
-				, url: "/login/login.do"
-				, data: {
-						memId:id,
-						memPw:pw
-					}
-				, dataType: "json"
-				, success: function( data ) {
-					var check = data.check;
-					var gubn = data.gubn;
-					token = data.token;
-					if( check ) {
-// 					alert("로그인 성공");
-						// 관리자
-						if( gubn===0 ) {
-							location.href="/admin/memberManage.do";
-						}
-						// 고객
-						if( gubn===1 ) {
-							location.href="/main.do";
-						}
-					} else {
-// 					alert("로그인 실패");
-						$("#alert_login").css("display", "inline-block");
-						document.getElementById("id").focus();
-					}
-					
-				}
-				, error: function(e) {
-					console.log("----- error -----");
-					console.log(e.responseText);
-				}
-			});
-		}
-	});
 /*	
 	$("#naver_id_login").click( function() {
 		// 로그인 성공
@@ -146,7 +153,7 @@ $(document).ready( function() {
   // 로그아웃 처리
 //   $("#naver_id_login").show();
 //   $("#naver_id_logout").hide();
-}
+// }
 
 // 	$("#logout").click(function() {
 // 		console.log(token);
@@ -165,7 +172,6 @@ $(document).ready( function() {
 </head>
 
 <body>
-	<!-- Begin #wrap -->
 	<div id="wrap">
 		<div class="top_banner join" style="display: none;">
 			
@@ -199,7 +205,7 @@ $(document).ready( function() {
 
 					<div class="nvalinks">
 
-						<a href="javascript:void(0);" onclick="openLapComLogin();">로그인</a>
+						<a href="javascript:void(0);">로그인</a>
 
 						<a href="/signUp.do">회원가입</a> <a
 							class="nvalinks-rev"
@@ -208,8 +214,7 @@ $(document).ready( function() {
 					</div>
 					<nav id="topMenu">
 					<ul>
-						<li class="topMenuLi"><a class="menuLink" href="#">Lazencar
-								소개</a>
+						<li class="topMenuLi"><a class="menuLink" href="#">Lazencar소개</a>
 							<ul class="submenu">
 								<li><a href="#" class="submenuLink longLink">Lazencar란?</a></li>
 								<li><a href="#" class="submenuLink longLink">이용안내</a></li>
@@ -262,7 +267,7 @@ $(document).ready( function() {
 				<input type="password" id="password" name="password" onkeypress="f_login();" />
 			</div>
 			
-			<a href="login/login.do" id="login_confirm">로그인</a>
+			<a href="javascript:void(0);" id="login_confirm">로그인</a>
 
 			<div>
 				<div>
@@ -326,137 +331,109 @@ $(document).ready( function() {
 
 			</div>
 			<!-- // End #container -->
-			<!-- Begin #footer -->
-			<div id="footer">
 
-				<div class="footer_box01">
+<div id="footer">
 
-					<div class="footer_inner">
+	<div class="footer_box01">
 
-						<ul class="footer_family">
+		<div class="footer_inner">
 
-							<li><a
-								href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
-								target="_blank">장기렌터카</a></li>
+			<ul class="footer_family">
 
-							<li><a
-								href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
-								target="_blank">단기렌터카</a></li>
+				<li><a
+					href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
+					target="_blank">장기렌터카</a></li>
 
-							<li><a
-								href="https://www.lotterentacar.net/kor/long/usedList.do"
-								target="_blank">중고차렌터카</a></li>
+				<li><a
+					href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
+					target="_blank">단기렌터카</a></li>
 
-							<li><a
-								href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
-								target="_blank">내차팔기</a></li>
+				<li><a
+					href="https://www.lotterentacar.net/kor/long/usedList.do"
+					target="_blank">중고차렌터카</a></li>
 
-							<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
+				<li><a
+					href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
+					target="_blank">내차팔기</a></li>
 
-						</ul>
+				<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
 
-						<ul class="footer_partner">
+			</ul>
 
-							<li><a
-								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-									src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+			<ul class="footer_partner">
 
-							<li><a
-								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
-									src="./images/common/img_partner_suwon.gif"
-									alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
+				<li><a
+					href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
+						src="/Page/images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
 
-							<li><a
-								href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
-									src="./images/common/img_partner_incheon.gif"
-									alt="인천광역시 라젠카 예약하기" /></a></li>
+				<li><a
+					href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
+						src="/Page/images/common/img_partner_suwon.gif"
+						alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
 
-						</ul>
+				<li><a
+					href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
+						src="/Page/images/common/img_partner_incheon.gif"
+						alt="인천광역시 라젠카 예약하기" /></a></li>
 
-					</div>
+			</ul>
+		</div>
+	</div>
 
+	<div class="footer_box02">
+		<div class="footer_inner">
+			<ul class="footer_sns">
+				<li><a class="facebook"
+					href="https://www.facebook.com/greencarkorea" target="_blank">
+					라젠카 페이스북</a></li>
+				<li><a class="blog"
+					href="http://blog.naver.com/greencar_co" target="_blank">
+					라젠카 블로그</a></li>
+				<li><a class="instagram"
+					href="https://www.instagram.com/greencar_kr/" target="_blank">
+					라젠카 인스타그램</a></li>
+			</ul>
+
+			<ul class="footer_links">
+				<li><a href="http://www.greencar.co.kr/service/company/">회사소개</a></li>
+				<li><a href="http://www.greencar.co.kr/alliance/">제휴신청</a></li>
+				<li><a href="http://www.greencar.co.kr/service/useclause/">회원이용약관</a></li>
+				<li><a href="http://www.greencar.co.kr/service/personalinfo/"
+					class="point">개인정보처리방침</a></li>
+				<li><a href="http://www.greencar.co.kr/service/carclause/">
+					자동차대여 표준약관</a></li>
+				<li><a href="http://www.greencar.co.kr/service/location/">
+					위치기반	서비스 이용약관</a></li>
+				<li><a href="http://www.greencar.co.kr/service/sitemap/">사이트맵</a></li>
+			</ul>
+
+			<div class="footer_info">
+				<div class="info">
+					<span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
+						: 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
 				</div>
-
-				<div class="footer_box02">
-
-					<div class="footer_inner">
-
-						<ul class="footer_sns">
-
-							<li><a class="facebook"
-								href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
-									페이스북</a></li>
-
-							<li><a class="blog" href="http://blog.naver.com/greencar_co"
-								target="_blank">라젠카 블로그</a></li>
-
-							<li><a class="instagram"
-								href="https://www.instagram.com/greencar_kr/" target="_blank">라젠카
-									인스타그램</a></li>
-
-						</ul>
-
-						<ul class="footer_links">
-
-							<li><a href="http://www.greencar.co.kr/service/company/">회사소개</a></li>
-
-							<li><a href="http://www.greencar.co.kr/alliance/">제휴신청</a></li>
-
-							<li><a href="http://www.greencar.co.kr/service/useclause/">회원이용약관</a></li>
-
-							<li><a
-								href="http://www.greencar.co.kr/service/personalinfo/"
-								class="point">개인정보처리방침</a></li>
-
-							<li><a href="http://www.greencar.co.kr/service/carclause/">자동차대여
-									표준약관</a></li>
-
-							<li><a href="http://www.greencar.co.kr/service/location/">위치기반
-									서비스 이용약관</a></li>
-
-							<li><a href="http://www.greencar.co.kr/service/sitemap/">사이트맵</a></li>
-
-						</ul>
-
-						<div class="footer_info">
-
-							<div class="info">
-
-								<span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
-									: 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
-
-							</div>
-
-							<div class="addr">
-
-								<span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
-									010-9550-0167</span> <span>FAX : 02-9550-0167</span>
-
-							</div>
-
-							<span class="copy">Copyright &#169; 2018 LazenCar. All
-								Rights Reserved.</span>
-
-						</div>
-
-						<div class="footer_emblem">
-
-							<img src="./images/common/img_emblem_brandpower.jpg"
-								alt="2016년 한국산업의 브랜드파워 1위" /> <img
-								src="./images/common/img_emblem_brandstar.jpg"
-								alt="2016년 대한민국 브랜드스타" /> <img
-								src="./images/common/img_emblem_award.jpg"
-								alt="모바일 어워드 코리아 2016" /> <img
-								src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
-
-						</div>
-
-					</div>
-
+				<div class="addr">
+					<span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
+						010-9550-0167</span> <span>FAX : 02-9550-0167</span>
 				</div>
-
+				<span class="copy">Copyright &#169; 2018 LazenCar. All
+					Rights Reserved.</span>
 			</div>
-			<!-- // End #footer -->
+
+			<div class="footer_emblem">
+				<img src="/Page/images/common/img_emblem_brandpower.jpg"
+					alt="2016년 한국산업의 브랜드파워 1위" /> <img
+					src="/Page/images/common/img_emblem_brandstar.jpg"
+					alt="2016년 대한민국 브랜드스타" /> <img
+					src="/Page/images/common/img_emblem_award.jpg"
+					alt="모바일 어워드 코리아 2016" /> <img
+					src="/Page/images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
+			</div>
+		</div>
+	</div>
+</div>
+
+
 		</div>
 		<!-- // End #wrap -->
 </body>

@@ -8,6 +8,7 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
+
 <link type="text/css" rel="stylesheet" href="/Page/css/main.css" >
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
@@ -50,41 +51,12 @@ $(document).ready(function() {
 </head>
 
 <body>
-
    <!-- Begin #wrap -->
-
    <div id="wrap">
-
-      <div class="top_banner join" style="display: none;">
-         <div class="cont">
-
-            <a href="https://www.greencar.co.kr/member/index.jsp"
-               target="_blank"><img
-               src="/Page/images/common/top_banner_160825.gif"
-               alt="신규가입시 3시간 무료쿠폰 전원증정" /></a>
-
-
-            <p class="close">
-               <a href="javascript:void(0)"><img
-                  src="/Page/images/common/btn_close.png" alt="닫기" /></a>
-            </p>
-
-         </div>
-
-      </div>
-
-      <!-- [e]top_banner -->
-
-
-
       <!-- Begin #header -->
-
       <div id="header" class="sub">
-
          <div class="hgroup">
-
             <div class="inbox">
-
                <h1 class="logo">
                   <a href="/main.do"><span>라젠카</span></a>
                </h1>
@@ -92,12 +64,13 @@ $(document).ready(function() {
                <div class="nvalinks">
                   <a href="/login/login.do" id="login">로그인</a>
                   <a href="/signUp.do" id="signup">회원가입</a>
-            			<a href="/login/logout.do" id="logout">로그아웃</a>
+                  <a href="/login/logout.do" id="logout">로그아웃</a>
+                  <!-- sns사용자 로그아웃 -->
             			<a href="/login/logout.do" id="sns_logout">로그아웃</a>
             			
             			<script type="text/javascript">
             			 	$("#logout").click(function() {
-// 											console.log(token);
+// 										console.log(token);
 											location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
 										});
             			 	</script>
@@ -106,9 +79,10 @@ $(document).ready(function() {
                   <a class="nvalinks-rev" href="/Page/reservation.html">라젠카 예약하기</a>
 
                </div>
+               
       <nav id="topMenu" > 
          <ul> 
-                  <li class="topMenuLi"> 
+         <li class="topMenuLi"> 
             <a class="menuLink" href="#">Lazencar 소개</a> 
             <ul class="submenu"> 
                <li><a href="#" class="submenuLink longLink">Lazencar란?</a></li> 
@@ -116,7 +90,7 @@ $(document).ready(function() {
                <li><a href="#" class="submenuLink longLink">요금안내</a></li> 
                <li><a href="#" class="submenuLink longLink">위치</a></li> 
             </ul> 
-               </li>
+          </li>
                
                         <li class="topMenuLi"> 
             <a class="menuLink" href="#">서비스/혜택</a> 
