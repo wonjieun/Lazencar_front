@@ -13,7 +13,6 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 <link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
-<!-- <link rel="stylesheet" type="text/css"	href="/Manage_Page/css/paging.css" /> -->
 
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
@@ -28,7 +27,7 @@
 //만약 출생년도 4자리가 아닌 경우 alert 띄워주기	
 function checkSearch_content(){
 	if($("#category").val()=='mem_Jumin'){
-		if($("search_content").val().length < 4){		
+		if($("content").val().length < 4){		
 			return true;
 		} else{
 			return false;
@@ -42,7 +41,7 @@ function checkSearch_content(){
 	}
 }
 
-$(document).ready(function() {s
+$(document).ready(function() {
 	$("#searchMember").click(function() {
 		var clicked = "눌림";
 		var category = $("#category").val();
@@ -55,8 +54,8 @@ $(document).ready(function() {s
 		console.log("정렬  : " + sort);
 		
 		if(checkSearch_content()==true){
-			var $form = $("<form>").attr("action","/admin/memberManage.do").attr("method", "post");
-			$("<input>").attr("type", "hidden").attr("name", "searchClicked").attr("value", searchClicked).appendTo($form);
+			var $form = $("<form>").attr("action","/admin/memberManage.do").attr("method", "get");
+			$("<input>").attr("type", "hidden").attr("name", "clicked").attr("value", clicked).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "category").attr("value",category).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "content").attr("value",content).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
@@ -159,7 +158,7 @@ $(document).ready(function() {s
 				</table>
 			</div>
 				<div class="clear"></div>
-				<jsp:include page="/Manage_Page/util/paging.jsp" />
+				<jsp:include page="/Manage_Page/util/MemberManagePaging.jsp" />
 			</div>
 			<!-- content end -->
 

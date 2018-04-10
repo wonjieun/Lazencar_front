@@ -11,7 +11,6 @@ import java.util.List;
 
 import dto.Coupon;
 import dto.adminDto.CouponManage;
-import dto.adminDto.MemberManage;
 import util.Paging;
 
 public class CouponListDaoImpl implements CouponListDao {
@@ -23,7 +22,6 @@ public class CouponListDaoImpl implements CouponListDao {
 	private PreparedStatement pst = null;
 	
 	private ResultSet rs = null;
-	private String sql = null;
 	
 	public CouponListDaoImpl() {
 		try {
@@ -51,10 +49,10 @@ public class CouponListDaoImpl implements CouponListDao {
 		//검색버튼을 누른다면 카테고리를 구분해서 회원정보를 선택해서 보여줌
 		if (doSearch(dto) == true) {
 			if("COU_NAME".equals(dto.getCategory())) {
-				return getNameList(paging, dto);
+				return getSearchList(paging, dto);
 
 			} else if("COU_DISCOUNT".equals(dto.getCategory())) {
-				return getDiscountList(paging, dto);
+				return getSearchList(paging, dto);
 			}
 		}
 		if (doSearch(dto) == false){
@@ -119,7 +117,7 @@ public class CouponListDaoImpl implements CouponListDao {
 	}
 
 	@Override
-	public List getNameList(Paging paging, CouponManage dto) {
+	public List getSearchList(Paging paging, CouponManage dto) {
 		List<Coupon> list = new ArrayList<>();
 		String sql = "SELECT * FROM("
 					+ " SELECT ROWNUM RNUM, B.* FROM(" 

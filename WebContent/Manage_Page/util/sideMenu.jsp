@@ -95,15 +95,15 @@
 		
 		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
 			<ul>
-				<li><a href="/couponRegister.jsp">쿠폰 등록</a></li>
-				<li><a href="/couponDelete.jsp">쿠폰 조회/삭제</a></li>
+				<li><a href="/admin/couponRegister.do">쿠폰 등록</a></li>
+				<li><a href="/admin/couponList.do">쿠폰 조회/삭제</a></li>
 			</ul>
 		</li>
 		
 		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
 			<ul>
-				<li><a href="/promotionRegister.jsp">특가 등록</a></li>
-				<li><a href="/promotionDelete.jsp">특가 조회/삭제</a></li>
+				<li><a href="/admin/promotionRegister.do">특가 등록</a></li>
+				<li><a href="/admin/promotionList.do">특가 조회/삭제</a></li>
 
 			</ul>
 		</li>

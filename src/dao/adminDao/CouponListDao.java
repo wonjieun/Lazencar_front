@@ -15,9 +15,7 @@ public interface CouponListDao {
 	
 	public List getAllList(Paging paging);
 
-	public List getNameList(Paging paging,CouponManage dto);
-
-	public List getDiscountList(Paging paging,CouponManage dto);
+	public List getSearchList(Paging paging,CouponManage dto);
 
 	//검색 버튼 눌렸나 확인하는 메서드
 	boolean doSearch(CouponManage dto);

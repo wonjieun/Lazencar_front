@@ -123,7 +123,7 @@ public class CouponListServlet extends HttpServlet {
 //		if(totalCount != 0) {
 			paging = new Paging(totalCount, pageNo);//총 게시물수와 페이지번호를 이용한 페이징 객체 생성
 			list = service.getCouponList(paging,cm); // 페이지에 맞는 게시물 갖고오기.
-			System.out.println(list.get(0));
+//			System.out.println(list.get(0));
 //		}
 //		System.out.println("서블릿 리스트출력: "+list.toString());
 //		System.out.println("서블릿 dao.getTotal()출력 :"+totalCount);

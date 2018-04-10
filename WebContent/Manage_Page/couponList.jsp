@@ -173,7 +173,8 @@ $(document).ready(function(){
 		<c:forEach items="${list }"  begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
 	
 		<tr>
-			<td id="key_couNum_${listNumber.count}">${i.no }</td>
+		<%-- 				${i.dto 변수명 } --%>
+			<td class="left" id="key_couNum_${listNumber.count}">${i.no }</td>
 			<td>${i.name }</td>
 <%-- 			<td>${i.StartDate }</td> --%>
 <%-- 			<td>${i.EndDate }</td> --%>
@@ -182,7 +183,7 @@ $(document).ready(function(){
 			<td>${i.carConst }</td>							
 			<td>${i.discount } %</td>							
 			<td><img width="200px" height="150px" src="/upload/${i.couponImg }"></td>						
-			<td>	
+			<td class="right">	
 			<button id="btn_listDown" onclick="showDetail('hiddenTr_${listNumber.count}');" style="margin:auto 0;">수정</button><br>
 			<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button>
 			</td>
