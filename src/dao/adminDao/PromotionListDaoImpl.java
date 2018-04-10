@@ -46,11 +46,11 @@ public class PromotionListDaoImpl implements PromotionListDao {
 	@Override
 	public List getList(Paging paging, PromotionManage dto) {
 
-		//검색버튼을 누른다면 카테고리를 구분해서 회원정보를 선택해서 보여줌
+		//검색버튼을 누른다면 정보를 선택해서 보여줌
 		if (doSearch(dto) == true) {
 				return getSearchList(paging, dto);
 		} else if (doSearch(dto) == false){
-		//만약에 검색버튼을 누르지 않았을 경우(default) 전체 회원정보를 우선적으로 보여줌
+		//만약에 검색버튼을 누르지 않았을 경우(default) 전체 정보를 우선적으로 보여줌
 		return getAllList(paging);
 		}
 		return getAllList(paging);
@@ -63,7 +63,7 @@ public class PromotionListDaoImpl implements PromotionListDao {
 		String sql = "SELECT * FROM (" 
 				+ " SELECT rownum rnum, b.* FROM ("
 				+ " SELECT EVE_NUM, EVE_NAME, EVE_START, EVE_END,"
-				+ " EVE_BANNER_IMG, EVE_DETAIL_IMG"
+				+ " EVE_BANNERIMG, EVE_DETAILIMG"
 				+ " FROM TB_EVENT"
 				+ "	ORDER BY EVE_NUM DESC"
 				+ ") b"
@@ -80,31 +80,27 @@ public class PromotionListDaoImpl implements PromotionListDao {
 				Promotion pro = new Promotion();
 				pro.setNo(rs.getInt("EVE_NUM"));
 				pro.setName(rs.getString("EVE_NAME"));
-				pro.setStartDate(rs.getString("EVE_START"));
-				pro.setEndDate(rs.getString("EVE_END"));
-				pro.setBannerImg(rs.getString("EVE_BANNER_IMG"));
-				pro.setDetailImg(rs.getString("EVE_DETAIL_IMG"));
+				pro.setProStartDate(rs.getString("EVE_START"));
+				pro.setProEndDate(rs.getString("EVE_END"));
+				pro.setBannerImg(rs.getString("EVE_BANNERIMG"));
+				pro.setDetailImg(rs.getString("EVE_DETAILIMG"));
 				list.add(pro);
 			}
 			System.out.println("dao의 list : "+list);
 
 			return list;
-			
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
 				if(rs!=null)	rs.close();
 				if(pst!=null)	pst.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return list;
-//		return null;
 	}
 
 	@Override
@@ -113,15 +109,14 @@ public class PromotionListDaoImpl implements PromotionListDao {
 		String sql = "SELECT * FROM("
 					+ " SELECT ROWNUM RNUM, B.* FROM(" 
 					+ " SELECT EVE_NUM, EVE_NAME, EVE_START, EVE_END,"
-					+ " EVE_BANNER_IMG, EVE_DETAIL_IMG"
+					+ " EVE_BANNERIMG, EVE_DETAILIMG"
 					+ " WHERE EVE_NAME LIKE '%' || ? || '%'"
-					+ " order by EVE_NAME )B" + " ORDER BY RNUM"
+					+ " order by EVE_NAME )B ORDER BY RNUM"
 				+ ") WHERE RNUM BETWEEN ? AND ?";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, dto.getContent());
-			pst.setInt(2, paging.getStartNo());
-			pst.setInt(3, paging.getEndNo());
+			pst.setInt(1, paging.getStartNo());
+			pst.setInt(2, paging.getEndNo());
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
@@ -129,10 +124,10 @@ public class PromotionListDaoImpl implements PromotionListDao {
 				
 				pro.setNo(rs.getInt("EVE_NUM"));
 				pro.setName(rs.getString("EVE_NAME"));
-				pro.setStartDate(rs.getString("EVE_START"));
-				pro.setEndDate(rs.getString("EVE_END"));
-				pro.setBannerImg(rs.getString("EVE_BANNER_IMG"));
-				pro.setDetailImg(rs.getString("EVE_DETAIL_IMG"));
+				pro.setProStartDate(rs.getString("EVE_START"));
+				pro.setProEndDate(rs.getString("EVE_END"));
+				pro.setBannerImg(rs.getString("EVE_BANNERIMG"));
+				pro.setDetailImg(rs.getString("EVE_DETAILIMG"));
 				list.add(pro);
 			}
 
@@ -183,14 +178,51 @@ public class PromotionListDaoImpl implements PromotionListDao {
 
 		return total;
 	}
-/*
+	
+	
+@Override
+public void updatePromotion(PromotionManage dto) {
+	PreparedStatement pst = null;
+	String sql1 ="update tb_EVENT set EVE_NAME = ? where EVE_Num=?";
+	String sql2 ="update tb_EVENT set EVE_START = ? where EVE_Num=?";
+	String sql3 ="update tb_EVENT set EVE_END = ? where EVE_Num=?";
+	try {
+		if(dto.getKey_promotionName() == "" || dto.getKey_promotionName()==null) {
+			pst = conn.prepareStatement(sql1);
+			pst.setString(1, dto.getKey_promotionName());
+			pst.setString(2, dto.getKey_promotionNum());
+			pst.executeUpdate();
+		}else if(dto.getKey_promotionStart()==""||dto.getKey_promotionStart()==null) {
+			pst = conn.prepareStatement(sql2);
+			pst.setString(1, dto.getKey_promotionStart());
+			pst.setString(2, dto.getKey_promotionNum());
+			pst.executeUpdate();
+		}else if(dto.getKey_promotionEnd()==""||dto.getKey_promotionEnd()==null) {
+			pst = conn.prepareStatement(sql3);
+			pst.setString(1, dto.getKey_promotionEnd());
+			pst.setString(2, dto.getKey_promotionNum());
+			pst.executeUpdate();
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			if (pst != null)
+				pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}
+	
+
 	@Override
 	public void deletePromotion(PromotionManage dto) {
 		PreparedStatement pst = null;
 		String sql = "delete TB_EVENT where EVE_NUM = ?";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, dto.getKey_couponNum());
+			pst.setString(1, dto.getKey_promotionNum());
 			pst.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -200,10 +232,9 @@ public class PromotionListDaoImpl implements PromotionListDao {
 				if (pst != null)
 					pst.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
-*/
+
 }

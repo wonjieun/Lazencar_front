@@ -51,7 +51,7 @@ public class MemberManageDaoImpl implements MemberManageDao {
 	
 	@Override
 	public boolean doSearch(MemberManage search) {
-		if ("눌림".equals(search.getClicked())) {
+		if ("clicked".equals(search.getClicked())) {
 			return true;
 		}else {
 			return false;

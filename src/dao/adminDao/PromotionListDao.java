@@ -19,8 +19,10 @@ public interface PromotionListDao {
 
 	//검색 버튼 눌렸나 확인하는 메서드
 	boolean doSearch(PromotionManage dto);
-	//차량 수정 및 삭제 메서드
-//	public void deleteCoupon(PromotionManage dto);
+	//수정 및 삭제 메서드
+
+	public void updatePromotion(PromotionManage dto);
+	public void deletePromotion(PromotionManage dto);
 }
 
 

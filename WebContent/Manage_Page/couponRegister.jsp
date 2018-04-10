@@ -12,7 +12,6 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="/Manage_page/css/paging.css" />  
 
 	<style>
 	.level1 :nth-child(8) .fly {background: #ffb505 !important;}

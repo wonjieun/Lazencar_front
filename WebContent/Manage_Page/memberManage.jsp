@@ -43,15 +43,15 @@ function checkSearch_content(){
 
 $(document).ready(function() {
 	$("#searchMember").click(function() {
-		var clicked = "눌림";
+		var clicked = "clicked";
 		var category = $("#category").val();
 		var content = $("#content").val();
 		var sort = $("#sort").val();
 
 		//입력 데이터 확인 코드
-		console.log("카테고리 선택 : " + category);
+		console.log("카테고리 : " + category);
 		console.log("검색내용 : " + content);
-		console.log("정렬  : " + sort);
+		console.log("정렬기준 : " + sort);
 		
 		if(checkSearch_content()==true){
 			var $form = $("<form>").attr("action","/admin/memberManage.do").attr("method", "get");
@@ -106,7 +106,7 @@ $(document).ready(function() {
 
 					<tr>
 						<td class="left">
-						<select class="sort" id="category">
+						<select class="sort" id="category" name="category">
 								<option value="mem_Id">회원 계정
 								<option value="mem_Jumin">출생 년도
 						</select></td>
@@ -114,7 +114,7 @@ $(document).ready(function() {
 						<td><textarea rows="1" cols="30" id="content"></textarea></td>
 
 						<td class="right">
-							<!-- 정렬 --> <select class="sort" id="sort">
+							<!-- 정렬 --> <select class="sort" id="sort" name="sort">
 								<option value="mem_Id">회원 이름
 								<option value="mem_License">면허 여부
 									<!--								<option value="rev">예약 날짜 		join 필요 -->

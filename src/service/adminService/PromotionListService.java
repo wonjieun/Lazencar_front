@@ -8,5 +8,5 @@ import util.Paging;
 public interface PromotionListService {
 	public List getPromotionList(Paging paging,PromotionManage dto);
 	
-//	public void editPromotionData(PromotionManage dto);
+	public void editPromotionData(PromotionManage dto);
 }

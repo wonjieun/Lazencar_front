@@ -104,8 +104,8 @@ public class PromotionRegisterServlet extends HttpServlet {
 					dto.setName(item.getString("UTF-8"));
 				}
 				
-				if( "startDate".equals(item.getFieldName()) )	dto.setStartDate(item.getString("UTF-8"));
-				if( "endDate".equals(item.getFieldName()) )	dto.setEndDate(item.getString("UTF-8"));
+				if( "startDate".equals(item.getFieldName()) )	dto.setProStartDate(item.getString("UTF-8"));
+				if( "endDate".equals(item.getFieldName()) )	dto.setProEndDate(item.getString("UTF-8"));
 
 			} else {	//파일일 경우 처리 
 				String contentType = item.getContentType();

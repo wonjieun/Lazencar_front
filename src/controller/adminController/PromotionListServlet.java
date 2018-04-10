@@ -2,7 +2,6 @@ package controller.adminController;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.SynchronousQueue;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.adminDao.PromotionListDao;
 import dao.adminDao.PromotionListDaoImpl;
+import dto.Promotion;
 import dto.adminDto.PromotionManage;
-import jdk.management.resource.internal.TotalResourceContext;
 import service.adminService.PromotionListService;
 import service.adminService.PromotionListServiceImpl;
 import util.Paging;
@@ -28,7 +27,6 @@ public class PromotionListServlet extends HttpServlet {
 			
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
@@ -46,34 +44,22 @@ public class PromotionListServlet extends HttpServlet {
 		System.out.println("content:"+pm.getContent());
 		System.out.println("clicked:"+pm.getClicked());
 		
-		
-		/*
-		
 		//수정 및 삭제할 키워드 저장 및 확인
-		String key_PromotionNum=request.getParameter("key_couNum");
-		String key_PromotionName=request.getParameter("key_couName");
+		String key_PromotionNum=request.getParameter("key_proNum");
+		String key_PromotionName=request.getParameter("key_proName");
 		String key_PromotionStart=request.getParameter("key_startDate");
 		String key_PromotionEnd=request.getParameter("key_endDate");
-		String key_ageConst=request.getParameter("key_ageConst");
-		String key_timeConst=request.getParameter("key_timeConst");
-		String key_carConst=request.getParameter("key_carConst");
-		String key_discount=request.getParameter("key_discount");
 		String editPromotion=request.getParameter("btnEdit");
+
 		if(editPromotion!=null) {
-		pm.setKey_PromotionNum(key_PromotionNum);
-		pm.setKey_PromotionName(key_PromotionName);
-		pm.setKey_PromotionStart(key_PromotionStart);
-		pm.setKey_PromotionEnd(key_PromotionEnd);
-		pm.setKey_ageConst(key_ageConst);
-		pm.setKey_timeConst(key_timeConst);
-		pm.setKey_carConst(key_carConst);
-		pm.setKey_discount(key_discount);
+		pm.setKey_promotionNum(key_PromotionNum);
+		pm.setKey_promotionName(key_PromotionName);
+		pm.setKey_promotionStart(key_PromotionStart);
+		pm.setKey_promotionEnd(key_PromotionEnd);
 		pm.setEditPromotion(editPromotion);
 		
-		System.out.println(pm.getKey_PromotionNum()+","+pm.getKey_PromotionName()+","
-		+pm.getKey_PromotionStart()+","+pm.getKey_PromotionEnd()+","+pm.getKey_ageConst()+","
-		+pm.getKey_timeConst()+","+pm.getKey_carConst()+","+pm.getKey_discount()+",");
-		
+		System.out.println(pm.getKey_promotionNum()+","+pm.getKey_promotionName()+","
+		+pm.getKey_promotionStart()+","+pm.getKey_promotionEnd());
 		System.out.println(pm.getEditPromotion());
 		
 		if(editPromotion.equals("deletePromotion")||editPromotion.equals("updatePromotion")	) {
@@ -81,11 +67,12 @@ public class PromotionListServlet extends HttpServlet {
 			}
 		}
 		
-		*/
+		
 		
 		//페이징 ▽
 		Paging paging =null;
-		List<PromotionManage> list = null;
+//		List<PromotionManage> list = null;
+		List<Promotion> list = null;
 
 		String pageParam = request.getParameter("pageNo");
 		int pageNo=0;
@@ -98,6 +85,8 @@ public class PromotionListServlet extends HttpServlet {
 			paging = new Paging(totalCount, pageNo);//총 게시물수와 페이지번호를 이용한 페이징 객체 생성
 			list = service.getPromotionList(paging,pm); // 페이지에 맞는 게시물 갖고오기.
 //			System.out.println(list.get(0));
+			System.out.println("list size : " +list.size());
+			System.out.println(list.get(0).getProStartDate());
 //		}
 //		System.out.println("서블릿 리스트출력: "+list.toString());
 //		System.out.println("서블릿 dao.getTotal()출력 :"+totalCount);
@@ -110,10 +99,11 @@ public class PromotionListServlet extends HttpServlet {
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/Manage_Page/promotionList.jsp").forward(request, response);
 		System.out.println("리스트 : "+list);
+//		System.out.println("리스트 : "+list.get(0).getProStartDate());
 	}
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		doGet(request,response);
 	}
 }

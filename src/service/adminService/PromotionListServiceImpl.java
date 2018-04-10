@@ -14,14 +14,16 @@ public class PromotionListServiceImpl implements PromotionListService {
 	public List getPromotionList(Paging paging, PromotionManage dto) {
 		return dao.getList(paging, dto);
 	}
-/*
+
 	@Override
 	public void editPromotionData(PromotionManage dto) {
-		if("deleteCoupon".equals(dto.getEditPromotion())) {
-			dao.deleteCoupon(dto);
+		if("updatePromotion".equals(dto.getEditPromotion())) {
+			dao.updatePromotion(dto);
+		}else if("deleteCoupon".equals(dto.getEditPromotion())) {
+			dao.deletePromotion(dto);
 		}
 	}
 	
-*/	
+	
 }
 
