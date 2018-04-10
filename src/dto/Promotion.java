@@ -23,26 +23,26 @@ public class Promotion {
 	public String getProStartDate() {
 		return proStartDate;
 	}
-	public void setProStartDate(String proStartDate) {
-		proStartDate = proStartDate;
+	public void setProStartDate(String prostartDate) {
+		proStartDate = prostartDate;
 	}
 	public String getProEndDate() {
 		return proEndDate;
 	}
-	public void setProEndDate(String proEndDate) {
-		proEndDate = proEndDate;
+	public void setProEndDate(String proendDate) {
+		proEndDate = proendDate;
 	}
 	public String getBannerImg() {
 		return bannerImg;
 	}
-	public void setBannerImg(String bannerImg) {
-		bannerImg = bannerImg;
+	public void setBannerImg(String bannerimg) {
+		bannerImg = bannerimg;
 	}
 	public String getDetailImg() {
 		return detailImg;
 	}
-	public void setDetailImg(String detailImg) {
-		detailImg = detailImg;
+	public void setDetailImg(String detailimg) {
+		detailImg = detailimg;
 	}
 	
 	

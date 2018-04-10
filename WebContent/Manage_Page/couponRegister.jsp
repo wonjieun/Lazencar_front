@@ -93,15 +93,15 @@
 			<tr>
 				<td class="left">
 				쿠폰의 이름을 입력하세요.		<br><br>
-				<input type="text" id="content" name="content" size="30" value="">
+				<input type="text" id="content" name="content" size="30" value=""><br><br>
 				</td>
 				<td>
 				쿠폰의 시작일을 입력하세요.<br><br>
-				<input type="date" id="startDate" name="startDate" size="30" value="" />
+				<input type="date" id="startDate" name="startDate" size="30" value="" /><br><br>
 				</td>
 				<td class="right">
 				쿠폰의 종료일을 입력하세요.<br><br>
-				<input type="date" id="endDate" name="endDate" size="30" value="">				
+				<input type="date" id="endDate" name="endDate" size="30" value="">		<br><br>		
 				</td>
 			</tr>			
 			<tr>

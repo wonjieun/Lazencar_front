@@ -32,8 +32,8 @@ public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 	
 	@Override
 	public void insertAllData(Promotion pro) {
-		String sql = "INSERT INTO TB_EVENT(EVE_NUM, EVE_NAME, EVE_START, EVE_END, EVE_BANNER_IMG, EVE_DETAIL_IMG)"
-				+ " VALUES(UP_COU_NUM.nextval,?,?,?,?,?)";
+		String sql = "INSERT INTO TB_EVENT(EVE_NUM, EVE_NAME, EVE_START, EVE_END, EVE_BANNERIMG, EVE_DETAILIMG)"
+				+ " VALUES(UP_EVE_NUM.nextval,?,?,?,?,?)";
 		ResultSet rs = null;
 		try {
 			pst = conn.prepareStatement(sql);
