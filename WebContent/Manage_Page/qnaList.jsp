@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 	
 	<style>
-	.level1 :nth-child(4) .fly {background: #ffb505 !important;}
+	.level1 :nth-child(7) .fly {background: #ffb505 !important;}
 	
 	tr.hiddenTr{
  	display:none;  
@@ -179,7 +179,7 @@ $(document).ready(function(){
 		</tr>
 	</table>
 </div>
-<button class="btnSearch" id="searchqna" type="button">공지사항 검색</button>
+<button class="btnSearch" id="searchQna" type="button">검색</button>
 <div class="clear"></div>
 <div>
 	<table id="table2">
@@ -190,7 +190,7 @@ $(document).ready(function(){
 			<th>문의 제목</th>
 			<th>등록 일자</th>
 			<th>답변 여부</th>
-			<th class="right"></th>
+			<th class="right">답변 등록</th>
 		</tr>
 	</thead>
 	
@@ -198,40 +198,29 @@ $(document).ready(function(){
 		<c:forEach items="${list }" begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
 				
 			<tr>
-				<td id="key_qnaNum_${listNumber.count}">${i.qnaNum }</td>
+				<td id="key_qnaNum_${listNumber.count}" class="left">${i.qnaNum }</td>
 				<td>${i.memId }</td>
 				<td>${i.qnaTitle }</td>
 				<td>${i.qnaDate }</td>
 				<td>${i.qnaCompleted}</td>
-				<td>${i.qnaDate }</td>
-				<td>
+				<td class="right">
 				<button id="btn_listDown" onclick="showDetail('hiddenTr_${listNumber.count}');" style="margin:auto 0;">답변 등록</button><br>
 <%-- 				<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button> --%>
 				</td>
 			</tr>
 			<tr class="hiddenTr" id="hiddenTr_${listNumber.count }">
 				<td colspan="6">
-				<div style="width:90px" >
-				<font>문의 번호 : </font><br>
-				<font>카테고리 : </font><br>
-				<font>문의 제목 : </font><br>
-				<font>문의 내용 : </font><br>
-				<font>첨부파일 : </font><br>
-				<font>회원 이메일 : </font><br>
-				<font>답변 : </font><br>
-				</div>
-				
 				<div>
-					<font id="key_qnaNum_${listNumber.count }"> ${i.qnaNum}</font><br>
-					<font>${i.qnaCate }</font>
-					<font>${i.qnaTitle }</font>
-					<textArea cols="100" >${i.qnaContent}</textArea>
-					<font><img src="/upload/${i.qnaImg }" width="200px;" height="150px;"></font>
-					<font>${i.memEmail }</font>
-					<textarea cols="100" id="edit_qna_Answer_${listNumber.count }">${i.qnaAnswer}</textarea>
-
+				<p id="key_qnaNum_${listNumber.count }">문의 번호 : ${i.qnaNum}</p>
+				<p>카테고리 : ${i.qnaCate }</p>
+				<p>문의 제목 : ${i.qnaTitle }</p>
+				<p>문의 내용 : <textArea cols="80" readonly="readonly">${i.qnaContent}</textArea></p>
+<%-- 				<p>첨부파일 : <img src="/upload/${i.qnaImg }" width="200px;" height="150px;"></p> --%>
+				<p>회원 이메일 : ${i.memEmail }</p>
+				<p>답변 : <textarea cols="80" id="edit_qna_Answer_${listNumber.count }">${i.qnaAnswer}</textarea></p>
 				</div>
-				<div>
+				<div class="clear"></div>
+				<div style="float: right;">
 					<button id="btn_update_${listNumber.count }" onclick="update_clicked(${listNumber.count })">수정완료</button>
 				</div>
 				</td>
@@ -244,7 +233,7 @@ $(document).ready(function(){
 	</table>
 </div>
 	
-<%-- 				<jsp:include page="/Manage_Page/util/qnaListPaging.jsp" /> --%>
+				<jsp:include page="/Manage_Page/util/qnaListPaging.jsp" />
 </div>
 
 </div>		<!-- content end -->

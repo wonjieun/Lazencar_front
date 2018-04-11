@@ -98,7 +98,7 @@
       
       <li><a class="fly" href="javascript:void(0);">문의 관리</a>
          <ul>
-            <li><a href="/qnaManage.jsp">문의 내역 확인</a></li>
+            <li><a href="/qnaList.do">문의 내역 확인</a></li>
             <li><a href="/qnaRegister.jsp">문의 답변 등록</a></li>
          </ul>
       </li>
