@@ -7,6 +7,9 @@
 <title>로그인</title>
 
 <link type="text/css" rel="stylesheet" href="/Page/css/login.css" >
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/master.css?v=180322">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/calendar.css">
 
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -330,17 +333,15 @@ function f_login() {
 		    // 사용할 앱의 JavaScript 키를 설정해 주세요.
 		    Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
 		    
-		    
-		    
 		    // 카카오 로그인 버튼을 생성합니다.
 		    function loginWithKakao() {
 // 		    토큰꺼내기	authObj.access_token
-		    	
-		    	alert("access token : " + Kakao.Auth.getAccessToken());
+// 		    	alert("access token : " + Kakao.Auth.getAccessToken());
 		    	if(Kakao.Auth.getAccessToken()==null) {
 		    		Kakao.Auth.loginForm({
 		    			success : function(authObj) {
 		    				alert(JSON.stringify(authObj));
+		    				console.log(JSON.stringify(authObj));
 		    				alert(authObj.access_token);
 		    				location.href="/main.do";
 		    			},
@@ -360,8 +361,6 @@ function f_login() {
 // 		          alert(JSON.stringify(err));
 // 		        }
 // 		      });
-		      
-		      
 		      
 		    };
 		  //]]>
