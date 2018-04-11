@@ -90,7 +90,6 @@ public class ReviewDaoImpl implements ReviewDao {
 			pst.setInt(1, getSeq());
 			pst.setString(2, rev_userId);
 			pst.setString(3, rev_title);
-//			pst.setString(4, rev_date);
 			pst.setString(4, rev_content);
 			pst.setInt(5, 1);
 			pst.setInt(6, 0);

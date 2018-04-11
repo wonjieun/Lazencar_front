@@ -126,7 +126,7 @@ $(document).ready(function(){
 </div>		<!-- header end -->
 
 
-<div class="container">
+<div class="contain">
 
 
 <div class="content">
@@ -199,7 +199,7 @@ $(document).ready(function(){
 
 </div>		<!-- content end -->
 
-</div>		<!-- container end -->
+</div>		<!-- contain end -->
 
 
 

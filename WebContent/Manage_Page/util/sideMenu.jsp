@@ -92,14 +92,13 @@
       
       <li><a class="fly" href="javascript:void(0);">후기 관리</a>
          <ul>
-            <li><a href="/reviewManage.jsp">후기목록 조회</a></li>
+            <li><a href="/admin/reviewList.do">후기목록 조회</a></li>
          </ul>
       </li>
       
       <li><a class="fly" href="javascript:void(0);">문의 관리</a>
          <ul>
-            <li><a href="/qnaManage.jsp">문의 내역 확인</a></li>
-            <li><a href="/qnaRegister.jsp">문의 답변 등록</a></li>
+            <li><a href="/admin/qnaList.do">문의 내역 확인</a></li>
          </ul>
       </li>
 		

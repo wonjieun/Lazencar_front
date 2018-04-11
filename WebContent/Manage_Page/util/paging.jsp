@@ -7,6 +7,8 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<!--  페이징 원본입니다 !!페이징 원본입니다 !! 페이징 원본입니다 !! 페이징 원본입니다 !!  -->
+<!--  페이징 원본입니다 !! 페이징 원본입니다 !! 페이징 원본입니다 !! 페이징 원본입니다 !!   -->
 <style>
 
 .pagination>.active>a, .pagination>.active>a:focus, 
@@ -22,7 +24,6 @@
     border-color: #f1c40f !important;
 }
 </style>
-
 <div class="paging text-center">
 	<ul class="pagination">
 		<%-- 첫 페이지 버튼 --%>
