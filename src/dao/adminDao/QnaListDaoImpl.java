@@ -34,23 +34,23 @@ public class QnaListDaoImpl implements QnaListDao {
 
 	@Override
 	public boolean doSearch(QnaManage qm) {
-		if("clicked".equals(qm.getClicked())) {
+		if ("clicked".equals(qm.getClicked())) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public List getList(Paging paging, QnaManage qm) {
-		if(doSearch(qm) == true) {
-			System.out.println("qmSearch"+doSearch(qm));
+		if (doSearch(qm) == true) {
+			System.out.println("qmSearch" + doSearch(qm));
 			return getSearchList(paging, qm);
-		}else {
+		} else {
 			return getAllList(paging);
 		}
 	}
-	
+
 	@Override
 	public int getTotal(QnaManage qm) {
 		Statement st = null;
@@ -155,7 +155,7 @@ public class QnaListDaoImpl implements QnaListDao {
 				+ " ORDER BY RNUM)"
 				+ " WHERE RNUM BETWEEN ? AND ?";
 		
-			try {
+//			try {
 		
 		System.out.println("sql = "+sql);
 		try {
@@ -167,7 +167,7 @@ public class QnaListDaoImpl implements QnaListDao {
 			rs = pst.executeQuery();
 
 			System.out.println(paging);
-			
+
 			while (rs.next()) {
 				Qna dto = new Qna();
 				dto.setQnaNum(rs.getInt("QNA_NUM"));
@@ -179,20 +179,22 @@ public class QnaListDaoImpl implements QnaListDao {
 				dto.setQnaAnswer(rs.getString("QNA_ANSWER"));
 				dto.setMemEmail(rs.getString("MEM_EMAIL"));
 				dto.setQnaCompleted(rs.getString("QNA_COMPLETED"));
-				
-				if(rs.getString("QNA_IMG") != null) {
+
+				if (rs.getString("QNA_IMG") != null) {
 					dto.setQnaImg(rs.getString("QNA_IMG"));
 				}
-				
+
 				list.add(dto);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null)		rs.close();
-				if (pst != null)	pst.close();
+				if (rs != null)
+					rs.close();
+				if (pst != null)
+					pst.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -200,15 +202,13 @@ public class QnaListDaoImpl implements QnaListDao {
 		return list;
 	}
 
-
-
 	@Override
 	public void updateQna(QnaManage qm) {
 		PreparedStatement pst = null;
 
-		String sql1 ="update tb_QNA set QNA_ANSWER = ? where qna_Num=?";
+		String sql1 = "update tb_QNA set QNA_ANSWER = ? where qna_Num=?";
 		try {
-			if(qm.getEdit_qnaAnswer() == "" || qm.getEdit_qnaAnswer()==null) {
+			if (qm.getEdit_qnaAnswer() == "" || qm.getEdit_qnaAnswer() == null) {
 				pst = conn.prepareStatement(sql1);
 				pst.setString(1, qm.getEdit_qnaAnswer());
 				pst.setString(2, qm.getKey_qnaNum());
@@ -225,7 +225,7 @@ public class QnaListDaoImpl implements QnaListDao {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -236,7 +236,7 @@ public class QnaListDaoImpl implements QnaListDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, qm.getKey_qnaNum());
 			pst.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
