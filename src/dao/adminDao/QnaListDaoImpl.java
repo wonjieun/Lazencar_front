@@ -19,6 +19,8 @@ public class QnaListDaoImpl implements QnaListDao {
 	private final String username = "LAZENCAR";
 	private final String password = "saveus";
 	private Connection conn = null;
+	
+	private ResultSet rs;
 
 	public QnaListDaoImpl() {
 
@@ -115,7 +117,7 @@ public class QnaListDaoImpl implements QnaListDao {
 				dto.setQnaDate(rs.getString("QNA_DATE"));
 				dto.setQnaCate(rs.getString("QNA_CATE"));
 				dto.setQnaTitle(rs.getString("QNA_TITLE"));
-				dto.setQnaContent(rs.getString("QNA_CONTENT"));
+				dto.setQnaContents(rs.getString("QNA_CONTENT"));
 				dto.setQnaAnswer(rs.getString("QNA_ANSWER"));
 				dto.setMemEmail(rs.getString("MEM_EMAIL"));
 				dto.setQnaCompleted(rs.getString("QNA_COMPLETED"));
@@ -176,7 +178,7 @@ public class QnaListDaoImpl implements QnaListDao {
 				dto.setQnaDate(rs.getString("QNA_DATE"));
 				dto.setQnaCate(rs.getString("QNA_CATE"));
 				dto.setQnaTitle(rs.getString("QNA_TITLE"));
-				dto.setQnaContent(rs.getString("QNA_CONTENT"));
+				dto.setQnaContents(rs.getString("QNA_CONTENT"));
 				dto.setQnaAnswer(rs.getString("QNA_ANSWER"));
 				dto.setMemEmail(rs.getString("MEM_EMAIL"));
 				dto.setQnaCompleted(rs.getString("QNA_COMPLETED"));
@@ -248,6 +250,55 @@ public class QnaListDaoImpl implements QnaListDao {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	@Override
+	public int getSeq() {
+		
+		String sql =  "SELECT QNA_NUM FROM TB_QNA ORDER BY QNA_NUM DESC";
+		
+		try {
+			
+			PreparedStatement pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+			if(rs.next()) {
+				
+				return rs.getInt(1) + 1;
+			}
+			
+			return 1; // 현재가 첫번째 글 일 경우
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+
+		return -1; // 디비 오류나면
+	}
+	
+	@Override
+	public int insertQna(String qnaTitle, String qnaContents, String memId, String qnaCate) {
+		
+		String sql =  "INSERT INTO TB_QNA VALUES (?, ?, sysdate, ?, ?, ?, default, 0)";
+		
+		try {
+			
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, getSeq());
+			pst.setString(2, memId);
+			pst.setString(3, qnaCate);
+			pst.setString(4, qnaTitle);
+			pst.setString(5, qnaContents);
+			
+			
+			return pst.executeUpdate();
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+
+		return -1; // 디비 오류나면
 	}
 
 }
