@@ -2,8 +2,8 @@
     pageEncoding="utf-8"%>
     
 <%@ page import = "java.io.PrintWriter" %>
-<%@ page import = "dto.Ask" %>
-<%@ page import = "dao.AskDaoImpl" %>
+<%@ page import = "dto.Qna" %>
+<%@ page import = "dao.adminDao.QnaListDaoImpl" %>
 
 <%
 
@@ -206,7 +206,7 @@ $(function(){
      
     nhn.husky.EZCreator.createInIFrame({
         oAppRef: editor_object,
-        elPlaceHolder: "ask_content",
+        elPlaceHolder: "qnaContents",
         sSkinURI: "/smarteditor/SmartEditor2Skin.html",
         htParams : {
             // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -223,7 +223,7 @@ $(function(){
     $("#save").click(function(){
     	
         //id가 rev_content인 textarea에 에디터에서 대입
-        editor_object.getById["ask_content"].exec("UPDATE_CONTENTS_FIELD", []);
+        editor_object.getById["qnaContents"].exec("UPDATE_CONTENTS_FIELD", []);
          
         // 이부분에 에디터 validation 검증
          
@@ -379,15 +379,15 @@ $(function(){
 					</div>
 				</div>
 				<div class="subtop-content bg_subvisual_01_03">
-					<h3 class="subtit">1대1 문의하기</h3>
-					<p class="subtxt"><strong>궁금하신 사항이 있으신가요?</strong> <br />문의사항을 접수하시면 최선을 다해 답변 드리겠습니다.</p>
+					<h3 class="subtit">후기</h3>
+					<p class="subtxt"><strong>합리적인 소비와 환경보호를 실천하는 신개념 차량 공유서비스</strong> <br />우리동네에도 그린카가 필요하다면 지금 바로 신청하세요!</p>
 				</div>
 				<div class="bodystart">
 <!-- bodystart -->
-                    <form action="ask_Action.jsp" method="post" id="frm">
+                    <form action="qna_Action.jsp" method="post" id="frm">
                              
 					<table summary="신청장소 선택, 등록" class="boardView-02">
-						<caption> 1대1 문의 </caption>
+						<caption> 후기 작성 </caption>
 						<colgroup>
 							<col width="150" />
 							<col width="" />
@@ -397,13 +397,11 @@ $(function(){
 								<th scope="row">카테고리 정하기</th>
 						<td class="q-select">
 								
-									<select name="h-qnaType" id="qnaType">
-										
-									<option value="06CtGRc/iWnD/mHWn2u7xw==" >흡연신고</option>
-										
-									<option value="oXTZ14vP4A7iA+dtYSy1mg==" >예약/결제문의</option>
+									<select name="qnaCate" id="qnaCate">
+
+									<option value="예약/결제문의" >예약/결제문의</option>
 												
-									<option value="0Ie0A8qTBqiUq4tOAMavOQ==" >서비스 버그신고</option>
+									<option value="서비스/버그신고" >서비스 버그신고</option>
 															
 									</select>
 								</td>
@@ -415,7 +413,7 @@ $(function(){
 								<td>
 									<div class="pop_location">
 									 
-										<input type="text" name="ask_title"  id="ask_title" class="inputTxt02" />
+										<input type="text" name="qnaTitle"  id="qnaTitle" class="inputTxt02" />
                                        
 									</div>
 								</td>
@@ -425,11 +423,11 @@ $(function(){
 							<tr>
 								<td colspan="2" class="contentView">
 	
-                                   <textarea name="ask_content" id="ask_content" rows="10" cols="100" style="width:738px; height:412px;">
+                                   <textarea name="qnaContents" id="qnaContents" rows="10" cols="100" style="width:738px; height:412px;">
 
                                    </textarea>
     
-                                   <input type="button" id="save" value="문의하기" />
+                                   <input type="button" id="save" value="글쓰기" />
   			
 								</td>
 							</tr>
