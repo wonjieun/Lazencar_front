@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.Car;
 import dto.Notice;
 import dto.adminDto.NoticeManage;
 import util.Paging;
