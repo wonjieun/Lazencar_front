@@ -61,3 +61,4 @@ public class Review {
 		this.rev_hit = rev_hit;
 	}
 }
+
