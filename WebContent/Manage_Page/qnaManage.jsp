@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%@ page import="dto.Ask"%>
+<%@ page import="dao.AskDaoImpl"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 
 <head>
@@ -127,37 +132,20 @@ $(function(){
 
 	<div>
 		 <table id="table2">
-			
+		 			
 			<tr>
 				<th>no</th>
 				<th>상세정보</th>
 				<th>답변여부</th>
 			</tr>
+			
+			<c:forEach items="${list }" begin="0" end="${paging.listCount }" var="i">
 			<tr>
 				<td class="left">cell</td>
-				<td></td>
+				<td>${i.ask_title }</td>
 				<td class="right"><input type="checkbox"></td>
 			</tr>		
-			<tr>
-				<td class="left">cell</td>
-				<td></td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td></td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td></td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>
-			<tr>
-				<td class="left">cell</td>
-				<td></td>
-				<td class="right"><input type="checkbox"></td>
-			</tr>											
+			</c:forEach>											
 		</table>
 		</div>
 		
