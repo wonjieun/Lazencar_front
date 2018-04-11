@@ -120,7 +120,6 @@ public class NoticeListDaoImpl implements NoticeListDao {
 				list.add(not);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -129,7 +128,6 @@ public class NoticeListDaoImpl implements NoticeListDao {
 				if (pst != null)
 					pst.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
