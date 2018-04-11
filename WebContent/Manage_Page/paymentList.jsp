@@ -97,7 +97,7 @@ $(document).ready(function(){
 		if(checkSearch_content()==true){
 			console.log("내용있음");
 			
-			var $form = $("<form>").attr("action", "/admin/paymentList.do").attr("method", "post");
+			var $form = $("<form>").attr("action", "/admin/paymentList.do").attr("method", "get");
 			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);

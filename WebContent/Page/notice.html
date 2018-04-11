@@ -1,13 +1,11 @@
-
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
 <meta charset="UTF-8">
+<title>공지사항</title>
 
-<title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <style type="text/css">
 @charset "UTF-8";
@@ -985,25 +983,13 @@ a.hoverline:hover {
 
 </style>
 
-
-
-
-
-
 <script type="text/javascript">
-
-
-	
+$(document).ready( function() {
+	$("#notice_search").click( function() {
+		
+	}
+}
 </script>
-
-
-<script type="text/javascript" src="./js/lib/jquery-1.9.1.js"></script>
-
-
-<!-- <link type="text/css" rel="stylesheet" media="all" -->
-<!-- 	href="./css/master.css" /> -->
-
-<title>요금안내 &lt; 라젠카 소개</title>
 
 </head>
 
@@ -1183,7 +1169,7 @@ a.hoverline:hover {
 				<input id="searchWord" name="searchWord" type="text" class="inputTxt" value="" title="검색어 입력" />
 			</div>
 			
-			<div class="form-search-03">
+			<div class="form-search-03" id="notice_search">
 				<input type="image" src="/Page/images/board/btn_form_search.gif" alt="검색" title="검색" />
 			</div>
 		</div>		<!-- form-searchbox -->
@@ -1224,7 +1210,10 @@ a.hoverline:hover {
 <c:forEach items="${list }" var="i">
 	<tr>
 		<td>${i.no }</td>
-		<td class="txt_l"><a href="/service/list.do?bbsCateId=0&searchItem=${i.searchItem }&searchWord=${i.searchWord }&x=38&y=26">${i.title }</a></td>
+		<td class="txt_l">
+			<a href="/service/list.do?bbsCateId=0&searchItem=${i.searchItem }&searchWord=${i.searchWord }&x=38&y=26">
+				${i.title }</a>
+		</td>
 		<td>${i.date }</td>
 	</tr>
 </c:forEach>

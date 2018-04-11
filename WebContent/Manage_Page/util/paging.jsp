@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" type="text/css" href="/Manage_Page/css/Paging.css" />
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
@@ -24,13 +23,13 @@
 }
 </style>
 
-
 <div class="paging text-center">
 	<ul class="pagination">
 		<%-- 첫 페이지 버튼 --%>
 		<%-- 첫 페이지가 아니면 버튼 노출 --%>
 		<c:if test="${paging.curPage ne 1 }">
 		<li>
+<%-- 		category=${category}&content=${content}&sort=${sort} --%>
 			<a href="${url }?pageNo=1">
 				<span aria-hidden="true">&larr;</span>
 			</a>

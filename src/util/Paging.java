@@ -1,12 +1,15 @@
 package util;
 
+import dto.adminDto.CarManage;
+
 public class Paging {
 	private int curPage;	//현재 페이지 번호 (현재 선택한 페이지)
 
 	private int totalCount;	//총 게시글 수 (DB 조회 결과로 얻어옴)
 	private int listCount;	//한 페이지당 출력될 게시글 수 (직접 설정함)
 	private int totalPage;	//총 페이지 수 (계산으로 알아냄)
-
+	private int searchCount;
+	
 	private int pageCount;	//한 화면에 출력될 페이지 수 (직접 설정함)
 	private int startPage;	//화면에 보이는 시작 페이지 (계산으로 알아냄)
 	private int endPage;	//화면에 보이는 끝 페이지 (계산으로 알아냄)
@@ -42,7 +45,7 @@ public class Paging {
 		
 		makePaging();
 	}
-
+	
 	// 총 게시글 수와 현재 페이지, 보여지는 게시글 수, 페이지 수를 입력하는 생성자
 	//	listCount == 10
 	public Paging(int totalCount, int curPage, int listCount, int pageCount) {
@@ -51,7 +54,6 @@ public class Paging {
 		
 		makePaging();
 	}
-
 	// 페이징 정보 생성
 	private void makePaging() {
 		if(totalCount == 0)	return; //게시글이 없는 경우
@@ -165,5 +167,13 @@ public class Paging {
 				", pageCount="+pageCount+
 				", startPage="+startPage+
 				", endPage="+endPage+"]";
+	}
+
+	public int getSearchCount() {
+		return searchCount;
+	}
+
+	public void setSearchCount(int searchCount) {
+		this.searchCount = searchCount;
 	}
 }

@@ -8,20 +8,34 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
+
 <link type="text/css" rel="stylesheet" href="/Page/css/main.css" >
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
-<script src="./js/main.js"></script>
+<script src="/Page/js/main.js"></script>
 
 <script type="text/javascript">
+
+// 로그인, 회원가입 -> 로그아웃, 마이페이지
 function login_menu() {
 // 	alert('${sessionScope.id}');
+// 	alert('${sessionScope.token}');
 	var id = '${sessionScope.id}';
+	var token = '${sessionScope.token}';
 	
-	if ( id===null || id==="") {
+// 	alert(id);
+// 	alert(token);
+	
+	if ( (id===null || id==="") && (token===null || token==="") ) {
 		$("#logout").hide();
+		$("#sns_logout").hide();
 		$("#mypage").hide();
+	} else if(token) { 
+		$("#logout").hide();
+		$("#signup").hide();
+		$("#login").hide();
 	} else {
+		$("#sns_logout").hide();
 		$("#signup").hide();
 		$("#login").hide();
 	}
@@ -31,61 +45,44 @@ function login_menu() {
 $(document).ready(function() {
 	login_menu();
 });
+
 </script>
 
 </head>
 
 <body>
-
    <!-- Begin #wrap -->
-
    <div id="wrap">
-
-      <div class="top_banner join" style="display: none;">
-         <div class="cont">
-
-            <a href="https://www.greencar.co.kr/member/index.jsp"
-               target="_blank"><img
-               src="./images/common/top_banner_160825.gif"
-               alt="신규가입시 3시간 무료쿠폰 전원증정" /></a>
-
-
-            <p class="close">
-               <a href="javascript:void(0)"><img
-                  src="./images/common/btn_close.png" alt="닫기" /></a>
-            </p>
-
-         </div>
-
-      </div>
-
-      <!-- [e]top_banner -->
-
-
-
       <!-- Begin #header -->
-
       <div id="header" class="sub">
-
          <div class="hgroup">
-
             <div class="inbox">
-
                <h1 class="logo">
-                  <a href="http://www.greencar.co.kr/"><span>라젠카</span></a>
+                  <a href="/main.do"><span>라젠카</span></a>
                </h1>
 
                <div class="nvalinks">
                   <a href="/login/login.do" id="login">로그인</a>
-                  <a href="/Page/signUp.jsp" id="signup">회원가입</a>
-            			<a href="/login/logout.do" id="logout">로그아웃</a>
+                  <a href="/signUp.do" id="signup">회원가입</a>
+                  <a href="/login/logout.do" id="logout">로그아웃</a>
+                  <!-- sns사용자 로그아웃 -->
+            			<a href="/login/logout.do" id="sns_logout">로그아웃</a>
+            			
+            			<script type="text/javascript">
+            			 	$("#logout").click(function() {
+// 										console.log(token);
+											location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
+										});
+            			 	</script>
+            			
             			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
                   <a class="nvalinks-rev" href="/Page/reservation.html">라젠카 예약하기</a>
 
                </div>
+               
       <nav id="topMenu" > 
          <ul> 
-                  <li class="topMenuLi"> 
+         <li class="topMenuLi"> 
             <a class="menuLink" href="#">Lazencar 소개</a> 
             <ul class="submenu"> 
                <li><a href="#" class="submenuLink longLink">Lazencar란?</a></li> 
@@ -93,7 +90,7 @@ $(document).ready(function() {
                <li><a href="#" class="submenuLink longLink">요금안내</a></li> 
                <li><a href="#" class="submenuLink longLink">위치</a></li> 
             </ul> 
-               </li>
+          </li>
                
                         <li class="topMenuLi"> 
             <a class="menuLink" href="#">서비스/혜택</a> 
@@ -125,13 +122,13 @@ $(document).ready(function() {
 
 				<div class="slide">
 						<ul>
-							<li><img src="./images/img_01/car_01.jpg" alt="" /></li>
-							<li><img src="./images/img_01/car_02.jpg" alt="" /></li>
-							<li><img src="./images/img_01/car_03.jpg" alt="" /></li>
-							<li><img src="./images/img_01/car_04.jpg" alt="" /></li>
-							<li><img src="./images/img_01/car_05.jpg" alt="" /></li>
-							<li><img src="./images/img_01/car_06.jpg" alt="" /></li>
-							<li><img src="./images/img_01/car_07.jpg" alt="" /></li>
+							<li><img src="/Page/images/img_01/car_01.jpg" alt="" /></li>
+							<li><img src="/Page/images/img_01/car_02.jpg" alt="" /></li>
+							<li><img src="/Page/images/img_01/car_03.jpg" alt="" /></li>
+							<li><img src="/Page/images/img_01/car_04.jpg" alt="" /></li>
+							<li><img src="/Page/images/img_01/car_05.jpg" alt="" /></li>
+							<li><img src="/Page/images/img_01/car_06.jpg" alt="" /></li>
+							<li><img src="/Page/images/img_01/car_07.jpg" alt="" /></li>
 						</ul>
 				</div>
 
@@ -180,16 +177,16 @@ $(document).ready(function() {
 
                   <li><a
                      href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-                        src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+                        src="/Page/images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
 
                   <li><a
                      href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
-                        src="./images/common/img_partner_suwon.gif"
+                        src="/Page/images/common/img_partner_suwon.gif"
                         alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
 
                   <li><a
                      href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
-                        src="./images/common/img_partner_incheon.gif"
+                        src="/Page/images/common/img_partner_incheon.gif"
                         alt="인천광역시 라젠카 예약하기" /></a></li>
 
                </ul>
@@ -239,36 +236,27 @@ $(document).ready(function() {
                </ul>
 
                <div class="footer_info">
-
                   <div class="info">
-
                      <span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
                         : 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
-
                   </div>
 
                   <div class="addr">
-
                      <span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
                         010-9550-0167</span> <span>FAX : 02-9550-0167</span>
-
                   </div>
-
                   <span class="copy">Copyright &#169; 2018 LazenCar. All
                      Rights Reserved.</span>
-
                </div>
 
                <div class="footer_emblem">
-
-                  <img src="./images/common/img_emblem_brandpower.jpg"
-                     alt="2016년 한국산업의 브랜드파워 1위" /> <img
-                     src="./images/common/img_emblem_brandstar.jpg"
-                     alt="2016년 대한민국 브랜드스타" /> <img
-                     src="./images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
-
-                  <img src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
-
+                  <img src="/Page/images/common/img_emblem_brandpower.jpg"
+                     alt="2016년 한국산업의 브랜드파워 1위" />
+                  <img src="/Page/images/common/img_emblem_brandstar.jpg"
+                     alt="2016년 대한민국 브랜드스타" />
+                  <img src="/Page/images/common/img_emblem_award.jpg"
+                     alt="모바일 어워드 코리아 2016" />
+                  <img src="/Page/images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
                </div>
 
             </div>

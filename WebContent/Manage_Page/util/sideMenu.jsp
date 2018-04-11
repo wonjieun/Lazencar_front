@@ -59,7 +59,7 @@
       
       <li><a class="fly" href="javascript:void(0);">공지 사항</a>
          <ul>
-            <li><a href="/noticeManage.jsp">공지사항 등록</a></li>
+            <li><a href="/admin/noticeRegister.do">공지사항 등록</a></li>
          </ul>
       </li>
       
