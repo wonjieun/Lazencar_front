@@ -62,6 +62,7 @@ public class CouponListServlet extends HttpServlet {
 		String key_carConst=request.getParameter("key_couCarConst");
 		String key_discount=request.getParameter("key_couDiscount");
 		String editCoupon=request.getParameter("btnEdit");
+		
 		if(editCoupon!=null) {
 		cm.setKey_couponNum(key_couponNum);
 		cm.setKey_couponName(key_couponName);
@@ -93,11 +94,8 @@ public class CouponListServlet extends HttpServlet {
 		
 		//페이징 로직 처리
 		int totalCount = dao.getTotal(cm);
-//		if(totalCount != 0) {
 			paging = new Paging(totalCount, pageNo);//총 게시물수와 페이지번호를 이용한 페이징 객체 생성
 			list = service.getCouponList(paging,cm); // 페이지에 맞는 게시물 갖고오기.
-//			System.out.println(list.get(0));
-//		}
 //		System.out.println("서블릿 리스트출력: "+list.toString());
 //		System.out.println("서블릿 dao.getTotal()출력 :"+totalCount);
 //		System.out.println("서블릿 paging.getTotalCount() 출력 :"+paging.getTotalCount());

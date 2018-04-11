@@ -4,6 +4,8 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
+
 <html>
 
 <head>
@@ -75,7 +77,6 @@ $(document).ready(function() {
 </head>
 <body>
 <jsp:include page="/Manage_Page/util/sideMenu.jsp" />
-
 
 <div class="wrap">
 

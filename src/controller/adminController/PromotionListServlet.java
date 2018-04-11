@@ -47,8 +47,8 @@ public class PromotionListServlet extends HttpServlet {
 		//수정 및 삭제할 키워드 저장 및 확인
 		String key_PromotionNum=request.getParameter("key_proNum");
 		String key_PromotionName=request.getParameter("key_proName");
-		String key_PromotionStart=request.getParameter("key_startDate");
-		String key_PromotionEnd=request.getParameter("key_endDate");
+		String key_PromotionStart=request.getParameter("key_proStartDate");
+		String key_PromotionEnd=request.getParameter("key_proEndDate");
 		String editPromotion=request.getParameter("btnEdit");
 
 		if(editPromotion!=null) {
@@ -85,8 +85,8 @@ public class PromotionListServlet extends HttpServlet {
 			paging = new Paging(totalCount, pageNo);//총 게시물수와 페이지번호를 이용한 페이징 객체 생성
 			list = service.getPromotionList(paging,pm); // 페이지에 맞는 게시물 갖고오기.
 //			System.out.println(list.get(0));
-			System.out.println("list size : " +list.size());
-			System.out.println(list.get(0).getProStartDate());
+//			System.out.println("list size : " +list.size());
+//			System.out.println(list.get(0).getProStartDate());
 //		}
 //		System.out.println("서블릿 리스트출력: "+list.toString());
 //		System.out.println("서블릿 dao.getTotal()출력 :"+totalCount);
@@ -98,7 +98,7 @@ public class PromotionListServlet extends HttpServlet {
 		request.setAttribute("paging", paging);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/Manage_Page/promotionList.jsp").forward(request, response);
-		System.out.println("리스트 : "+list);
+//		System.out.println("리스트 : "+list);
 //		System.out.println("리스트 : "+list.get(0).getProStartDate());
 	}
 	
