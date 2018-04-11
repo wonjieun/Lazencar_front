@@ -1110,15 +1110,15 @@ a.hoverline:hover {
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>예약확인</span></a></li>
+						<li class="top"><a href="/Page/reservationCheck.jsp"><span>예약확인</span></a></li>
 
-						<li><a href="#"><span>개인정보 관리</span></a></li>
+						<li><a href="/Page/personalDataManage.jsp"><span>개인정보 관리</span></a></li>
 
-						<li><a href="#"><span>쿠폰</span></a></li>
+						<li><a href="/Page/couponCheck.jsp"><span>쿠폰</span></a></li>
 
 						<li><a href="#"><span>1:1문의</span></a></li>
 
-						<li><a href="#" class='on'><span>회원탈퇴</span></a></li>
+						<li><a href="/Page/deleteAccount.jsp" class='on'><span>회원탈퇴</span></a></li>
 
 					</ul>
 

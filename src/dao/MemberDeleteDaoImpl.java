@@ -16,7 +16,7 @@ public class MemberDeleteDaoImpl implements MemberDeleteDao {
 	
 	private Connection conn = null;
 	private Statement st = null;
-	private PreparedStatement pst = null;
+//	private PreparedStatement pst = null;
 //	private ResultSet rs = null;
 
 	public MemberDeleteDaoImpl() {
@@ -34,6 +34,7 @@ public class MemberDeleteDaoImpl implements MemberDeleteDao {
 	public void deleteMemData(Member mem) {
 		String sql = "DELETE from TB_MEMBER"
 				+ " WHERE mem_id=?";
+		PreparedStatement pst = null;
 		ResultSet rs = null;
 		
 		try {
@@ -52,6 +53,7 @@ public class MemberDeleteDaoImpl implements MemberDeleteDao {
 	public boolean deleteData(Member mem) {
 		String sql = "SELECT MEM_PW FROM TB_MEMBER"
 					+ " WHERE MEM_ID=?";
+		PreparedStatement pst = null;
 		ResultSet rs = null;
 		
 		String dbPw = "";	//db내 비번 저장 변수
@@ -94,6 +96,7 @@ public class MemberDeleteDaoImpl implements MemberDeleteDao {
 	public void deleteLicenData(Member mem) {
 		String sql = "DELETE from TB_LICENSE"
 				+ " WHERE mem_id=?";
+		PreparedStatement pst = null;
 		ResultSet rs = null;
 		
 		try {

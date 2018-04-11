@@ -1272,15 +1272,15 @@ a.btnTbl01 {
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>예약확인</span></a></li>
+						<li class="top"><a href="/Page/reservationCheck.jsp"><span>예약확인</span></a></li>
 
-						<li><a href="#"><span>개인정보 관리</span></a></li>
+						<li><a href="/Page/personalDataManage.jsp"><span>개인정보 관리</span></a></li>
 
-						<li><a href="#"><span>쿠폰</span></a></li>
+						<li><a href="/Page/couponCheck.jsp"><span>쿠폰</span></a></li>
 
 						<li><a href="#"><span>1:1문의</span></a></li>
 
-						<li><a href="#" class='on'><span>회원탈퇴</span></a></li>
+						<li><a href="/Page/deleteAccount.jsp" class='on'><span>회원탈퇴</span></a></li>
 
 					</ul>
 
@@ -1516,7 +1516,8 @@ a.btnTbl01 {
 			var mem_id = $("#mem_id").val();
 			var mem_pw = $("#mem_pw").val();
 			if (checkValue() == true) {
-				
+				var answer = confirm("정말 탈퇴하시겠습니까")
+				if(answer){
 				$.ajax({
 					type : "POST",
 					url : "/delete.do",
@@ -1529,9 +1530,19 @@ a.btnTbl01 {
 					success : function(data) {
 						var check = data.check;
 						console.log(check);
+						
 						if(check){
+						
+						$.ajax({
+							
+								type : "POST",
+								url : "/sessionClose.do",
+								 
+								success :function(data){console.log("넘어가나");},
+								error : function(e){console.log("에러");}
+						});
+<%-- 						<%session.invalidate();%>//세션 종료 --%>
 						alert("회원 삭제 성공");
-						<%session.invalidate();%>//세션 종료
 						location.href="/Page/main.jsp";	//메인페이지로 되돌아감
 						
 						} else{
@@ -1543,6 +1554,7 @@ a.btnTbl01 {
 						console.log(e.responseText);
 					}
 				});
+				}
 			} else {
 				alert("비밀번호를 입력해주세요");
 				return;
