@@ -165,6 +165,8 @@ public class Paging {
 				", totalPage="+totalPage+
 				", pageCount="+pageCount+
 				", startPage="+startPage+
+				", endPage="+endPage+
+				", startPage="+startPage+
 				", endPage="+endPage+"]";
 	}
 }

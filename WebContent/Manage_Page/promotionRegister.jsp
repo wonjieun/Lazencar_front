@@ -108,7 +108,7 @@ $(document).ready(function() {
 				<input type="text" id="content" name="content" size="30" value="">
 				</td>
 				<td class="right">
-					<label>특가 배너 이미지 : <input type="file" name="bannerImg" id="bannerImg" value=""/></label><br>
+					<label>특가 배너 이미지 : <input type="file" name="annerImg" id="bannerImg" value=""/></label><br>
 					<label>특가 상세 이미지 : <input type="file" name="detailImg" id="detailImg" value=""/></label>
 				</td>											
 			</tr>				

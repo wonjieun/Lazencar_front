@@ -28,7 +28,7 @@ public class CarRegisterServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/json; charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		String carNum = request.getParameter("carNum");
 		String carName = request.getParameter("carName");

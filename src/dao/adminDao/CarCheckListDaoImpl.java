@@ -45,6 +45,7 @@ public class CarCheckListDaoImpl implements CarCheckListDao {
 	public List getList(Paging paging, CarManage cm) {
 		// 검색버튼을 누른다면 카테고리를 구분해서 회원정보를 선택해서 보여줌
 		if (doSearch(cm) == true) {
+			System.out.println("cmsearch" +doSearch(cm));
 			return getSearchList(paging, cm);
 		} else {
 			// 만약에 검색버튼을 누르지 않았을 경우(default) 전체 회원정보를 우선적으로 보여줌
@@ -60,7 +61,9 @@ public class CarCheckListDaoImpl implements CarCheckListDao {
 		PreparedStatement pst = null;
 
 		String sql = "SELECT COUNT(*) FROM TB_CAR";
-		String sql2 = "SELECT count(*) from tb_car where " + cm.getCategory() + " = ?";
+		String sql2 = "SELECT count(*) from (" 
+				+ " SELECT CAR_NUM,CAR_NAME, CAR_CATEGORY, CAR_OIL, CAR_CONDI, CAR_LCD" + "  FROM TB_CAR WHERE "
+				+ cm.getCategory() + " LIKE '%' || ? || '%')";
 		int total = 0;
 
 		try {
@@ -96,7 +99,7 @@ public class CarCheckListDaoImpl implements CarCheckListDao {
 		// list = null;
 		String sql = "SELECT * FROM (" + " SELECT rownum rnum, b.* FROM ("
 				+ " 	SELECT CAR_NUM, CAR_NAME, CAR_CATEGORY, CAR_OIL, CAR_CONDI,CAR_LCD" + " 	FROM TB_CAR"
-				+ " 	ORDER BY CAR_NUM DESC" + " ) b" + " ORDER BY rnum" + ") WHERE rnum BETWEEN ? AND ?";
+				+ " 	ORDER BY CAR_NUM ASC" + " ) b" + " ORDER BY rnum" + ") WHERE rnum BETWEEN ? AND ?";
 
 		try {
 			pst = conn.prepareStatement(sql);
@@ -140,15 +143,20 @@ public class CarCheckListDaoImpl implements CarCheckListDao {
 		List<Car> list = new ArrayList<>();
 		String sql = "SELECT * FROM(" + " SELECT ROWNUM RNUM, B.* FROM("
 				+ " 	SELECT CAR_NUM,CAR_NAME, CAR_CATEGORY, CAR_OIL, CAR_CONDI, CAR_LCD" + "  FROM TB_CAR WHERE "
-				+ cm.getCategory() + " LIKE '%' || ? || '%' order by " + cm.getSort() + " )B" + " ORDER BY RNUM"
+				+ cm.getCategory() + " LIKE '%' || ? || '%' ORDER BY " + cm.getSort() + " ASC )B" + " ORDER BY RNUM"
 				+ ") WHERE RNUM BETWEEN ? AND ?";
+		
+		
+		System.out.println("sql = "+sql);
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, cm.getContent());
 			pst.setInt(2, paging.getStartNo());
 			pst.setInt(3, paging.getEndNo());
+
 			rs = pst.executeQuery();
 
+			System.out.println(paging);
 			while (rs.next()) {
 				Car car = new Car();
 				car.setCarNum(rs.getString("car_Num"));
@@ -157,10 +165,9 @@ public class CarCheckListDaoImpl implements CarCheckListDao {
 				car.setCarCondi(rs.getString("car_Condi"));
 				car.setCarLCD(rs.getString("car_LCD"));
 				car.setCarOil(rs.getString("car_Oil"));
-
+				
 				list.add(car);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

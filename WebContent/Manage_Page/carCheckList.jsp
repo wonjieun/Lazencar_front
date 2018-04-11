@@ -8,6 +8,7 @@
 <%@ page import ="dao.adminDao.CarCheckListDao" %>
 <!DOCTYPE html>
 
+
 <html>
 
 <head>
@@ -84,7 +85,7 @@
 			var car_LCD = $("#car_LCD_"+a).val();
 			console.log(car_LCD);
 			
-			var $form3 = $("<form>").attr("action","/admin/carCheckList.do").attr("method","post");
+			var $form3 = $("<form>").attr("action","/admin/carCheckList.do").attr("method","get");
 			$("<input>").attr("type","hidden").attr("name","font_carNum").attr("value",font_carNum).appendTo($form3);
 			$("<input>").attr("type","hidden").attr("name","font_carCondi").attr("value",font_carCondi).appendTo($form3);
 			$("<input>").attr("type","hidden").attr("name","car_LCD").attr("value",car_LCD).appendTo($form3);
@@ -100,7 +101,7 @@
 			var font_carNum = $("#font_carNum_"+a).text();
 			var btnEdit ="deleteCar";
 			
-			var $form2 = $("<form>").attr("action","/admin/carCheckList.do").attr("method","post");
+			var $form2 = $("<form>").attr("action","/admin/carCheckList.do").attr("method","get");
 			$("<input>").attr("type","hidden").attr("name","font_carNum").attr("value",font_carNum).appendTo($form2);
 			$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form2);
 			$form2.appendTo($(document.body));
@@ -118,14 +119,14 @@ $(document).ready(function(){
 		var sort=$("#sort").val();
 		var content=$("#search_content").val();
 		var clicked="clicked";
-		
+<%-- 		<%=request.setAttribute("content",content)%> --%>
 		console.log("카테고리:"+category);
 		console.log("정렬기준:"+sort);
 		console.log("입력내용:"+content);
 		if(checkSearch_content()==true){
 			console.log("내용있음");
 			
-			var $form = $("<form>").attr("action", "/admin/carCheckList.do").attr("method", "post");
+			var $form = $("<form>").attr("action", "/admin/carCheckList.do").attr("method", "get");
 			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
@@ -154,7 +155,7 @@ $(document).ready(function(){
 </div>		<!-- header end -->
 
 
-<div class="container">
+<div class="contain">
 
 
 <div class="content">
@@ -176,7 +177,8 @@ $(document).ready(function(){
 									<option value="car_Category">차량종류</option>
 									<option value="car_Condi">차량상태</option>
 							</select></td>
-							<td><input size='30' id="search_content">
+							<td>
+								<input size='30' id="search_content"  >
 							</td>
 							<td class="right">
 								<!-- 정렬 --> <select class="sort" id="sort">
@@ -260,12 +262,12 @@ $(document).ready(function(){
 					</table>
 				</div>
 				
-				<jsp:include page="/Manage_Page/util/paging.jsp" />
+				<jsp:include page="/Manage_Page/util/carListPaging.jsp" />
 			</div>
 
 </div>		<!-- content end -->
 
-</div>		<!-- container end -->
+</div>		<!-- contain end -->
 
 
 
