@@ -196,10 +196,8 @@ public class QnaListDaoImpl implements QnaListDao {
 				e.printStackTrace();
 			}
 		}
-		return list;
+			return list;
 	}
-
-
 
 	@Override
 	public void updateQna(QnaManage qm) {
