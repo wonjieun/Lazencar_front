@@ -22,7 +22,6 @@ public class MemberManageDaoImpl implements MemberManageDao {
 	private PreparedStatement pst = null;
 	
 	private ResultSet rs = null;
-	MemberManage search = new MemberManage();
 	private String sql = null;
 
 	public MemberManageDaoImpl() {
@@ -38,14 +37,7 @@ public class MemberManageDaoImpl implements MemberManageDao {
 	}
 
 	/*필요한 기능
-	1. 컨텐트 박스에 아무것도 적지않고 정렬만 선택하고 검색버튼을 눌렀을 경우
-	 -> 전체 회원목록을 관리자가 선택한 정렬순으로 뿌려줌
-	
-	2. 컨텐트 박스에 검색내용을 적고 검새버튼을 눌렀을 경우
-	 -> 사용자가 검색한 내용이 없을 경우 alert 띄우기
-	 -> 출생년도가 4글자가 아닐 경우, 숫자를 적지 않은 경우 검색 허용 X, alert 띄우기
-	 
-	3. 정렬 속성!! 조인 필요
+	 정렬 속성!! 조인 필요
 	--스칼라 서브쿼리
 	SELECT 
 	empno, 
@@ -55,14 +47,11 @@ public class MemberManageDaoImpl implements MemberManageDao {
     (SELECT loc FROM dept WHERE emp.deptno = dept.deptno) AS LOCATION
 	FROM emp
 	ORDER BY deptno, empno;
- 
-	 
-	 
 	*/
 	
 	@Override
 	public boolean doSearch(MemberManage search) {
-		if ("눌림".equals(search.getClicked())) {
+		if ("clicked".equals(search.getClicked())) {
 			return true;
 		}else {
 			return false;
@@ -70,14 +59,14 @@ public class MemberManageDaoImpl implements MemberManageDao {
 	}
 	
 	@Override
-	public List memberManage(Paging paging, MemberManage search) {
+	public List getList(Paging paging, MemberManage search) {
 
 		//검색버튼을 누른다면 카테고리를 구분해서 회원정보를 선택해서 보여줌
 		if (doSearch(search) == true) {
-			if("회원계정".equals(search.getCate())) {
+			if("mem_Id".equals(search.getCate())) {
 				return getIdList(paging, search);
 
-			} else if("출생년도".equals(search.getCate())) {
+			} else if("mem_Jumin".equals(search.getCate())) {
 				return getJuminList(paging, search);
 			}
 		}
@@ -95,7 +84,7 @@ public class MemberManageDaoImpl implements MemberManageDao {
 				+ " SELECT ROWNUM rnum, b.* FROM ("
 				+ " SELECT MEM_ID, MEM_NAME, MEM_PHONE, MEM_JUMIN, MEM_EMAIL, MEM_ADDR, MEM_LICENSE"
 				+ " FROM TB_MEMBER"
-				+ " ORDER BY "+search.getSort() +" DESC"
+				+ " ORDER BY MEM_ID DESC"
 				+ ") b"
 				+ " ORDER BY rnum"
 				+ ") WHERE rnum BETWEEN ? AND ?";
@@ -111,7 +100,6 @@ public class MemberManageDaoImpl implements MemberManageDao {
 
 				//dto.setter(rs.getter("DB 컬럼명") )
 				m.setMemId(rs.getString("MEM_ID"));			
-//				m.setMemPw(rs.getString("MEM_PW"));			
 				m.setMemName(rs.getString("MEM_NAME"));
 				m.setMemPhone(rs.getString("MEM_PHONE"));
 				m.setMemJumin(rs.getString("MEM_JUMIN"));
@@ -159,12 +147,12 @@ public class MemberManageDaoImpl implements MemberManageDao {
 
 				//dto.setter(rs.getter("DB 컬럼명") )
 	            m.setMemId(rs.getString("MEM_ID"));	
-	            m.setMemPw(rs.getString("MEM_PW"));
 	            m.setMemName(rs.getString("MEM_NAME"));
 	            m.setMemPhone(rs.getString("MEM_PHONE"));
 	            m.setMemJumin(rs.getString("MEM_JUMIN"));
 	            m.setMemEmail(rs.getString("MEM_EMAIL"));
 	            m.setMemAddr(rs.getString("MEM_ADDR"));
+	            m.setMemLicense(rs.getBoolean("MEM_LICENSE"));
 	            list.add(m);
 	            
 //	            System.out.println("id : " + m.getMemId());
@@ -241,7 +229,7 @@ public class MemberManageDaoImpl implements MemberManageDao {
 		PreparedStatement pst = null;
 		
 		String sql = "SELECT COUNT(*) FROM TB_MEMBER";
-		String sql2 = "SELECT count(*) from tb_member where "+search.getCate()+" = ?";
+		String sql2 = "SELECT count(*) from tb_member where "+search.getCate()+" LIKE '%' || ? || '%'";
 //		String sql3 = "SELECT count(*) from tb_car where car_category = ?";
 //		String sql4 = "SELECT count(*) from tb_car where car_condi = ?";
 		int total = 0;
@@ -254,14 +242,8 @@ public class MemberManageDaoImpl implements MemberManageDao {
 				rs.next();
 				total = rs.getInt(1);
 			}else {
-//				if(cm.getCategory().equals("car_name")) {
-					pst=conn.prepareStatement(sql2);
-//				}else if(cm.getCategory().equals("car_category")){
-//					pst= conn.prepareStatement(sql3);
-//				}else if(cm.getCategory().equals("car_condi")) {
-//					pst=conn.prepareStatement(sql4);
-//				}
-				pst.setString(1, search.getContent());
+				pst=conn.prepareStatement(sql2);
+				pst.setString(1,search.getContent());
 				
 				rs=pst.executeQuery();
 				rs.next();

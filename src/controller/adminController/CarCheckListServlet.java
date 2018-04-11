@@ -26,6 +26,7 @@ public class CarCheckListServlet extends HttpServlet {
 	
 	protected CarCheckListService service = new CarCheckListServiceImpl();
 	protected CarManage cm = new CarManage();
+	protected CarCheckListDao dao = new CarCheckListDaoImpl();
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -101,7 +102,7 @@ public class CarCheckListServlet extends HttpServlet {
 		request.getRequestDispatcher("/Manage_Page/carCheckList.jsp").forward(request, response);
 		
 	}
-	CarCheckListDao dao = new CarCheckListDaoImpl();
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 }

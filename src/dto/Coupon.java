@@ -4,8 +4,8 @@ public class Coupon {
 	private int no;					//COU_NUM
 	private String name;			//COU_NAME
 	private String discount;		//COU_DISCOUNT
-	private String StartDate;		//COU_START_DATE
-	private String EndDate;			//COU_END_DATE
+	private String startDate;		//COU_START_DATE
+	private String endDate;			//COU_END_DATE
 	private String ageConst;		//COU_AGE_CONST
 	private String timeConst;		//COU_TIME_CONST
 	private String carConst;		//COU_CAR_CONST
@@ -27,18 +27,6 @@ public class Coupon {
 	}
 	public void setDiscount(String discount) {
 		this.discount = discount;
-	}
-	public String getStartDate() {
-		return StartDate;
-	}
-	public void setStartDate(String startDate) {
-		StartDate = startDate;
-	}
-	public String getEndDate() {
-		return EndDate;
-	}
-	public void setEndDate(String endDate) {
-		EndDate = endDate;
 	}
 	public String getAgeConst() {
 		return ageConst;
@@ -63,6 +51,18 @@ public class Coupon {
 	}
 	public void setCouponImg(String couponImg) {
 		this.couponImg = couponImg;
+	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 	
 
