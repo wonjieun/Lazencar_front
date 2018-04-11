@@ -172,7 +172,6 @@ $(document).ready(function(){
 							<th>구매자 이메일</th>
 							<th>구매자 핸드폰</th>
 							<th>결제 상태</th>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody>
