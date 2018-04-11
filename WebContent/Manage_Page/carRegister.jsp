@@ -153,7 +153,7 @@
 
 								<div class="demo">
 									<h6 style="margin: 0;">날짜를 입력 하세요.(ex.2018.03.28)</h6>
-									<input id="carLCD" size="30" value="">
+									<input type="date" id="carLCD" size="30" value="">
 								</div>
 
 							</td>

@@ -3,12 +3,11 @@ package dto;
 public class Notice {
 	private String searchItem;
 	private String searchWord;
-	private String notNum;
+	private int notNum;
 	private String notTitle;
 	private String notContent;
 	private String notDate;
 	private String notEmail;
-	// private Byte[] notFile;
 	private String notFile;
 	
 	public String getSearchItem() {

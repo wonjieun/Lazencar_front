@@ -17,6 +17,8 @@ import dto.Review;
 @WebServlet("/Page/review_Board_List.do")
 public class ReviewList extends HttpServlet {
 	
+	private static final long serialVersionUID = -3907234940009405569L;
+	
 	private ReviewDao dao = new ReviewDaoImpl();
 	
 	@Override
