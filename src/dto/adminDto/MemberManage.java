@@ -2,7 +2,7 @@ package dto.adminDto;
 
 public class MemberManage {
 	
-	private String cate;
+	private String cate = "mem_Id";
 	private String content;
 	private String sort = "mem_Id";
 	private String clicked; 
