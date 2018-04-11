@@ -1852,7 +1852,7 @@ a.hoverline:hover {
 							<ul class="submenu">
 								<li><a href="#" class="submenuLink longLink">1:1 문의</a></li>
 								<li><a href="#" class="submenuLink longLink">자주찾는 질문</a></li>
-								<li><a href="#" class="submenuLink longLink">공지사항</a></li>
+								<li><a href="/service/list.do" class="submenuLink longLink">공지사항</a></li>
 							</ul></li>
 					</ul>
 					</nav>
@@ -1874,7 +1874,7 @@ a.hoverline:hover {
 					<ul class="leftMenu">
 						<li class="top"><a href="#"><span>1:1 문의</span></a></li>
 						<li><a href="#"><span>자주찾는질문</span></a></li>
-						<li><a href="#" class='on'><span>공지사항</span></a></li>
+						<li><a href="/service/list.do" class='on'><span>공지사항</span></a></li>
 
 						<!-- 					class = 'on'	현재 페이지를 나타낼때 on 사용하는 듯 -->
 
