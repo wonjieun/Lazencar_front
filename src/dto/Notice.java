@@ -26,11 +26,11 @@ public class Notice {
 		this.searchWord = searchWord;
 	}
 
-	public String getNotNum() {
+	public int getNotNum() {
 		return notNum;
 	}
 
-	public void setNotNum(String notNum) {
+	public void setNotNum(int notNum) {
 		this.notNum = notNum;
 	}
 

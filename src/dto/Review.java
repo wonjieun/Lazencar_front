@@ -61,8 +61,3 @@ public class Review {
 		this.rev_hit = rev_hit;
 	}
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 4d2ffd6249cdd7bb6899346785c00b7d2cc28a9f
-

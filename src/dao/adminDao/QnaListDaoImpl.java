@@ -155,7 +155,6 @@ public class QnaListDaoImpl implements QnaListDao {
 				+ " ORDER BY RNUM)"
 				+ " WHERE RNUM BETWEEN ? AND ?";
 		
-			try {
 		
 		System.out.println("sql = "+sql);
 		try {

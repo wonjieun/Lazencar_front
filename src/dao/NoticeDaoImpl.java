@@ -47,7 +47,7 @@ public class NoticeDaoImpl implements NoticeDao {
 			while(rs.next()) {
 				Notice notice = new Notice();
 				// dto.setter(rs.getter("DB 컬럼명") )
-				notice.setNotNum(rs.getString("NOT_NUM"));
+				notice.setNotNum(rs.getInt("NOT_NUM"));
 				notice.setNotTitle(rs.getString("NOT_TITLE"));
 				notice.setNotDate(rs.getString("NOT_DATE"));
 				list.add(notice);
@@ -75,7 +75,7 @@ public class NoticeDaoImpl implements NoticeDao {
 			while(rs.next()) {
 				Notice notice = new Notice();
 			// dto.setter(rs.getter("DB 컬럼명") )
-				notice.setNotNum(rs.getString("NOT_NUM"));
+				notice.setNotNum(rs.getInt("NOT_NUM"));
 				System.out.println("num: " + rs.getString("NOT_NUM"));
 				notice.setNotTitle(rs.getString("NOT_TITLE"));
 				System.out.println("title: " + rs.getString("NOT_TITLE"));
@@ -99,7 +99,7 @@ public class NoticeDaoImpl implements NoticeDao {
 		
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, n.getNotNum());
+			pst.setInt(1, n.getNotNum());
 			rs = pst.executeQuery();
 //			rs.next();
 //			System.out.println(rs.getString("NOT_TITLE"));
