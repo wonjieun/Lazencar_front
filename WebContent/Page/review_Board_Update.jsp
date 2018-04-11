@@ -1,18 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
     
 <%@ page import = "java.io.PrintWriter" %>
 <%@ page import = "dto.Review" %>
+<%@ page import = "dao.ReviewDao" %>
 <%@ page import = "dao.ReviewDaoImpl" %>
 
 <%
-
 	String now_id = null;
 	if (session.getAttribute("id") != null) {
 
 		now_id = (String) session.getAttribute("id");
 	}
-	
+
 	// 예외처리 현재 아이디값 안들어와있을때
 
 	if (now_id == null) {
@@ -22,8 +21,34 @@
 		script.println("alert('로그인부터 해주세요!')");
 		script.println("location.href = 'login.jsp'");
 		script.println("</script>");
-    }
+	}
 
+	int rev_num = 0;
+
+	if (request.getParameter("rev_num") != null) {
+
+		rev_num = Integer.parseInt(request.getParameter("rev_num"));
+	}
+
+	if (rev_num == 0) {
+
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('삭제되었거나 유효하지 않은 글입니다')");
+		script.println("location.href = 'review_Board_List.do'");
+		script.println("</script>");
+	}
+
+	Review rev = new ReviewDaoImpl().getReview(rev_num);
+	
+	if (!now_id.equals(rev.getRev_userId())) {
+		   
+	    PrintWriter script = response.getWriter();
+	    script.println("<script>");
+	    script.println("alert('권한이 없습니다')");
+		script.println("location.href = 'review_Board_List.do'");
+		script.println("</script>");
+    }
 %>
 
 <!DOCTYPE html>
@@ -218,6 +243,7 @@ $(function(){
         }
     });
      
+    
     //전송버튼 클릭이벤트
     
     $("#save").click(function(){
@@ -384,10 +410,10 @@ $(function(){
 				</div>
 				<div class="bodystart">
 <!-- bodystart -->
-                    <form action="review_Write_Action.jsp" method="post" id="frm">
+                    <form action="review_Update_Action.jsp?rev_num=<%= rev_num %>" method="post" id="frm">
                              
 					<table summary="신청장소 선택, 등록" class="boardView-02">
-						<caption> 후기 작성 </caption>
+						<caption> 후기 수정 </caption>
 						<colgroup>
 							<col width="150" />
 							<col width="" />
@@ -415,7 +441,7 @@ $(function(){
 								<td>
 									<div class="pop_location">
 									 
-										<input type="text" name="rev_title"  id="rev_title" class="inputTxt02" />
+										<input type="text" name="rev_title"  id="rev_title" class="inputTxt02" value="<%= rev.getRev_title() %>"/>
                                        
 									</div>
 								</td>
@@ -425,11 +451,11 @@ $(function(){
 							<tr>
 								<td colspan="2" class="contentView">
 	
-                                   <textarea name="rev_content" id="rev_content" rows="10" cols="100" style="width:738px; height:412px;">
+                                   <textarea name="rev_content" id="rev_content" rows="10" cols="100" style="width:738px; height:412px;"> <%= rev.getRev_content() %>
 
                                    </textarea>
     
-                                   <input type="button" id="save" value="글쓰기" />
+                                   <input type="button" id="save" value="수정" />
   			
 								</td>
 							</tr>

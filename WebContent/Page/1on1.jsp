@@ -2,8 +2,8 @@
     pageEncoding="utf-8"%>
     
 <%@ page import = "java.io.PrintWriter" %>
-<%@ page import = "dto.Review" %>
-<%@ page import = "dao.ReviewDaoImpl" %>
+<%@ page import = "dto.Ask" %>
+<%@ page import = "dao.AskDaoImpl" %>
 
 <%
 
@@ -206,7 +206,7 @@ $(function(){
      
     nhn.husky.EZCreator.createInIFrame({
         oAppRef: editor_object,
-        elPlaceHolder: "rev_content",
+        elPlaceHolder: "ask_content",
         sSkinURI: "/smarteditor/SmartEditor2Skin.html",
         htParams : {
             // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -223,7 +223,7 @@ $(function(){
     $("#save").click(function(){
     	
         //id가 rev_content인 textarea에 에디터에서 대입
-        editor_object.getById["rev_content"].exec("UPDATE_CONTENTS_FIELD", []);
+        editor_object.getById["ask_content"].exec("UPDATE_CONTENTS_FIELD", []);
          
         // 이부분에 에디터 validation 검증
          
@@ -379,15 +379,15 @@ $(function(){
 					</div>
 				</div>
 				<div class="subtop-content bg_subvisual_01_03">
-					<h3 class="subtit">후기</h3>
-					<p class="subtxt"><strong>합리적인 소비와 환경보호를 실천하는 신개념 차량 공유서비스</strong> <br />우리동네에도 그린카가 필요하다면 지금 바로 신청하세요!</p>
+					<h3 class="subtit">1대1 문의하기</h3>
+					<p class="subtxt"><strong>궁금하신 사항이 있으신가요?</strong> <br />문의사항을 접수하시면 최선을 다해 답변 드리겠습니다.</p>
 				</div>
 				<div class="bodystart">
 <!-- bodystart -->
-                    <form action="review_Write_Action.jsp" method="post" id="frm">
+                    <form action="ask_Action.jsp" method="post" id="frm">
                              
 					<table summary="신청장소 선택, 등록" class="boardView-02">
-						<caption> 후기 작성 </caption>
+						<caption> 1대1 문의 </caption>
 						<colgroup>
 							<col width="150" />
 							<col width="" />
@@ -415,7 +415,7 @@ $(function(){
 								<td>
 									<div class="pop_location">
 									 
-										<input type="text" name="rev_title"  id="rev_title" class="inputTxt02" />
+										<input type="text" name="ask_title"  id="ask_title" class="inputTxt02" />
                                        
 									</div>
 								</td>
@@ -425,11 +425,11 @@ $(function(){
 							<tr>
 								<td colspan="2" class="contentView">
 	
-                                   <textarea name="rev_content" id="rev_content" rows="10" cols="100" style="width:738px; height:412px;">
+                                   <textarea name="ask_content" id="ask_content" rows="10" cols="100" style="width:738px; height:412px;">
 
                                    </textarea>
     
-                                   <input type="button" id="save" value="글쓰기" />
+                                   <input type="button" id="save" value="문의하기" />
   			
 								</td>
 							</tr>
