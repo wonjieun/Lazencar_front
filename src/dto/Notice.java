@@ -1,4 +1,3 @@
-
 package dto;
 
 public class Notice {
@@ -75,4 +74,3 @@ public class Notice {
 		this.notFile = notFile;
 	}
 }
-

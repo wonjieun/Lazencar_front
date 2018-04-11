@@ -31,22 +31,6 @@
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
 	
-	#table2 th:first-child{
-	    background: #f1c40f;
-	    height: 30px;
-	    background-repeat: no-repeat;
-	    color: white;
-	    text-align: center;
-	    width: 20%;
-	}
-	#table2 th:last-child{
-	background:#f1c40f;
-	height:30px;
-	background-repeat:no-repeat;
-	color:white;
-	text-align: center;   
-	width: 10%;}
-	
 	.level1 :nth-child(4) .fly {background: #ffb505 !important;}
 	
 	
@@ -126,16 +110,7 @@
 		}
 		else return;
 	}
-	$(function(){	
 
-		var onSampleResized = function(e){
-			var columns = $(e.currentTarget).find("th");
-			var msg = "columns widths: ";
-			columns.each(function(){ msg += $(this).width() + "px; "; })
-			$("#table2Txt").html(msg);
-			
-		};
-	});
 // 	검색 및 정렬하는 ajax
 $(document).ready(function(){
 	$("#searchCar").click(function(){

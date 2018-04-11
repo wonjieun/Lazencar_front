@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.jws.WebService;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,18 +20,18 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import dao.adminDao.PromotionRegisterDao;
-import dao.adminDao.PromotionRegisterDaoImpl;
-import dto.Promotion;
+import dao.adminDao.CouponRegisterDao;
+import dao.adminDao.CouponRegisterDaoImpl;
+import dto.Coupon;
 
-@WebServlet("/admin/promotionRegister.do")
+@WebServlet("/admin/couponRegister.do")
 @SuppressWarnings("serial")
-public class PromotionRegisterController extends HttpServlet {
+public class CouponRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/Manage_Page/promotionRegister.jsp").forward(req, resp);			//main.jsp에서 forward를 통해 받는다.
+		req.getRequestDispatcher("/Manage_Page/couponRegister.jsp").forward(req, resp);			//main.jsp에서 forward를 통해 받는다.
 	}
 	
 	@Override
@@ -41,8 +42,9 @@ public class PromotionRegisterController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 
-		PromotionRegisterDao dao = new PromotionRegisterDaoImpl();
-		Promotion dto = new Promotion();
+		CouponRegisterDao dao = new CouponRegisterDaoImpl();
+		Coupon dto = new Coupon();
+		
 		
 //		1. isMultipartContent -> 파일처리에 유효한 리퀘스트인지 확인하는 작업. 	반환 데이터 타입 : boolean
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -93,8 +95,8 @@ public class PromotionRegisterController extends HttpServlet {
 					if( dao.existName(item.getString("UTF-8")) ) {
 						out.append(
 								"<script type='text/javascript'>"
-								+ "alert('이미존재하는 특가 이름입니다. 다시 입력하세요.');"
-								+ "location.href='/admin/promotionRegister.do'"
+								+ "alert('이미존재하는 쿠폰 이름입니다. 다시 입력하세요.');"
+								+ "location.href='/admin/couponRegister.do'"
 								+ "</script>"
 						);
 						return;
@@ -103,10 +105,15 @@ public class PromotionRegisterController extends HttpServlet {
 					
 					dto.setName(item.getString("UTF-8"));
 				}
-				
 				if( "startDate".equals(item.getFieldName()) )	dto.setStartDate(item.getString("UTF-8"));
-				if( "endDate".equals(item.getFieldName()) )	dto.setEndDate(item.getString("UTF-8"));
+				if( "endDate".equals(item.getFieldName()) )		dto.setEndDate(item.getString("UTF-8"));
+				if( "discount".equals(item.getFieldName()) )	dto.setDiscount(item.getString("UTF-8"));
+				if( "ageConst".equals(item.getFieldName()) )	dto.setAgeConst(item.getString("UTF-8"));
+				if( "timeConst".equals(item.getFieldName()) )	dto.setTimeConst(item.getString("UTF-8"));
+				if( "carConst".equals(item.getFieldName()) )	dto.setCarConst(item.getString("UTF-8"));
 
+				
+				
 			} else {	//파일일 경우 처리 
 				String contentType = item.getContentType();
 
@@ -126,14 +133,8 @@ public class PromotionRegisterController extends HttpServlet {
 						
 					} while( up.exists() );
 
-					if("bannerImg".equals(item.getFieldName())) {
-						dto.setBannerImg(filename);
+				if("couponImg".equals(item.getFieldName())) {dto.setCouponImg(filename);
 					}
-					
-					if("detailImg".equals(item.getFieldName())) {
-						dto.setDetailImg(filename);
-					}
-					
 //					파일 이동 -> 실제 업로드
 					try {
 						item.write(up);		//realPath에 저장 (실제 업로드)
@@ -150,11 +151,13 @@ public class PromotionRegisterController extends HttpServlet {
 		out.write(
 				"<script type='text/javascript'>"
 				+ "alert('등록완료');"
-				+ "location.href='/admin/promotionRegister.do'"
+				+ "location.href='/admin/couponRegister.do'"
 				+ "</script>"
 		);
-//		response.sendRedirect("/admin/promotionList.do");
+		
+//		response.sendRedirect("/admin/couponList.do");
 	}
 }
+
 
 

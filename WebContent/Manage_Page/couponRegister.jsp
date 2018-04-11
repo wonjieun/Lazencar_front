@@ -12,7 +12,6 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="/Manage_page/css/paging.css" />  
 
 	<style>
 	.level1 :nth-child(8) .fly {background: #ffb505 !important;}
@@ -61,70 +60,8 @@
 
 </head>
 <body>
-<<<<<<< HEAD
-<div id="menu">
-   <ul class="level1">
-      <li><a href="./home.jsp">Home</a></li>
-      <li><a class="fly" href="javascript:void(0);">회원 관리</a>
-         <ul>
-            <li><a href="/admin/memberManage.do" >회원목록 조회</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">예약 관리</a>
-         <ul>
-            <li><a href="./reservManage.jsp">예약목록 조회</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">차량 관리</a>
-         <ul>
-            <li><a href="/admin/carRegister.do">차량 등록/해제</a></li>
-            <li><a href="/admin/carCheckList.do">차량 점검일지</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">공지 사항</a>
-         <ul>
-            <li><a href="./noticeManage.jsp">공지사항 등록</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">후기 관리</a>
-         <ul>
-            <li><a href="./reviewManage.jsp">후기목록 조회</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">문의 관리</a>
-         <ul>
-            <li><a href="./qnaManage.jsp">문의 내역 확인</a></li>
-            <li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
-         </ul>
-      </li>
-		
-		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
-			<ul>
 
-				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>
-				<li><a href="./couponDelete.jsp">쿠폰 조회/삭제</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
-			<ul>
-
-				<li><a href="/admin/promotionRegister.do">특가 등록</a></li>
-				<li><a href="/admin/promotionList.do">특가 조회/삭제</a></li>
-			</ul>
-		</li>
-		
-	</ul>
-</div>		<!-- sideMenu end -->
-
-=======
 <jsp:include page="/Manage_Page/util/sideMenu.jsp" />
->>>>>>> 9d64cd1c7f8c612f9af92b5a6af641ebb9bb5ce6
 
 <div class="wrap">
 
@@ -156,15 +93,15 @@
 			<tr>
 				<td class="left">
 				쿠폰의 이름을 입력하세요.		<br><br>
-				<input type="text" id="content" name="content" size="30" value="">
+				<input type="text" id="content" name="content" size="30" value=""><br><br>
 				</td>
 				<td>
 				쿠폰의 시작일을 입력하세요.<br><br>
-				<input type="date" id="startDate" name="startDate" size="30" value="" />
+				<input type="date" id="startDate" name="startDate" size="30" value="" /><br><br>
 				</td>
 				<td class="right">
 				쿠폰의 종료일을 입력하세요.<br><br>
-				<input type="date" id="endDate" name="endDate" size="30" value="">				
+				<input type="date" id="endDate" name="endDate" size="30" value="">		<br><br>		
 				</td>
 			</tr>			
 			<tr>
@@ -178,11 +115,11 @@
 				<p>사용 시간 : <input type="text" id="timeConst" name="timeConst" value="0" size="5"> 시간 이상 </p>
 				<p>차종 : 
 					<select class="sort" id="carConst" name="carConst">
-					    <option value="All">전차종
-					    <option value="smallCar">소형차 이상
-					    <option value="mediumCar">중형차 이상
-					    <option value="SUV">SUV 이상
-					    <option value="largeCar">대형차 이상
+					    <option value="All">전차종</option>
+					    <option value="smallCar">소형차 이상</option>
+					    <option value="mediumCar">중형차 이상</option>
+					    <option value="SUV">SUV 이상</option>
+					    <option value="largeCar">대형차 이상</option>
 					</select>
 					</p>
 				</td>

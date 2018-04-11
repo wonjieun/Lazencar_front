@@ -6,6 +6,6 @@ import dto.adminDto.MemberManage;
 import util.Paging;
 
 public interface MemberManageService {
-	  public List memberManage(Paging paging,MemberManage search);
+	  public List getList(Paging paging,MemberManage search);
 
 }
