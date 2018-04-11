@@ -1,11 +1,20 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<%
+		if(session.getAttribute("id") == null){
+			response.sendRedirect("login.jsp");
+		}else{
+			String id = session.getAttribute("id").toString();
+
+		
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
-
-<meta charset="UTF-8">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 <style type="text/css">
@@ -988,8 +997,8 @@ a.hoverline:hover {
 </script>
 
 
-<script type="text/javascript" src="./js/lib/jquery-1.9.1.js"></script>
-
+<!-- <script type="text/javascript" src="./js/lib/jquery-1.9.1.js"></script> -->
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <!-- <link type="text/css" rel="stylesheet" media="all" -->
 <!-- 	href="./css/master.css" /> -->
@@ -1153,12 +1162,14 @@ a.hoverline:hover {
 						<!-- bodystart 	=========================================컨텐츠 변경가능 영역!!================================================  -->
 
 						<div class="charges-wrap">
-
+							
 							<div class="section02">
 								<!-- S:table //-->
 
 								<h6>쿠폰 보유 현황</h6>
 								<div class="tbl01">
+									
+									
 									<table
 										style="border-bottom: 1px solid; border-collapse: collapse;">
 										<thead style="height: 500px;">
@@ -1169,23 +1180,25 @@ a.hoverline:hover {
 												<th scope="col" width="118">유효기간</th>
 											</tr>
 										</thead>
+										
 										<tbody class="checkTblBd">
+										<c:forEach items="${couList }" begin="0" end="${couTotal }" var="i" varStatus="status">
 											<tr style="border-bottom: 1px solid #e9e9e9;">
-												<td scope="row" style="border-right: 1px solid #e9e9e9;">1</td>
-												<td scope="row" style="border-left: 1px solid #e9e9e9;"></td>
-												<td scope="row" style="border-left: 1px solid #e9e9e9;"></td>
-												<td scope="row" style="border-left: 1px solid #e9e9e9;">
-												</td>
+											<c:choose>
+												<c:when test="${fn:length(i.couStart)>11}">
+												<td id="cou_num" style="border-right: 1px solid #e9e9e9;">${status.count} </td>
+												<td id="cou_const" style="border-left: 1px solid #e9e9e9;">${i.couName}</td>
+												<td id="cou_start" style="border-left: 1px solid #e9e9e9;">${i.couConst}</td>
+												<td id="cou_end" style="border-left: 1px solid #e9e9e9;"><c:out value="${fn:substring(i.couStart,0,10)}"/> ~ <c:out value="${fn:substring(i.couEnd,0,10)}"/></td>
+												</c:when>
+											</c:choose>
 											</tr>
-											<tr style="border-bottom: 1px solid #e9e9e9;">
-												<td scope="row" style="border-right: 1px solid #e9e9e9;">2</td>
-												<td scope="row" style="border-left: 1px solid #e9e9e9;"></td>
-												<td scope="row" style="border-left: 1px solid #e9e9e9;"></td>
-												<td scope="row" style="border-left: 1px solid #e9e9e9;">
-												</td>
-											</tr>
+											</c:forEach>
+											
 										</tbody>
+										
 									</table>
+<!-- 									<a href="/couponCheck.do">버튼</a> -->
 								</div>
 								<!--// E:table -->
 							</div>
@@ -1349,20 +1362,7 @@ a.hoverline:hover {
 
 
 	<!-- 	select text input 스크립트  start -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-	<script>
-		$(function() {
-			$("#postcodify_search_button").postcodifyPopUp();
-		});
-	</script>
-
-	<script>
-		function getSelectValue(form) {
-			// 	 form.EMAIL_2.value = form.emailSelect.options[form.emailSelect.selectedIndex].text;
-			form.EMAIL_2.value = form.emailSelect.options[form.emailSelect.selectedIndex].value;
-		}
-	</script>
+	
 	<!-- 	select text input 스크립트  end -->
 
 </body>
@@ -1370,3 +1370,4 @@ a.hoverline:hover {
 </html>
 
 
+<%}%>

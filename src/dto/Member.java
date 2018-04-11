@@ -4,6 +4,7 @@ public class Member {
 	// DB의 속성과 일치해야 한다
 	private String memId;
 	private String memPw;
+	private Number memGubn;
 	private String memName;
 	private String memPhone;
 	private String memPhone1;
@@ -293,5 +294,13 @@ public class Member {
 
 	public void setMemLicense(boolean memLicense) {
 		this.memLicense = memLicense;
+	}
+
+	public Number getMemGubn() {
+		return memGubn;
+	}
+
+	public void setMemGubn(Number memGubn) {
+		this.memGubn = memGubn;
 	}
 }

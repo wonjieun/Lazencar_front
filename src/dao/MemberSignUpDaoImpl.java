@@ -30,8 +30,8 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 	}
 	@Override
 	public void insertAllData(Member mem) {
-		String sql = "INSERT INTO TB_MEMBER(MEM_ID,MEM_PW, MEM_NAME, MEM_PHONE, MEM_JUMIN, MEM_EMAIL, MEM_ADDR)"
-				+ " VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO TB_MEMBER(MEM_ID,MEM_PW, MEM_GUBN, MEM_NAME, MEM_PHONE, MEM_JUMIN, MEM_EMAIL, MEM_ADDR)"
+				+ " VALUES(?,?,?,?,?,?,?,?)";
 		//Id, Pw, Name, Phone, Jumin(int), Email, Addr순서
 		ResultSet rs = null;
 		
@@ -39,11 +39,12 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, mem.getMemId());
 			pst.setString(2, mem.getMemPw());
-			pst.setString(3, mem.getMemName());
-			pst.setString(4, mem.getMemPhone());
-			pst.setString(5, mem.getMemJumin());
-			pst.setString(6, mem.getMemEmail());
-			pst.setString(7, mem.getMemAddr());
+			pst.setInt(3, (int) mem.getMemGubn());
+			pst.setString(4, mem.getMemName());
+			pst.setString(5, mem.getMemPhone());
+			pst.setString(6, mem.getMemJumin());
+			pst.setString(7, mem.getMemEmail());
+			pst.setString(8, mem.getMemAddr());
 			
 			pst.executeUpdate();
 		} catch (SQLException e) {
