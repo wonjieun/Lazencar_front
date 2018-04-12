@@ -3,6 +3,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%-- header include --%><jsp:include page="header.jsp" />
+<!-- 세션 불러오기 -->
+id:${sessionScope.id}
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/main.css" />
 <link rel="stylesheet" href="/Page/css/normalize.css">
 <link rel="stylesheet" href="/Page/css/style.css">
@@ -10,25 +12,39 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,100,100,italic'
 	rel='stylesheet' type='text/css'>
 
+
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<script type="text/javascript">
 
+<!-- //세션으로 받아온다 -->
+<!-- //로그인 상태 정보 아이디  -->
+
+
+<script type="text/javascript">
+var tmpCarPrice = null;
+var tmpCouDiscount = null;
+var tmpCarDamagePrice = null;
+var tmpEtcPrice = null;
+
+	//버튼 체크
 	$(document).ready(function() {
 		$("#center_sel_car").hide();
 		$("#center_sel_option").hide();
+		$("#center_resfinsh").hide();
 		$("#click_1").hide();
 		$("#click_3").hide();
 		
 		$("#click_1").click(function() {
 			$("#center_sel_car").hide();
 			$("#center_sel_option").hide();
+			$("#center_resfinsh").hide();
 			$("#center_sel_day").show();
 			
 		});
 		$("#click_2").click(function() {
 			$("#center_sel_day").hide();
 			$("#center_sel_option").hide();
+			$("#center_resfinsh").hide();
 			$("#center_sel_car").show();
 			$("#click_3").show();
 			$("#click_1").hide();
@@ -36,69 +52,143 @@
 		$("#click_3").click(function() {
 			$("#center_sel_day").hide();
 			$("#center_sel_car").hide();
+			$("#center_resfinsh").hide();
 			$("#center_sel_option").show();
 			$("#click_1").show();
 			$("#click_2").show();
 			$("#click_3").hide();
 		});
+		$("#ckreservation").click(function() {
+			$("#center_sel_day").hide();
+			$("#center_sel_car").hide();
+			$("#center_sel_option").hide();
+			$("#center_resfinsh").show();
+		});
 		console.log("test");
 		
+		//차량
 		$("input[type=radio][name=selectedCar]").change(function(){
 // 			console.log($(this).val());
 // 			console.log( $(this).parent().next(".tdName").text() );
-			$("dd.model").text( $(this).parent().next(".tdName").text() ); // 차량명
+			$("dd.model").text( $(this).parent().next(".tdName").text() );
+			$(".resultCar").text( $(this).parent().next(".tdName").text() );
 			$("#CAR_NUM").val( $(this).val() ); // 차량번호
 			
+			tmpCarPrice = Number($(this).parent().nextAll(".tdcarPrice").text());
 		});
 		
+		//쿠폰
 		$("input[type=radio][name=selectedCou]").change(function(){
-			console.log( $(this).parent().next(".couName").text() );
-			$(".discount1").text($(this).parent().next(".couName").text()); // 쿠폰명
-			$("#COU_NAME").val( $(this).val()); //쿠폰 번호
+// 			console.log( $(this).parent().next(".couName").text() );
+			$(".discount1").text($(this).parent().next(".couName").text());
+			$("#COU_NAME").val( $(this).val());
+			
+			tmpCouDiscount = Number($(this).parent().nextAll(".CouDiscount").text());
 		});
 		
-		$("#selOption").change(function(){
-			$("#selectOption").text($("#selOption").val());
-			$("#carcondi").val( $(this).val() );
+		//차량 보험
+		$("input[type=radio][name=selectedOption]").change(function(){
+			console.log($(this).val());
+			$("#selectOption").text($(this).val());
+			$(".resultOption").text($(this).val());
+			
+			//$("#selectOption").text($(this).val());
+			$("#carcondi").val( $(this).val()); 
+			
+			tmpCarDamagePrice = Number($(this).attr("data-carDamagePrice"));
 		});
 		
-		
-// 		$("input:checkbox[name=Caption1]").change(function(){
-		$("#caption1").change(function() {
-			if($(this).is(":checked")) {
-				$("#equipment1").text($("#caption1").val());
-			} else {
-				$("#equipment1").text("");
-			}
-		});
-// 		$("input:checkbox[name=Caption2]").change(function(){
-		$("#caption2").change(function() {
-			if($(this).is(":checked")) {
-				$("#equipment2").text($("#caption2").val());
-			} else {
-				$("#equipment2").text("");
-			}
-		});
-// 		$("input:checkbox[name=Caption3]").change(function(){
-		$("#caption3").change(function() {
-			if($(this).is(":checked")) {
-				$("#equipment3").text($("#caption3").val());
-			} else {
-				$("#equipment3").text("");
-			}
-		});
-		
-		$("input:checkbox[name=Caption]").change(function(){
-			var map = $("input:checkbox[name=Caption]:checked").map(function(){
-				return $(this).val();
+		//부대장비
+		var str = "";
+		$("input:checkbox[name=selectedEtc]").change(function(){
+			tmpEtcPrice=0;
+			str = "";
+			$("input:checkbox[name=selectedEtc]:checked").each(function(idx) {
+				str+=$(this).val();
+				if(idx != $("input:checkbox[name=selectedEtc]:checked").length-1) {
+					str+="/";
+				}
+				tmpEtcPrice+=Number($(this).attr("data-etcPrice"));
 			});
-			var checkedStr = map.get().join("/");
-			console.log(checkedStr);
-			$("#CaptionSend").val(checkedStr);
+			$("#Option").text(str);
+			$(".resultdis").text(str);
+			$("#CaptionSend").val(str);
+			//console.log("test:"+str);
 		});
-	});
-</script>
+		
+		$("#calPrice").click(function() {
+			if($("#RES_START").val() == null || $("#RES_START").val() == "") {
+				alert("대여일을 선택해 주세요.")
+				return false;
+			}
+			if($("#RES_END").val() == null || $("#RES_END").val() == "") {
+				alert("반납일을 선택해 주세요.")
+				return false;
+			}
+			if($("#CAR_NUM").val() == null || $("#CAR_NUM").val() == "") {
+				alert("차량을 선택해 주세요.")
+				return false;
+			}
+			if($("#COU_NAME").val() == null || $("#COU_NAME").val() == "") {
+				alert("쿠폰을 선택해 주세요.")
+				return false;
+			}
+			if($("#CaptionSend").val() == null || $("#CaptionSend").val() == "") {
+				alert("부대장비를 선택해 주세요.")
+				return false;
+			}
+			if($("#carcondi").val() == null || $("#carcondi").val() == "") {
+				alert("보험을 선택해 주세요.")
+				return false;
+			}
+			
+			var startArr = $("#ddDateRentDescription").text().split("-");
+			var startDate = new Date(startArr[0], Number(startArr[1])-1, startArr[2]);
 
+			var endArr = $("#ddDateReturnDescription").text().split("-");
+			var endDate = new Date(endArr[0], Number(endArr[1])-1, endArr[2]);
+// console.log(endDate.getTime() - startDate.getTime());
+			var diffTime = endDate.getTime() - startDate.getTime();
+			var oneDay = 1000 * 60 * 60 * 24;
+			
+			var diffDay = diffTime/oneDay;
+// 			console.log(diffDay);
+			
+// 			쿠폰 할인율 * 0.01 * 대여일수 * 차대여료 + 보험 + 옵션
+
+			console.log(tmpCarPrice);
+			console.log(diffDay);
+			console.log(tmpCouDiscount);
+			console.log(tmpCarDamagePrice);
+			console.log(tmpEtcPrice);
+
+			var discount = (tmpCarPrice * diffDay * tmpCouDiscount * 0.01)
+				+ tmpCarDamagePrice + tmpEtcPrice;
+			$(".resPrice strong").text(discount);
+			
+			var normal = (tmpCarPrice * diffDay)
+			+ tmpCarDamagePrice + tmpEtcPrice;
+			$(".normalPrice strong").text(normal);
+		});
+		
+		$("#reserForm").submit(function() {
+// 			alert($(".normalPrice strong").text());
+			
+			if($(".normalPrice strong").text() == 0
+					|| $(".normalPrice strong").text() == ""
+					|| $(".normalPrice strong").text() == null) {
+				alert("계산 버튼을 클릭하세요.");
+				return false;
+			}
+			
+			$("#DC_PRICE").val($(".resPrice strong").text());
+			$("#NORMAL_PRICE").val($(".normalPrice strong").text());
+// 			return false;
+		});
+});
+</script>
+</head>
+<body>
 <!-- 메뉴 4개 감싸는 div : tal-menu 시작 -->
 <div class="tal-menu">
 
@@ -162,8 +252,12 @@
 					<tr>
 						<td class="tdNum"><input type="radio" name="selectedCar" value="${car.carNum}" /></td>
 						<td class="tdName">${car.carName }</td>
+						<td class="tdNum">${car.carNum }</td>
 						<td class="tdCategory">${car.carCategory }</td>
 						<td class="tdOIL">${car.carOil }</td>
+						<td class="tdCondi">${car.carCondi }</td>
+						<td class="tdLCD">${car.carLCD }</td>
+						<td class="tdcarPrice">${car.carPrice }</td>
 					</tr>
 				</c:forEach>
 				</table>
@@ -177,10 +271,6 @@
 	</div>
 	<!-- 차량 선택 중앙 메뉴 끝 -->
 	
-	<!-- 예약 완료 중앙 메뉴 시작 -->
-	
-	<!-- 예약 완료 중앙 메뉴 끝 -->
-	
 	<!-- 옵션 선택 중앙 메뉴 시작 -->
 	<div id="center_sel_option">
 	<h2 class="left-tit">옵션 및 할인 선택</h2>
@@ -190,16 +280,16 @@
 	<table >
 		
 		<c:forEach items="${couponList}" var="coupon">
-					<tr>
-						<td class="couNum"><input type="radio" name="selectedCou" value="${coupon.no}" /></td>
-						<td class="couName">${coupon.name }</td>
-						<td class="couStart">${coupon.startDate }</td>
-						<td class="couEnd">${coupon.endDate }</td>
-						<td class="CouDiscount">${coupon.discount }</td>
-						<td class="CouAgeConst">${coupon.ageConst }</td>
-						<td class="CouTimeConst">${coupon.timeConst }</td>
-						<td class="CouCarconst">${coupon.carConst }</td>
-					</tr>
+			<tr>
+				<td class="couNum"><input type="radio" name="selectedCou" value="${coupon.no}" /></td>
+				<td class="couName">${coupon.name }</td>
+				<td class="couStart">${coupon.startDate }</td>
+				<td class="couEnd">${coupon.endDate }</td>
+				<td class="CouDiscount">${coupon.discount }</td>
+				<td class="CouAgeConst">${coupon.ageConst }</td>
+				<td class="CouTimeConst">${coupon.timeConst }</td>
+				<td class="CouCarconst">${coupon.carConst }</td>
+			</tr>
 				</c:forEach>
 
 	</table>
@@ -209,12 +299,15 @@
 	</tr>
 		<tr>
 		<td>자차손해면책제도</td>
-		<td>
-		<select id="selOption">
-		<option value="선택안함">선택안함</option>
-		<option value="30만원">일반자차 30만원</option>
-		<option value="70만원">슈퍼자차 70만원</option>
-		</select>
+			<tr>
+			<c:forEach items="${damageList}" var="damage">
+			<td class="dmNum">
+			<input type="radio" name="selectedOption" data-carDamagePrice="${damage.carDamagePrice}" value="${damage.carDamageSel}" >${damage.carDamageSel}
+			</input>
+			</td>
+
+			</c:forEach>
+		</tr>
 		</td>
 		</tr>
 	</table>
@@ -225,16 +318,100 @@
 	</tr>
 		<tr>
 		<td>부대장비 선택</td>
-		<td>
-		<input type="checkbox" name="Caption" id="caption1" value="내비게이션(0원)">내비게이션
+		
+		<!-- <input type="checkbox" name="Caption" id="caption1" value="내비게이션(0원)">내비게이션
 		<input type="checkbox" name="Caption" id="caption2" value="베이비 카시트(0원)">베이비 카시트
-		<input type="checkbox" name="Caption" id="caption3" value="유모차(0원)">유모차
+		<input type="checkbox" name="Caption" id="caption3" value="유모차(0원)">유모차 -->
+		<tr>
+			<c:forEach items="${etcList}" var="etc">
+			<td class="etcName">
+			<input type="checkbox" id="EtcName" data-etcPrice="${etc.etcPrice }" name="selectedEtc" value="${etc.etcSelect}" >${etc.etcSelect}
+			</input>
+			</td>
+
+			</c:forEach>
+		</tr>
 		</td>
 		</tr>
 	</table>
 	</div>
 </div>
 <!-- 옵션 선택 중앙 메뉴 끝 -->
+
+<!-- 예약 확인 중앙 메뉴 시작 -->
+<div id="center_resfinsh">
+	<div class="rsvHeading">
+		<p class="rsvHeadingTit"><strong>예약</strong>이 완료되었습니다.</p>
+		<p class="rsvHeadingTxt">예약하신 내용을 확인해 주세요.</p>
+	</div>
+		
+			<div class="rsvStep rsvStep_result rsvStep_realResult">
+				<div class="rsvResultTableWrap">	
+					<table cellpadding="0" cellspacing="0" border="1" class="rsvResultTable">
+						<caption>임시저장내역</caption>
+						<tbody>
+							<tr>
+								<th scope="row"><span>차&nbsp;&nbsp;&nbsp;&nbsp;량</span></th>
+								<td>
+									<div class="resultCar" id="resultCarName">
+										
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><span>신&nbsp;&nbsp;&nbsp;&nbsp;청</span></th>
+								<td>
+									<div class="" id="">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><span>일&nbsp;&nbsp;&nbsp;&nbsp;시</span></th>
+								<td>
+									<div id="resultDay1">
+										
+										
+									</div>
+									<div id="resultDay2">
+										
+										
+									</div>
+								</td>
+							</tr>
+							
+							<tr>
+								<th scope="row"><span>옵&nbsp;&nbsp;&nbsp;&nbsp;션</span></th>
+								<td>
+									<div class="resultOption">
+										<input type="text" id="carcondi" />
+										<input type="text" id="CaptionSend" /> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><span>할&nbsp;&nbsp;&nbsp;&nbsp;인</span></th>
+								<td>
+									<div class="resultdis">
+										 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><span>금&nbsp;&nbsp;&nbsp;&nbsp;액</span></th>
+								<td>
+									<div class="resultItem itemPrice">
+									<span class=""><strong id="resultNormalPrice"></strong> 원</span>
+									<span class=""><strong id="resultDcPrice"></strong> 원</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+		</div>
+	</div>
+
+<!-- 예약 확인 중앙 메뉴 끝 -->
 
 	<!-- 오른쪽 메뉴 시작 -->
 	<div class="rightbar">
@@ -269,12 +446,7 @@
 				<div class="rsvOptionDiscount">
 					<p class="rsvOptionTit">부대장비</p>
 					<div id="Option">
-					<div id="equipment1">
-					</div>
-					<div id="equipment2">
-					</div>
-					<div id="equipment3">
-					</div>
+					
 					</div>
 				</div>
 				
@@ -295,17 +467,21 @@
 				</dl>
 			</div>
 
-
+		
 		<div class="rsvCarStatusMenu">
+		<button id="calPrice">금액확인</button>
+		<button id="ckreservation">예약확인</button>
 		<!-- 예약 정보 폼  -->
-		<form action="/reservation/reservation.do" method="post">
+		<form id="reserForm" action="/reservation/reservation.do" method="post">
+			<input type="hidden" id="MEM_ID" name="MEM_ID" value="${sessionScope.id }" />
 			<input type="hidden" id="CAR_NUM" name="CAR_NUM" />
 			<input type="hidden" id="RES_START" name="RES_START" />
 			<input type="hidden" id="RES_END" name="RES_END" />
 			<input type="hidden" id="COU_NAME" name="COU_NAME" />
 			<input type="hidden" id="CaptionSend" name="CaptionSend" />
 			<input type="hidden" id="carcondi" name="carcondi" />
-			
+			<input type="hidden" id="DC_PRICE" name="DC_PRICE" />
+			<input type="hidden" id="NORMAL_PRICE" name="NORMAL_PRICE" />
 			
 			<input type="IMAGE" src="/Page/images/icons/btn_reserve.gif" name="Submit" value="Submit" />
 		</form>
@@ -322,7 +498,7 @@
 
 </div>
 <!-- tal-menu 끝 -->
-
+</body>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="/Page/js/index.js"></script>
 <%-- footer include --%><jsp:include page="footer.jsp" />

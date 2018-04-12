@@ -30,6 +30,7 @@
 			// temp
 			if( _id('out1') === null ) { $('#cal').after('<i id="out1"></i>'); }
 			_id('out1').innerHTML = '<br>대여일시 : ' + year + '/' + month + '/' + e.innerText;
+			_id('resultDay1').innerHTML = '<br>대여일시 : ' + year + '/' + month + '/' + e.innerText;
 			_id('sel1text').innerHTML = year + '-' + month + '-' + e.innerText;
 			_id('ddDateRentDescription').innerHTML = year + '-' + month + '-' + e.innerText;
 			_id('RES_START').value = year + '-' + ("0"+month).slice(-2) + '-' + ("0"+e.innerText).slice(-2);
@@ -63,6 +64,7 @@
 					// temp
 					if( _id('out2') === null ) { $('#out1').after('<i id="out2"></i>'); }
 					_id('out2').innerHTML = '<br>반납일시 : ' + year + '/' + month + '/' + e.innerText;
+					_id('resultDay2').innerHTML = '<br>반납일시 : ' + year + '/' + month + '/' + e.innerText;
 					_id('sel2text').innerHTML =  year + '-' + month + '-' + e.innerText;
 					_id('ddDateReturnDescription').innerHTML =  year + '-' + month + '-' + e.innerText;
 					_id('RES_END').value = year + '-' + ("0"+month).slice(-2) + '-' + ("0"+e.innerText).slice(-2);

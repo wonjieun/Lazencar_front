@@ -5,6 +5,7 @@ public class Reservation {
 
 	private int resNum;
 	private String memId;
+<<<<<<< HEAD
 	private String carNum;
 	private String carOption;
 	private String resStart;
@@ -13,24 +14,32 @@ public class Reservation {
 	private String carName;
 	private String optionList;
 	private String carDemage;
+=======
+	private String carNum;//차량 번호
+	private String resStart;//차량 시작일
+	private String resEnd;//차량 반납일
+	private int couNum;//쿠폰
+	private String optionList;//옵션 선택
+	private String carDemage;//차량 보험 선택
+	private int dcPrice;//할인 가격 내용
+	private int normalPrice;//할인 전 총합계 내용
+	private String carName;      //CAR_NAME
+>>>>>>> refs/remotes/origin/master
 	
 	public String getCarName() {
-		return carName;
+		   return carName;
 	}
-	public void setCarName(String carName) {
-		this.carName = carName;
+	public int getNormalPrice() {
+		return normalPrice;
 	}
-	public String getCarDemage() {
-		return carDemage;
+	public void setNormalPrice(int normalPrice) {
+		this.normalPrice = normalPrice;
 	}
-	public void setCarDemage(String carDemage) {
-		this.carDemage = carDemage;
+	public int getDcPrice() {
+		return dcPrice;
 	}
-	public String getCarOption() {
-		return carOption;
-	}
-	public void setCarOption(String carOption) {
-		this.carOption = carOption;
+	public void setDcPrice(int dcPrice) {
+		this.dcPrice = dcPrice;
 	}
 	public int getResNum() {
 		return resNum;
@@ -74,5 +83,17 @@ public class Reservation {
 	public void setOptionList(String optionList) {
 		this.optionList = optionList;
 	}
+<<<<<<< HEAD
+=======
+	public String getCarDemage() {
+		return carDemage;
+	}
+	public void setCarDemage(String carDemage) {
+		this.carDemage = carDemage;
+	}
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+>>>>>>> refs/remotes/origin/master
 	
 }

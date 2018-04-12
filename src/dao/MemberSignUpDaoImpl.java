@@ -41,7 +41,6 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 	}
 	@Override
 	public void insertAllData(Member mem) {
-//		String sql = "INSERT INTO TB_MEMBER(MEM_ID,MEM_PW, MEM_GUBN, MEM_NAME, MEM_PHONE, MEM_JUMIN, MEM_EMAIL, MEM_ADDR)"
 		String sql = "INSERT INTO TB_MEMBER(MEM_ID,MEM_PW, MEM_NAME, MEM_PHONE, MEM_JUMIN, MEM_EMAIL, MEM_ADDR,MEM_GUBN)"
 				+ " VALUES(?,?,?,?,?,?,?,?)";
 		//Id, Pw, Name, Phone, Jumin(int), Email, Addr순서
@@ -83,7 +82,7 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 				mem.setMsg("사용 가능한 ID 입니다.");
 				mem.setMemCheck(true);
 				//member의 맴버필드 dupCheck에 0을 넣음 ( 중복값이 없다는 뜻)
-			}
+			} 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -31,7 +31,9 @@ var startApp = function() {
     // Retrieve the singleton for the GoogleAuth library and set up the client.
     auth2 = gapi.auth2.init({
       client_id: '954086829005-q063rn2ulo7c1065kda9uf2d7jtoo8dd.apps.googleusercontent.com',
-      cookiepolicy: 'single_host_origin',
+      cookiepolicy: 'single_host_origin'
+// 			fetch_basic_profile: false,
+//     	scope: 'profile'
       // Request scopes in addition to 'profile' and 'email'
       //scope: 'additional_scope'
     });
@@ -45,13 +47,56 @@ function attachSignin(element) {
       function(googleUser) {
         document.getElementById('name').innerText = "Signed in: " +
             googleUser.getBasicProfile().getName();
-        alert()
+        
+        if (auth2.isSignedIn.get()) {
+        	  var profile = auth2.currentUser.get().getBasicProfile();
+        	  console.log('ID: ' + profile.getId());
+        	  console.log('Full Name: ' + profile.getName());
+        	  console.log('Given Name: ' + profile.getGivenName());
+        	  console.log('Family Name: ' + profile.getFamilyName());
+        	  console.log('Image URL: ' + profile.getImageUrl());
+        	  console.log('Email: ' + profile.getEmail());
+        	  
+        	  var id = profile.getId();
+        	  var pw = -1;
+        	  var email = profile.getEmail();
+        		
+        		$.ajax({
+        			type: "POST"
+        			, url: "/login/login.do"
+        			, data: {
+        					memId:id,
+        					memPw:pw,
+        					memEmail:email
+        				}
+        			, dataType: "json"
+        			, success: function( data ) {
+        				var check = data.check;
+        				token = data.token;
+        				
+        				if( check ) {
+        					location.href="/main.do";
+        				}
+        			}
+        			, error: function(e) {
+        				console.log("----- error -----");
+        				console.log(e.responseText);
+        			}
+        		});
+        		
+        }
+//         location.href = "/main.do";
       }, function(error) {
         alert(JSON.stringify(error, undefined, 2));
       });
 }
+
 var revokeAllScopes = function() {
 	  auth2.disconnect();
+}
+
+function googleLogin() {
+	
 }
 
 
@@ -78,14 +123,17 @@ function f_validate() {
 }
 
 var token;
-
 // 아이디, 비밀번호 확인
 $(document).ready( function() {
 	
 		$("#login_confirm").click( function() {
+			
 			console.log(f_validate());
 			if( f_validate() ) {
 				var id = $("#id").val();
+				if(id===null || id==="") {
+					id = profile.getId();
+				}
 				var pw = $("#password").val();
 				var params = {
 					id : $('#id').val(),	
@@ -104,6 +152,7 @@ $(document).ready( function() {
 						var check = data.check;
 						var gubn = data.gubn;
 						token = data.token;
+						
 						if( check ) {
 	// 					alert("로그인 성공");
 							// 관리자
@@ -381,7 +430,7 @@ function f_login() {
 		<div id="name"></div>
 		<script>startApp();</script>
 		
-		<a href="#" id="logout_google">google logout</a>
+		<a href="#" onclick="signOut();">google logout</a>
 		<script>
 		  function signOut() {
 		    var auth2 = gapi.auth2.getAuthInstance();

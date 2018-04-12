@@ -40,7 +40,8 @@ a.nvalinks-rev:hover {background:#f1c40f;border:1px solid #f1c40f;text-decoratio
 #header.sub .hgroup {background:#fff;border-bottom:1px solid #eee}
 #header.sub .hgroup .inbox {height:79px}
 #header.sub .hgroup .logo a span {background-position:0 -58px}
-#header.sub .nvalinks a {background: url('/Page/images/main/bg_dot02.png') no-repeat 6px center;color: #636363}
+#header.sub .nvalinks a {color: #636363}
+#signUp, #myPage {background: url('/Page/images/main/bg_dot02.png') no-repeat 6px center;}
 #header.sub .nvalinks a:first-child {padding-left:0;background:none}
 #header.sub .nvalinks a:hover {color:#171717}
 #header.sub a.nvalinks-rev {background:none;border:1px solid #f1c40f;color:#f1c40f}
@@ -674,7 +675,7 @@ a.hoverline:hover {
 	float: left;
 }
 .rightbar {
-	padding-top: 52px;
+	padding-top: 20px;
 	width: 300px;
 	height: 700px;
 	float: right;
