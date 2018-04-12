@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Header & Footer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>쿠폰받기</title>
 
 <link type="text/css" rel="stylesheet" href="/Page/css/main.css" >
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
@@ -58,43 +60,128 @@
 <!-- // End #header -->
 
 
+
 <!-- Begin #container -->
 <div id="container">
 <div class="content-wrap">
 
-<!-- ############################### Begin .sidebar ###############################-->
-<!-- <div class="sidebar"> -->
-<!-- 	<h2 class="left-tit">서비스 / 혜택</h2> -->
-<!-- 	<ul class="leftMenu"> -->
-<!-- 		<li class="top"><a href="#"><span>특가상품</span></a></li> -->
-<!-- 		<li><a href="#"><span>쿠폰받기</span></a></li> -->
-<!-- 		<li><a href="#" class = 'on'><span>후기</span></a></li> -->
-<!-- 	</ul> -->
-<!-- 	<div class="side_sns"> -->
-<!-- 		<span class="tit">SNS<em></em></span> <a class="facebook" -->
-<!-- 			href="https://www.facebook.com/greencarkorea" target="_blank">라젠카 -->
-<!-- 			페이스북</a> <a class="blog" href="http://blog.naver.com/greencar_co" -->
-<!-- 			target="_blank">라젠카 블로그</a> <a class="instagram" -->
-<!-- 			href="https://www.instagram.com/greencar_kr" target="_blank">라젠카 -->
-<!-- 			인스타그램</a> -->
-<!-- 	</div> -->
+<div class="sidebar">
+	<h2 class="left-tit">서비스 / 혜택</h2>
+	<ul class="leftMenu">
+		<li class="top"><a href="#"><span>특가상품</span></a></li>
+		<li><a href="/coupon.do"><span>쿠폰받기</span></a></li>
+		<li><a href="/Page/review_Board_List.do" class='on'><span>후기</span></a></li>
+<!-- 					class = 'on'	현재 페이지를 나타낼때 on 사용하는 듯 -->
+	</ul>
+	<div class="side_sns">
+		<span class="tit">SNS<em></em></span> <a class="facebook"
+			href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
+			페이스북</a> <a class="blog" href="http://blog.naver.com/greencar_co"
+			target="_blank">라젠카 블로그</a> <a class="instagram"
+			href="https://www.instagram.com/greencar_kr" target="_blank">라젠카
+			인스타그램</a>
+	</div>
 
-<!-- 	<div class="side_cscenter"> -->
-<!-- 		<span class="tit">고객센터</span> <span class="tel">010-9550-0167</span> -->
-<!-- 	</div> -->
-<!-- </div> -->
-<!-- // End .sidebar -->
+	<div class="side_cscenter">
+		<span class="tit">고객센터</span> <span class="tel">010-9550-0167</span>
+	</div>
+</div>
 
-<div id="content_sub">
-<div id="content_sub_wrap">
-<div id="content_right">
+<div class="contentbox">
+<div class="location">
+  <div class="location_in">
+    <p><span>서비스 / 혜택</span>&gt; <strong>쿠폰받기</strong></p>
+  </div>
+</div>
+<div class="subtop-content bg_subvisual_02_01">
+  <h3 class="subtit">쿠폰받기</h3>
+  <p class="subtxt">
+  <strong>라젠카 회원이라면 누구나 다운받을 수 있는 버라이어티 할인 쿠폰~!</strong><br/>
+ 					일상의 충전, 라젠카의 할인혜택을 누려보세요.</p>
+</div>
+
+<div class="bodystart">
+	<div class="coupon-wrap">
+		<div class="coupon-con coupon-con-gap">
+			<!-- 진행중 -->
+			<ul class="coupon-down">
+				<li>
+					<span><img src="/Page/images/coupon/nightcoupon_02115.png" alt="" width="335" height="140" /></span>
+					<span class="eventImg-txt"><img src="/Page/images/coupon/icon_event_ing.png" alt="진행" /></span>
+				</li>
+<!-- 			<li class="num"><span>5331</span>남음</li> -->
+				<!-- 다운로드 가능 -->
+				<li class="down"><a href="javascript:couponView('2KJdS9pt4cH7i7RarHeQlA==','8383');"><img src="./images/coupon/btn_down.gif" alt="다운로드" /></a></li>
+			</ul>
+			<ul class="coupon-info">
+				<li><span class="title"><img
+						src="/Page/images/coupon/btn_coupon_name.gif" alt="쿠폰명" /></span> <strong
+					class="txt">심야 10시간 10,000원!(3/21)</strong></li>
+				<li><span class="title"><img
+						src="/Page/images/coupon/btn_coupon_date.gif" alt="신청기간" /></span> <span
+					class="txt">2018-03-21~2018-03-21</span></li>
+				<li><span class="title"><img
+						src="/Page/images/coupon/btn_coupon_use.gif" alt="사용조건" /></span> <span
+					class="txt">주중 사용/차종제한/이용가능시간제한</span></li>
+			</ul>
+		</div>	
+		<div class="coupon-con">
+			<!-- 진행중 -->
+			<ul class="coupon-down">
+				<li>
+					<span><img src="/Page/images/coupon/coupon-03.png" alt="" width="335" height="140" /></span>
+					<span class="eventImg-txt"><img src="/Page/images/coupon/icon_event_ing.png" alt="진행" /></span>
+				</li>
+						<!-- 다운로드 가능 -->
+				<li class="down"><a href="javascript:couponView('86k0hhtfhz0O/7w+/IdrFg==','8372');"><img src="./images/coupon/btn_down.gif" alt="다운로드" /></a></li>
+			</ul>
+			<ul class="coupon-info">
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_name.gif" alt="쿠폰명" /></span> <strong
+					class="txt">[봄꽃 트래블위크] 전차종 60% 할인!</strong></li>
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_date.gif" alt="신청기간" /></span> <span
+					class="txt">2018-03-21~2018-03-21</span></li>
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_use.gif" alt="사용조건" /></span> <span
+					class="txt">주중 사용/3시간이상/차종제한</span></li>
+			</ul>
+		</div>
+		
+		<div class="coupon-con coupon-con-gap">	
+			<!-- 진행중 -->
+			<ul class="coupon-down">			
+				<li>
+					<span><img src="/Page/images/coupon/coupon_web7.png" alt="" width="335" height="140" /></span>
+					<span class="eventImg-txt"><img src="/Page/images/coupon/icon_event_ing.png" alt="진행" /></span>
+				</li>
+				<!-- 다운로드 가능 -->
+				<li class="down">
+					<a href="javascript:couponView('k/2q2jlEykZVjl3LF2+wTA==','8385');">
+					<img src="./images/coupon/btn_down.gif" alt="다운로드" /></a></li>
+			</ul>
+			
+			<ul class="coupon-info">
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_name.gif" alt="쿠폰명" /></span> <strong
+					class="txt">[50%할인]통큰 반값할인</strong></li>
+					
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_date.gif" alt="신청기간" /></span> <span
+					class="txt">2018-03-19~2018-03-24</span></li>
+					
+				<li><span class="title"><img
+						src="./images/coupon/btn_coupon_use.gif" alt="사용조건" /></span> <span
+					class="txt">주중 주말 사용/50시간이상/그린존제한/차종제한/이용가능시간제한</span></li>
+			</ul>
+			
+		</div>
+	</div><!-- // End .coupon-wrap -->
+</div><!-- // End .bodystart -->
 
 </div>
 </div>
-</div>
-</div>
-</div>
-<!-- // End #container -->
+</div><!-- // End #container -->
 
 
 <!-- Begin #footer -->
@@ -196,7 +283,6 @@
 	</div>
 </div>
 <!-- // End #footer -->
-</div>
-<!-- // End #wrap -->
+</div><!-- // End #wrap -->
 </body>
 </html>

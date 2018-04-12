@@ -28,15 +28,23 @@ $(document).ready(function() {
 
 // 결제 요청 - 결제 모듈 불러오기
 function requestPayment() {
-	var title = $("#pay_num").val() 	//주문명을 결제번호로 생성
-	var amount = $("#amount").val();	//금액
-	var buyer_email = $("#email").val();//사용자 이메일
-	var buyer_name = $("#name").val();	//사용자 이름
-	var buyer_tel = $("#phone").val();	//사용자 폰번호
+	//따로 입력 창 마늘
+// 	var title = $("#pay_num").val(); 	//주문명을 결제번호로 생성
+// 	var amount = $("#amount").val();	//금액
+// 	var buyer_email = $("#email").val();//사용자 이메일
+// 	var buyer_name = $("#name").val();	//사용자 이름
+// 	var buyer_tel = $("#phone").val();	//사용자 폰번호
+	
+	var title = "123131"; 	//주문명을 결제번호로 생성
+	var amount = "5000";	//금액
+	var buyer_email = "kk5949@naver.com";//사용자 이메일
+	var buyer_name = "정상웅";	//사용자 이름
+	var buyer_tel = "010-6846-2197";
+	
 	
 	IMP.request_pay({
 	    pg : 'html5_inicis', //PG사 - 'kakao':카카오페이, 'html5_inicis':이니시스(웹표준결제), 'nice':나이스페이, 'jtnet':제이티넷, 'uplus':LG유플러스, 'danal':다날, 'payco':페이코, 'syrup':시럽페이, 'paypal':페이팔
-	    pay_method : 'vbank', //결제방식 - 'samsung':삼성페이, 'card':신용카드, 'trans':실시간계좌이체, 'vbank':가상계좌, 'phone':휴대폰소액결제
+	    pay_method : 'card', //결제방식 - 'samsung':삼성페이, 'card':신용카드, 'trans':실시간계좌이체, 'vbank':가상계좌, 'phone':휴대폰소액결제
 	    merchant_uid : 'merchant_' + new Date().getTime(), //고유주문번호 - random, unique
 	    
 	    name : title, //주문명 - 선택항목, 결제정보 확인을 위한 입력, 16자 이내로 작성
@@ -62,6 +70,7 @@ function requestPayment() {
 					imp_uid : rsp.imp_uid
 					//기타 필요한 데이터가 있으면 추가 전달
 					//결제 완료되면 결제상태 변경
+					//
 					
 					}
 			}).done(function(data) {
@@ -69,7 +78,7 @@ function requestPayment() {
 				if ( everythings_fine ) {
 					
 					//******************ajax를 사용해 결제 상태를 결제 대기 or 결제 성공으로 바꾼다.
-					
+					//db데이터를 결제 성공으로 바꿈. 대신 dao에서 정확한 값을 찾아서 넣어야하지
 					
 					
 					var msg = '결제가 완료되었습니다.';
@@ -79,6 +88,7 @@ function requestPayment() {
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					
 					alert(msg);
+					
 	    		} else {
 	    			//****************여기에 ajax를 하던 뭘 하던 실패했을경우 결제테이블 결제상태를 결제취소로 바꾼다.
 	    			
@@ -90,6 +100,8 @@ function requestPayment() {
 	    	});
 	        
 	    } else { // 결제 실패 로직
+	    	//ajax 결제 실패로 db값 변경
+	    	
 	        var msg = '결제에 실패하였습니다.';
 	        msg += '에러내용 : ' + rsp.error_msg;
 	    }

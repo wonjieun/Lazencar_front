@@ -42,11 +42,12 @@ a.nvalinks-rev:hover {background:#00b956;border:1px solid #00b956;text-decoratio
 #header.sub .hgroup {background:#fff;border-bottom:1px solid #eee}
 #header.sub .hgroup .inbox {height:79px}
 #header.sub .hgroup .logo a span {background-position:0 -58px}
-#header.sub .nvalinks a {background:url('../images/main/bg_dot02.png') no-repeat 6px center;color:#636363}
+#header.sub .nvalinks a {color:#636363}
+#signup, #mypage {background:url('../images/main/bg_dot02.png') no-repeat 6px center;}
 #header.sub .nvalinks a:first-child {padding-left:0;background:none}
 #header.sub .nvalinks a:hover {color:#171717}
-#header.sub a.nvalinks-rev {background:none;border:1px solid #00b956;color:#00b956}
-#header.sub a.nvalinks-rev:hover {background:#00b956;color:#fff}
+#header.sub a.nvalinks-rev {background:none;border:1px solid #f1c40f;color:#f1c40f}
+#header.sub a.nvalinks-rev:hover {background:#f1c40f;color:#fff}
 #header.sub .navigation li a {color:#171717}
 #header.sub .navi-sublist li a:hover {color:#00b956}
 .nav-sub-wrap {overflow:hidden;height:0;z-index:5555;position:absolute;top:0;left:0;width:100%;padding-top:80px;-webkit-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);

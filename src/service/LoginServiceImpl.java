@@ -20,4 +20,9 @@ public class LoginServiceImpl implements LoginService {
 	public int getGubn(Member m) {
 		return dao.getGubn(m);
 	}
+	
+	@Override
+	public void signUpSNS(Member m) {
+		dao.insertSNSData(m);
+	}
 }

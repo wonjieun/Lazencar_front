@@ -2,7 +2,6 @@ package dto;
 
 //예약테이블
 public class Reservation {
-
    private int resNum;			//RES_NUM
    private String memId;		//MEM_ID
    private String carNum;		//CAR_NUM
@@ -15,14 +14,13 @@ public class Reservation {
    private int normalPrice;		//RES_TALPRICE
    private String carName;		//CAR_NAME
    
-   
    public String getCarName() {
-	return carName;
-}
-public void setCarName(String carName) {
-	this.carName = carName;
-}
-public int getNormalPrice() {
+	    return carName;
+   }
+   public void setCarName(String carName) {
+      this.carName = carName;
+   }
+    public int getNormalPrice() {
       return normalPrice;
    }
    public void setNormalPrice(int normalPrice) {
