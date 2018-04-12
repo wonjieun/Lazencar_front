@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import dao.MakePaymentDao;
 import dao.ReservationDao;
 import dao.ReservationDaoImpl;
 import dto.Reservation;
@@ -62,6 +63,8 @@ public class ReservationServiceImpl implements ReservationService{
 		//ServiceImpl res 출력
 		System.out.println("reservationServiceImpl res 출력" + res.getMemId());
 		reservation.insertRES(res);
+//		MakePaymentDao dao = new MakePaymentDao();
+//		dao.insertPayment();
 	}
 
 

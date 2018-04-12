@@ -12,7 +12,6 @@ id:${sessionScope.id}
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,100,100,italic'
 	rel='stylesheet' type='text/css'>
 
-
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 
@@ -26,8 +25,12 @@ var tmpCouDiscount = null;
 var tmpCarDamagePrice = null;
 var tmpEtcPrice = null;
 
+
 	//버튼 체크
 	$(document).ready(function() {
+		
+		
+		
 		$("#center_sel_car").hide();
 		$("#center_sel_option").hide();
 		$("#center_resfinsh").hide();
@@ -162,7 +165,7 @@ var tmpEtcPrice = null;
 			console.log(tmpCarDamagePrice);
 			console.log(tmpEtcPrice);
 
-			var discount = (tmpCarPrice * diffDay * tmpCouDiscount * 0.01)
+			var discount = (tmpCarPrice * diffDay * (100-tmpCouDiscount) * 0.01)
 				+ tmpCarDamagePrice + tmpEtcPrice;
 			$(".resPrice strong").text(discount);
 			
@@ -183,6 +186,8 @@ var tmpEtcPrice = null;
 			
 			$("#DC_PRICE").val($(".resPrice strong").text());
 			$("#NORMAL_PRICE").val($(".normalPrice strong").text());
+			console.log("예약하기 끝 결제 시작");
+				
 // 			return false;
 		});
 });
@@ -463,7 +468,7 @@ var tmpEtcPrice = null;
 					<dt class="normalPrice">정상금액</dt>
 					<dd class="normalPrice"><strong></strong> 원</dd>
 					<dt class="resPrice">예약금액</dt>
-					<dd class="resPrice"><strong></strong> 원</dd>
+					<dd id="resPrice" class="resPrice"><strong></strong> 원</dd>
 				</dl>
 			</div>
 

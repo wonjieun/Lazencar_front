@@ -17,8 +17,8 @@ import dto.Etc;
 
 public class ReservationDaoImpl implements ReservationDao{
 	private final String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private final String username ="scott";
-	private final String password ="tiger";
+	private final String username ="lazencar";
+	private final String password ="saveus";
 	
 	private Connection conn = null;
 	private Statement st = null;
@@ -370,7 +370,7 @@ public class ReservationDaoImpl implements ReservationDao{
 		return p;
 	}
 	
-
+	
 	@Override
 	public void insertRES(Reservation res) {
 		//daoimpl 출력

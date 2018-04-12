@@ -52,9 +52,4 @@ public class Car {
 	public void setCarPrice(int carPrice) {
 		this.carPrice = carPrice;
 	}
-	
-	
-	
-	
-	
 }

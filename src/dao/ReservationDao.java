@@ -1,10 +1,11 @@
 package dao;
 
 import java.util.List;
-
 import dto.Reservation;
 import dto.Car;
 import dto.Coupon;
+import dto.Damage;
+import dto.Etc;
 
 public interface ReservationDao {
 	public List car_list();

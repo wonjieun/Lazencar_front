@@ -82,4 +82,9 @@ public class LoginDaoImpl implements LoginDao {
 		return -1;		
 	}
 
+	@Override
+	public void insertSNSData(Member m) {
+		
+	}
+
 }
