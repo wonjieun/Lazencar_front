@@ -76,7 +76,7 @@ $(document).ready(function() {
             			 	</script>
             			
             			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
-                  <a class="nvalinks-rev" href="/Page/reservation.html">라젠카 예약하기</a>
+                  <a class="nvalinks-rev" href="/reservation/reservation.do">라젠카 예약하기</a>
 
                </div>
                
@@ -85,10 +85,10 @@ $(document).ready(function() {
          <li class="topMenuLi"> 
             <a class="menuLink" href="#">Lazencar 소개</a> 
             <ul class="submenu"> 
-               <li><a href="#" class="submenuLink longLink">Lazencar란?</a></li> 
-               <li><a href="#" class="submenuLink longLink">이용안내</a></li> 
-               <li><a href="#" class="submenuLink longLink">요금안내</a></li> 
-               <li><a href="#" class="submenuLink longLink">위치</a></li> 
+               <li><a href="/Page/introduction1.html" class="submenuLink longLink">Lazencar란?</a></li> 
+               <li><a href="/Page/guide_use1.html" class="submenuLink longLink">이용안내</a></li> 
+               <li><a href="/Page/chargeGuide.html" class="submenuLink longLink">요금안내</a></li> 
+               <li><a href="/Page/guide_road.html" class="submenuLink longLink">위치</a></li> 
             </ul> 
           </li>
                

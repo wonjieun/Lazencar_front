@@ -8,10 +8,6 @@ public class Payment {
 	private String payPhone;
 	private String payStatus;
 
-
-
-	
-	
 	public String getPayEmail() {
 		return payEmail;
 	}

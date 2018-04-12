@@ -11,8 +11,8 @@ import dto.Member;
 
 public class LoginDaoImpl implements LoginDao {
 	private final String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private final String username = "LAZENCAR";
-	private final String password = "saveus";
+	private final String username = "scott";
+	private final String password = "tiger";
 	
 	private Connection conn = null;
 	private Statement st = null;
