@@ -971,6 +971,31 @@ a.btnR01 {
 	vertical-align: middle;
 	line-height: 26px;
 }
+
+/* 숨기기 상세보기 STYLE start*/
+   tr.hiddenTr{
+     display:none;   
+/*      display:table-row;   */
+   }
+/*    tr.hiddenTr td{ */
+/*       padding: 15px 0 15px 100px; */
+   
+/*    } */
+/*    tr.hiddenTr td div{     */
+/*    text-align: left; */
+/*    float: left;  */
+/*    width: 33%; */
+/*    margin-left:30px; */
+/*    } */
+/*    tr.hiddenTr td div font{ */
+/*       font-size:17px; */
+/*    } */
+/*    tr.hiddenTr td div button{ */
+/*       text-align:right; */
+/*    } */
+
+/* 숨기기 상세보기 STYLE end*/
+
 </style>
 
 
@@ -1122,15 +1147,15 @@ a.btnR01 {
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>예약확인</span></a></li>
+						<li class="top"><a href="/Page/reservationCheck.jsp"><span>예약확인</span></a></li>
 
-						<li><a href="#"><span>개인정보 관리</span></a></li>
+						<li><a href="/Page/personalDataManage.jsp"><span>개인정보 관리</span></a></li>
 
-						<li><a href="#"><span>쿠폰</span></a></li>
+						<li><a href="/Page/couponCheck.jsp"><span>쿠폰</span></a></li>
 
 						<li><a href="#"><span>1:1문의</span></a></li>
 
-						<li><a href="#" class='on'><span>회원탈퇴</span></a></li>
+						<li><a href="/Page/deleteAccount.jsp" class='on'><span>회원탈퇴</span></a></li>
 
 					</ul>
 
@@ -1196,18 +1221,35 @@ a.btnR01 {
 											<tr style="border-bottom: 1px solid #e9e9e9;">
 											<c:choose>
 											<c:when test="${fn:length(i.resStart)>11 }">
-											<input id="resNum" type="hidden" value="${i.resNum }"/>
+<%-- 												<input id="resNum" type="hidden" value="${i.resNum }"/> --%>
 												<td scope="row" style="border-right: 1px solid #e9e9e9;">${status.count }</td>
-												<td scope="row" style="border-left: 1px solid #e9e9e9;">${i.carNum }</td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;">${i.carName }</td>	<%-- ${i.carNum } --%>
 												<td scope="row" style="border-left: 1px solid #e9e9e9;"><c:out value="${fn:substring(i.resStart,0,10) }"/></td>
 												<td scope="row" style="border-left: 1px solid #e9e9e9;"><c:out value="${fn:substring(i.resEnd,0,10) }"/></td>
 												<td scope="row" style="border-left: 1px solid #e9e9e9;">
-													<span><a href="#"
-														id="cancleReserv" class="btnR01"
-														onclick="javascript:return false;">취소</a></span>
+													<span>
+													<a href="#" id="btn_listDown" class="btnR01" onclick="showDetail('hiddenTr_${status.count}');">상세보기</a>
+													<a href="#" id="cancleReserv" class="btnR01" onclick="deleteReserv(${i.resNum});">취소</a>
+													</span>
 												</td>
 												</c:when>
 												</c:choose>
+											</tr>
+											<tr class="hiddenTr checkTblHd" id="hiddenTr_${status.count }" style="display: none; border-bottom: 1px solid #e9e9e9;">
+											<th scope="col" width="36" style="border-right: 1px solid; background: #ffff;"></th>
+												<th scope="col" width="198" style="border-right: 1px solid;  background: #e2e2e2;">쿠폰번호</th>
+												<th scope="col" width="198" style="border-right: 1px solid;  background: #e2e2e2;">차량번호</th>
+												<th scope="col" width="198" style="border-right: 1px solid;  background: #e2e2e2;">자차손해</th>
+												<th scope="col" width="198" style="border-right: 1px solid;  background: #e2e2e2;">차량옵션</th>
+											</tr>
+											<tr class="hiddenTr" id="hiddenTr_${status.count }_1" style="display: none; border-bottom: 1px solid #e9e9e9;">
+												<td scope="row" style="border-right: 1px solid #e9e9e9; background: #ffff;"></td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;">${i.couNum }</td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;">${i.carNum }</td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;">${i.carDemage }</td>
+												<td scope="row" style="border-left: 1px solid #e9e9e9;">${i.carOption }</td>
+												
+												
 											</tr>
 											</c:forEach>
 										</tbody>
@@ -1376,12 +1418,35 @@ a.btnR01 {
 
 	<!-- 	select text input 스크립트  start -->
 	<script type="text/javascript">
-	$(document).ready(function(){
-		var $form = $("<form>").attr("action","/reservCheck.do").attr("method", "post");
-		$form.appendTo($(document.body));
-		$form.submit();
-	});
+	function deleteReserv(resNum){
+		var answer=confirm("예약을 취소하시겠습니까?");
+		if(answer){
+			$(document).ready(function(){
+				var resnum = resNum;
+				var $form = $("<form>").attr("action","/deleteReserv.do").attr("method", "post");
+				$("<input>").attr("type", "hidden").attr(
+						"name", "resNum").attr(
+						"value", resnum).appendTo(
+						$form);
+				$form.appendTo($(document.body));
+				$form.submit();
+			});
+		}
+	}
 	
+	//리스트 하단에 추가로 출력해주기 위해서 토글 함수 생성
+	   function showDetail(id){
+	        obj = document.getElementById(id);
+	        obj2 = document.getElementById(id+"_1");
+	        if(obj.style.display == "none"){
+	           obj.style.display = "table-row";
+	           obj2.style.display= "table-row";
+	        }else{
+	           obj.style.display="none";
+	           obj2.style.display= "none";
+	           
+	        }
+	   }
 	
  	</script>
 	<!-- 	select text input 스크립트  end -->
