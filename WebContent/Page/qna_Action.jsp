@@ -2,20 +2,21 @@
     pageEncoding="utf8"%>
 
 
-<%@ page import = "dao.AskDaoImpl" %>
+<%@ page import = "dao.adminDao.QnaListDaoImpl" %>
 <%@ page import = "java.util.*, java.text.*"  %>
 <%@ page import = "java.io.PrintWriter" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 
-<jsp:useBean id="ask" class ="dto.Ask" scope = "page"></jsp:useBean>
+<jsp:useBean id="qna" class ="dto.Qna" scope = "page"></jsp:useBean>
 
-<jsp:setProperty name="ask" property="ask_title" />
-<jsp:setProperty name="ask" property="ask_content" />
+<jsp:setProperty name="qna" property="qnaTitle" />
+<jsp:setProperty name="qna" property="qnaContents" />
+<jsp:setProperty name="qna" property="qnaCate" />
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title> 문의하기 액션 </title>
+<title> 글쓰기 액션 </title>
 </head>
 <body>
 
@@ -37,7 +38,7 @@
 		script.println("</script>");
 	}
 
-	if (ask.getAsk_title() == null || ask.getAsk_content() == null) {
+	if (qna.getQnaTitle() == null || qna.getQnaContents() == null) {
 
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -47,8 +48,8 @@
 
 	} else {
 
-		AskDaoImpl askDao = new AskDaoImpl();
-		int result = askDao.ask(ask.getAsk_title(), ask.getAsk_content(), now_id);
+		QnaListDaoImpl qnaDao = new QnaListDaoImpl();
+		int result = qnaDao.insertQna(qna.getQnaTitle(), qna.getQnaContents(), now_id, qna.getQnaCate());
 
 		if (result == -1) {
 

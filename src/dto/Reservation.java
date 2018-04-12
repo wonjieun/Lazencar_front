@@ -6,12 +6,33 @@ public class Reservation {
 	private int resNum;
 	private String memId;
 	private String carNum;
+	private String carDemage;
+	private String carOption;
 	private String resStart;
 	private String resEnd;
 	private int couNum;
+	private String carName;
 	private String optionList;
 	private String carDemage;
 	
+	public String getCarName() {
+		return carName;
+	}
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+	public String getCarDemage() {
+		return carDemage;
+	}
+	public void setCarDemage(String carDemage) {
+		this.carDemage = carDemage;
+	}
+	public String getCarOption() {
+		return carOption;
+	}
+	public void setCarOption(String carOption) {
+		this.carOption = carOption;
+	}
 	public int getResNum() {
 		return resNum;
 	}
