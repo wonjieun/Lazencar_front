@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/* 전체 스타일 설정 */
+
+/* 쿠폰 css start */
+.tbl01 {
+	overflow: hidden;
+	border-top: 1.5px solid #f6d247;
+	border-bottom: 1px solid #dedede;
+}
+.tbl01 table {
+	width: 100%;
+	margin-bottom: -1px;
+}
+.tbl01 .checkTblHd {
+	height: 30px;
+	padding: 5px 0 0 20px;
+	background: #efd985;
+	border-bottom: 1px solid #dedede;
+	color: #ffffff;
+	text-align: center;
+	font-family: 'NanumGothicBold';
+}
+.tbl01 .checkTblBd td {
+	text-align: center;
+	height: 26px;
+}

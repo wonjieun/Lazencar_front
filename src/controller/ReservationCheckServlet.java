@@ -44,7 +44,7 @@ public class ReservationCheckServlet extends HttpServlet {
 		// 쿠폰리스트 모델로써 전달
 		request.setAttribute("resList", list);
 		request.setAttribute("resTotal", totalCount);
-		request.getRequestDispatcher("/Page/reservationCheck2.jsp").forward(request, response);
+		request.getRequestDispatcher("/Page/mypage_ReservationCheck2.jsp").forward(request, response);
 		
 //		Gson gson = new Gson();
 //		JsonObject jsonObject = new JsonObject();
