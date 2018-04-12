@@ -1187,9 +1187,9 @@ a.hoverline:hover {
 											<c:choose>
 												<c:when test="${fn:length(i.couStart)>11}">
 												<td id="cou_num" style="border-right: 1px solid #e9e9e9;">${status.count} </td>
-												<td id="cou_const" style="border-left: 1px solid #e9e9e9;">${i.couName}</td>
-												<td id="cou_start" style="border-left: 1px solid #e9e9e9;">${i.couConst}</td>
-												<td id="cou_end" style="border-left: 1px solid #e9e9e9;"><c:out value="${fn:substring(i.couStart,0,10)}"/> ~ <c:out value="${fn:substring(i.couEnd,0,10)}"/></td>
+												<td id="cou_const" style="border-left: 1px solid #e9e9e9;">${i.name}</td>
+												<td id="cou_start" style="border-left: 1px solid #e9e9e9;">${i.carConst}</td>
+												<td id="cou_end" style="border-left: 1px solid #e9e9e9;"><c:out value="${fn:substring(i.startDate,0,10)}"/> ~ <c:out value="${fn:substring(i.endDate,0,10)}"/></td>
 												</c:when>
 											</c:choose>
 											</tr>

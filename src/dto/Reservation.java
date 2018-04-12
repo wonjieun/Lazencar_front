@@ -13,7 +13,6 @@ public class Reservation {
 	private int couNum;
 	private String carName;
 	private String optionList;
-	private String carDemage;
 	
 	public String getCarName() {
 		return carName;
@@ -21,12 +20,7 @@ public class Reservation {
 	public void setCarName(String carName) {
 		this.carName = carName;
 	}
-	public String getCarDemage() {
-		return carDemage;
-	}
-	public void setCarDemage(String carDemage) {
-		this.carDemage = carDemage;
-	}
+	
 	public String getCarOption() {
 		return carOption;
 	}
