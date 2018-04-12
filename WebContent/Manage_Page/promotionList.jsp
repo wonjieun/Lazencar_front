@@ -5,7 +5,6 @@
     
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="dto.adminDto.PromotionManage" %>
 <%@ page import="dao.adminDao.PromotionRegisterDao" %>
 <%@ page import="dao.adminDao.PromotionRegisterDaoImpl" %>
 

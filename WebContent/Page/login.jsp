@@ -1264,7 +1264,7 @@ $(document).ready( function() {
 		<script>
 		$(document).ready(function(){
 			$("#logout").click(function(){
-				var token = 'AAAAOsvN0HEMWRB%2FKuswWuBGiTuvYwxMdvn9n6EnO%2FFe6%2FGaQH4DR0KTlEAtxGQkA0Y9BgJKDXpbt2344dcydhP%2BJv8%3D';
+				var token = 'AAAAOnK1n/KtSh6PiPz/lNNHmkNKfyHWEeJuIMAOVaKBYnl59c7RjbEy/wAEcotpswFxcP0IxZPw1OPFfljPXABGw74=';
 				console.log(token);
 				location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
 // 				console.log("logout");t
