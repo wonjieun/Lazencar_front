@@ -1121,16 +1121,33 @@ function checkNumber(){
 										
 										var memId = JSON.parse(data.memId);
 										var msg = JSON.parse(data.msg);
+										var email = JSON.parse(data.memEmail);
 										console.log("---"+memId);
 										console.log("---"+msg);
 										
 										var showIdHtml = "";
-										if (memId != "" && memId!=null) {
-											showIdHtml = "아이디는 " + memId + " 입니다.";
-										}else{
+// 										if (memId != "" && memId!=null) {
+// 											showIdHtml = "아이디는 " + memId + " 입니다.";
+// 										}else{
 											showIdHtml = msg;
+// 										}
+// 										$("#alert_id").html(showIdHtml);
+										
+										if(memId !=null && memId!=""){
+											
+											var $form = $("<form>").attr("action","/mail").attr("method","post");
+											$("<input>").attr("type","hidden").attr("name","from_email").attr("value","lazencarboss@gmail.com").appendTo($form);
+											$("<input>").attr("type","hidden").attr("name","to_email").attr("value",email).appendTo($form);
+											$("<input>").attr("type","hidden").attr("name","subtitle").attr("value","Lazencar Send your Id").appendTo($form);
+											$("<input>").attr("type","hidden").attr("name","content").attr("value","your Id is :"+memId).appendTo($form);
+											
+											$form.appendTo($(document.body));
+											
+											$form.submit();
+											$("#alert_id").html(showIdHtml);
+										}else{
+											$("#alert_id").html(showIdHtml);
 										}
-										$("#alert_id").html(showIdHtml);
 									},
 									error : function(e) {
 										console.log("------error------");
@@ -1189,17 +1206,33 @@ function checkNumber(){
 
 								var memPw = JSON.parse(data.memPw);
 								var msg = JSON.parse(data.msg);
+								var email = JSON.parse(data.memEmail);
 								console.log(memPw);
 								console.log("--"+data.memPw);
 								console.log(msg);
 								var showPwHtml = "";
-								if (memPw != "" || memPw != null) {
-									showPwHtml = "비밀번호는 " + memPw + " 입니다.";
-// 								}else if(memPw == "" || memPw==null){
-								}else{
+// 								if (memPw != "" || memPw != null) {
+// 									showPwHtml = "비밀번호는 " + memPw + " 입니다.";
+// // 								}else if(memPw == "" || memPw==null){
+// 								}else{
 									showPwHtml = msg;
-								}
+// 								}
+// 								$("#alert_pw").html(showPwHtml);
+// // 								$("#alert_pw").html().attr('href','meilto:')
+							if(memPw !=null && memPw!=""){
+								$("#alert_pw").html(showIdHtml);
+									var $form = $("<form>").attr("action","/mail").attr("method","post");
+									$("<input>").attr("type","hidden").attr("name","from_email").attr("value","lazencarboss@gmail.com").appendTo($form);
+									$("<input>").attr("type","hidden").attr("name","to_email").attr("value",email).appendTo($form);
+									$("<input>").attr("type","hidden").attr("name","subtitle").attr("value","Lazencar Send your Password").appendTo($form);
+									$("<input>").attr("type","hidden").attr("name","content").attr("value","your password is : "+memPw).appendTo($form);
+									$form.appendTo($(document.body));
+									
+									$form.submit();
+									$("#alert_pw").html(showPwHtml);
+							}else{
 								$("#alert_pw").html(showPwHtml);
+							}
 							},
 							error : function(e) {
 								console.log("------error------");

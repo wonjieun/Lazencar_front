@@ -12,6 +12,8 @@ public class Reservation {
 	private String resEnd;
 	private int couNum;
 	private String carName;
+	private String optionList;
+	private String carDemage;
 	
 	public String getCarName() {
 		return carName;
@@ -67,6 +69,17 @@ public class Reservation {
 	public void setCouNum(int couNum) {
 		this.couNum = couNum;
 	}
-	
+	public String getOptionList() {
+		return optionList;
+	}
+	public void setOptionList(String optionList) {
+		this.optionList = optionList;
+	}
+	public String getCarDemage() {
+		return carDemage;
+	}
+	public void setCarDemage(String carDemage) {
+		this.carDemage = carDemage;
+	}
 	
 }

@@ -6,10 +6,12 @@
 <%@ page import = "java.io.PrintWriter" %>
 
 <%
+
    int rev_num = 0;
    if (request.getParameter("rev_num") != null) {
 	   
 	   rev_num = Integer.parseInt(request.getParameter("rev_num"));
+	   
    }
    
    if (rev_num == 0) {
@@ -20,10 +22,24 @@
 	   script.println("location.href = 'review_Board_List'");
 	   script.println("</script>");
    }
-   
+	  
+   ReviewDaoImpl revDao = new ReviewDaoImpl();
    Review rev = new ReviewDaoImpl().getReview(rev_num);
-   Review next = new ReviewDaoImpl().getReview(rev_num + 1);
-   Review prev = new ReviewDaoImpl().getReview(rev_num - 1);
+   revDao.Hit(rev_num);
+   Review next = new ReviewDaoImpl().getReview(revDao.getNext(rev_num));
+   Review prev = new ReviewDaoImpl().getReview(revDao.getPrev(rev_num));
+
+   
+   
+//    if (rev.getRev_avail() == 0) {
+	   
+// 	   PrintWriter script = response.getWriter();
+// 	   script.println("<script>");
+// 	   script.println("alert('삭제되었거나 유효하지 않은 글입니다')");
+// 	   script.println("location.href = 'review_Board_List'");
+// 	   script.println("</script>");
+	   
+//    }
 
 %>
 
@@ -579,7 +595,7 @@ a.nvalinks-rev:hover {
 											<p class="button-type-02">
 												<a href="#1"
 													onclick="doRecommend('qIYmI7NzdGj/nQYjByUmLg==');"><img
-													src="../../images/button/btn_sym.gif" alt="공감하기" /></a>
+													src="images/button/btn_review_regist.png" alt="좋아요" /></a>
 											</p>
 										</div>
 									</td>
@@ -587,9 +603,13 @@ a.nvalinks-rev:hover {
 							</tbody>
 						</table>
 						<div class="board-btn-wrap">
+						
+						<a href="review_Board_Update.jsp?rev_num=<%= rev_num %>"><img src="images/button/btn_review_regist.png" alt="수정" /></a> </span>
+						
+					    <a href="review_Delete_Action.jsp?rev_num=<%= rev_num %>"><img src="images/button/btn_review_regist.png" alt="삭제" /></a> </span>
+						
+				        <a href="./review_Board_List.do"><img src="images/button/btn_review_regist.png" alt="목록" /></a> </span>
 
-							<a href="./list.do?searchItem=&amp;searchWord=&amp;gotoPage=672"><img
-								src="../../images/button/btn_board_list.gif" alt="목록" /></a>
 						</div>
 						<table summary="이전글, 다음글 목록" class="board-pagelist">
 							<caption>이전글, 다음글 목록</caption>
@@ -608,7 +628,7 @@ a.nvalinks-rev:hover {
                                     
                                     <% if (next != null){ %>
                                     	
-                                    <td><a href="review_Board_View.jsp?rev_num=<%= next.getRev_num() %>"><%= next.getRev_title() %></a></td>
+                                    <td><a href="review_Board_View.jsp?rev_num=<%= next.getRev_num() %>"><%= next.getRev_title() %> <%= revDao.getNext(rev_num) %> </a></td>
 
                                     <%}%>
 									<td></td>
@@ -617,12 +637,12 @@ a.nvalinks-rev:hover {
 									<th scope="row" class="prev"><div>이전글</div></th>
                                     <% if (prev == null){ %>
                                     	
-                                    	<td> 첫번째 글 입니다 </td>
+                                    	<td> 현재 글이 첫번째 글 입니다 </td>
                                     <%}%>
                                     
                                     <% if (prev != null){ %>
                                     	
-                                    <td><a href="review_Board_View.jsp?rev_num=<%= prev.getRev_num() %>"><%= prev.getRev_title() %></a></td>
+                                    <td><a href="review_Board_View.jsp?rev_num=<%= prev.getRev_num() %>"><%= prev.getRev_title() %> <%= revDao.getPrev(rev_num) %> </a></td>
 
                                     <%}%>
 									<td></td>

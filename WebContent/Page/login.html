@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 
 <style type="text/css">
 
@@ -983,9 +983,8 @@ a {
 }
 </style>
 
-<script type="text/javascript"
- src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 
 function f_login() {
@@ -995,44 +994,6 @@ function f_login() {
 		fnLogin();
 	}
 }
-	
-/* KH정보교육원 로그인 화면 / 로그인 버튼 관련 기능
-	function fnLogin() {
-		var member_flag1 = $('input[name=member_flag]:checked').val();
-
-		if (f_validate()) {
-			var params = {
-				id : $('#id').val(),
-				password : $('#password').val(),
-				member_flag	: $('input[name=member_flag]:checked').val()
-			};
-			$.ajax({
-				url : '/login/loginCheck.kh',
-				dataType : 'json',
-				type : 'post',
-				data : params,
-				success : function(data, textStatus) {
-					if (data['result'] == '2') {
-						if (member_flag1 == 'T') {
-							location.href = "/login/mypage.kh";
-						} else {
-							location.href = "/main/main.kh";
-						}
-					} else if (data['result'] == '3') {
-						$("#alert_flag").css("display", "block");
-					} else if (data['result'] == '4') {
-						alert("이미 접속한 아이디입니다.");
-					} else {
-						$("#alert_idpw").css("display", "block");
-					}
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					alert('오류가 발생했습니다\n[' + textStatus + ']\n' + errorThrown);
-				}
-			});
-		}
-	}
-*/
 
 /* 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때 */
 function f_validate() {
@@ -1087,7 +1048,8 @@ $(document).ready( function() {
 						// 관리자
 						if( gubn===0 ) location.href="/Manage_Page/home.jsp";
 						// 고객
-						if( gubn===1 ) location.href="/Page/main.html";
+						// 이전페이지로 이동 history.back();
+						if( gubn===1 ) location.href="/Page/main.jsp";
 						
 					} else {
 	// 				alert("로그인 실패");
@@ -1106,10 +1068,6 @@ $(document).ready( function() {
 });
 </script>
 
-<!-- <link type="text/css" rel="stylesheet" media="all" -->
-<!-- 	href="./css/master.css" /> -->
-
-<title>로그인</title>
 
 </head>
 
@@ -1117,8 +1075,7 @@ $(document).ready( function() {
 	<!-- Begin #wrap -->
 	<div id="wrap">
 		<div class="top_banner join" style="display: none;">
-			<!-- // free 클래스 삭제 (2015-12-30) -->
-
+			
 			<div class="cont">
 
 				<a href="https://www.greencar.co.kr/member/index.jsp"
@@ -1217,7 +1174,7 @@ $(document).ready( function() {
 
 			<div>
 				<div>
-					<a href="javascrpt:void(0);" id="findLayer">아이디/비밀번호 찾기</a>
+					<a href="/login/findId.do" id="findLayer">아이디/비밀번호 찾기</a>
 				</div>
 				<div>
 					<span class="join_hidden" id="alert_id">아이디를 입력하세요.</span>
@@ -1235,23 +1192,28 @@ $(document).ready( function() {
 	
 	<div style="padding-top: 5px;">
 		<a href="javascript:void(0);">
-		<img src="./images/login/facebook.PNG" alt="" />
+		<img src="/Page/images/login/facebook.PNG" alt="" />
 		</a>
 		<a href="javascript:void(0);">
-		<img src="./images/login/kakao.PNG" alt="" />
+		<img src="/Page/images/login/kakao.PNG" alt="" />
 		</a> <br>
-		<a href="javascript:void(0);">
-		<img src="./images/login/naver.PNG" alt="" />
-		</a>
+<!-- 		<a href="javascript:void(0);"><img src="./images/login/naver.PNG" alt="" /></a> -->
+		<div id="naver_id_login">네이버로그인</div>
+		<script type="text/javascript">
+			var naver_id_login = new naver_id_login(
+					"vL_aDS4Z9bTr4P8i4TKj"
+					, "http://localhost:8090/Api/Member/callback.html");
+			var state = naver_id_login.getUniqState();
+			naver_id_login.setButton("white", 2,40);
+			naver_id_login.setDomain("http://localhost:8090");
+			naver_id_login.setState(state);
+			naver_id_login.setPopup();
+			naver_id_login.init_naver_id_login();
+		</script>
 	</div>
 </div>
 </div>
 </div>
-
-
-
-
-
 
 			</div>
 			<!-- // End #container -->

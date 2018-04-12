@@ -7,7 +7,7 @@ public class Car {
 	private String carOil;
 	private String carCondi;
 	private String carLCD;//최종 점검 날짜
-	
+	//
 	
 	public String getCarNum() {
 		return carNum;

@@ -19,7 +19,12 @@ import service.MemberSignUpServiceImpl;
 public class MemberSignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 		MemberSignUpService service = new MemberSignUpServiceImpl();
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/Page/signUp.html").forward(req, resp);
 	
+	}
+		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/json; charset=utf-8");
 		
@@ -32,6 +37,8 @@ public class MemberSignUpServlet extends HttpServlet {
 		String memAddr = request.getParameter("memAddr");
 		String memEmail = request.getParameter("memEmail");
 		String memJumin = request.getParameter("memJumin");
+		String btnName = request.getParameter("btnName");
+		
 		
 		Member mem = new Member();
 		mem.setMemId(memId);
@@ -42,15 +49,22 @@ public class MemberSignUpServlet extends HttpServlet {
 		mem.setMemAddr(memAddr);
 		mem.setMemEmail(memEmail);
 		mem.setMemJumin(memJumin);
+		mem.setBtnName(btnName);
+		
 		
 		
 		Gson gson = new Gson();
+		service.signUp(mem);
 
-//		String msg = "ajax 성공!!!!!1";
+		//확인용 콘솔메시지
+		System.out.println(mem.getMemId()+" : "+memId);
+		System.out.println(mem.getBtnName()+" : "+btnName);
+		System.out.println("mem.getMsg"+ mem.getMsg());
+		//end
+		String msg = mem.getMsg();
+    
 		JsonObject jsonObject = new JsonObject();
 //		jsonObject.addProperty("msg", gson.toJson(msg));
 		response.getWriter().write(gson.toJson(jsonObject));
-		service.signUp(mem);
-		
 	}
 }

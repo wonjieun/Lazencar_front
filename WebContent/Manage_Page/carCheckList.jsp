@@ -8,6 +8,7 @@
 <%@ page import ="dao.adminDao.CarCheckListDao" %>
 <!DOCTYPE html>
 
+
 <html>
 
 <head>
@@ -29,22 +30,6 @@
 	.options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
-	
-	#table2 th:first-child{
-	    background: #f1c40f;
-	    height: 30px;
-	    background-repeat: no-repeat;
-	    color: white;
-	    text-align: center;
-	    width: 20%;
-	}
-	#table2 th:last-child{
-	background:#f1c40f;
-	height:30px;
-	background-repeat:no-repeat;
-	color:white;
-	text-align: center;   
-	width: 10%;}
 	
 	.level1 :nth-child(4) .fly {background: #ffb505 !important;}
 	
@@ -91,16 +76,41 @@
 			return true;
 		}
 	}
-	$(function(){	
-
-		var onSampleResized = function(e){
-			var columns = $(e.currentTarget).find("th");
-			var msg = "columns widths: ";
-			columns.each(function(){ msg += $(this).width() + "px; "; })
-			$("#table2Txt").html(msg);
+	//수정 버튼 눌렀을시 실행
+	function update_clicked(a){
+		if(confirm("수정하시겠습니까?")){
+			var btnEdit = "updateCar";
+			var font_carNum = $("#font_carNum_"+a).text();		
+			var font_carCondi = $("#font_carCondi_"+a).val();
+			var car_LCD = $("#car_LCD_"+a).val();
+			console.log(car_LCD);
 			
-		};
-	});
+			var $form3 = $("<form>").attr("action","/admin/carCheckList.do").attr("method","get");
+			$("<input>").attr("type","hidden").attr("name","font_carNum").attr("value",font_carNum).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","font_carCondi").attr("value",font_carCondi).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","car_LCD").attr("value",car_LCD).appendTo($form3);
+			$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form3);
+			$form3.appendTo($(document.body));
+			
+			$form3.submit();
+		}else return;
+	}
+	//삭제 버튼 눌렸을시 실행
+	function delete_clicked(a){
+		if(confirm("삭제하시겠습니까?")){
+			var font_carNum = $("#font_carNum_"+a).text();
+			var btnEdit ="deleteCar";
+			
+			var $form2 = $("<form>").attr("action","/admin/carCheckList.do").attr("method","get");
+			$("<input>").attr("type","hidden").attr("name","font_carNum").attr("value",font_carNum).appendTo($form2);
+			$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form2);
+			$form2.appendTo($(document.body));
+			
+			$form2.submit();	
+		}
+		else return;
+	}
+
 // 	검색 및 정렬하는 ajax
 $(document).ready(function(){
 	$("#searchCar").click(function(){
@@ -109,14 +119,14 @@ $(document).ready(function(){
 		var sort=$("#sort").val();
 		var content=$("#search_content").val();
 		var clicked="clicked";
-		
+<%-- 		<%=request.setAttribute("content",content)%> --%>
 		console.log("카테고리:"+category);
 		console.log("정렬기준:"+sort);
 		console.log("입력내용:"+content);
 		if(checkSearch_content()==true){
 			console.log("내용있음");
 			
-			var $form = $("<form>").attr("action", "/admin/carCheckList.do").attr("method", "post");
+			var $form = $("<form>").attr("action", "/admin/carCheckList.do").attr("method", "get");
 			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
@@ -125,77 +135,17 @@ $(document).ready(function(){
 			
 			$form.submit();	
 			
-			
 		}else{
 			alert("검색어를 입력하세요");
 			console.log("내용을 채워주세요");
 		}
 	});
-	
 });
   </script>
 </head>
 <body>
 
-<div id="menu">
-   <ul class="level1">
-      <li><a href="./home.jsp">Home</a></li>
-      <li><a class="fly" href="javascript:void(0);">회원 관리</a>
-         <ul>
-            <li><a href="./userManage.jsp" >회원목록 조회</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">예약 관리</a>
-         <ul>
-            <li><a href="./reservManage.jsp">예약목록 조회</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">차량 관리</a>
-         <ul>
-            <li><a href="./carRegister.jsp">차량 등록</a></li>
-            <li><a href="/admin/carCheckList.do">차량 수정</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">공지 사항</a>
-         <ul>
-            <li><a href="./noticeManage.jsp">공지사항 등록</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">후기 관리</a>
-         <ul>
-            <li><a href="./reviewManage.jsp">후기목록 조회</a></li>
-         </ul>
-      </li>
-      
-      <li><a class="fly" href="javascript:void(0);">문의 관리</a>
-         <ul>
-            <li><a href="./qnaManage.jsp">문의 내역 확인</a></li>
-            <li><a href="./qnaRegister.jsp">문의 답변 등록</a></li>
-         </ul>
-      </li>
-		
-		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
-			<ul>
-				<li><a href="./couponRegister.jsp">쿠폰 등록</a></li>
-				<li><a href="./couponDelete.jsp">쿠폰 조회/삭제</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
-			<ul>
-				<li><a href="./promotionRegister.jsp">특가 등록</a></li>
-				<li><a href="./promotionDelete.jsp">특가 조회/삭제</a></li>
-
-			</ul>
-		</li>
-		
-	</ul>
-</div>		<!-- sideMenu end -->
-
+<jsp:include page="/Manage_Page/util/sideMenu.jsp" />
 
 <div class="wrap">
 
@@ -205,7 +155,7 @@ $(document).ready(function(){
 </div>		<!-- header end -->
 
 
-<div class="container">
+<div class="contain">
 
 
 <div class="content">
@@ -227,7 +177,8 @@ $(document).ready(function(){
 									<option value="car_Category">차량종류</option>
 									<option value="car_Condi">차량상태</option>
 							</select></td>
-							<td><input size='30' id="search_content"></textarea>
+							<td>
+								<input size='30' id="search_content"  >
 							</td>
 							<td class="right">
 								<!-- 정렬 --> <select class="sort" id="sort">
@@ -261,14 +212,14 @@ $(document).ready(function(){
 						<c:forEach items="${list }" begin="0" end="${paging.listCount }" var="i" varStatus="listNumber">
 								
 							<tr>
-								<td id="td_carId">${i.carNum }</td>
+								<td id="font_carNum_${listNumber.count}">${i.carNum }</td>
 								<td>${i.carName }</td>
 								<td>${i.carCondi }</td>
 								<td>${i.carCategory }</td>
 								<td>${i.carOil }</td>
 								<td>${i.carLCD }</td>								<td>
 								<button id="btn_listDown" onclick="showDetail('hiddenTr_${listNumber.count}');" style="margin:auto 0;">수정</button><br>
-								<button id="btn_delete" style="margin:auto 0;">삭제</button>
+								<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button>
 								</td>
 							</tr>
 							<tr class="hiddenTr" id="hiddenTr_${listNumber.count }">
@@ -282,9 +233,9 @@ $(document).ready(function(){
 								<font>최종점검일: </font>
 								</div>
 								<div>
-									<font>${i.carNum }</font><br>
+									<font >${i.carNum }</font><br>
 									<font>${i.carName }</font><br>
-											<select class="sort" id="carCondi"	name="condiSelect">
+											<select class="sort" id="font_carCondi_${listNumber.count}"	name="condiSelect">
 											<option>${i.carCondi }</option>
 											<option value="대기중">대기중</option>
 											<option value="예약중">예약중</option>
@@ -293,10 +244,13 @@ $(document).ready(function(){
 									</select><br>
 									<font>${i.carCategory }</font><br>
 									<font>${i.carOil }</font><br>
-									<input value="${i.carLCD }"/><br>
+									<font>${i.carLCD }</font>
+									<input type="date" id="car_LCD_${listNumber.count}"/><br>
+<%-- 									<input type="text" id="car_LCD_${listNumber.count}" value="${i.carLCD }"/><br> --%>
 								</div>
 								<div>
-									<button id="btn_update">수정완료</button>
+									<button id="btn_update_${listNumber.count }"
+									 onclick="update_clicked(${listNumber.count })">수정완료</button>
 								</div>
 								</td>
 							</tr>	
@@ -308,12 +262,12 @@ $(document).ready(function(){
 					</table>
 				</div>
 				
-				<jsp:include page="/Manage_Page/util/paging.jsp" />
+				<jsp:include page="/Manage_Page/util/carListPaging.jsp" />
 			</div>
 
 </div>		<!-- content end -->
 
-</div>		<!-- container end -->
+</div>		<!-- contain end -->
 
 
 

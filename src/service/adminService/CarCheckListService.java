@@ -7,4 +7,6 @@ import util.Paging;
 
 public interface CarCheckListService {
 	public List getCarList(Paging paging,CarManage cm);
+	
+	public void editCarData(CarManage cm);
 }

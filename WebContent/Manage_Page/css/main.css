@@ -49,7 +49,7 @@
 
 .btnSave {display: block; float:right; margin-right: 5%; margin-top: 15px; margin-bottom: 20px;}
 
-.content {margin-top: 15px; margin-left: 300px; position: absolute; float: left;}
+.content {margin-top: 15px; margin-left: 300px; position: absolute; float: left; width: 1200px; z-index: -10;}
 
 .center{
 	text-align:left;
@@ -89,17 +89,9 @@
    background-repeat:no-repeat;
    color:white;
    text-align: center;   
-   width: 26%;
+   border-right: 1px solid white; 
 }
 
-#table2 th:first-child{
-   background:#f1c40f;
-   height:30px;
-   background-repeat:no-repeat;
-   color:white;
-   text-align: center;   
-   width: 10%;
-}
 
 #table2 th{
    background:#f1c40f;
@@ -107,6 +99,7 @@
    background-repeat:no-repeat;
    color:white;
    text-align: center;   
+   border-right: 1px solid white; 
 }
 
 .table1 td{
@@ -139,18 +132,6 @@ td.bottom{
 	border-bottom:1px solid #bbb;
 }
 
-.dragging .grip{
-	background-position-x:-40px;
-}
-
-.tableText{
-	position:relative;
-	width:10%;
-}
-
-#table2Txt{
-	float:right;	
-}
 label{
 	color:#0361ae;
 }
