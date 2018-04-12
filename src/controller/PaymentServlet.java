@@ -28,7 +28,7 @@ public class PaymentServlet extends HttpServlet {
 	MakePaymentDao dao = new MakePaymentDao();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
+//		doPost(req, resp);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -58,14 +58,16 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println("result:" +result);
 			if(result.equals("결제 완료")) {
 				dao.updatePayStatus(pay.getPayNum());
+				System.out.println("결제데이터 넘버"+pay.getPayNum()+"번 상태 결제완료로 변경함.");
 			}else if(result.equals("결제 실패")) {
 				dao.deletePayment(pay.getPayNum());
 				dao.deleteReservation(pay.getPayNum());
+				System.out.println("결제데이터 넘버"+pay.getPayNum()+"번의 결제,예약데이터 삭제함.");
 			}else {
 				System.out.println("result값 가져오기 실패 또는 값 오류");
 			}
 		}
-		System.out.println("결제상태 바꾸기 성공");
+		
 //		response.sendRedirect("/Page/payment.jsp");
 		request.getRequestDispatcher("/Page/payment.jsp").forward(request, response);
 	}

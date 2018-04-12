@@ -373,7 +373,8 @@ public class ReservationDaoImpl implements ReservationDao{
 	
 	@Override
 	public void insertRES(Reservation res) {
-		//daoimpl 출력
+		//초기화 해주기위해 지역변수에 따로 지정헀음.
+		PreparedStatement pst = null;
 		
 			// TODO Auto-generated method stub/- 수정전
 		//180412 - DB 테이블 수정 및 다시 작성

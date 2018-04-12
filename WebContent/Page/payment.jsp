@@ -21,11 +21,11 @@
 		IMP.init('imp25024823'); // 가맹점 식별코드
 
 		// 결제 모듈 불러오기
-		$("#pay").click(function() {
-			console.log("눌리긴했는데?");
+// 		$("#pay").click(function() {
+// 			console.log("눌리긴했는데?");
 			requestPayment();
-			console.log("메서드도 지나갔네?");
-		});
+// 			console.log("메서드도 지나갔네?");
+// 		});
 	});
 	// DB tb_payment ( pay_num, pay_amount, pay_name, pay_email, pay_phone) 다섯개를 기능 안에 넣어야 한다.
 
@@ -84,7 +84,7 @@
 						
 // 						alert(msg);
 						if(confirm(msg)){
-							location.href("/reservation/reservation.do");							
+							location.replace("/reservation/reservation.do");							
 						}
 
 					} else {
@@ -109,7 +109,7 @@
 			
 // 			alert(msg);
 			if(confirm(msg)){
-				location.href("/reservation/reservation.do");							
+				location.replace("/reservation/reservation.do");							
 			}
 		});
 	}
@@ -118,7 +118,7 @@
 </head>
 <body>
 
-	<button id="pay">결제</button>
+<!-- 	<button id="pay">결제</button> -->
 
 </body>
 </html>
