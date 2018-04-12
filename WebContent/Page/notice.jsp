@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <title>공지사항</title>
 
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
@@ -1852,7 +1850,7 @@ a.hoverline:hover {
 							<ul class="submenu">
 								<li><a href="#" class="submenuLink longLink">1:1 문의</a></li>
 								<li><a href="#" class="submenuLink longLink">자주찾는 질문</a></li>
-								<li><a href="#" class="submenuLink longLink">공지사항</a></li>
+								<li><a href="/service/list.do" class="submenuLink longLink">공지사항</a></li>
 							</ul></li>
 					</ul>
 					</nav>
@@ -1874,7 +1872,7 @@ a.hoverline:hover {
 					<ul class="leftMenu">
 						<li class="top"><a href="#"><span>1:1 문의</span></a></li>
 						<li><a href="#"><span>자주찾는질문</span></a></li>
-						<li><a href="#" class='on'><span>공지사항</span></a></li>
+						<li><a href="/service/list.do" class='on'><span>공지사항</span></a></li>
 
 						<!-- 					class = 'on'	현재 페이지를 나타낼때 on 사용하는 듯 -->
 

@@ -39,8 +39,7 @@
 <%  
    String now_id = null;
    if (session.getAttribute("id") != null) {
-
-      now_id = (String) session.getAttribute("id");
+     now_id = (String) session.getAttribute("id");
    }
 
    // 예외처리 현재 아이디값 안들어와있을때
@@ -79,19 +78,20 @@
       <li><a class="fly" href="/admin/carRegister.do">차량 관리</a>
          <ul>
             <li><a href="/admin/carRegister.do">차량 등록</a></li>
-            <li><a href="/admin/carCheckList.do">차량 정보수정</a></li>
+            <li><a href="/admin/carCheckList.do">차량 조회/수정</a></li>
          </ul>
       </li>
       
       <li><a class="fly" href="/admin/noticeRegister.do">공지 사항</a>
          <ul>
             <li><a href="/admin/noticeRegister.do">공지사항 등록</a></li>
+            <li><a href="/admin/noticeList.do">공지사항 조회/수정</a></li>
          </ul>
       </li>
       
       <li><a class="fly" href="javascript:void(0);">후기 관리</a>
          <ul>
-            <li><a href="/reviewManage.jsp">후기목록 조회</a></li>
+            <li><a href="/admin/reviewList.do">후기목록 조회</a></li>
          </ul>
       </li>
       

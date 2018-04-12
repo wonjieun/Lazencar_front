@@ -19,6 +19,8 @@ public class QnaListDaoImpl implements QnaListDao {
 	private final String username = "LAZENCAR";
 	private final String password = "saveus";
 	private Connection conn = null;
+	
+	private ResultSet rs;
 
 	public QnaListDaoImpl() {
 
@@ -34,23 +36,23 @@ public class QnaListDaoImpl implements QnaListDao {
 
 	@Override
 	public boolean doSearch(QnaManage qm) {
-		if("clicked".equals(qm.getClicked())) {
+		if ("clicked".equals(qm.getClicked())) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public List getList(Paging paging, QnaManage qm) {
-		if(doSearch(qm) == true) {
-			System.out.println("qmSearch"+doSearch(qm));
+		if (doSearch(qm) == true) {
+			System.out.println("qmSearch" + doSearch(qm));
 			return getSearchList(paging, qm);
-		}else {
+		} else {
 			return getAllList(paging);
 		}
 	}
-	
+
 	@Override
 	public int getTotal(QnaManage qm) {
 		Statement st = null;
@@ -115,7 +117,7 @@ public class QnaListDaoImpl implements QnaListDao {
 				dto.setQnaDate(rs.getString("QNA_DATE"));
 				dto.setQnaCate(rs.getString("QNA_CATE"));
 				dto.setQnaTitle(rs.getString("QNA_TITLE"));
-				dto.setQnaContent(rs.getString("QNA_CONTENT"));
+				dto.setQnaContents(rs.getString("QNA_CONTENT"));
 				dto.setQnaAnswer(rs.getString("QNA_ANSWER"));
 				dto.setMemEmail(rs.getString("MEM_EMAIL"));
 				dto.setQnaCompleted(rs.getString("QNA_COMPLETED"));
@@ -154,7 +156,9 @@ public class QnaListDaoImpl implements QnaListDao {
 				+ " ORDER BY " + qm.getSort() + ", QNA_DATE )B" 
 				+ " ORDER BY RNUM)"
 				+ " WHERE RNUM BETWEEN ? AND ?";
-		
+
+//			try {
+
 		
 		System.out.println("sql = "+sql);
 		try {
@@ -166,7 +170,7 @@ public class QnaListDaoImpl implements QnaListDao {
 			rs = pst.executeQuery();
 
 			System.out.println(paging);
-			
+
 			while (rs.next()) {
 				Qna dto = new Qna();
 				dto.setQnaNum(rs.getInt("QNA_NUM"));
@@ -174,24 +178,26 @@ public class QnaListDaoImpl implements QnaListDao {
 				dto.setQnaDate(rs.getString("QNA_DATE"));
 				dto.setQnaCate(rs.getString("QNA_CATE"));
 				dto.setQnaTitle(rs.getString("QNA_TITLE"));
-				dto.setQnaContent(rs.getString("QNA_CONTENT"));
+				dto.setQnaContents(rs.getString("QNA_CONTENT"));
 				dto.setQnaAnswer(rs.getString("QNA_ANSWER"));
 				dto.setMemEmail(rs.getString("MEM_EMAIL"));
 				dto.setQnaCompleted(rs.getString("QNA_COMPLETED"));
-				
-				if(rs.getString("QNA_IMG") != null) {
+
+				if (rs.getString("QNA_IMG") != null) {
 					dto.setQnaImg(rs.getString("QNA_IMG"));
 				}
-				
+
 				list.add(dto);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null)		rs.close();
-				if (pst != null)	pst.close();
+				if (rs != null)
+					rs.close();
+				if (pst != null)
+					pst.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -206,6 +212,11 @@ public class QnaListDaoImpl implements QnaListDao {
 		String sql1 ="update tb_QNA set QNA_ANSWER = ?, QNA_Completed = 1 where qna_Num=?";
 		try {
 			if(!"아직 답변이 등록되지 않았습니다.".equals(qm.getEdit_qnaAnswer()) && qm.getEdit_qnaAnswer()!=null && !"".equals(qm.getEdit_qnaAnswer())) {
+/*
+		String sql1 = "update tb_QNA set QNA_ANSWER = ? where qna_Num=?";
+		try {
+			if (qm.getEdit_qnaAnswer() == "" || qm.getEdit_qnaAnswer() == null) {
+*/
 				pst = conn.prepareStatement(sql1);
 				pst.setString(1, qm.getEdit_qnaAnswer());
 				pst.setString(2, qm.getKey_qnaNum());
@@ -221,7 +232,7 @@ public class QnaListDaoImpl implements QnaListDao {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -232,7 +243,7 @@ public class QnaListDaoImpl implements QnaListDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, qm.getKey_qnaNum());
 			pst.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -243,6 +254,55 @@ public class QnaListDaoImpl implements QnaListDao {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	@Override
+	public int getSeq() {
+		
+		String sql =  "SELECT QNA_NUM FROM TB_QNA ORDER BY QNA_NUM DESC";
+		
+		try {
+			
+			PreparedStatement pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+			if(rs.next()) {
+				
+				return rs.getInt(1) + 1;
+			}
+			
+			return 1; // 현재가 첫번째 글 일 경우
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+
+		return -1; // 디비 오류나면
+	}
+	
+	@Override
+	public int insertQna(String qnaTitle, String qnaContents, String memId, String qnaCate) {
+		
+		String sql =  "INSERT INTO TB_QNA VALUES (?, ?, sysdate, ?, ?, ?, default, 0)";
+		
+		try {
+			
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, getSeq());
+			pst.setString(2, memId);
+			pst.setString(3, qnaCate);
+			pst.setString(4, qnaTitle);
+			pst.setString(5, qnaContents);
+			
+			
+			return pst.executeUpdate();
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+
+		return -1; // 디비 오류나면
 	}
 
 }

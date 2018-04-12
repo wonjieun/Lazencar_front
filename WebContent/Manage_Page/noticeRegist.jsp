@@ -156,7 +156,7 @@
 						<tr>
 							
 							<td colspan="2">
-							<input type="text" id="notContent" name="notContent" style="width:800px; height:400px;"/>
+							<textArea id="notContent" name="notContent" style="width:800px; height:400px;"></textArea>
 <!-- 							<textarea rows="20" cols="120" id="textAreaContent"></textarea> -->
 							</td>
 						</tr>

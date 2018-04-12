@@ -1,5 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
+<%@ page import = "java.io.PrintWriter" %>
+<%@ page import = "dto.Review" %>
+<%@ page import = "dao.ReviewDaoImpl" %>
+
+<%
+
+	String now_id = null;
+	if (session.getAttribute("id") != null) {
+
+		now_id = (String) session.getAttribute("id");
+	}
+	
+	// 예외처리 현재 아이디값 안들어와있을때
+
+	if (now_id == null) {
+
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인부터 해주세요!')");
+		script.println("location.href = 'login.jsp'");
+		script.println("</script>");
+    }
+
+%>
 
 <!DOCTYPE html>
 
@@ -193,7 +218,6 @@ $(function(){
         }
     });
      
-    
     //전송버튼 클릭이벤트
     
     $("#save").click(function(){
@@ -360,7 +384,7 @@ $(function(){
 				</div>
 				<div class="bodystart">
 <!-- bodystart -->
-                    <form action="review_Action.jsp" method="post" id="frm">
+                    <form action="review_Write_Action.jsp" method="post" id="frm">
                              
 					<table summary="신청장소 선택, 등록" class="boardView-02">
 						<caption> 후기 작성 </caption>
@@ -405,7 +429,7 @@ $(function(){
 
                                    </textarea>
     
-                                   <input type="button" id="save" value="저장" />
+                                   <input type="button" id="save" value="글쓰기" />
   			
 								</td>
 							</tr>

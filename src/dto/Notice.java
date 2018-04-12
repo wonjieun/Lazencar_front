@@ -3,12 +3,11 @@ package dto;
 public class Notice {
 	private String searchItem;
 	private String searchWord;
-	private String notNum;
+	private int notNum;
 	private String notTitle;
 	private String notContent;
 	private String notDate;
 	private String notEmail;
-	// private Byte[] notFile;
 	private String notFile;
 	
 	public String getSearchItem() {
@@ -27,11 +26,11 @@ public class Notice {
 		this.searchWord = searchWord;
 	}
 
-	public String getNotNum() {
+	public int getNotNum() {
 		return notNum;
 	}
 
-	public void setNotNum(String notNum) {
+	public void setNotNum(int notNum) {
 		this.notNum = notNum;
 	}
 

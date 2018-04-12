@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -119,7 +120,6 @@
 </head>
 
 <body>
-
 <jsp:include page="/Manage_Page/util/sideMenu.jsp" />
 
 <div class="wrap">
@@ -153,7 +153,7 @@
 
 								<div class="demo">
 									<h6 style="margin: 0;">날짜를 입력 하세요.(ex.2018.03.28)</h6>
-									<input id="carLCD" size="30" value="">
+									<input type="date" id="carLCD" size="30" value="">
 								</div>
 
 							</td>

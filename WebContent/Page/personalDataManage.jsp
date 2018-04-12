@@ -1150,6 +1150,12 @@ ul.tabs li.current {
 .tabContent.current {
 	display: inherit;
 }
+
+.alert_pwCheck{
+	color: red;
+    font-size: 7pt;
+    margin-left: 15px;
+}
 </style>
 
 
@@ -1300,15 +1306,15 @@ ul.tabs li.current {
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>예약확인</span></a></li>
+						<li class="top"><a href="/Page/reservationCheck.jsp"><span>예약확인</span></a></li>
 
-						<li><a href="#"><span>개인정보 관리</span></a></li>
+						<li><a href="/Page/personalDataManage.jsp"><span>개인정보 관리</span></a></li>
 
-						<li><a href="#"><span>쿠폰</span></a></li>
+						<li><a href="/Page/couponCheck.jsp"><span>쿠폰</span></a></li>
 
 						<li><a href="#"><span>1:1문의</span></a></li>
 
-						<li><a href="#" class='on'><span>회원탈퇴</span></a></li>
+						<li><a href="/Page/deleteAccount.jsp" class='on'><span>회원탈퇴</span></a></li>
 
 					</ul>
 
@@ -1469,8 +1475,7 @@ ul.tabs li.current {
 													<td><span class="formatIn"><input
 															type="password" name="PASSWORD2" id="mem_pw2"
 															class="w100" title="비밀번호를 재입력하세요." maxlength="20"
-															value="<%=mem.getMemPw()%>" /></span> <span class="exp ml10">*
-															영문,숫자,특수문자 혼합하여 6-12자 이내 이어야 합니다.</span></td>
+															value="<%=mem.getMemPw()%>" /></span> <span class="exp ml10 alert_pwCheck" id="alert_pwCheck"></span></td>
 												</tr>
 											</tbody>
 										</table>
@@ -1859,6 +1864,17 @@ ul.tabs li.current {
 				return false;
 			}
 		}
+		
+		$("#mem_pw2").blur(function(){
+			var memPw1 = $("#mem_pw1").val();
+			var memPw2 = $("#mem_pw2").val();
+			if(memPw1 == memPw2){
+				$("#alert_pwCheck").html("비밀번호 확인완료.");
+			}else{
+				$("#alert_pwCheck").html("비밀번호가 다릅니다.");
+			}
+		});
+		
 		$("#btn_LicenData").click(function() {
 			if (checkLicenData()) {
 				var mem_id = $("#mem_id").val();

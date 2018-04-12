@@ -29,6 +29,8 @@ public class MemberSignUpServlet extends HttpServlet {
 		response.setContentType("text/json; charset=utf-8");
 		
 		String memId = request.getParameter("memId");
+		
+		Number memGubn = Integer.parseInt(request.getParameter("memGubn"));
 		String memPw = request.getParameter("memPw");
 		String memName = request.getParameter("memName");
 		String memPhone = request.getParameter("memPhone");
@@ -41,6 +43,7 @@ public class MemberSignUpServlet extends HttpServlet {
 		Member mem = new Member();
 		mem.setMemId(memId);
 		mem.setMemPw(memPw);
+		mem.setMemGubn(memGubn);
 		mem.setMemName(memName);
 		mem.setMemPhone(memPhone);
 		mem.setMemAddr(memAddr);
@@ -51,7 +54,6 @@ public class MemberSignUpServlet extends HttpServlet {
 		
 		
 		Gson gson = new Gson();
-
 		service.signUp(mem);
 
 		//확인용 콘솔메시지
@@ -60,8 +62,9 @@ public class MemberSignUpServlet extends HttpServlet {
 		System.out.println("mem.getMsg"+ mem.getMsg());
 		//end
 		String msg = mem.getMsg();
+    
 		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("msg", gson.toJson(msg));
+//		jsonObject.addProperty("msg", gson.toJson(msg));
 		response.getWriter().write(gson.toJson(jsonObject));
 	}
 }

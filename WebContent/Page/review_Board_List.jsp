@@ -6,7 +6,13 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%
+   String id = "";
 
+   id = (String)session.getAttribute("id");
+
+
+%>
 
 <!DOCTYPE html>
 
@@ -512,7 +518,7 @@ a.nvalinks-rev:hover {
 					<div class="subtop-content bg_subvisual_01_03">
 						<h3 class="subtit">후기</h3>
 						<p class="subtxt">
-							<strong>합리적인 소비와 환경보호를 실천하는 신개념 차량 공유서비스</strong> <br />우리동네에도
+							<strong><%= id %></strong> <br />우리동네에도
 							그린카가 필요하다면 지금 바로 신청하세요!
 						</p>
 					</div>
@@ -554,13 +560,8 @@ a.nvalinks-rev:hover {
 
 						<jsp:include page="/Page/paging.jsp" />
 
-						<form id="frmSearch" name="frmSearch" method="get"
-							action="./list.do">
+						<form id="frmSearch" name="frmSearch" method="get" action="./list.do">
 							<div class="form-searchbox">
-								<h4>
-									<label for="searchItem"><img
-										src="../../images/board/txt_tit_search.gif" alt="검색" /></label>
-								</h4>
 								<div class="form-search-01">
 									<select id="searchItem" name="searchItem" class="selstyle">
 										<option value="ALL">전체</option>

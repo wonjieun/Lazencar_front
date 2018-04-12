@@ -7,6 +7,9 @@
 <title>로그인</title>
 
 <link type="text/css" rel="stylesheet" href="/Page/css/login.css" >
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/master.css?v=180322">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/calendar.css">
 
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -15,6 +18,8 @@
 	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
  
 <script src="/Page/js/naverLogin_implicit-1.0.2-min.js"></script>  
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <script type="text/javascript">
 /* 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때 */
@@ -295,10 +300,8 @@ function f_login() {
 		<a href="javascript:void(0);">
 		<img src="/Page/images/login/naver.PNG" alt="" />
 		</a>
-
-<!-- 			<a href="javascript:void(0);"><img src="/Page/images/login/naver.PNG" alt="" /></a> <br> -->
 		
-		<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+		<!-- 네이버아이디로 로그인 -->
 	  <div id="naver_id_login">
 	  <img src="/Page/images/login/naver.PNG" alt="" />
 	  </div>
@@ -306,8 +309,7 @@ function f_login() {
   	var naver_id_login = new naver_id_login(
 	  			"vL_aDS4Z9bTr4P8i4TKj"
 	  			, "http://localhost:8092/Api/Member/callback.html");
-//   			, "http://localhost:8092/login/loginresult.do");
-//   			, "http://localhost:8092/main.do");
+//   			, "http://localhost:8092/login/loginResult.do");
   	var state = naver_id_login.getUniqState();
     naver_id_login.setButton("white", 2,40);
   	naver_id_login.setDomain("http://localhost:8092");
@@ -316,13 +318,67 @@ function f_login() {
   	naver_id_login.init_naver_id_login();
 	  </script>
 		
-	  
 <!-- 	  <div id="naver_id_logout" style="display: none;"> -->
 <!--     <a href="#" onclick="logout();">로그아웃</a></div> -->
-	  
-		<a href="http://nid.naver.com/nidlogin.logout" onclick="logout();" id="logout">
-		sns로그아웃</a>
+		<a href="http://nid.naver.com/nidlogin.logout"
+			onclick="logout();" id="logout">
+		네이버 로그아웃<br/></a>
 <!-- 		<a href="#" id="logout">sns 로그아웃</a> -->
+
+		<!-- 카카오아이디로 로그인 -->
+		<a id="custom-login-btn" href="javascript:loginWithKakao()">
+		<img src="/Page/images/login/kakao.png" alt="" /></a>
+		<script type='text/javascript'>
+		  //<![CDATA[
+		    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+		    Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
+		    
+		    // 카카오 로그인 버튼을 생성합니다.
+		    function loginWithKakao() {
+// 		    토큰꺼내기	authObj.access_token
+// 		    	alert("access token : " + Kakao.Auth.getAccessToken());
+		    	if(Kakao.Auth.getAccessToken()==null) {
+		    		Kakao.Auth.loginForm({
+		    			success : function(authObj) {
+		    				alert(JSON.stringify(authObj));
+		    				console.log(JSON.stringify(authObj));
+		    				alert(authObj.access_token);
+		    				location.href="/main.do";
+		    			},
+		    			fail: function(err) {
+		    				alert(JSON.stringify(err));
+		    			}
+		    		});
+		    	}
+// 		      // 로그인 창을 띄웁니다.
+// 		      Kakao.Auth.login({
+// 		        success: function(authObj) {
+// 		          alert(JSON.stringify(authObj));
+// 		          alert(authObj.access_token);
+// 							location.href="/main.do";
+// 		        },
+// 		        fail: function(err) {
+// 		          alert(JSON.stringify(err));
+// 		        }
+// 		      });
+		      
+		    };
+		  //]]>
+		</script>
+		
+		<a href="javascript:logoutWithKakao()" id="logout">카카오 로그아웃</a>
+		<script type='text/javascript'>
+		  //<![CDATA[
+		    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+		    Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
+		    function logoutWithKakao() {
+		      Kakao.Auth.logout(function() {
+		    	  location.href="/main.do";
+		      });
+		    };
+		  //]]>
+		</script>
+		
 		
 	</div>
 </div>
