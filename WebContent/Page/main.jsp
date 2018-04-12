@@ -10,19 +10,21 @@
 
 
 <link type="text/css" rel="stylesheet" href="/Page/css/main.css" >
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/master.css?v=180322">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/calendar.css">
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
 <script src="/Page/js/main.js"></script>
 
 <script type="text/javascript">
-
 // 로그인, 회원가입 -> 로그아웃, 마이페이지
 function login_menu() {
 // 	alert('${sessionScope.id}');
 // 	alert('${sessionScope.token}');
 	var id = '${sessionScope.id}';
 	var token = '${sessionScope.token}';
-	
 // 	alert(id);
 // 	alert(token);
 	
@@ -51,32 +53,33 @@ $(document).ready(function() {
 </head>
 
 <body>
-   <!-- Begin #wrap -->
-   <div id="wrap">
-      <!-- Begin #header -->
-      <div id="header" class="sub">
-         <div class="hgroup">
-            <div class="inbox">
-               <h1 class="logo">
-                  <a href="/main.do"><span>라젠카</span></a>
-               </h1>
+<!-- Begin #wrap -->
+<div id="wrap">
+<!-- Begin #header -->
+<div id="header" class="sub">
+   <div class="hgroup">
+      <div class="inbox">
+         <h1 class="logo">
+            <a href="/main.do"><span>라젠카</span></a>
+         </h1>
 
-               <div class="nvalinks">
-                  <a href="/login/login.do" id="login">로그인</a>
-                  <a href="/signUp.do" id="signup">회원가입</a>
-                  <a href="/login/logout.do" id="logout">로그아웃</a>
-                  <!-- sns사용자 로그아웃 -->
-            			<a href="/login/logout.do" id="sns_logout">로그아웃</a>
-            			
-            			<script type="text/javascript">
+         <div class="nvalinks">
+            <a href="/login/login.do" id="login">로그인</a>
+            <a href="/signUp.do" id="signup">회원가입</a>
+            <a href="/login/logout.do" id="logout">로그아웃</a>
+            <!-- sns사용자 로그아웃 -->
+      			<a href="/login/logout.do" id="sns_logout">로그아웃</a>
+      			
+      			<script type="text/javascript">
             			 	$("#logout").click(function() {
 // 										console.log(token);
 											location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
 										});
             			 	</script>
-            			
-            			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
-                  <a class="nvalinks-rev" href="/reservation/reservation.do">라젠카 예약하기</a>
+	
+      			
+      			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
+            <a href="/Page/reservation.html" class="nvalinks-rev">라젠카 예약</a>
 
                </div>
                
@@ -96,7 +99,7 @@ $(document).ready(function() {
             <a class="menuLink" href="#">서비스/혜택</a> 
             <ul class="submenu"> 
                <li><a href="#" class="submenuLink longLink">특가상품</a></li> 
-               <li><a href="#" class="submenuLink longLink">쿠폰받기</a></li> 
+               <li><a href="/coupon.do" class="submenuLink longLink">쿠폰받기</a></li> 
                <li><a href="#" class="submenuLink longLink">후기</a></li> 
             </ul> 
                </li>
@@ -113,11 +116,11 @@ $(document).ready(function() {
       </nav>
             </div>
 
-         </div>
+   </div>
 
-      </div>
+</div>
 
-      <!-- // End #header -->
+<!-- // End #header -->
 
 
 				<div class="slide">

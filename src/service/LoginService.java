@@ -11,4 +11,6 @@ public interface LoginService {
 	
 	public int getGubn(Member m);
 	
+	public void signUpSNS(Member m);
+	
 }

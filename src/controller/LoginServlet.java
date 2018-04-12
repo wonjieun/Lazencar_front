@@ -39,12 +39,18 @@ public class LoginServlet extends HttpServlet {
 		// 사용자가 입력한 id, pw
 		String memId = request.getParameter("memId");
 		String memPw = request.getParameter("memPw");
+		String memEmail = request.getParameter("memEmail");
 		String token = request.getParameter("token");
+		
+		if(memPw.equals(null))
+			System.out.println(memPw);
 		
 		// member객체에 id, pw set
 		Member mem = new Member();
 		mem.setMemId(memId);
 		mem.setMemPw(memPw);
+		mem.setMemEmail(memEmail);
+		service.signUpSNS(mem);
 		
 		// response data
 		boolean check = service.check(mem);
@@ -58,6 +64,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("----- 입력값 확인 -----");
 		System.out.println("아이디: " + mem.getMemId());
 		System.out.println("비밀번호: " + mem.getMemPw());
+		System.out.println("이메일: " + mem.getMemEmail());
 		System.out.println("구분: " + gubn);
 		System.out.println("token: " + token);
 		System.out.println("check: " + check);

@@ -212,10 +212,9 @@ $(document).ready(function(){
 				<br>
 				특가 시작일 : <input type="date" id="key_startDate_${listNumber.count}" /> 
 				특가 종료일 : <input type="date" id="key_endDate_${listNumber.count}" />
-				<img width="200px" height="150px" src="/upload/${i.bannerImg }">
-				<img width="200px" height="150px" src="/upload/${i.detailImg }">
-					
-				<div>
+				
+				<div class="clear"></div>
+				<div style="float: right;">
 					<button id="btn_update_${listNumber.count }" onclick="update_clicked(${listNumber.count })">수정완료</button>
 				</div>
 				

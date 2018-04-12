@@ -34,7 +34,7 @@ public class MemberDeleteServlet extends HttpServlet {
 		Member mem = new Member();
 		mem.setMemId(memId);
 		mem.setMemPw(memPw);
-		service.delete(mem);
+//		service.delete(mem);
 //		System.out.println("test2");
 //		System.out.println(service.delete(mem));
 		//비밀번호 확인용 변수에 리턴값 저장

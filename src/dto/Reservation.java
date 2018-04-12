@@ -72,11 +72,5 @@ public class Reservation {
 	public void setOptionList(String optionList) {
 		this.optionList = optionList;
 	}
-	public String getCarDemage() {
-		return carDemage;
-	}
-	public void setCarDemage(String carDemage) {
-		this.carDemage = carDemage;
-	}
 	
 }

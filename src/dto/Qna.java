@@ -6,7 +6,7 @@ public class Qna {
     private String qnaDate;		//QNA_DATE
     private String qnaCate;		//QNA_CATE
     private String qnaTitle;	//QNA_TITLE
-    private String qnaContent;	//QNA_CONTENT
+    private String qnaContents;	//QNA_CONTENT
     private String qnaAnswer;	//QNA_ANSWER
     private String qnaImg;		//QNA_IMG
     private String memEmail;	//MEM_EMAIL   
@@ -42,11 +42,11 @@ public class Qna {
 	public void setQnaTitle(String qnaTitle) {
 		this.qnaTitle = qnaTitle;
 	}
-	public String getQnaContent() {
-		return qnaContent;
+	public String getQnaContents() {
+		return qnaContents;
 	}
-	public void setQnaContent(String qnaContent) {
-		this.qnaContent = qnaContent;
+	public void setQnaContents(String qnaContent) {
+		this.qnaContents = qnaContent;
 	}
 	public String getQnaAnswer() {
 		return qnaAnswer;

@@ -13,7 +13,7 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/paging.css" />  
+	<link rel="stylesheet" type="text/css" href="/Manage_Page/css/Paging.css" />  
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 	
@@ -54,15 +54,8 @@
 			  obj.style.display="none";
 		  }
   	}
-//   	검색창에 값이 있는가 판별
-	function checkSearch_content(){
-		if($("#search_content").val()==''){
-			return false;
-		}else{
-			return true;
-		}
-	}
-	//수정 버튼 눌렀을시 실행
+
+  //수정 버튼 눌렀을시 실행
 	function update_clicked(a){
 		if(confirm("수정하시겠습니까?")){
 			var btnEdit = "updateQna";
@@ -82,24 +75,6 @@
 		}else return;
 	}
 	
-	/*
-	//삭제 버튼 눌렸을시 실행
-	function delete_clicked(a){
-		if(confirm("삭제하시겠습니까?")){
-			var font_notNum = $("#key_qnaNum_"+a).text();
-			var btnEdit ="deleteQna";
-			
-			var $form2 = $("<form>").attr("action","/admin/qnaList.do").attr("method","get");
-			$("<input>").attr("type","hidden").attr("name","key_qnaNum").attr("value",key_qnaNum).appendTo($form2);
-			$("<input>").attr("type","hidden").attr("name","btnEdit").attr("value",btnEdit).appendTo($form2);
-			$form2.appendTo($(document.body));
-			
-			$form2.submit();	
-		}
-		else return;
-	}
-	
-	*/
 	
 // 	검색 및 정렬하는 ajax
 $(document).ready(function(){
@@ -114,9 +89,6 @@ $(document).ready(function(){
 		console.log("정렬기준:"+sort);
 		console.log("입력내용:"+content);
 		
-		if(checkSearch_content()==true){
-			console.log("내용있음");
-			
 			var $form = $("<form>").attr("action", "/admin/qnaList.do").attr("method", "get");
 			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
@@ -126,10 +98,6 @@ $(document).ready(function(){
 			
 			$form.submit();	
 			
-		}else{
-			alert("검색어를 입력하세요");
-			console.log("내용을 채워주세요");
-		}
 	});
 });
   </script>
@@ -202,7 +170,16 @@ $(document).ready(function(){
 				<td>${i.memId }</td>
 				<td>${i.qnaTitle }</td>
 				<td>${i.qnaDate }</td>
-				<td>${i.qnaCompleted}</td>
+				<td>
+				<c:choose>
+					<c:when test="${i.qnaCompleted eq 1}">
+						답변완료
+					</c:when>
+					<c:otherwise>
+						미답변
+					</c:otherwise>
+				</c:choose>
+				</td>
 				<td class="right">
 				<button id="btn_listDown" onclick="showDetail('hiddenTr_${listNumber.count}');" style="margin:auto 0;">답변 등록</button><br>
 <%-- 				<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button> --%>
@@ -216,7 +193,7 @@ $(document).ready(function(){
 				<p>문의 제목 : ${i.qnaTitle }</p>
 				<p>문의 내용 : <textArea cols="80" readonly="readonly">${i.qnaContent}</textArea></p>
 <%-- 				<p>첨부파일 : <img src="/upload/${i.qnaImg }" width="200px;" height="150px;"></p> --%>
-				<p>회원 이메일 : ${i.memEmail }</p>
+<%-- 				<p>회원 이메일 : ${i.memEmail }</p> --%>
 				<p>답변 : <textarea cols="80" id="edit_qna_Answer_${listNumber.count }">${i.qnaAnswer}</textarea></p>
 				</div>
 				<div class="clear"></div>

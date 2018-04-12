@@ -19,7 +19,7 @@ public class PromotionListServiceImpl implements PromotionListService {
 	public void editPromotionData(PromotionManage dto) {
 		if("updatePromotion".equals(dto.getEditPromotion())) {
 			dao.updatePromotion(dto);
-		}else if("deleteCoupon".equals(dto.getEditPromotion())) {
+		}else if("deletePromotion".equals(dto.getEditPromotion())) {
 			dao.deletePromotion(dto);
 		}
 	}

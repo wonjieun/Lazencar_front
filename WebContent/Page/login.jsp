@@ -3,22 +3,117 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인</title>
 
 <link type="text/css" rel="stylesheet" href="/Page/css/login.css" >
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/master.css?v=180322">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/calendar.css">
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!-- 네이버 로그인 -->
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-	
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
- 
 <script src="/Page/js/naverLogin_implicit-1.0.2-min.js"></script>  
-
+<!-- 카카오 로그인 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- 구글 로그인 -->
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+<script src="https://apis.google.com/js/api:client.js"></script>
 
 <script type="text/javascript">
+var googleUser = {};
+var startApp = function() {
+  gapi.load('auth2', function(){
+    // Retrieve the singleton for the GoogleAuth library and set up the client.
+    auth2 = gapi.auth2.init({
+      client_id: '954086829005-q063rn2ulo7c1065kda9uf2d7jtoo8dd.apps.googleusercontent.com',
+      cookiepolicy: 'single_host_origin',
+// 			fetch_basic_profile: false,
+//     	scope: 'profile'
+      // Request scopes in addition to 'profile' and 'email'
+      //scope: 'additional_scope'
+    });
+    attachSignin(document.getElementById('customBtn'));
+  });
+};
+
+function attachSignin(element) {
+  console.log(element.id);
+  auth2.attachClickHandler(element, {},
+      function(googleUser) {
+        document.getElementById('name').innerText = "Signed in: " +
+            googleUser.getBasicProfile().getName();
+        
+        if (auth2.isSignedIn.get()) {
+        	  var profile = auth2.currentUser.get().getBasicProfile();
+        	  console.log('ID: ' + profile.getId());
+        	  console.log('Full Name: ' + profile.getName());
+        	  console.log('Given Name: ' + profile.getGivenName());
+        	  console.log('Family Name: ' + profile.getFamilyName());
+        	  console.log('Image URL: ' + profile.getImageUrl());
+        	  console.log('Email: ' + profile.getEmail());
+        	  
+        	  var id = profile.getId();
+        	  var pw = -1;
+        	  var email = profile.getEmail();
+        		
+        		$.ajax({
+        			type: "POST"
+        			, url: "/login/login.do"
+        			, data: {
+        					memId:id,
+        					memPw:pw,
+        					memEmail:email
+        				}
+        			, dataType: "json"
+        			, success: function( data ) {
+        				var check = data.check;
+        				var gubn = data.gubn;
+        				token = data.token;
+        				
+        				if( check ) {
+        					alert("로그인 성공");
+        					// 관리자
+        					if( gubn===0 ) {
+        						location.href="/admin/memberManage.do";
+        					}
+        					// 고객
+        					if( gubn===1 ) {
+        						location.href="/main.do";
+        					}
+        				} else {
+        					alert("로그인 실패");
+        					$("#alert_login").css("display", "inline-block");
+        					document.getElementById("id").focus();
+        				}
+        				
+        			}
+        			, error: function(e) {
+        				console.log("----- error -----");
+        				console.log(e.responseText);
+        			}
+        		});
+        		
+        }
+//         location.href = "/main.do";
+      }, function(error) {
+        alert(JSON.stringify(error, undefined, 2));
+      });
+}
+
+var revokeAllScopes = function() {
+	  auth2.disconnect();
+}
+
+function googleLogin() {
+	
+}
+
+
 /* 아이디, 비밀번호 입력하지 않고 로그인 버튼 눌렀을 때 */
 function f_validate() {
 	$(".join_hidden").hide();
@@ -42,14 +137,17 @@ function f_validate() {
 }
 
 var token;
-
 // 아이디, 비밀번호 확인
 $(document).ready( function() {
 	
 		$("#login_confirm").click( function() {
+			
 			console.log(f_validate());
 			if( f_validate() ) {
 				var id = $("#id").val();
+				if(id===null || id==="") {
+					id = profile.getId();
+				}
 				var pw = $("#password").val();
 				var params = {
 					id : $('#id').val(),	
@@ -68,6 +166,7 @@ $(document).ready( function() {
 						var check = data.check;
 						var gubn = data.gubn;
 						token = data.token;
+						
 						if( check ) {
 	// 					alert("로그인 성공");
 							// 관리자
@@ -169,232 +268,202 @@ function f_login() {
 
 </script>
 
-<title>로그인</title>
-
 </head>
-
 <body>
-	<div id="wrap">
-		<div class="top_banner join" style="display: none;">
+<div id="wrap">
+<!-- Begin #header -->
+<div id="header" class="sub">
+	<div class="hgroup">
+		<div class="inbox">
+			<h1 class="logo"><a href="/main.do"><span>라젠카</span></a></h1>
+
+			<div class="nvalinks">
+				<a href="/login/login.do">로그인</a>
+				<a href="/signUp.do">회원가입</a>
+				<a class="nvalinks-rev" href="#">라젠카 예약</a>
+			</div>
 			
-			<div class="cont">
+			<nav id="topMenu">
+			<ul>
+				<li class="topMenuLi">
+				<a href="#" class="menuLink">Lazencar 소개</a>
+					<ul class="submenu">
+						<li><a href="#" class="submenuLink longLink">Lazencar란?</a></li>
+						<li><a href="#" class="submenuLink longLink">이용안내</a></li>
+						<li><a href="#" class="submenuLink longLink">요금안내</a></li>
+						<li><a href="#" class="submenuLink longLink">위치</a></li>
+					</ul></li>
 
-				<a href="https://www.greencar.co.kr/member/index.jsp"
-					target="_blank"><img
-					src="/Page/images/common/top_banner_160825.gif"
-					alt="신규가입시 3시간 무료쿠폰 전원증정" /></a>
+				<li class="topMenuLi">
+				<a href="#" class="menuLink">서비스/혜택</a>
+					<ul class="submenu">
+						<li><a href="#" class="submenuLink longLink">특가상품</a></li>
+						<li><a href="#" class="submenuLink longLink">쿠폰받기</a></li>
+						<li><a href="#" class="submenuLink longLink">후기</a></li>
+					</ul></li>
 
-
-				<p class="close">
-					<a href="javascript:void(0)"><img
-						src="/Page/images/common/btn_close.png" alt="닫기" /></a>
-				</p>
-
-			</div>
-
+				<li class="topMenuLi">
+				<a href="#" class="menuLink">고객센터</a>
+					<ul class="submenu">
+						<li><a href="#" class="submenuLink longLink">1:1 문의</a></li>
+						<li><a href="#" class="submenuLink longLink">자주 찾는 질문</a></li>
+						<li><a href="/service/list.do" class="submenuLink longLink">공지사항</a></li>
+					</ul></li>
+			</ul>
+			</nav>
 		</div>
-		<!-- [e]top_banner -->
-		<!-- Begin #header -->
-		<div id="header" class="sub">
+	</div>
+</div>
+<!-- // End #header -->
 
-			<div class="hgroup">
-
-				<div class="inbox">
-
-					<h1 class="logo">
-						<a href="/main.do"><span>라젠카</span></a>
-					</h1>
-
-					<div class="nvalinks">
-
-						<a href="javascript:void(0);">로그인</a>
-
-						<a href="/signUp.do">회원가입</a> <a
-							class="nvalinks-rev"
-							href="https://www.greencar.co.kr/reserve/index.do">라젠카 예약하기</a>
-
-					</div>
-					<nav id="topMenu">
-					<ul>
-						<li class="topMenuLi"><a class="menuLink" href="#">Lazencar소개</a>
-							<ul class="submenu">
-								<li><a href="#" class="submenuLink longLink">Lazencar란?</a></li>
-								<li><a href="#" class="submenuLink longLink">이용안내</a></li>
-								<li><a href="#" class="submenuLink longLink">요금안내</a></li>
-								<li><a href="#" class="submenuLink longLink">위치</a></li>
-							</ul></li>
-
-						<li class="topMenuLi"><a class="menuLink" href="#">서비스/혜택</a>
-							<ul class="submenu">
-								<li><a href="#" class="submenuLink longLink">특가상품</a></li>
-								<li><a href="#" class="submenuLink longLink">쿠폰받기</a></li>
-								<li><a href="#" class="submenuLink longLink">후기</a></li>
-							</ul></li>
-
-						<li class="topMenuLi"><a class="menuLink" href="#">고객센터</a>
-							<ul class="submenu">
-								<li><a href="#" class="submenuLink longLink">1:1 문의</a></li>
-								<li><a href="#" class="submenuLink longLink">자주찾는 질문</a></li>
-								<li><a href="#" class="submenuLink longLink">공지사항</a></li>
-							</ul></li>
-					</ul>
-					</nav>
-				</div>
-
-			</div>
-
-		</div>
-		<!-- // End #header -->
-		<!-- Begin #container -->
-		<div id="container">
-			<div class="content-wrap">
-
+<!-- Begin #container -->
+<div id="container">
+<div class="content-wrap">
 <div id="content_sub">
 <div id="content_sub_wrap">
 <div id="content_right">
 
-	<div class="subject">
-		<span>로그인</span>
-	</div>
-
+	<div class="subject"><span>로그인</span></div>
 	<div id="login">
 	<div class="login_frm">
 	<div class="login_frm_detail">
 		<div class="left">
-
-			<div style="float: left; width: 285px; height: 70px;">
-				<span>아이디</span>
-				<input type="text" id="id" name="id" onkeypress="f_login();" /><br>
-				<span>비밀번호</span>
-				<input type="password" id="password" name="password" onkeypress="f_login();" />
-			</div>
+		<div style="float: left; width: 285px; height: 70px;">
+			<span>아이디</span>
+			<input type="text" id="id" name="id" onkeypress="f_login();" /><br>
 			
-			<a href="javascript:void(0);" id="login_confirm">로그인</a>
+			<span>비밀번호</span>
+			<input type="password" id="password" name="password" onkeypress="f_login();" />
+		</div>
+		
+		<a href="javascript:void(0);" id="login_confirm">로그인</a>
 
+		<div>
 			<div>
-				<div>
-					<a href="/login/findId.do" id="findLayer">아이디/비밀번호 찾기</a>
-				</div>
-				<div>
-					<span class="join_hidden" id="alert_id">아이디를 입력하세요.</span>
-					<span class="join_hidden" id="alert_pw">비밀번호를 입력하세요.</span>
-					<span class="join_hidden" id="alert_login">아이디 또는 비밀번호를 잘못 입력하였습니다.</span>
-				</div>
-
+				<a href="/login/findId.do" id="findLayer">아이디/비밀번호 찾기</a>
 			</div>
-		</div>
-		</div>
+			<div>
+				<span class="join_hidden" id="alert_id">아이디를 입력하세요.</span>
+				<span class="join_hidden" id="alert_pw">비밀번호를 입력하세요.</span>
+				<span class="join_hidden" id="alert_login">아이디 또는 비밀번호를 잘못 입력하였습니다.</span>
+			</div>
 		</div>
 	</div>
-	
+	</div>
+	</div>
+	</div>
+
 	<span id="login_sns">▶ SNS계정 로그인</span><br>
-	
 	<div style="padding-top: 5px;">
-		<a href="javascript:void(0);">
-		<img src="/Page/images/login/facebook.PNG" alt="" />
-		</a>
-		
-		<a href="javascript:void(0);">
-		<img src="/Page/images/login/naver.PNG" alt="" />
-		</a>
 		
 		<!-- 네이버아이디로 로그인 -->
-	  <div id="naver_id_login">
-	  <img src="/Page/images/login/naver.PNG" alt="" />
-	  </div>
-	  <script type="text/javascript">
-  	var naver_id_login = new naver_id_login(
-	  			"vL_aDS4Z9bTr4P8i4TKj"
-	  			, "http://localhost:8092/Api/Member/callback.html");
-//   			, "http://localhost:8092/login/loginResult.do");
-  	var state = naver_id_login.getUniqState();
-    naver_id_login.setButton("white", 2,40);
-  	naver_id_login.setDomain("http://localhost:8092");
-  	naver_id_login.setState(state);
-  	naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
-	  </script>
+		<div id="naver_id_login">
+		<img src="/Page/images/login/naver.PNG" alt="" /></div>
+		<script type="text/javascript">
+		  	var naver_id_login = new naver_id_login(
+			  			"vL_aDS4Z9bTr4P8i4TKj"
+			  			, "http://localhost:8092/Api/Member/callback.html");
+		//   			, "http://localhost:8092/login/loginResult.do");
+		  	var state = naver_id_login.getUniqState();
+		    naver_id_login.setButton("white", 2,40);
+		  	naver_id_login.setDomain("http://localhost:8092");
+		  	naver_id_login.setState(state);
+		  	naver_id_login.setPopup();
+		  	naver_id_login.init_naver_id_login();
+		</script>
+		<!-- 	  <div id="naver_id_logout" style="display: none;"> -->
+		<!--     <a href="#" onclick="logout();">로그아웃</a></div> -->
+		<a href="http://nid.naver.com/nidlogin.logout" onclick="logout();"
+			id="logout_naver">naver logout<br/></a>
+		<!-- 		<a href="#" id="logout">sns 로그아웃</a> -->
 		
-<!-- 	  <div id="naver_id_logout" style="display: none;"> -->
-<!--     <a href="#" onclick="logout();">로그아웃</a></div> -->
-		<a href="http://nid.naver.com/nidlogin.logout"
-			onclick="logout();" id="logout">
-		네이버 로그아웃<br/></a>
-<!-- 		<a href="#" id="logout">sns 로그아웃</a> -->
-
+		
 		<!-- 카카오아이디로 로그인 -->
 		<a id="custom-login-btn" href="javascript:loginWithKakao()">
-		<img src="/Page/images/login/kakao.png" alt="" /></a>
+		<img src="/Page/images/login/kakao.png" alt="" /><br/></a>
 		<script type='text/javascript'>
-		  //<![CDATA[
-		    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-		    Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
-		    
-		    
-		    
-		    // 카카오 로그인 버튼을 생성합니다.
-		    function loginWithKakao() {
-// 		    토큰꺼내기	authObj.access_token
-		    	
-		    	alert("access token : " + Kakao.Auth.getAccessToken());
-		    	if(Kakao.Auth.getAccessToken()==null) {
-		    		Kakao.Auth.loginForm({
-		    			success : function(authObj) {
-		    				alert(JSON.stringify(authObj));
-		    				alert(authObj.access_token);
-		    				location.href="/main.do";
-		    			},
-		    			fail: function(err) {
-		    				alert(JSON.stringify(err));
-		    			}
-		    		});
-		    	}
-// 		      // 로그인 창을 띄웁니다.
-// 		      Kakao.Auth.login({
-// 		        success: function(authObj) {
-// 		          alert(JSON.stringify(authObj));
-// 		          alert(authObj.access_token);
-// 							location.href="/main.do";
-// 		        },
-// 		        fail: function(err) {
-// 		          alert(JSON.stringify(err));
-// 		        }
-// 		      });
-		      
-		      
-		      
-		    };
-		  //]]>
+		//<![CDATA[
+		// 사용할 앱의 JavaScript 키를 설정해 주세요.
+		Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
+				    
+				    // 카카오 로그인 버튼을 생성합니다.
+		function loginWithKakao() {
+		// 		    토큰꺼내기	authObj.access_token
+		// 		    	alert("access token : " + Kakao.Auth.getAccessToken());
+		 	if(Kakao.Auth.getAccessToken()==null) {
+		 		Kakao.Auth.loginForm({
+		 			success : function(authObj) {
+		 				alert(JSON.stringify(authObj));
+		 				console.log(JSON.stringify(authObj));
+		 				alert(authObj.access_token);
+		 				location.href="/main.do";
+		 			},
+		 			fail: function(err) {
+		 				alert(JSON.stringify(err));
+		 			}
+		 		});
+		 	}
+		// 		      // 로그인 창을 띄웁니다.
+		// 		      Kakao.Auth.login({
+		// 		        success: function(authObj) {
+		// 		          alert(JSON.stringify(authObj));
+		// 		          alert(authObj.access_token);
+		// 							location.href="/main.do";
+		// 		        },
+		// 		        fail: function(err) {
+		// 		          alert(JSON.stringify(err));
+		// 		        }
+		// 		      });
+		};
+		//]]>
 		</script>
 		
-		<a href="javascript:logoutWithKakao()" id="logout">카카오 로그아웃</a>
+		<a href="javascript:logoutWithKakao()"
+			id="logout_kakao">kakao logout</a>
 		<script type='text/javascript'>
-		  //<![CDATA[
-		    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-		    Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
-		    function logoutWithKakao() {
-		      Kakao.Auth.logout(function() {
-		    	  location.href="/main.do";
-		      });
-		    };
-		  //]]>
+		//<![CDATA[
+		// 사용할 앱의 JavaScript 키를 설정해 주세요.
+		// Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
+		function logoutWithKakao() {
+		  Kakao.Auth.logout(function() {
+			  location.href="/main.do";
+		  });
+		};
+		//]]>
 		</script>
 		
+		<!-- 구글아이디로 로그인 -->
+		<!-- In the callback, you would hide the gSignInWrapper element on a
+		successful sign in -->
+		<div id="gSignInWrapper">
+		  <div id="customBtn" class="customGPlusSignIn">
+		    <span class="icon"></span>
+		    <span class="buttonText">Google</span>
+		  </div>
+		</div>
+		<div id="name"></div>
+		<script>startApp();</script>
 		
+		<a href="#" onclick="signOut();">google logout</a>
+		<script>
+		  function signOut() {
+		    var auth2 = gapi.auth2.getAuthInstance();
+		    auth2.signOut().then(function () {
+		      console.log('User signed out.');
+		    });
+		  }
+		</script>
 	</div>
+	
 </div>
 </div>
 </div>
-
-			</div>
-			<!-- // End #container -->
-
+</div>
+<!-- // End #container -->
+<!-- Begin #footer -->
 <div id="footer">
-
 	<div class="footer_box01">
-
 		<div class="footer_inner">
-
 			<ul class="footer_family">
 
 				<li><a
@@ -489,10 +558,9 @@ function f_login() {
 		</div>
 	</div>
 </div>
-
-
-		</div>
-		<!-- // End #wrap -->
+<!-- // End #footer -->
+</div>
+<!-- // End #wrap -->
 </body>
 
 </html>
