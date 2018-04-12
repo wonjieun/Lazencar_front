@@ -33,7 +33,6 @@ public class ReservationCheckDaoImpl implements ReservationCheckDao {
 		}
 	}
 
-
 	// 총 쿠폰 리스트 반환
 	@Override
 	public int getTotal(String id) {
@@ -121,8 +120,6 @@ public class ReservationCheckDaoImpl implements ReservationCheckDao {
 
 		return list;			
 	}
-
-
 
 
 	@Override

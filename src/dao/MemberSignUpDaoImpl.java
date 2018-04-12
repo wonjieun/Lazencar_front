@@ -49,7 +49,6 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, mem.getMemId());
 			pst.setString(2, mem.getMemPw());
-
 			pst.setString(3, mem.getMemName());
 			pst.setString(4, mem.getMemPhone());
 			pst.setString(5, mem.getMemJumin());
@@ -83,7 +82,7 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 				mem.setMsg("사용 가능한 ID 입니다.");
 				mem.setMemCheck(true);
 				//member의 맴버필드 dupCheck에 0을 넣음 ( 중복값이 없다는 뜻)
-			}
+			} 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

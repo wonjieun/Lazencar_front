@@ -11,8 +11,8 @@ import dto.Member;
 
 public class LoginDaoImpl implements LoginDao {
 	private final String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private final String username = "scott";
-	private final String password = "tiger";
+	private final String username = "LAZENCAR";
+	private final String password = "saveus";
 	
 	private Connection conn = null;
 	private Statement st = null;
@@ -81,30 +81,10 @@ public class LoginDaoImpl implements LoginDao {
 		}
 		return -1;		
 	}
-	
+
 	@Override
 	public void insertSNSData(Member m) {
-		String sql = "INSERT INTO TB_MEMBER("
-				+ "MEM_ID, MEM_PW, MEM_NAME, MEM_PHONE"
-				+ ", MEM_JUMIN, MEM_EMAIL, MEM_ADDR, MEM_GUBN)"
-				+ " VALUES(?,?,?,?,?,?,?,?)";
-		PreparedStatement pst = null;
 		
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, m.getMemId());
-			pst.setString(2, "-1");
-			pst.setString(3, " ");
-			pst.setString(4, " ");
-			pst.setString(5, " ");
-			pst.setString(6, m.getMemEmail());
-			pst.setString(7, " ");
-			pst.setInt(8, 1);
-
-			pst.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 }
