@@ -31,7 +31,7 @@ var startApp = function() {
     // Retrieve the singleton for the GoogleAuth library and set up the client.
     auth2 = gapi.auth2.init({
       client_id: '954086829005-q063rn2ulo7c1065kda9uf2d7jtoo8dd.apps.googleusercontent.com',
-      cookiepolicy: 'single_host_origin',
+      cookiepolicy: 'single_host_origin'
 // 			fetch_basic_profile: false,
 //     	scope: 'profile'
       // Request scopes in addition to 'profile' and 'email'
@@ -72,25 +72,11 @@ function attachSignin(element) {
         			, dataType: "json"
         			, success: function( data ) {
         				var check = data.check;
-        				var gubn = data.gubn;
         				token = data.token;
         				
         				if( check ) {
-        					alert("로그인 성공");
-        					// 관리자
-        					if( gubn===0 ) {
-        						location.href="/admin/memberManage.do";
-        					}
-        					// 고객
-        					if( gubn===1 ) {
-        						location.href="/main.do";
-        					}
-        				} else {
-        					alert("로그인 실패");
-        					$("#alert_login").css("display", "inline-block");
-        					document.getElementById("id").focus();
+        					location.href="/main.do";
         				}
-        				
         			}
         			, error: function(e) {
         				console.log("----- error -----");

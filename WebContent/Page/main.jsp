@@ -75,11 +75,12 @@ $(document).ready(function() {
 // 										console.log(token);
 											location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
 										});
-            			 	</script>
+            </script>
       			
       			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
             <a href="/Page/reservation.html" class="nvalinks-rev">라젠카 예약</a>
          </div>
+         
 	<nav id="topMenu" > 
    <ul> 
    <li class="topMenuLi"> 
@@ -92,7 +93,7 @@ $(document).ready(function() {
       </ul> 
     </li>
          
-                  <li class="topMenuLi"> 
+    <li class="topMenuLi"> 
       <a class="menuLink" href="#">서비스/혜택</a> 
       <ul class="submenu"> 
          <li><a href="#" class="submenuLink longLink">특가상품</a></li> 
@@ -101,7 +102,7 @@ $(document).ready(function() {
       </ul> 
          </li>
       
-               <li class="topMenuLi"> 
+    <li class="topMenuLi"> 
       <a class="menuLink" href="#">고객센터</a> 
       <ul class="submenu"> 
          <li><a href="#" class="submenuLink longLink">1:1 문의</a></li> 
