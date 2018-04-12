@@ -32,14 +32,14 @@ public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 	
 	@Override
 	public void insertAllData(Promotion pro) {
-		String sql = "INSERT INTO TB_EVENT(EVE_NUM, EVE_NAME, EVE_START, EVE_END, EVE_BANNER_IMG, EVE_DETAIL_IMG)"
-				+ " VALUES(UP_COU_NUM.nextval,?,?,?,?,?)";
+		String sql = "INSERT INTO TB_EVENT(EVE_NUM, EVE_NAME, EVE_START, EVE_END, EVE_BANNERIMG, EVE_DETAILIMG)"
+				+ " VALUES(UP_EVE_NUM.nextval,?,?,?,?,?)";
 		ResultSet rs = null;
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, pro.getName());
-			pst.setString(2, pro.getStartDate());
-			pst.setString(3, pro.getEndDate());			
+			pst.setString(2, pro.getProStartDate());
+			pst.setString(3, pro.getProEndDate());			
 			pst.setString(4, pro.getBannerImg());			
 			pst.setString(5, pro.getDetailImg());			
 			pst.executeUpdate();
@@ -80,82 +80,6 @@ public class PromotionRegisterDaoImpl implements PromotionRegisterDao {
 		}
 		return false;
 	}
-	
-	/*
-	
-	
-
-	public List getImage() {
-		Statement st = null;
-		String sql = "SELECT EVE_NAME, EVE_SATART_DATE, EVE_END_DATE,"
-				+ " EVE_BANNER_IMG, EVE_BANNER_ORG, EVE_DETAIL_IMG, EVE_DETAIL_ORG"
-				+ " FROM TB_EVENT ORDER BY EVE_NUM";
-		List<PromotionManage> list = new ArrayList<>();
-		
-		try {
-			st = conn.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			
-			while( rs.next() ) {
-				PromotionManage dto = new PromotionManage();
-				dto.setName(rs.getString("EVE_NAME"));
-				dto.setStartDate(rs.getString("EVE_START_DATE"));
-				dto.setEndDate(rs.getString("EVE_END_DATE"));
-				dto.setBannerImg(rs.getString("EVE_BANNER_IMG"));
-				dto.setBannerOrg(rs.getString("EVE_BANNER_ORG"));
-				dto.setDetailImg(rs.getString("EVE_DETAIL_IMG"));
-				dto.setDetailImg(rs.getString("EVE_DETAIL_ORG"));
-				list.add(dto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null)	conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return list;
-	}
-	public PromotionManage getImage(String name) {
-		Statement st = null;
-		String sql = "SELECT EVE_NAME, EVE_SATART_DATE, EVE_END_DATE,"
-				+ " EVE_BANNER_IMG, EVE_BANNER_ORG, EVE_DETAIL_IMG, EVE_DETAIL_ORG"
-				+ " FROM TB_EVENT WHERE EVE_NAME="+name;
-		
-		PromotionManage dto = null;
-		
-		try {
-			st = conn.createStatement();
-			
-			ResultSet rs = st.executeQuery(sql);
-			
-			rs.next();
-			dto = new PromotionManage();
-			dto.setName(rs.getString("EVE_NAME"));
-			dto.setStartDate(rs.getString("EVE_START_DATE"));
-			dto.setEndDate(rs.getString("EVE_END_DATE"));
-			dto.setBannerImg(rs.getString("EVE_BANNER_IMG"));
-			dto.setBannerOrg(rs.getString("EVE_BANNER_ORG"));
-			dto.setDetailImg(rs.getString("EVE_DETAIL_IMG"));
-			dto.setDetailImg(rs.getString("EVE_DETAIL_ORG"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null)	conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return dto;
-	}
-	*/
-	
 	
 	
 }

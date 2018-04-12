@@ -11,6 +11,8 @@
 
 request.setCharacterEncoding("utf-8");
 out.println("에디터 결과"); 
+
+out.println(request.getParameter("rev_title"));
 out.println(request.getParameter("rev_content"));
 
 %>

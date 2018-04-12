@@ -46,7 +46,7 @@
 	text-align: center;   
 	width: 10%;}
 	
-	.level1 :nth-child(4) .fly {background: #ffb505 !important;}
+	.level1 :nth-child(10) .fly {background: #ffb505 !important;}
 	
 	
 	tr.hiddenTr{
@@ -97,7 +97,7 @@ $(document).ready(function(){
 		if(checkSearch_content()==true){
 			console.log("내용있음");
 			
-			var $form = $("<form>").attr("action", "/admin/paymentList.do").attr("method", "post");
+			var $form = $("<form>").attr("action", "/admin/paymentList.do").attr("method", "get");
 			$("<input>").attr("type", "hidden").attr("name", "category").attr("value", category).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "content").attr("value", content).appendTo($form);
 			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
@@ -126,7 +126,7 @@ $(document).ready(function(){
 </div>		<!-- header end -->
 
 
-<div class="container">
+<div class="contain">
 
 
 <div class="content">
@@ -172,7 +172,6 @@ $(document).ready(function(){
 							<th>구매자 이메일</th>
 							<th>구매자 핸드폰</th>
 							<th>결제 상태</th>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -200,7 +199,7 @@ $(document).ready(function(){
 
 </div>		<!-- content end -->
 
-</div>		<!-- container end -->
+</div>		<!-- contain end -->
 
 
 

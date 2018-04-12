@@ -2,18 +2,35 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/Manage_Page/css/Paging.css" />
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<!--  페이징 원본입니다 !!페이징 원본입니다 !! 페이징 원본입니다 !! 페이징 원본입니다 !!  -->
+<!--  페이징 원본입니다 !! 페이징 원본입니다 !! 페이징 원본입니다 !! 페이징 원본입니다 !!   -->
+<style>
+
+.pagination>.active>a, .pagination>.active>a:focus, 
+.pagination>.active>a:hover, 
+.pagination>.active>span, 
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover 
+{
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #f1c40f !important;
+    border-color: #f1c40f !important;
+}
+</style>
 <div class="paging text-center">
 	<ul class="pagination">
 		<%-- 첫 페이지 버튼 --%>
 		<%-- 첫 페이지가 아니면 버튼 노출 --%>
 		<c:if test="${paging.curPage ne 1 }">
 		<li>
+<%-- 		category=${category}&content=${content}&sort=${sort} --%>
 			<a href="${url }?pageNo=1">
 				<span aria-hidden="true">&larr;</span>
 			</a>
@@ -45,9 +62,9 @@
 			<c:if test="${paging.curPage eq page }">
 			<li class="active">
 			</c:if>
-			<c:if test="${paging.curPage ne page }">
-			<li>
-			</c:if>
+				<c:if test="${paging.curPage ne page }">
+				<li>
+				</c:if>
 			<a href="${url }?pageNo=${page }">${page }</a>
 			</li>
 		</c:forEach>

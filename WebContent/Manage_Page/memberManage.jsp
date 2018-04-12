@@ -1,8 +1,11 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 
 <html>
 
@@ -13,7 +16,6 @@
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
 <link rel="stylesheet" type="text/css" href="/Manage_Page/css/main.css" />
-<!-- <link rel="stylesheet" type="text/css"	href="/Manage_Page/css/paging.css" /> -->
 
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
@@ -28,7 +30,7 @@
 //만약 출생년도 4자리가 아닌 경우 alert 띄워주기	
 function checkSearch_content(){
 	if($("#category").val()=='mem_Jumin'){
-		if($("search_content").val().length < 4){		
+		if($("content").val().length < 4){		
 			return true;
 		} else{
 			return false;
@@ -44,39 +46,25 @@ function checkSearch_content(){
 
 $(document).ready(function() {
 	$("#searchMember").click(function() {
-		var searchClicked = "눌림";
-		var memId = ""; //카테고리에 따른 조건 지정 변수
-		var memJumin = "";
-
+		var clicked = "clicked";
 		var category = $("#category").val();
-		var content = $("#search_content").val();
+		var content = $("#content").val();
 		var sort = $("#sort").val();
 
 		//입력 데이터 확인 코드
-		console.log("카테고리 선택 : " + category);
+		console.log("카테고리 : " + category);
 		console.log("검색내용 : " + content);
-		console.log("정렬  : " + sort);
+		console.log("정렬기준 : " + sort);
 		
 		if(checkSearch_content()==true){
-			
-			if (category == "mem_Id") {
-				memId = content;
-				return;
-			} else if (category == "mem_Jumin") {
-				memJumin = content;
-				return;
-			} else {
-				console.log("기준 에러");
-			}
-
-		var $form = $("<form>").attr("action","/admin/memberManage.do").attr("method", "post");
-		$("<input>").attr("type", "hidden").attr("name", "searchClicked").attr("value", searchClicked).appendTo($form);
-		$("<input>").attr("type", "hidden").attr("name", "category").attr("value",category).appendTo($form);
-		$("<input>").attr("type", "hidden").attr("name", "content").attr("value",content).appendTo($form);
-		$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
-		$form.appendTo($(document.body));
-
-		$form.submit();
+			var $form = $("<form>").attr("action","/admin/memberManage.do").attr("method", "get");
+			$("<input>").attr("type", "hidden").attr("name", "clicked").attr("value", clicked).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "category").attr("value",category).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "content").attr("value",content).appendTo($form);
+			$("<input>").attr("type", "hidden").attr("name", "sort").attr("value", sort).appendTo($form);
+			$form.appendTo($(document.body));
+	
+			$form.submit();
 	
 		} else{
 			alert("출생년도는 숫자 4자리로 입력해주세요. (ex. 1991)")
@@ -91,14 +79,13 @@ $(document).ready(function() {
 <body>
 <jsp:include page="/Manage_Page/util/sideMenu.jsp" />
 
-
 <div class="wrap">
 
 	<div class="header">라젠카 관리자 페이지</div>
 	<!-- header end -->
 
 
-	<div class="container">
+	<div class="contain">
 
 
 		<div class="content">
@@ -112,7 +99,6 @@ $(document).ready(function() {
 			</div>
 
 			<div class="center">
-
 				<table class="table1">
 					<tr>
 						<th>카테고리</th>
@@ -121,14 +107,13 @@ $(document).ready(function() {
 					</tr>
 
 					<tr>
-						<td class="left"><select class="sort" id="category"
-							name="category">
+						<td class="left">
+						<select class="sort" id="category" name="category">
 								<option value="mem_Id">회원 계정
 								<option value="mem_Jumin">출생 년도
 						</select></td>
 
-						<td><textarea rows="1" cols="30" id="search_content">
-						</textarea></td>
+						<td><textarea rows="1" cols="30" id="content"></textarea></td>
 
 						<td class="right">
 							<!-- 정렬 --> <select class="sort" id="sort" name="sort">
@@ -144,8 +129,9 @@ $(document).ready(function() {
 				</table>
 
 			</div>
-
 			<button class="btnSearch" id="searchMember" type="button">검색</button>
+
+			
 			<div class="clear"></div>
 
 			<div>
@@ -174,17 +160,7 @@ $(document).ready(function() {
 				</table>
 			</div>
 				<div class="clear"></div>
-				<!-- 				<div class="paging"> -->
-				<!-- 					<a href="#" class="page_first"><img -->
-				<!-- 						src="/Manage_Page/images/page_first.gif" alt="처음" /></a> <a href="#" -->
-				<!-- 						class="page_prev"><img src="/Manage_Page/images/page_prev.gif" -->
-				<!-- 						alt="이전" /></a> <strong>1</strong> <a href="#" class="page_next"><img -->
-				<!-- 						src="/Manage_Page/images/page_next.gif" alt="다음" /></a> <a href="#" -->
-				<!-- 						class="page_end"><img src="/Manage_Page/images/page_end.gif" -->
-				<!-- 						alt="마지막" /></a> -->
-				<!-- 				</div> -->
-
-				<jsp:include page="/Manage_Page/util/paging.jsp" />
+				<jsp:include page="/Manage_Page/util/MemberManagePaging.jsp" />
 			</div>
 			<!-- content end -->
 

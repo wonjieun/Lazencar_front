@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import service.ReservationService;
 import service.ReservationServiceImpl;
 
-/**
- * Servlet implementation class Reservation
- */
 @WebServlet("/Reservation")
 public class Reservation extends HttpServlet {
 	private static final long serialVersionUID = 1L;

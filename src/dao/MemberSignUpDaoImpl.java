@@ -49,12 +49,14 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, mem.getMemId());
 			pst.setString(2, mem.getMemPw());
+
 			pst.setString(3, mem.getMemName());
 			pst.setString(4, mem.getMemPhone());
 			pst.setString(5, mem.getMemJumin());
 			pst.setString(6, mem.getMemEmail());
 			pst.setString(7, mem.getMemAddr());
 			pst.setInt(8, 1);
+
 			
 			pst.executeUpdate();
 		} catch (SQLException e) {

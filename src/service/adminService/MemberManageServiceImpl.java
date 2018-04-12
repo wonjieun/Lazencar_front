@@ -12,8 +12,8 @@ import util.Paging;
 public class MemberManageServiceImpl implements MemberManageService {
 	private MemberManageDao dao = new MemberManageDaoImpl();
 	
-	public List memberManage(Paging paging, MemberManage search) {
-	    return dao.memberManage(paging, search);
+	public List getList(Paging paging, MemberManage search) {
+	    return dao.getList(paging, search);
 
 	  }
 }

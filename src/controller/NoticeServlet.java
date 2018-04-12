@@ -13,32 +13,29 @@ import dto.Notice;
 import service.NoticeService;
 import service.NoticeServiceImpl;
 
-@WebServlet("/service/list.do")
+@WebServlet("/service/notice.do")
 public class NoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	NoticeService service = new NoticeServiceImpl();
 	
+	NoticeService service = new NoticeServiceImpl();
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/json; charset=utf-8");
 		
-		String searchItem = request.getParameter("searchItem");		
-		String searchWord = request.getParameter("searchWord");
-		
-		System.out.println("searchItem: " + searchItem);
-		System.out.println("searchWord: " + searchWord);
+		 int num = Integer.parseInt(request.getParameter("num"));
 		
 		Notice n = new Notice();
-		n.setSearchItem(searchItem);
-		n.setSearchWord(searchWord);
+		n.setNotNum(num);
 		
-		System.out.println("검색 제목: " + ((Notice)service.getTitle(n).get(0)).getTitle());
-		
-		request.setAttribute("list", service.getTitle(n));
+		request.setAttribute("list", service.getNotice(n));
 		
 		RequestDispatcher rd = null;
-		rd = request.getRequestDispatcher("/Page/notice.html"); 
+		rd = request.getRequestDispatcher("/Page/noticeView.jsp"); 
 		rd.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 
 }

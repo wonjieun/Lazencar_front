@@ -14,7 +14,7 @@ public interface MemberManageDao {
 	public List getAllList(Paging paging);
 	public List getIdList(Paging paging,MemberManage search);
 	public List getJuminList(Paging paging,MemberManage search); 
-	public List memberManage(Paging paging, MemberManage search);
+	public List getList(Paging paging, MemberManage search);
 	
 	//검색버튼 눌렸는지 확인
 	boolean doSearch(MemberManage search);

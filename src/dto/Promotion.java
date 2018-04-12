@@ -3,47 +3,52 @@ package dto;
 public class Promotion {
 	private int no;					//EVE_NUM
 	private String name;			//EVE_NAME
-	private String StartDate;		//EVE_START_DATE
-	private String EndDate;			//EVE_END_DATE
-	private String BannerImg;		//EVE_BANNER_IMG
-	private String DetailImg;		//EVE_DETAIL_IMG
+	private String proStartDate;		//EVE_START_DATE
+	private String proEndDate;			//EVE_END_DATE
+	private String bannerImg;		//EVE_BANNER_IMG
+	private String detailImg;		//EVE_DETAIL_IMG
 	
 	public int getNo() {
 		return no;
 	}
+
 	public void setNo(int no) {
 		this.no = no;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getStartDate() {
-		return StartDate;
+	public String getProStartDate() {
+		return proStartDate;
 	}
-	public void setStartDate(String startDate) {
-		StartDate = startDate;
+	public void setProStartDate(String prostartDate) {
+		proStartDate = prostartDate;
 	}
-	public String getEndDate() {
-		return EndDate;
+	public String getProEndDate() {
+		return proEndDate;
 	}
-	public void setEndDate(String endDate) {
-		EndDate = endDate;
+	public void setProEndDate(String proendDate) {
+		proEndDate = proendDate;
 	}
+
 	public String getBannerImg() {
-		return BannerImg;
+		return bannerImg;
 	}
-	public void setBannerImg(String bannerImg) {
-		BannerImg = bannerImg;
+  
+	public void setBannerImg(String bannerimg) {
+		bannerImg = bannerimg;
 	}
+
 	public String getDetailImg() {
-		return DetailImg;
+		return detailImg;
 	}
-	public void setDetailImg(String detailImg) {
-		DetailImg = detailImg;
+	public void setDetailImg(String detailimg) {
+		detailImg = detailimg;
 	}
-	
-	
-	}
+
+}

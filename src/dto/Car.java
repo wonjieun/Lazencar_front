@@ -7,7 +7,8 @@ public class Car {
 	private String carOil;
 	private String carCondi;
 	private String carLCD;//최종 점검 날짜
-	
+	private int carPrice;
+	//
 	
 	public String getCarNum() {
 		return carNum;
@@ -44,6 +45,12 @@ public class Car {
 	}
 	public void setCarLCD(String carLCD) {
 		this.carLCD = carLCD;
+	}
+	public int getCarPrice() {
+		return carPrice;
+	}
+	public void setCarPrice(int carPrice) {
+		this.carPrice = carPrice;
 	}
 	
 	

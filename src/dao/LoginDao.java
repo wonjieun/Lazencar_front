@@ -8,4 +8,6 @@ public interface LoginDao {
 	
 	public int getGubn(Member m);
 	
+	public void insertSNSData(Member m); 
+	
 }
