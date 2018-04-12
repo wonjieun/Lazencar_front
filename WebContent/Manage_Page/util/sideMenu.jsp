@@ -39,32 +39,31 @@
 <%  
    String now_id = null;
    if (session.getAttribute("id") != null) {
-
-	   now_id = (String) session.getAttribute("id");
+     now_id = (String) session.getAttribute("id");
    }
 
    // 예외처리 현재 아이디값 안들어와있을때
 
    if (now_id == null) {
 
-	   PrintWriter script = response.getWriter();
-	   script.println("<script>");
-	   script.println("alert('로그인부터 해주세요!')");
-	   script.println("location.href = '/login/login.do'");
-	   script.println("</script>");
+      PrintWriter script = response.getWriter();
+      script.println("<script>");
+      script.println("alert('로그인부터 해주세요!')");
+      script.println("location.href = '/login/login.do'");
+      script.println("</script>");
    }else if(!(now_id.equals("manager1"))){
-	   PrintWriter script = response.getWriter();
-	   script.println("<script>");
-	   script.println("alert('관리자만 이용할 수 있습니다.')");
-	   script.println("location.href = '/login/login.do'");
-	   script.println("</script>");
+      PrintWriter script = response.getWriter();
+      script.println("<script>");
+      script.println("alert('관리자만 이용할 수 있습니다.')");
+      script.println("location.href = '/login/login.do'");
+      script.println("</script>");
    }
 %>
+
 <div id="menu">
    <ul class="level1">
-<!--    홈 눌렀을때 메인페이지로 가야하나? 아니면 관리자 페이지에서 첫페이지(회원관리페이지)로 이동시키는게 낫나? -->
-      <li><a href="/admin/memberManage.do">Home</a></li>
-      <li><a class="fly" href="javascript:void(0);">회원 관리</a>
+      <li><a href="/home.jsp">Home</a></li>
+      <li><a class="fly" href="/admin/memberManage.do">회원 관리</a>
          <ul>
             <li><a href="/admin/memberManage.do" >회원목록 조회</a></li>
          </ul>
@@ -76,14 +75,14 @@
          </ul>
       </li>
       
-      <li><a class="fly" href="javascript:void(0);">차량 관리</a>
+      <li><a class="fly" href="/admin/carRegister.do">차량 관리</a>
          <ul>
             <li><a href="/admin/carRegister.do">차량 등록</a></li>
             <li><a href="/admin/carCheckList.do">차량 조회/수정</a></li>
          </ul>
       </li>
       
-      <li><a class="fly" href="javascript:void(0);">공지 사항</a>
+      <li><a class="fly" href="/admin/noticeRegister.do">공지 사항</a>
          <ul>
             <li><a href="/admin/noticeRegister.do">공지사항 등록</a></li>
             <li><a href="/admin/noticeList.do">공지사항 조회/수정</a></li>
@@ -96,25 +95,20 @@
          </ul>
       </li>
       
-      <li><a class="fly" href="javascript:void(0);">문의 관리</a>
+      <li><a class="fly" href="/admin/qnaList.do">문의 관리</a>
          <ul>
-<<<<<<< HEAD
-            <li><a href="/admin/qnaList.do">문의 내역 확인</a></li>
-=======
-            <li><a href="/qnaList.do">문의 내역 확인</a></li>
-            <li><a href="/qnaRegister.jsp">문의 답변 등록</a></li>
->>>>>>> refs/remotes/origin/master
+            <li><a href="/admin/qnaList.do">문의 조회/답변</a></li>
          </ul>
       </li>
 		
-		<li><a class="fly" href="javascript:void(0);">쿠폰 관리</a>
+		<li><a class="fly" href="/admin/couponRegister.do">쿠폰 관리</a>
 			<ul>
 				<li><a href="/admin/couponRegister.do">쿠폰 등록</a></li>
 				<li><a href="/admin/couponList.do">쿠폰 조회/삭제</a></li>
 			</ul>
 		</li>
 		
-		<li><a class="fly" href="javascript:void(0);">특가 상품</a>
+		<li><a class="fly" href="/admin/promotionRegister.do">특가 상품</a>
 			<ul>
 				<li><a href="/admin/promotionRegister.do">특가 등록</a></li>
 				<li><a href="/admin/promotionList.do">특가 조회/삭제</a></li>
@@ -122,7 +116,11 @@
 			</ul>
 		</li>
 		
-		<li><a class="fly" href="/admin/paymentList.do">결제</a>
+		<li><a class="fly" href="/admin/paymentList.do">결제 관리</a>
+		<ul>
+				<li><a href="/admin/paymentList.do">결제 조회</a></li>
+
+			</ul>
 		</li>
 		
 	</ul>

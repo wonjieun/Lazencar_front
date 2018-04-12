@@ -54,8 +54,7 @@ public class CouponListDaoImpl implements CouponListDao {
 			} else if("COU_DISCOUNT".equals(dto.getCategory())) {
 				return getSearchList(paging, dto);
 			}
-		}
-		if (doSearch(dto) == false){
+		} else {
 		//만약에 검색버튼을 누르지 않았을 경우(default) 전체 정보를 우선적으로 보여줌
 		return getAllList(paging);
 		}
@@ -167,7 +166,8 @@ public class CouponListDaoImpl implements CouponListDao {
 
 
 		String sql = "SELECT COUNT(*) FROM TB_COUPON";
-		String sql2 = "SELECT count(*) from tb_coupon WHERE " + dto.getCategory() 
+		String sql2 = "SELECT count(*) from tb_coupon WHERE " 
+					+ dto.getCategory() 
 					+ " LIKE '%' || ? || '%'";
 		
 		int total = 0;
@@ -198,48 +198,34 @@ public class CouponListDaoImpl implements CouponListDao {
 @Override
 public void updateCoupon(CouponManage dto) {
 	PreparedStatement pst = null;
-	String sql1 ="update tb_coupon set COU_NAME = ? where cou_Num=?";
-	String sql2 ="update tb_coupon set COU_START = ? where cou_Num=?";
-	String sql3 ="update tb_coupon set COU_END = ? where cou_Num=?";
-	String sql4 ="update tb_coupon set cou_age_const = ? where cou_Num=?";
-	String sql5 ="update tb_coupon set cou_time_const = ? where cou_Num=?";
-	String sql6 ="update tb_coupon set cou_car_const = ? where cou_Num=?";
-	String sql7 ="update tb_coupon set COU_DISCOUNT = ? where cou_Num=?";
+	String sql1 ="update tb_coupon set COU_NAME = ?"
+			+ ", COU_START = ?"
+			+ ", COU_END = ?"
+			+ ", cou_age_const = ?"
+			+ ", cou_time_const = ?"
+			+ ", cou_car_const = ?"
+			+ ", COU_DISCOUNT = ?"
+			+ "where cou_Num=?";
+	
+	System.out.println("dao sql : " + sql1);
 	try {
-		if(dto.getKey_couponName() == "" || dto.getKey_couponName()==null) {
+		if(	!"".equals(dto.getKey_couponName()) && dto.getKey_couponName()!=null &&
+			!"".equals(dto.getKey_couponStart()) && dto.getKey_couponStart()!=null &&	
+			!"".equals(dto.getKey_couponEnd()) && dto.getKey_couponEnd()!=null &&	
+			!"".equals(dto.getKey_ageConst()) && dto.getKey_ageConst()!=null &&
+			!"".equals(dto.getKey_timeConst()) && dto.getKey_timeConst()!=null &&
+			!"".equals(dto.getKey_carConst()) && dto.getKey_carConst()!=null &&
+			!"".equals(dto.getKey_discount()) && dto.getKey_discount()!=null
+			) {
 			pst = conn.prepareStatement(sql1);
 			pst.setString(1, dto.getKey_couponName());
-			pst.setString(2, dto.getKey_couponNum());
-			pst.executeUpdate();
-		}else if(dto.getKey_couponStart()==""||dto.getKey_couponStart()==null) {
-			pst = conn.prepareStatement(sql2);
-			pst.setString(1, dto.getKey_couponStart());
-			pst.setString(2, dto.getKey_couponNum());
-			pst.executeUpdate();
-		}else if(dto.getKey_couponEnd()==""||dto.getKey_couponEnd()==null) {
-			pst = conn.prepareStatement(sql3);
-			pst.setString(1, dto.getKey_couponEnd());
-			pst.setString(2, dto.getKey_couponNum());
-			pst.executeUpdate();
-		}else if(dto.getKey_ageConst()==""||dto.getKey_ageConst()==null) {
-			pst = conn.prepareStatement(sql4);
-			pst.setString(1, dto.getKey_ageConst());
-			pst.setString(2, dto.getKey_couponNum());
-			pst.executeUpdate();
-		}else if(dto.getKey_timeConst()==""||dto.getKey_timeConst()==null) {
-			pst = conn.prepareStatement(sql5);
-			pst.setString(1, dto.getKey_timeConst());
-			pst.setString(2, dto.getKey_couponNum());
-			pst.executeUpdate();
-		}else if(dto.getKey_carConst()==""||dto.getKey_carConst()==null) {
-			pst = conn.prepareStatement(sql6);
-			pst.setString(1, dto.getKey_carConst());
-			pst.setString(2, dto.getKey_couponNum());
-			pst.executeUpdate();
-		}else if(dto.getKey_discount()==""||dto.getKey_discount()==null) {
-			pst = conn.prepareStatement(sql7);
-			pst.setString(1, dto.getKey_discount());
-			pst.setString(2, dto.getKey_couponNum());
+			pst.setString(2, dto.getKey_couponStart());
+			pst.setString(3, dto.getKey_couponEnd());
+			pst.setString(4, dto.getKey_ageConst());
+			pst.setString(5, dto.getKey_timeConst());
+			pst.setString(6, dto.getKey_carConst());
+			pst.setString(7, dto.getKey_discount());
+			pst.setString(8, dto.getKey_couponNum());
 			pst.executeUpdate();
 		}
 	} catch (SQLException e) {

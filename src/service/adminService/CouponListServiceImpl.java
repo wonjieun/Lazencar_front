@@ -17,6 +17,7 @@ public class CouponListServiceImpl implements CouponListService {
 
 	@Override
 	public void editCouponData(CouponManage dto) {
+		System.out.println("service : " + dto.getEditCoupon());
 		if("updateCoupon".equals(dto.getEditCoupon())) {
 			dao.updateCoupon(dto);
 		}else if("deleteCoupon".equals(dto.getEditCoupon())) {

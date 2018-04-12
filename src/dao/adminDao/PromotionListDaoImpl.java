@@ -183,24 +183,20 @@ public class PromotionListDaoImpl implements PromotionListDao {
 @Override
 public void updatePromotion(PromotionManage dto) {
 	PreparedStatement pst = null;
-	String sql1 ="update tb_EVENT set EVE_NAME = ? where EVE_Num=?";
-	String sql2 ="update tb_EVENT set EVE_START = ? where EVE_Num=?";
-	String sql3 ="update tb_EVENT set EVE_END = ? where EVE_Num=?";
+	String sql1 ="update tb_EVENT set EVE_NAME = ? "
+			+ ", EVE_START = ?"
+			+ ", EVE_END = ?"
+			+ " where EVE_Num=?";
 	try {
-		if(dto.getKey_promotionName() == "" || dto.getKey_promotionName()==null) {
+		if( !"".equals(dto.getKey_promotionName()) && dto.getKey_promotionName()!=null &&
+			!"".equals(dto.getKey_promotionStart()) && dto.getKey_promotionStart()!=null &&
+			!"".equals(dto.getKey_promotionEnd()) && dto.getKey_promotionEnd()!=null
+			) {
 			pst = conn.prepareStatement(sql1);
 			pst.setString(1, dto.getKey_promotionName());
-			pst.setString(2, dto.getKey_promotionNum());
-			pst.executeUpdate();
-		}else if(dto.getKey_promotionStart()==""||dto.getKey_promotionStart()==null) {
-			pst = conn.prepareStatement(sql2);
-			pst.setString(1, dto.getKey_promotionStart());
-			pst.setString(2, dto.getKey_promotionNum());
-			pst.executeUpdate();
-		}else if(dto.getKey_promotionEnd()==""||dto.getKey_promotionEnd()==null) {
-			pst = conn.prepareStatement(sql3);
-			pst.setString(1, dto.getKey_promotionEnd());
-			pst.setString(2, dto.getKey_promotionNum());
+			pst.setString(2, dto.getKey_promotionStart());
+			pst.setString(3, dto.getKey_promotionEnd());
+			pst.setString(4, dto.getKey_promotionNum());
 			pst.executeUpdate();
 		}
 	} catch (SQLException e) {

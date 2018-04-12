@@ -61,7 +61,7 @@ public class QnaListDaoImpl implements QnaListDao {
 
 		String sql = "SELECT COUNT(*) FROM TB_QNA";
 		String sql2 = "SELECT count(*) from (" 
-				+ " SELECT * " + "  FROM TB_QNAS WHERE "
+				+ " SELECT * " + "  FROM TB_QNA WHERE "
 				+ qm.getCategory() + " LIKE '%' || ? || '%')";
 		int total = 0;
 
@@ -95,14 +95,14 @@ public class QnaListDaoImpl implements QnaListDao {
 
 		List<Qna> list = new ArrayList<>();
 		// list = null;
-		String sql = "SELECT * FROM (" + " SELECT rownum rnum, b.* FROM ("
+		String sql = "SELECT * FROM (" 
+				+ " SELECT rownum rnum, b.* FROM ("
 				+ " SELECT QNA_NUM, MEM_ID, QNA_DATE, QNA_CATE, QNA_TITLE, QNA_CONTENT, "
 				+ " QNA_ANSWER, QNA_IMG, MEM_EMAIL, QNA_COMPLETED "
 				+ "	FROM TB_QNA"
-				+ " ORDER BY QNA_NUM DESC" 
+				+ " ORDER BY QNA_COMPLETED, QNA_DATE " 
 				+ " ) b" 
-				+ " ORDER BY rnum" 
-				+ ") WHERE rnum BETWEEN ? AND ?";
+				+ " ) WHERE rnum BETWEEN ? AND ?";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, paging.getStartNo());
@@ -153,7 +153,7 @@ public class QnaListDaoImpl implements QnaListDao {
 				+ " QNA_ANSWER, QNA_IMG, MEM_EMAIL, QNA_COMPLETED " 
 				+ " FROM TB_QNA"
 				+ " WHERE "	+ qm.getCategory() + " LIKE '%' || ? || '%'"
-				+ " ORDER BY " + qm.getSort() + " DESC )B" 
+				+ " ORDER BY " + qm.getSort() + ", QNA_DATE )B" 
 				+ " ORDER BY RNUM)"
 				+ " WHERE RNUM BETWEEN ? AND ?";
 
@@ -209,9 +209,14 @@ public class QnaListDaoImpl implements QnaListDao {
 	public void updateQna(QnaManage qm) {
 		PreparedStatement pst = null;
 
+		String sql1 ="update tb_QNA set QNA_ANSWER = ?, QNA_Completed = 1 where qna_Num=?";
+		try {
+			if(!"아직 답변이 등록되지 않았습니다.".equals(qm.getEdit_qnaAnswer()) && qm.getEdit_qnaAnswer()!=null && !"".equals(qm.getEdit_qnaAnswer())) {
+/*
 		String sql1 = "update tb_QNA set QNA_ANSWER = ? where qna_Num=?";
 		try {
 			if (qm.getEdit_qnaAnswer() == "" || qm.getEdit_qnaAnswer() == null) {
+*/
 				pst = conn.prepareStatement(sql1);
 				pst.setString(1, qm.getEdit_qnaAnswer());
 				pst.setString(2, qm.getKey_qnaNum());
@@ -224,7 +229,6 @@ public class QnaListDaoImpl implements QnaListDao {
 				if (pst != null)
 					pst.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
