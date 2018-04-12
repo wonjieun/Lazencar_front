@@ -11,8 +11,6 @@ id:${sessionScope.id}
 <link rel="stylesheet" href="/Page/css/layout_01.css">
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,100,100,italic'
 	rel='stylesheet' type='text/css'>
-
-
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 

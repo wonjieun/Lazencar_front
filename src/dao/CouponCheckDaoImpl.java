@@ -82,7 +82,7 @@ public class CouponCheckDaoImpl implements CouponCheckDao {
 		
 		String sql =
 				" SELECT"
-				+ " cp.cou_num, cp.cou_discount, cp.cou_name, cp.cou_start_date, cp.cou_end_date, cp.cou_car_const"
+				+ " cp.cou_num, cp.cou_discount, cp.cou_name, cp.cou_start, cp.cou_end, cp.cou_car_const"
 				+ " FROM"
 				+ " tb_coupon cp, tb_mem_coupon mcp, tb_member mem"
 				+ " WHERE cp.cou_num=mcp.cou_num"
@@ -103,8 +103,8 @@ public class CouponCheckDaoImpl implements CouponCheckDao {
 				coupon.setName(rs.getString("COU_NAME"));
 				coupon.setCarConst(rs.getString("COU_CAR_CONST"));
 				coupon.setDiscount(rs.getString("COU_DISCOUNT"));
-				coupon.setStartDate(rs.getString("COU_START_DATE"));
-				coupon.setEndDate(rs.getString("COU_END_DATE"));
+				coupon.setStartDate(rs.getString("COU_START"));
+				coupon.setEndDate(rs.getString("COU_END"));
 				
 				list.add(coupon);
 			}
