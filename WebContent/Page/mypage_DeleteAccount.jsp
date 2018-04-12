@@ -94,7 +94,7 @@
 						<h3 class="subtit">회원 탈퇴</h3>
 						<p class="subtxt"></p>
 					</div>
-					<h6 style="font-size: 1.5em;">회원 탈퇴 확인</h6>
+					<h6 style="font-size: 1.5em; color: #767676">회원 탈퇴 확인</h6>
 
 					<div class="bodystart">
 

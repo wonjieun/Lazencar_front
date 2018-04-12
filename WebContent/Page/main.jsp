@@ -75,7 +75,7 @@ $(document).ready(function() {
 										});
             			 	</script>
             			
-            			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
+            			<a href="/Page/mypage_PersonalDataManage.jsp" id="mypage">마이페이지</a>
                   <a class="nvalinks-rev" href="/Page/reservation.html">라젠카 예약하기</a>
 
                </div>
