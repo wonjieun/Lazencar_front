@@ -48,7 +48,7 @@ public class CouponCheckServlet extends HttpServlet {
 		// 쿠폰리스트 모델로써 전달
 		request.setAttribute("couList", list);
 		request.setAttribute("couTotal", totalCount);
-		request.getRequestDispatcher("/Page/couponCheck2.jsp").forward(request, response);
+		request.getRequestDispatcher("/Page/mypage_CouponCheck2.jsp").forward(request, response);
 		
 //		Gson gson = new Gson();
 //		JsonObject jsonObject = new JsonObject();

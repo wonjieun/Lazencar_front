@@ -74,12 +74,22 @@ $(document).ready(function() {
 // 										console.log(token);
 											location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
 										});
+<<<<<<< HEAD
             </script>
       			
       			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
             <a href="/Page/reservation.html" class="nvalinks-rev">라젠카 예약</a>
 				</div>
 				
+=======
+
+            			 	</script>
+      			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
+            <a href="/Page/reservation.html" class="nvalinks-rev">라젠카 예약</a>
+
+               </div>
+               
+>>>>>>> 09dcafe61810abf5cbdabe367463727d1a4350d1
       <nav id="topMenu" > 
       
          <ul> 
@@ -113,7 +123,12 @@ $(document).ready(function() {
          </ul>
          
       </nav>
+<<<<<<< HEAD
      </div>
+=======
+            </div>
+
+>>>>>>> 09dcafe61810abf5cbdabe367463727d1a4350d1
    </div>
 
 </div>

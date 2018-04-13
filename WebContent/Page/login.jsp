@@ -458,12 +458,25 @@ function f_login() {
 		
 		<a href="#" onclick="signOut();">google logout</a>
 		<script>
+<<<<<<< HEAD
+		$(document).ready(function(){
+			$("#logout").click(function(){
+				var token = 'AAAAOnK1n/KtSh6PiPz/lNNHmkNKfyHWEeJuIMAOVaKBYnl59c7RjbEy/wAEcotpswFxcP0IxZPw1OPFfljPXABGw74=';
+				console.log(token);
+				location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
+// 				console.log("logout");t
+// 				naver_id_login.logout();
+// 				location.reload();
+			});
+		});
+=======
 		  function signOut() {
 		    var auth2 = gapi.auth2.getAuthInstance();
 		    auth2.signOut().then(function () {
 		      console.log('User signed out.');
 		    });
 		  }
+>>>>>>> 0eebd169674036b60aa12109b38d5bd820aabb65
 		</script>
 	</div>
 	

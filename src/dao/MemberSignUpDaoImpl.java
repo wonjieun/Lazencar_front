@@ -56,6 +56,7 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 			pst.setString(1, mem.getMemId());
 			pst.setString(2, mem.getMemPw());
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 //			pst.setInt(3, (int) mem.getMemGubn());
 //			pst.setString(4, mem.getMemName());
@@ -65,6 +66,8 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 //			pst.setString(8, mem.getMemAddr());
 >>>>>>> 8b32c8568a86884a869e0f2d685e0a1ad5437dcd
 
+=======
+>>>>>>> 09dcafe61810abf5cbdabe367463727d1a4350d1
 			pst.setString(3, mem.getMemName());
 			pst.setString(4, mem.getMemPhone());
 			pst.setString(5, mem.getMemJumin());
@@ -98,7 +101,7 @@ public class MemberSignUpDaoImpl implements MemberSignUpDao {
 				mem.setMsg("사용 가능한 ID 입니다.");
 				mem.setMemCheck(true);
 				//member의 맴버필드 dupCheck에 0을 넣음 ( 중복값이 없다는 뜻)
-			}
+			} 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
