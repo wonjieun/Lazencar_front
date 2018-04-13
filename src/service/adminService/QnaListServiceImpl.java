@@ -24,6 +24,12 @@ public class QnaListServiceImpl implements QnaListService {
 			dao.deleteQna(qm);
 		}
 	}
+
+	@Override
+	public List<Qna> getUserList(Paging paging, QnaManage qm, String mem_id) {
+		
+		return dao.getUserList(paging, qm, mem_id);
+	}
 	
 	
 

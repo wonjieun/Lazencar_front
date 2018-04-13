@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+    
 <!DOCTYPE html>
 
 <html>
@@ -7,16 +8,16 @@
 
 <meta charset="UTF-8">
 
-<title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
+<title>Lazencar | ������ �ִ� ��ǰ�� ī�ξ</title>
 
 <style type="text/css">
 @charset "UTF-8";
 
-/* 전체 스타일 설정 */
+/* ��ü ��Ÿ�� ���� */
 #header *, #footer *, .sidebar * 
 {
-	font-family: 'Noto Sans KR', '맑은고딕', 'Malgun Gothic', 'MGothic',
-		sans-serif, "돋움", Dotum, "굴림", Gulim
+	font-family: 'Noto Sans KR', '��������', 'Malgun Gothic', 'MGothic',
+		sans-serif, "����", Dotum, "����", Gulim
 }
 #wrap 		{	height: 100% }
 #container 	{	min-height: 100%; margin: -80px 0 -250px	}
@@ -62,7 +63,7 @@ a.nvalinks-rev:hover {background:#f1c40f;border:1px solid #f1c40f;text-decoratio
 transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1)}
 .nav-sub-wrap.on {height:222px;background:#fff;border-bottom:1px solid #e2e2e2}
 
-/*탑메뉴*/
+/*ž�޴�*/
 #topMenu { 
 height: 40px; 
 width: 800px; 
@@ -109,19 +110,19 @@ background-color: #f1c40f;
 color: #f1c40f;
 background-color: white;
 } 
-/* 좀 더 긴 메뉴 스타일 설정 */
+/* �� �� �� �޴� ��Ÿ�� ���� */
 .longLink {  width: 200px;} 
 .submenu {
 position: absolute;
 height: 0px;
 overflow: hidden;
-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(기본) */ 
--webkit-transition: height .2s; /* (구버전 크롬/사파리) */ 
--moz-transition: height .2s; /* (구버전 파이어폭스) */ 
--o-transition: height .2s; /* (구버전 오페라) */ 
+transition: height .2s; /* height�� ��ȭ ������ �� 0.2�ʰ� ��ȭ �ǵ��� ����(�⺻) */ 
+-webkit-transition: height .2s; /* (������ ũ��/���ĸ�) */ 
+-moz-transition: height .2s; /* (������ ���̾�����) */ 
+-o-transition: height .2s; /* (������ �����) */ 
 } 
-#topMenu:hover .topMenuLi:hover .submenu {height: 100px;}  		/* 한 메뉴당 하위메뉴 하나만*/ 
-/* #topMenu:hover .topMenuLi .submenu {height: 180px;}		/*메뉴 전체 드롭다운 	헤더 전체 드롭다운은 어떻게..*/ 
+#topMenu:hover .topMenuLi:hover .submenu {height: 100px;}  		/* �� �޴��� �����޴� �ϳ���*/ 
+/* #topMenu:hover .topMenuLi .submenu {height: 180px;}		/*�޴� ��ü ��Ӵٿ� 	��� ��ü ��Ӵٿ��� ���..*/ 
 .submenu {background:white;}
 .submenuLink:hover {
 color: white;
@@ -130,41 +131,11 @@ background-color: #f1c40f;
 
 </style>
 
-<script type="text/javascript">
-	//현재 서버 시간
-
-	var curYear = "2018"; //현재 년
-
-	var curMonth = "3"; //현재 월
-
-	var curDay = "6"; //현재 일
-
-	var curHour = "18"; //현재 시간
-
-	var curMinute = "21"; //현재 분
-
-	var ___isLogin___ = "false"; //로그인 여부
-
-	var __ciYn__ = "";
-
-	var _globalFullContextSSL = "https://www.greencar.co.kr";
-
-	var ___isCorpChk___ = "";
-
-	var _ssoDomain = 'member.lpoint.com';
-
-	var _joinReturnUrl = 'https://www.greencar.co.kr/login/';
-
-	var _fullImgHostAddr = '';
-
-	var _birth = "";
-	
-</script>
 
 <link type="text/css" rel="stylesheet" media="all" href="css/common.css" />
 <link type="text/css" rel="stylesheet" media="all" href="css/master.css" />
 <link type="text/css" rel="stylesheet" media="all" href="css/calendar.css" />
-
+<link type="text/css" rel="stylesheet" media="all" href="css/service.css" />
 <link type="text/css" rel="stylesheet" href="/js/lib/magnific-popup.css"/>
 
 
@@ -172,7 +143,7 @@ background-color: #f1c40f;
 <!-- <link type="text/css" rel="stylesheet" media="all" -->
 <!-- 	href="./css/master.css" /> -->
 
-<title>요금안내 &lt; 라젠카 소개</title>
+<title>��ݾȳ� &lt; ����ī �Ұ�</title>
 
 </head>
 
@@ -182,26 +153,6 @@ background-color: #f1c40f;
 	<!-- Begin #wrap -->
 
 	<div id="wrap">
-
-		<div class="top_banner join" style="display: none;">
-			<!-- // free 클래스 삭제 (2015-12-30) -->
-
-			<div class="cont">
-
-				<a href="https://www.greencar.co.kr/member/index.jsp"
-					target="_blank"><img
-					src="./images/common/top_banner_160825.gif"
-					alt="신규가입시 3시간 무료쿠폰 전원증정" /></a>
-
-
-				<p class="close">
-					<a href="javascript:void(0)"><img
-						src="./images/common/btn_close.png" alt="닫기" /></a>
-				</p>
-
-			</div>
-
-		</div>
 
 		<!-- [e]top_banner -->
 
@@ -216,45 +167,45 @@ background-color: #f1c40f;
 				<div class="inbox">
 
 					<h1 class="logo">
-						<a href="http://www.greencar.co.kr/"><span>라젠카</span></a>
+						<a href="http://www.greencar.co.kr/"><span>����ī</span></a>
 					</h1>
 
 					<div class="nvalinks">
 
-						<a href="javascript:void(0);" onclick="openLapComLogin();">로그인</a>
+						<a href="javascript:void(0);" onclick="openLapComLogin();">�α���</a>
 
-						<a href="https://www.greencar.co.kr/member/index.jsp">회원가입</a> <a
+						<a href="https://www.greencar.co.kr/member/index.jsp">ȸ������</a> <a
 							class="nvalinks-rev"
-							href="https://www.greencar.co.kr/reserve/index.do">라젠카 예약하기</a>
+							href="https://www.greencar.co.kr/reserve/index.do">����ī �����ϱ�</a>
 
 					</div>
 		<nav id="topMenu" > 
 			<ul> 
 						<li class="topMenuLi"> 
-				<a class="menuLink" href="#">LaZencar 소개</a> 
+				<a class="menuLink" href="#">LaZencar �Ұ�</a> 
 				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">Lazencar란?</a></li> 
-					<li><a href="#" class="submenuLink longLink">이용안내</a></li> 
-					<li><a href="#" class="submenuLink longLink">요금안내</a></li> 
-					<li><a href="#" class="submenuLink longLink">위치</a></li> 
+					<li><a href="#" class="submenuLink longLink">Lazencar��?</a></li> 
+					<li><a href="#" class="submenuLink longLink">�̿�ȳ�</a></li> 
+					<li><a href="#" class="submenuLink longLink">��ݾȳ�</a></li> 
+					<li><a href="#" class="submenuLink longLink">��ġ</a></li> 
 				</ul> 
 					</li>
 					
 								<li class="topMenuLi"> 
-				<a class="menuLink" href="#">서비스/혜택</a> 
+				<a class="menuLink" href="#">����/����</a> 
 				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">특가상품</a></li> 
-					<li><a href="#" class="submenuLink longLink">쿠폰받기</a></li> 
-					<li><a href="#" class="submenuLink longLink">후기</a></li> 
+					<li><a href="#" class="submenuLink longLink">Ư����ǰ</a></li> 
+					<li><a href="#" class="submenuLink longLink">�����ޱ�</a></li> 
+					<li><a href="#" class="submenuLink longLink">�ı�</a></li> 
 				</ul> 
 					</li>
 				
 							<li class="topMenuLi"> 
-				<a class="menuLink" href="#">고객센터</a> 
+				<a class="menuLink" href="#">��������</a> 
 				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">1:1 문의</a></li> 
-					<li><a href="#" class="submenuLink longLink">자주찾는 질문</a></li> 
-					<li><a href="#" class="submenuLink longLink">공지사항</a></li> 
+					<li><a href="#" class="submenuLink longLink">1:1 ����</a></li> 
+					<li><a href="#" class="submenuLink longLink">����ã�� ����</a></li> 
+					<li><a href="#" class="submenuLink longLink">��������</a></li> 
 				</ul> 
 					</li>
 			</ul> 
@@ -276,21 +227,21 @@ background-color: #f1c40f;
 			<div class="content-wrap">
 
 				<div class="sidebar">
-					<!-- 왼쪽 메뉴 -->
+					<!-- ���� �޴� -->
 
 
 
-					<h2 class="left-tit">라젠카 소개</h2>
+					<h2 class="left-tit">����ī �Ұ�</h2>
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#" ><span>라젠카란?</span></a></li>
+						<li class="top"><a href="#" ><span>����ī��?</span></a></li>
 
-						<li><a href="#" class = 'on' ><span>이용안내</span></a></li>
+						<li><a href="#" class = 'on' ><span>�̿�ȳ�</span></a></li>
 
-						<li><a href="#"><span>요금안내</span></a></li>
+						<li><a href="#"><span>��ݾȳ�</span></a></li>
 
-						<li><a href="#"><span>찾아오시는길</span></a></li>
+						<li><a href="#"><span>ã�ƿ��ô±�</span></a></li>
 
 					</ul>
 
@@ -299,17 +250,17 @@ background-color: #f1c40f;
 					<div class="side_sns">
 
 						<span class="tit">SNS<em></em></span> <a class="facebook"
-							href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
-							페이스북</a> <a class="blog" href="http://blog.naver.com/greencar_co"
-							target="_blank">라젠카 블로그</a> <a class="instagram"
-							href="https://www.instagram.com/greencar_kr" target="_blank">라젠카
-							인스타그램</a>
+							href="https://www.facebook.com/greencarkorea" target="_blank">����ī
+							���̽���</a> <a class="blog" href="http://blog.naver.com/greencar_co"
+							target="_blank">����ī ���α�</a> <a class="instagram"
+							href="https://www.instagram.com/greencar_kr" target="_blank">����ī
+							�ν�Ÿ�׷�</a>
 
 					</div>
 
 					<div class="side_cscenter">
 
-						<span class="tit">고객센터</span> <span class="tel">010-9550-0167</span>
+						<span class="tit">��������</span> <span class="tel">010-9550-0167</span>
 
 					</div>
 
@@ -319,81 +270,69 @@ background-color: #f1c40f;
 
 				<div class="location">
 					<div class="location_in">
-						<p><span>서비스 안내</span>&gt; <strong>이용안내</strong></p>
+						<p><span>���� �ȳ�</span>&gt; <strong>�̿�ȳ�</strong></p>
 					</div>
 				</div>
 				<div class="subtop-content bg_subvisual_01_02">
-					<h3 class="subtit">이용안내</h3>
-					<p class="subtxt"><strong>가입부터 결제까지 간편하게 이용 할 수 있는 그린카</strong><br />합리적인 자동차생활의 제안! 그린카 이용방법을 알려드립니다.</p>
+					<h3 class="subtit">�̿�ȳ�</h3>
+					<p class="subtxt"><strong>���Ժ��� �������� �����ϰ� �̿� �� �� �ִ� ����ī</strong><br />�ո����� �ڵ�����Ȱ�� ����! ����ī �̿����� �˷��帳�ϴ�.</p>
 				</div>
 				<div class="bodystart">
 <!-- bodystart -->
-		<!-- 
-				<ul class="tab-service">
-					<li class="tab01"><a href="../">이용방법</a></li>
-					<li class="tab02"><a href="../membership/">멤버십 안내</a></li>
-					<li class="tab03 on"><a href="#1">이용에티켓</a></li>
-				</ul>
-		-->
-				<ul class="tab-service tab-service02">
-				
-					<li class="tab01"><a href="p03_Use_Guide_01.html">이용방법</a></li>
-					<li class="tab03 on"><a href="#1">이용에티켓</a></li>
-				</ul>
 			
-				<p class="member-subtxt"><strong>그린피플의 Pride! 그린피플 에티켓!</strong><br />다음 사용자를 위한 배려, 에티켓 실천은 기본입니다.</p>
-				<h4 class="stit01">그린피플 에티켓</h4>
+				<p class="member-subtxt"><strong>���������� Pride! �������� ��Ƽ��!</strong><br />���� ����ڸ� ���� ���, ��Ƽ�� ��õ�� �⺻�Դϴ�.</p>
+				<h4 class="stit01">�������� ��Ƽ��</h4>
 				<ul class="etiquette-wrap">
 					<li class="etiquette01">
 						<div class="bg-wrap">
 							<div class="txt">
-								<p class="point-color02">차량상태 보고</p>
-								<p>사용 전 차량운전 전에 차량  외관과 내부에 사고흔적이 있는지 잘 살펴주세요.</p>
-								<p>주행 중 사고가 나거나 문의사항이 있으면 본사로 바로 연락 부탁 드립니다.</p>
+								<p class="point-color02">�������� ����</p>
+								<p>��� �� �������� ���� ����  �ܰ��� ���ο� ��������� �ִ��� �� �����ּ���.</p>
+								<p>���� �� ����� ���ų� ���ǻ����� ������ ����� �ٷ� ���� ��Ź �帳�ϴ�.</p>
 							</div>
 						</div>
 					</li>
 					<li class="etiquette02">
 						<div class="bg-wrap">
 							<div class="txt">
-								<p class="point-color02">깨끗이 사용해 주세요</p>
-								<p>사용 후 개인소지품은 꼭 챙겨주시고 쓰레기는 모두 비워주세요. </p>
+								<p class="point-color02">������ ����� �ּ���</p>
+								<p>��� �� ���μ���ǰ�� �� ì���ֽð� ������� ��� ����ּ���. </p>
 							</div>
 						</div>
 					</li>
 					<li class="etiquette03">
 						<div class="bg-wrap">
 							<div class="txt">
-								<p class="point-color02">금연</p>
-								<p>그린카의 모든 차량내 흡연은  절대금지되어 있습니다. </p>
-								<p>차내에서는 반드시 금연 부탁드립니다.</p>
-								<p>흡연 시 패널티 30만원 부과되며 회원 자격이 영구적으로 박탈됩니다.</p>
+								<p class="point-color02">�ݿ�</p>
+								<p>����ī�� ��� ������ ������  ��������Ǿ� �ֽ��ϴ�. </p>
+								<p>���������� �ݵ�� �ݿ� ��Ź�帳�ϴ�.</p>
+								<p>���� �� �г�Ƽ 30���� �ΰ��Ǹ� ȸ�� �ڰ��� ���������� ��Ż�˴ϴ�.</p>
 							</div>
 						</div>
 					</li>
 					<li class="etiquette04">
 						<div class="bg-wrap">
 							<div class="txt">
-								<p class="point-color02">사전주유필수</p>
-								<p>기름은 항상 적어도 ¼ 유지해  주시고 주유가 필요하시면 <br />차량 내 비치된 주유카드를 사용해 주세요. </p>
-								<p>주유카드는 그린카가 부담하는 카드입니다.</p>
+								<p class="point-color02">���������ʼ�</p>
+								<p>�⸧�� �׻� ��� �� ������  �ֽð� ������ �ʿ��Ͻø� <br />���� �� ��ġ�� ����ī�带 ����� �ּ���. </p>
+								<p>����ī��� ����ī�� �δ��ϴ� ī���Դϴ�.</p>
 							</div>
 						</div>
 					</li>
 					<li class="etiquette05">
 						<div class="bg-wrap">
 							<div class="txt">
-								<p class="point-color02">차량반납시간 준수</p>
-								<p>지연반납 패널티는 최소 3만원부터 시작합니다. </p>
-								<p>다음 고객의 예약이 있을 경우 연장은 불가능 합니다. </p>
+								<p class="point-color02">�����ݳ��ð� �ؼ�</p>
+								<p>�����ݳ� �г�Ƽ�� �ּ� 3�������� �����մϴ�. </p>
+								<p>���� ������ ������ ���� ��� ������ �Ұ��� �մϴ�. </p>
 							</div>
 						</div>
 					</li>
 					<li class="etiquette06 line-none">
 						<div class="bg-wrap">
 							<div class="txt">
-								<p class="point-color02">애완동물은 캐리어안에 </p>
-								<p>사랑하는 애완동물은 반드시 캐리어에 넣어 탑승부탁 드립니다. </p>
+								<p class="point-color02">�ֿϵ����� ĳ����ȿ� </p>
+								<p>����ϴ� �ֿϵ����� �ݵ�� ĳ��� �־� ž�º�Ź �帳�ϴ�. </p>
 							</div>
 						</div>
 					</li>
@@ -417,19 +356,19 @@ background-color: #f1c40f;
 
 						<li><a
 							href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
-							target="_blank">장기렌터카</a></li>
+							target="_blank">��ⷻ��ī</a></li>
 
 						<li><a
 							href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
-							target="_blank">단기렌터카</a></li>
+							target="_blank">�ܱⷻ��ī</a></li>
 
 						<li><a
 							href="https://www.lotterentacar.net/kor/long/usedList.do"
-							target="_blank">중고차렌터카</a></li>
+							target="_blank">�߰�������ī</a></li>
 
 						<li><a
 							href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
-							target="_blank">내차팔기</a></li>
+							target="_blank">�����ȱ�</a></li>
 
 						<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
 
@@ -439,17 +378,17 @@ background-color: #f1c40f;
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-								src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+								src="./images/common/img_partner_seoul.gif" alt="�������� ����ī �����ϱ�" /></a></li>
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
 								src="./images/common/img_partner_suwon.gif"
-								alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
+								alt="�޸ս�Ƽ ���� ����ī �����ϱ�" /></a></li>
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
 								src="./images/common/img_partner_incheon.gif"
-								alt="인천광역시 라젠카 예약하기" /></a></li>
+								alt="��õ������ ����ī �����ϱ�" /></a></li>
 
 					</ul>
 
@@ -464,36 +403,36 @@ background-color: #f1c40f;
 					<ul class="footer_sns">
 
 						<li><a class="facebook"
-							href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
-								페이스북</a></li>
+							href="https://www.facebook.com/greencarkorea" target="_blank">����ī
+								���̽���</a></li>
 
 						<li><a class="blog" href="http://blog.naver.com/greencar_co"
-							target="_blank">라젠카 블로그</a></li>
+							target="_blank">����ī ���α�</a></li>
 
 						<li><a class="instagram"
-							href="https://www.instagram.com/greencar_kr/" target="_blank">라젠카
-								인스타그램</a></li>
+							href="https://www.instagram.com/greencar_kr/" target="_blank">����ī
+								�ν�Ÿ�׷�</a></li>
 
 					</ul>
 
 					<ul class="footer_links">
 
-						<li><a href="http://www.greencar.co.kr/service/company/">회사소개</a></li>
+						<li><a href="http://www.greencar.co.kr/service/company/">ȸ��Ұ�</a></li>
 
-						<li><a href="http://www.greencar.co.kr/alliance/">제휴신청</a></li>
+						<li><a href="http://www.greencar.co.kr/alliance/">���޽�û</a></li>
 
-						<li><a href="http://www.greencar.co.kr/service/useclause/">회원이용약관</a></li>
+						<li><a href="http://www.greencar.co.kr/service/useclause/">ȸ���̿���</a></li>
 
 						<li><a href="http://www.greencar.co.kr/service/personalinfo/"
-							class="point">개인정보처리방침</a></li>
+							class="point">��������ó����ħ</a></li>
 
-						<li><a href="http://www.greencar.co.kr/service/carclause/">자동차대여
-								표준약관</a></li>
+						<li><a href="http://www.greencar.co.kr/service/carclause/">�ڵ����뿩
+								ǥ�ؾ��</a></li>
 
-						<li><a href="http://www.greencar.co.kr/service/location/">위치기반
-								서비스 이용약관</a></li>
+						<li><a href="http://www.greencar.co.kr/service/location/">��ġ���
+								���� �̿���</a></li>
 
-						<li><a href="http://www.greencar.co.kr/service/sitemap/">사이트맵</a></li>
+						<li><a href="http://www.greencar.co.kr/service/sitemap/">����Ʈ��</a></li>
 
 					</ul>
 
@@ -501,14 +440,14 @@ background-color: #f1c40f;
 
 						<div class="info">
 
-							<span>(주) 라젠카</span> <span>사업자등록번호 : 220-87-91595</span> <span>통신판매업신고번호
-								: 제2011-서울강남-01456호</span> <span>대표이사 : 안아름</span>
+							<span>(��) ����ī</span> <span>����ڵ�Ϲ�ȣ : 220-87-91595</span> <span>����Ǹž��Ű���ȣ
+								: ��2011-���ﰭ��-01456ȣ</span> <span>��ǥ�̻� : �ȾƸ�</span>
 
 						</div>
 
 						<div class="addr">
 
-							<span>서울특별시 강남구 테헤란로 14길 6 (남도빌라 4층)</span> <span>TEL :
+							<span>����Ư���� ������ ������� 14�� 6 (�������� 4��)</span> <span>TEL :
 								010-9550-0167</span> <span>FAX : 02-9550-0167</span>
 
 						</div>
@@ -521,10 +460,10 @@ background-color: #f1c40f;
 					<div class="footer_emblem">
 
 						<img src="./images/common/img_emblem_brandpower.jpg"
-							alt="2016년 한국산업의 브랜드파워 1위" /> <img
+							alt="2016�� �ѱ������ �귣���Ŀ� 1��" /> <img
 							src="./images/common/img_emblem_brandstar.jpg"
-							alt="2016년 대한민국 브랜드스타" /> <img
-							src="./images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
+							alt="2016�� ���ѹα� �귣�彺Ÿ" /> <img
+							src="./images/common/img_emblem_award.jpg" alt="����� ����� �ڸ��� 2016" />
 
 						<img src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
 

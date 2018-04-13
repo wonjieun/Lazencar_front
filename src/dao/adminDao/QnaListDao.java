@@ -16,6 +16,8 @@ public interface QnaListDao {
 	public List getSearchList(Paging paging, QnaManage cm);
 
 	public List getList(Paging paging, QnaManage cm);
+	
+	public List getUserList(Paging paging, QnaManage cm, String mem_id);
 
 	// 검색 버튼 눌렸나 확인하는 메서드
 	
@@ -34,4 +36,5 @@ public interface QnaListDao {
 	public void updateQna(QnaManage qm);
 
 	public void deleteQna(QnaManage qm);
+
 }

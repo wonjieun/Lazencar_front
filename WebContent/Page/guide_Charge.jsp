@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 
 <html>
@@ -7,16 +8,16 @@
 
 <meta charset="UTF-8">
 
-<title>Lazencar | ë¯¿ìŒì„ ì£¼ëŠ” ê³ í’ˆê²© ì¹´ì…°ì–´ë§</title>
+<title>Lazencar | ¹ÏÀ½À» ÁÖ´Â °íÇ°°İ Ä«¼Î¾î¸µ</title>
 
 <style type="text/css">
 @charset "UTF-8";
 
-/* ì „ì²´ ìŠ¤íƒ€ì¼ ì„¤ì • */
+/* ÀüÃ¼ ½ºÅ¸ÀÏ ¼³Á¤ */
 #header *, #footer *, .sidebar * 
 {
-	font-family: 'Noto Sans KR', 'ë§‘ì€ê³ ë”•', 'Malgun Gothic', 'MGothic',
-		sans-serif, "ë‹ì›€", Dotum, "êµ´ë¦¼", Gulim
+	font-family: 'Noto Sans KR', '¸¼Àº°íµñ', 'Malgun Gothic', 'MGothic',
+		sans-serif, "µ¸¿ò", Dotum, "±¼¸²", Gulim
 }
 #wrap 		{	height: 100% }
 #container 	{	min-height: 100%; margin: -80px 0 -250px	}
@@ -62,7 +63,7 @@ a.nvalinks-rev:hover {background:#f1c40f;border:1px solid #f1c40f;text-decoratio
 transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1)}
 .nav-sub-wrap.on {height:222px;background:#fff;border-bottom:1px solid #e2e2e2}
 
-/*íƒ‘ë©”ë‰´*/
+/*Å¾¸Ş´º*/
 #topMenu { 
 height: 40px; 
 width: 800px; 
@@ -109,19 +110,19 @@ background-color: #f1c40f;
 color: #f1c40f;
 background-color: white;
 } 
-/* ì¢€ ë” ê¸´ ë©”ë‰´ ìŠ¤íƒ€ì¼ ì„¤ì • */
+/* Á» ´õ ±ä ¸Ş´º ½ºÅ¸ÀÏ ¼³Á¤ */
 .longLink {  width: 200px;} 
 .submenu {
 position: absolute;
 height: 0px;
 overflow: hidden;
-transition: height .2s; /* heightë¥¼ ë³€í™” ì‹œì¼°ì„ ë•Œ 0.2ì´ˆê°„ ë³€í™” ë˜ë„ë¡ ì„¤ì •(ê¸°ë³¸) */ 
--webkit-transition: height .2s; /* (êµ¬ë²„ì „ í¬ë¡¬/ì‚¬íŒŒë¦¬) */ 
--moz-transition: height .2s; /* (êµ¬ë²„ì „ íŒŒì´ì–´í­ìŠ¤) */ 
--o-transition: height .2s; /* (êµ¬ë²„ì „ ì˜¤í˜ë¼) */ 
+transition: height .2s; /* height¸¦ º¯È­ ½ÃÄ×À» ¶§ 0.2ÃÊ°£ º¯È­ µÇµµ·Ï ¼³Á¤(±âº») */ 
+-webkit-transition: height .2s; /* (±¸¹öÀü Å©·Ò/»çÆÄ¸®) */ 
+-moz-transition: height .2s; /* (±¸¹öÀü ÆÄÀÌ¾îÆø½º) */ 
+-o-transition: height .2s; /* (±¸¹öÀü ¿ÀÆä¶ó) */ 
 } 
-#topMenu:hover .topMenuLi:hover .submenu {height: 100px;}  		/* í•œ ë©”ë‰´ë‹¹ í•˜ìœ„ë©”ë‰´ í•˜ë‚˜ë§Œ*/ 
-/* #topMenu:hover .topMenuLi .submenu {height: 180px;}		/*ë©”ë‰´ ì „ì²´ ë“œë¡­ë‹¤ìš´ 	í—¤ë” ì „ì²´ ë“œë¡­ë‹¤ìš´ì€ ì–´ë–»ê²Œ..*/ 
+#topMenu:hover .topMenuLi:hover .submenu {height: 100px;}  		/* ÇÑ ¸Ş´º´ç ÇÏÀ§¸Ş´º ÇÏ³ª¸¸*/ 
+/* #topMenu:hover .topMenuLi .submenu {height: 180px;}		/*¸Ş´º ÀüÃ¼ µå·Ó´Ù¿î 	Çì´õ ÀüÃ¼ µå·Ó´Ù¿îÀº ¾î¶»°Ô..*/ 
 .submenu {background:white;}
 .submenuLink:hover {
 color: white;
@@ -140,13 +141,13 @@ background-color: #f1c40f;
 	content: "";
 	display: block;
 	clear: both
-} /*ëŒ€ì²´ ë­˜í•˜ë ¤ëŠ”ê±¸ê¹Œ*/
+} /*´ëÃ¼ ¹»ÇÏ·Á´Â°É±î*/
 .contentbox {
 	float: right;
 	width: 750px
 }
 
-/* ì™¼ìª½ë©”ë‰´ */
+/* ¿ŞÂÊ¸Ş´º */
 .sidebar {
 	float: left;
 	width: 240px;
@@ -262,7 +263,7 @@ background-color: #f1c40f;
 }
 
 
-/*content ìƒë‹¨ ì œëª©*/
+/*content »ó´Ü Á¦¸ñ*/
 .location {
 	padding-top: 34px
 }
@@ -306,7 +307,7 @@ background-color: #f1c40f;
     background: url(./images/common/bg_subtit.gif) no-repeat 0 bottom;
 	font-weight: bold;
 	font-size: 18px;
-	font-family: "ë§‘ì€ê³ ë”•";
+	font-family: "¸¼Àº°íµñ";
 	color: #3c3c3c
 }
 .subtop-content.bg-none .subtit {
@@ -462,7 +463,7 @@ background-color: #f1c40f;
 }
 
 
-/*common ì „ì²´ ì„¤ì •*/
+/*common ÀüÃ¼ ¼³Á¤*/
 * {
 	margin: 0;
 	padding: 0;
@@ -473,8 +474,8 @@ html {
 body {
 	height: 100%;
 	font-size: 75%;
-	font-family: 'NanumGothic', 'ë§‘ì€ê³ ë”•', 'Malgun Gothic', 'MGothic',
-		sans-serif, "ë‹ì›€", Dotum, "êµ´ë¦¼", Gulim;
+	font-family: 'NanumGothic', '¸¼Àº°íµñ', 'Malgun Gothic', 'MGothic',
+		sans-serif, "µ¸¿ò", Dotum, "±¼¸²", Gulim;
 	color: #767676;
 }
 img {
@@ -503,8 +504,8 @@ p, acronym, address, big, small, cite, code, dfn, em, kbd, pre, samp,
 h1, h2, h3, h4, h5, h6 {
 	font-size: 1em;
 	letter-spacing: -1px;
-	font-family: 'NanumGothic', 'ë§‘ì€ê³ ë”•', 'Malgun Gothic', 'MGothic',
-		sans-serif, "ë‹ì›€", Dotum, "êµ´ë¦¼", Gulim;
+	font-family: 'NanumGothic', '¸¼Àº°íµñ', 'Malgun Gothic', 'MGothic',
+		sans-serif, "µ¸¿ò", Dotum, "±¼¸²", Gulim;
 }
 big {
 	font-size: 1.125em;
@@ -519,8 +520,8 @@ input, select {
 	vertical-align: middle;
 	font-size: 1em;
 	color: #767676;
-	font-family: 'NanumGothic', 'ë§‘ì€ê³ ë”•', 'Malgun Gothic', 'MGothic',
-		sans-serif, "ë‹ì›€", Dotum, "êµ´ë¦¼", Gulim;
+	font-family: 'NanumGothic', '¸¼Àº°íµñ', 'Malgun Gothic', 'MGothic',
+		sans-serif, "µ¸¿ò", Dotum, "±¼¸²", Gulim;
 }
 /*input[type="password"] { color:#555;}*/
 input::-ms-clear {
@@ -529,8 +530,8 @@ input::-ms-clear {
 textarea {
 	border: 1px solid #d9d9d9;
 	font-size: 12px;
-	font-family: 'NanumGothic', 'ë§‘ì€ê³ ë”•', 'Malgun Gothic', 'MGothic',
-		sans-serif, "ë‹ì›€", Dotum, "êµ´ë¦¼", Gulim;
+	font-family: 'NanumGothic', '¸¼Àº°íµñ', 'Malgun Gothic', 'MGothic',
+		sans-serif, "µ¸¿ò", Dotum, "±¼¸²", Gulim;
 	resize: none;
 	box-sizing: border-box;
 }
@@ -546,7 +547,7 @@ iframe {
 	border: 0;
 }
 
-/* ê¸°ë³¸ ë§í¬ ìŠ¤íƒ€ì¼ */
+/* ±âº» ¸µÅ© ½ºÅ¸ÀÏ */
 a:link {
 	color: #767676;
 	text-decoration: none;
@@ -576,7 +577,7 @@ a.hoverline:hover {
 
 
 
-/* ìš”ê¸ˆì•ˆë‚´ */
+/* ¿ä±İ¾È³» */
 .charges-wrap {
 	font-size:13px;
 }
@@ -593,9 +594,7 @@ a.hoverline:hover {
 .tbl-green-member {
 	margin-top:20px;
 }
-
 .tbl-green-member th,
-
 .tbl-green-member td {
 	padding:15px 0;
 	padding-left:20px;
@@ -657,19 +656,19 @@ a.hoverline:hover {
 
 
 <script type="text/javascript">
-	//í˜„ì¬ ì„œë²„ ì‹œê°„
+	//ÇöÀç ¼­¹ö ½Ã°£
 
-	var curYear = "2018"; //í˜„ì¬ ë…„
+	var curYear = "2018"; //ÇöÀç ³â
 
-	var curMonth = "3"; //í˜„ì¬ ì›”
+	var curMonth = "3"; //ÇöÀç ¿ù
 
-	var curDay = "6"; //í˜„ì¬ ì¼
+	var curDay = "6"; //ÇöÀç ÀÏ
 
-	var curHour = "18"; //í˜„ì¬ ì‹œê°„
+	var curHour = "18"; //ÇöÀç ½Ã°£
 
-	var curMinute = "21"; //í˜„ì¬ ë¶„
+	var curMinute = "21"; //ÇöÀç ºĞ
 
-	var ___isLogin___ = "false"; //ë¡œê·¸ì¸ ì—¬ë¶€
+	var ___isLogin___ = "false"; //·Î±×ÀÎ ¿©ºÎ
 
 	var __ciYn__ = "";
 
@@ -693,7 +692,7 @@ a.hoverline:hover {
 <!-- <link type="text/css" rel="stylesheet" media="all" -->
 <!-- 	href="./css/master.css" /> -->
 
-<title>ìš”ê¸ˆì•ˆë‚´ &lt; ë¼ì  ì¹´ ì†Œê°œ</title>
+<title>¿ä±İ¾È³» &lt; ¶óÁ¨Ä« ¼Ò°³</title>
 
 </head>
 
@@ -705,19 +704,19 @@ a.hoverline:hover {
 	<div id="wrap">
 
 		<div class="top_banner join" style="display: none;">
-			<!-- // free í´ë˜ìŠ¤ ì‚­ì œ (2015-12-30) -->
+			<!-- // free Å¬·¡½º »èÁ¦ (2015-12-30) -->
 
 			<div class="cont">
 
 				<a href="https://www.greencar.co.kr/member/index.jsp"
 					target="_blank"><img
 					src="./images/common/top_banner_160825.gif"
-					alt="ì‹ ê·œê°€ì…ì‹œ 3ì‹œê°„ ë¬´ë£Œì¿ í° ì „ì›ì¦ì •" /></a>
+					alt="½Å±Ô°¡ÀÔ½Ã 3½Ã°£ ¹«·áÄíÆù Àü¿øÁõÁ¤" /></a>
 
 
 				<p class="close">
 					<a href="javascript:void(0)"><img
-						src="./images/common/btn_close.png" alt="ë‹«ê¸°" /></a>
+						src="./images/common/btn_close.png" alt="´İ±â" /></a>
 				</p>
 
 			</div>
@@ -737,45 +736,45 @@ a.hoverline:hover {
 				<div class="inbox">
 
 					<h1 class="logo">
-						<a href="http://www.greencar.co.kr/"><span>ë¼ì  ì¹´</span></a>
+						<a href="http://www.greencar.co.kr/"><span>¶óÁ¨Ä«</span></a>
 					</h1>
 
 					<div class="nvalinks">
 
-						<a href="javascript:void(0);" onclick="openLapComLogin();">ë¡œê·¸ì¸</a>
+						<a href="javascript:void(0);" onclick="openLapComLogin();">·Î±×ÀÎ</a>
 
-						<a href="https://www.greencar.co.kr/member/index.jsp">íšŒì›ê°€ì…</a> <a
+						<a href="https://www.greencar.co.kr/member/index.jsp">È¸¿ø°¡ÀÔ</a> <a
 							class="nvalinks-rev"
-							href="https://www.greencar.co.kr/reserve/index.do">ë¼ì  ì¹´ ì˜ˆì•½í•˜ê¸°</a>
+							href="https://www.greencar.co.kr/reserve/index.do">¶óÁ¨Ä« ¿¹¾àÇÏ±â</a>
 
 					</div>
 		<nav id="topMenu" > 
 			<ul> 
 						<li class="topMenuLi"> 
-				<a class="menuLink" href="#">LaZencar ì†Œê°œ</a> 
+				<a class="menuLink" href="#">LaZencar ¼Ò°³</a> 
 				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">Lazencarë€?</a></li> 
-					<li><a href="#" class="submenuLink longLink">ì´ìš©ì•ˆë‚´</a></li> 
-					<li><a href="#" class="submenuLink longLink">ìš”ê¸ˆì•ˆë‚´</a></li> 
-					<li><a href="#" class="submenuLink longLink">ìœ„ì¹˜</a></li> 
+					<li><a href="#" class="submenuLink longLink">Lazencar¶õ?</a></li> 
+					<li><a href="#" class="submenuLink longLink">ÀÌ¿ë¾È³»</a></li> 
+					<li><a href="#" class="submenuLink longLink">¿ä±İ¾È³»</a></li> 
+					<li><a href="#" class="submenuLink longLink">À§Ä¡</a></li> 
 				</ul> 
 					</li>
 					
 								<li class="topMenuLi"> 
-				<a class="menuLink" href="#">ì„œë¹„ìŠ¤/í˜œíƒ</a> 
+				<a class="menuLink" href="#">¼­ºñ½º/ÇıÅÃ</a> 
 				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">íŠ¹ê°€ìƒí’ˆ</a></li> 
-					<li><a href="#" class="submenuLink longLink">ì¿ í°ë°›ê¸°</a></li> 
-					<li><a href="#" class="submenuLink longLink">í›„ê¸°</a></li> 
+					<li><a href="#" class="submenuLink longLink">Æ¯°¡»óÇ°</a></li> 
+					<li><a href="#" class="submenuLink longLink">ÄíÆù¹Ş±â</a></li> 
+					<li><a href="#" class="submenuLink longLink">ÈÄ±â</a></li> 
 				</ul> 
 					</li>
 				
 							<li class="topMenuLi"> 
-				<a class="menuLink" href="#">ê³ ê°ì„¼í„°</a> 
+				<a class="menuLink" href="#">°í°´¼¾ÅÍ</a> 
 				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">1:1 ë¬¸ì˜</a></li> 
-					<li><a href="#" class="submenuLink longLink">ìì£¼ì°¾ëŠ” ì§ˆë¬¸</a></li> 
-					<li><a href="#" class="submenuLink longLink">ê³µì§€ì‚¬í•­</a></li> 
+					<li><a href="#" class="submenuLink longLink">1:1 ¹®ÀÇ</a></li> 
+					<li><a href="#" class="submenuLink longLink">ÀÚÁÖÃ£´Â Áú¹®</a></li> 
+					<li><a href="#" class="submenuLink longLink">°øÁö»çÇ×</a></li> 
 				</ul> 
 					</li>
 			</ul> 
@@ -797,21 +796,21 @@ a.hoverline:hover {
 			<div class="content-wrap">
 
 				<div class="sidebar">
-					<!-- ì™¼ìª½ ë©”ë‰´ -->
+					<!-- ¿ŞÂÊ ¸Ş´º -->
 
 
 
-					<h2 class="left-tit">ë¼ì  ì¹´ ì†Œê°œ</h2>
+					<h2 class="left-tit">¶óÁ¨Ä« ¼Ò°³</h2>
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>ë¼ì  ì¹´ë€?</span></a></li>
+						<li class="top"><a href="#"><span>¶óÁ¨Ä«¶õ?</span></a></li>
 
-						<li><a href="#"><span>ì´ìš©ì•ˆë‚´</span></a></li>
+						<li><a href="#"><span>ÀÌ¿ë¾È³»</span></a></li>
 
-						<li><a href="#"><span>ìš”ê¸ˆì•ˆë‚´</span></a></li>
+						<li><a href="#"><span>¿ä±İ¾È³»</span></a></li>
 
-						<li><a href="#" class = 'on'><span>ì°¾ì•„ì˜¤ì‹œëŠ”ê¸¸</span></a></li>
+						<li><a href="#" class = 'on'><span>Ã£¾Æ¿À½Ã´Â±æ</span></a></li>
 
 					</ul>
 
@@ -820,74 +819,93 @@ a.hoverline:hover {
 					<div class="side_sns">
 
 						<span class="tit">SNS<em></em></span> <a class="facebook"
-							href="https://www.facebook.com/greencarkorea" target="_blank">ë¼ì  ì¹´
-							í˜ì´ìŠ¤ë¶</a> <a class="blog" href="http://blog.naver.com/greencar_co"
-							target="_blank">ë¼ì  ì¹´ ë¸”ë¡œê·¸</a> <a class="instagram"
-							href="https://www.instagram.com/greencar_kr" target="_blank">ë¼ì  ì¹´
-							ì¸ìŠ¤íƒ€ê·¸ë¨</a>
+							href="https://www.facebook.com/greencarkorea" target="_blank">¶óÁ¨Ä«
+							ÆäÀÌ½ººÏ</a> <a class="blog" href="http://blog.naver.com/greencar_co"
+							target="_blank">¶óÁ¨Ä« ºí·Î±×</a> <a class="instagram"
+							href="https://www.instagram.com/greencar_kr" target="_blank">¶óÁ¨Ä«
+							ÀÎ½ºÅ¸±×·¥</a>
 
 					</div>
 
 					<div class="side_cscenter">
 
-						<span class="tit">ê³ ê°ì„¼í„°</span> <span class="tel">010-9550-0167</span>
+						<span class="tit">°í°´¼¾ÅÍ</span> <span class="tel">010-9550-0167</span>
 
 					</div>
 
 				</div>
 
 				<div class="contentbox">
-					<!-- contentboxë¡œ ë¬¶ê¸° -->
+					<!-- contentbox·Î ¹­±â -->
 
 
         <div class="location">
           <div class="location_in">
-            <p><span>ê·¸ë¦°ì¹´ ì†Œê°œ</span>&gt; <strong>ìš”ê¸ˆì•ˆë‚´</strong></p>
+            <p><span>¶óÁ¨Ä« ¼Ò°³</span>&gt; <strong>¿ä±İ¾È³»</strong></p>
           </div>
         </div>
         <div class="subtop-content bg_subvisual_02_01">
-          <h3 class="subtit">ìš”ê¸ˆì•ˆë‚´</h3>
-          <p class="subtxt"><strong>30ë¶„ë„ ëŒ€ì—¬ ê°€ëŠ¥í•œ ê²½ì œì ì¸ ê·¸ë¦°ì¹´,</strong><br />ìµœëŒ€ 86%ê¹Œì§€ í• ì¸ëœ ìš”ê¸ˆí˜œíƒì„ ëˆ„ë ¤ë³´ì„¸ìš”.</p>
+          <h3 class="subtit">¿ä±İ¾È³»</h3>
+          <p class="subtxt"><strong>30ºĞµµ ´ë¿© °¡´ÉÇÑ °æÁ¦ÀûÀÎ ¶óÁ¨Ä«,</strong><br />ÃÖ´ë 86%±îÁö ÇÒÀÎµÈ ¿ä±İÇıÅÃÀ» ´©·Áº¸¼¼¿ä.</p>
         </div>
-
 
 					<div class="bodystart">
 
-						<!-- bodystart 	=========================================ì»¨í…ì¸  ë³€ê²½ê°€ëŠ¥ ì˜ì—­!!================================================  -->
+						<!-- bodystart 	=========================================ÄÁÅÙÃ÷ º¯°æ°¡´É ¿µ¿ª!!================================================  -->
 
 						<div class="charges-wrap">
 
-						<h4 id="mini-title">ë¼ì  ì¹´ íšŒì›ì œ ì•ˆë‚´</h4>
-						<div><img width="100%" alt="íšŒì›ì œ ì•ˆë‚´" src="./images/charge_guide/Membership.JPG" />  </div>
+						<h4 id="mini-title">¶óÁ¨Ä« È¸¿øÁ¦ ¾È³»</h4>
+						<div><img width="100%" alt="È¸¿øÁ¦ ¾È³»" src="./images/charge_guide/Membership.png" />  </div>
 
-						<h4 id="mini-title">ìš”ê¸ˆ ì•ˆë‚´</h4>
-						<p>- ì˜ˆì•½í•œ ì‹œê°„, ì£¼í–‰í•œ ê±°ë¦¬ë§Œí¼ì˜ ì €ë ´í•˜ê³  í•©ë¦¬ì ì¸ ìš”ê¸ˆìœ¼ë¡œ ë¼ì  ì¹´ë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.</p>
-						<div><img width="100%" alt="íšŒì›ì œ ì•ˆë‚´" src="./images/charge_guide/Charge.JPG" />	</div>
+						<h4 id="mini-title">¿ä±İ ¾È³»</h4>
+						<p>- ¿¹¾àÇÑ ½Ã°£, ÁÖÇàÇÑ °Å¸®¸¸Å­ÀÇ Àú·ÅÇÏ°í ÇÕ¸®ÀûÀÎ ¿ä±İÀ¸·Î ¶óÁ¨Ä«¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.</p>
+						<div><img width="100%" alt="¿ä±İ ¾È³»" src="./images/charge_guide/Charge.png" />	</div>
 
-						<h4 id="mini-title">ì°¨ì¢…ë³„ ìš”ê¸ˆí‘œ</h4>
-						<p>- ë¼ì  ì¹´ëŠ” ìƒì‹œ ì´ë²¤íŠ¸(ì°¨ì¢… ë° ì§€ì—­)ë¥¼ ì§„í–‰í•˜ì—¬ í‘œì¤€ìš”ê¸ˆë³´ë‹¤ ë”ìš± ì €ë ´í•˜ê²Œ ì´ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤.
-						<div><img width="100%" alt="íšŒì›ì œ ì•ˆë‚´" src="./images/charge_guide/CarList.JPG" />	</div>
+						<h4 id="mini-title">Â÷Á¾º° ¿ä±İÇ¥</h4>
+						<p>- ¶óÁ¨Ä«´Â »ó½Ã ÀÌº¥Æ®(Â÷Á¾ ¹× Áö¿ª)¸¦ ÁøÇàÇÏ¿© Ç¥ÁØ¿ä±İº¸´Ù ´õ¿í Àú·ÅÇÏ°Ô ÀÌ¿ë °¡´ÉÇÕ´Ï´Ù.
+						<div><img width="100%" alt="¿ä±İÇ¥" src="./images/charge_guide/CarList.png" />	</div>
+						<p>	- Â÷Á¾ ¹× Áö¿ª, ÀÌº¥Æ® µî ÇÒÀÎÁ¶°Ç¿¡ µû¶ó º¸´Ù ¸¹Àº ÇÒÀÎÇıÅÃÀÌ Á¦°øµË´Ï´Ù. ½Ç½Ã°£ ÇÒÀÎ´ë¿©¿ä±İÀ» Á÷Á¢ Á¶È¸ÇØº¸¼¼¿ä.<br>
+							- ¶óÁ¨Ä« ÀÌ¿ë¿ä±İÀº ±â°£º°(ºñ¼ö±â/¼º¼ö±â µî) ¿ä±İ Á¤Ã¥¿¡ µû¶ó ½Ç½Ã°£ º¯µ¿µÉ ¼ö ÀÖ½À´Ï´Ù.<br>
+							- ÁÖÇà¿ä±İÀº À¯°¡º¯µ¿¿¡ µû¶ó º¯°æµÉ ¼ö ÀÖ½À´Ï´Ù.<br>
+						</p>
+							
+						<h4 id="mini-title">½Ã°£¾È³»(´ë¿©½ÃÀÛ ±âÁØ)</h4>
+						<p>
+						- ÁÖÁß : ÀÏ¿äÀÏ 19:00 ~ ±İ¿äÀÏ 18:50<br>
+						- ÁÖ¸» : ±İ¿äÀÏ 19:00 ~ ÀÏ¿äÀÏ 18:50<br>
+						- °øÈŞÀÏ : 00:00 ~ 23:50(ÁÖ¸» ¿ä±İ Àû¿ë)<br>
+						- ½É¾ß : 00:00 ~ 06:50(ÁÖ¸»/°øÈŞÀÏ Á¦¿Ü) <br>
+						   ´Ü, ½É¾ß¿ä±İÀº ´ë¿©½ÃÀÛ ½Ã°£°ú °ü°è ¾øÀÌ ÁÖÁß ´ë¿© °Ç¿¡ Àû¿ëµË´Ï´Ù.
+						</p>
+							
+						<h4 id="mini-title">º¸Çè¾È³»</h4>
+						<p>
+						- ¿¹¾àÇÑ ½Ã°£¸¸Å­ º¸Çè·á°¡ ºÎ°úµÇ¸ç, ÀÚµ¿Â÷ Á¾ÇÕº¸Çè(´ëÀÎ¹è»ó/´ë¹°¹è»ó/ÀÚ±â½ÅÃ¼»ç°í) ¹× Â÷·®¼ÕÇØ¸éÃ¥Á¦µµ(ÀÚÂ÷º¸Çè)ÀÌ Æ÷ÇÔµË´Ï´Ù.
+						</p>
+						<div><img width="100%" alt="º¸·³ ¾È³»" src="./images/charge_guide/Insurance.png" />	</div>	
+							
+						<h4 id="mini-title">Â÷·®º° ÀÚ±âºÎ´ã±İ ¾È³»</h4>
+						<p>
+						- Â÷·® ´ë¿© ½Ã ÀÌ¿ëÀÚÀÇ ±ÍÃ¥»çÀ¯·Î ÀÎÇØ Â÷·®¼ÕÇØ°¡ ¹ß»ıÇÑ °æ¿ì ´ë¿© ½Ã ¼±ÅÃÇÏ½Å º¸Çè·á¿¡ µû¶ó ¼ÕÇØ¸éÃ¥ ÇıÅÃÀ» ¹ŞÀ» ¼ö ÀÖ½À´Ï´Ù.
+						</p>
+						<div><img width="100%" alt="ÀÚ±âºÎ´ã±İ ¾È³»" src="./images/charge_guide/Deductible.png" />	</div>	
+							
+						<h4 id="mini-title">¶óÁ¨Ä« ¿ä±İÈ°¿ë TIP</h4>
+						<div><img width="80%" alt="ÇÁ·Î¸ğ¼Ç" src="./images/charge_guide/Promotion.png" />	</div>	
+							
+					</div>	<!-- charges-wrap -->
 
-						<!-- charges-wrap -->
+				</div>		<!-- // bodyend -->
+			</div>		<!-- // end contentBox -->
 
-						<!-- // bodyend -->
+		</div>	<!-- // End #content-wrap -->
 
-					</div>
-
-				</div>
-				<!-- // end contentBox -->
-
-			</div>
-
-		</div>
-
-		<!-- // End #container -->
-
+	</div>	<!-- // End #container -->
+		
 		<!-- Begin #footer -->
 
 		<div id="footer">
-
-			<h3 class="blind">ë¼ì  ì¹´ ì •ì±… ë° ì•½ê´€</h3>
 
 			<div class="footer_box01">
 
@@ -897,19 +915,19 @@ a.hoverline:hover {
 
 						<li><a
 							href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
-							target="_blank">ì¥ê¸°ë Œí„°ì¹´</a></li>
+							target="_blank">Àå±â·»ÅÍÄ«</a></li>
 
 						<li><a
 							href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
-							target="_blank">ë‹¨ê¸°ë Œí„°ì¹´</a></li>
+							target="_blank">´Ü±â·»ÅÍÄ«</a></li>
 
 						<li><a
 							href="https://www.lotterentacar.net/kor/long/usedList.do"
-							target="_blank">ì¤‘ê³ ì°¨ë Œí„°ì¹´</a></li>
+							target="_blank">Áß°íÂ÷·»ÅÍÄ«</a></li>
 
 						<li><a
 							href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
-							target="_blank">ë‚´ì°¨íŒ”ê¸°</a></li>
+							target="_blank">³»Â÷ÆÈ±â</a></li>
 
 						<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
 
@@ -919,17 +937,17 @@ a.hoverline:hover {
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-								src="./images/common/img_partner_seoul.gif" alt="ê³µìœ ì„œìš¸ ë‚˜ëˆ”ì¹´ ì˜ˆì•½í•˜ê¸°" /></a></li>
+								src="./images/common/img_partner_seoul.gif" alt="°øÀ¯¼­¿ï ³ª´®Ä« ¿¹¾àÇÏ±â" /></a></li>
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
 								src="./images/common/img_partner_suwon.gif"
-								alt="íœ´ë¨¼ì‹œí‹° ìˆ˜ì› ë¼ì  ì¹´ ì˜ˆì•½í•˜ê¸°" /></a></li>
+								alt="ÈŞ¸Õ½ÃÆ¼ ¼ö¿ø ¶óÁ¨Ä« ¿¹¾àÇÏ±â" /></a></li>
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
 								src="./images/common/img_partner_incheon.gif"
-								alt="ì¸ì²œê´‘ì—­ì‹œ ë¼ì  ì¹´ ì˜ˆì•½í•˜ê¸°" /></a></li>
+								alt="ÀÎÃµ±¤¿ª½Ã ¶óÁ¨Ä« ¿¹¾àÇÏ±â" /></a></li>
 
 					</ul>
 
@@ -944,36 +962,36 @@ a.hoverline:hover {
 					<ul class="footer_sns">
 
 						<li><a class="facebook"
-							href="https://www.facebook.com/greencarkorea" target="_blank">ë¼ì  ì¹´
-								í˜ì´ìŠ¤ë¶</a></li>
+							href="https://www.facebook.com/greencarkorea" target="_blank">¶óÁ¨Ä«
+								ÆäÀÌ½ººÏ</a></li>
 
 						<li><a class="blog" href="http://blog.naver.com/greencar_co"
-							target="_blank">ë¼ì  ì¹´ ë¸”ë¡œê·¸</a></li>
+							target="_blank">¶óÁ¨Ä« ºí·Î±×</a></li>
 
 						<li><a class="instagram"
-							href="https://www.instagram.com/greencar_kr/" target="_blank">ë¼ì  ì¹´
-								ì¸ìŠ¤íƒ€ê·¸ë¨</a></li>
+							href="https://www.instagram.com/greencar_kr/" target="_blank">¶óÁ¨Ä«
+								ÀÎ½ºÅ¸±×·¥</a></li>
 
 					</ul>
 
 					<ul class="footer_links">
 
-						<li><a href="http://www.greencar.co.kr/service/company/">íšŒì‚¬ì†Œê°œ</a></li>
+						<li><a href="http://www.greencar.co.kr/service/company/">È¸»ç¼Ò°³</a></li>
 
-						<li><a href="http://www.greencar.co.kr/alliance/">ì œíœ´ì‹ ì²­</a></li>
+						<li><a href="http://www.greencar.co.kr/alliance/">Á¦ÈŞ½ÅÃ»</a></li>
 
-						<li><a href="http://www.greencar.co.kr/service/useclause/">íšŒì›ì´ìš©ì•½ê´€</a></li>
+						<li><a href="http://www.greencar.co.kr/service/useclause/">È¸¿øÀÌ¿ë¾à°ü</a></li>
 
 						<li><a href="http://www.greencar.co.kr/service/personalinfo/"
-							class="point">ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</a></li>
+							class="point">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</a></li>
 
-						<li><a href="http://www.greencar.co.kr/service/carclause/">ìë™ì°¨ëŒ€ì—¬
-								í‘œì¤€ì•½ê´€</a></li>
+						<li><a href="http://www.greencar.co.kr/service/carclause/">ÀÚµ¿Â÷´ë¿©
+								Ç¥ÁØ¾à°ü</a></li>
 
-						<li><a href="http://www.greencar.co.kr/service/location/">ìœ„ì¹˜ê¸°ë°˜
-								ì„œë¹„ìŠ¤ ì´ìš©ì•½ê´€</a></li>
+						<li><a href="http://www.greencar.co.kr/service/location/">À§Ä¡±â¹İ
+								¼­ºñ½º ÀÌ¿ë¾à°ü</a></li>
 
-						<li><a href="http://www.greencar.co.kr/service/sitemap/">ì‚¬ì´íŠ¸ë§µ</a></li>
+						<li><a href="http://www.greencar.co.kr/service/sitemap/">»çÀÌÆ®¸Ê</a></li>
 
 					</ul>
 
@@ -981,14 +999,14 @@ a.hoverline:hover {
 
 						<div class="info">
 
-							<span>(ì£¼) ë¼ì  ì¹´</span> <span>ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸ : 220-87-91595</span> <span>í†µì‹ íŒë§¤ì—…ì‹ ê³ ë²ˆí˜¸
-								: ì œ2011-ì„œìš¸ê°•ë‚¨-01456í˜¸</span> <span>ëŒ€í‘œì´ì‚¬ : ì•ˆì•„ë¦„</span>
+							<span>(ÁÖ) ¶óÁ¨Ä«</span> <span>»ç¾÷ÀÚµî·Ï¹øÈ£ : 220-87-91595</span> <span>Åë½ÅÆÇ¸Å¾÷½Å°í¹øÈ£
+								: Á¦2011-¼­¿ï°­³²-01456È£</span> <span>´ëÇ¥ÀÌ»ç : ¾È¾Æ¸§</span>
 
 						</div>
 
 						<div class="addr">
 
-							<span>ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ í…Œí—¤ë€ë¡œ 14ê¸¸ 6 (ë‚¨ë„ë¹Œë¼ 4ì¸µ)</span> <span>TEL :
+							<span>¼­¿ïÆ¯º°½Ã °­³²±¸ Å×Çì¶õ·Î 14±æ 6 (³²µµºô¶ó 4Ãş)</span> <span>TEL :
 								010-9550-0167</span> <span>FAX : 02-9550-0167</span>
 
 						</div>
@@ -1001,10 +1019,10 @@ a.hoverline:hover {
 					<div class="footer_emblem">
 
 						<img src="./images/common/img_emblem_brandpower.jpg"
-							alt="2016ë…„ í•œêµ­ì‚°ì—…ì˜ ë¸Œëœë“œíŒŒì›Œ 1ìœ„" /> <img
+							alt="2016³â ÇÑ±¹»ê¾÷ÀÇ ºê·£µåÆÄ¿ö 1À§" /> <img
 							src="./images/common/img_emblem_brandstar.jpg"
-							alt="2016ë…„ ëŒ€í•œë¯¼êµ­ ë¸Œëœë“œìŠ¤íƒ€" /> <img
-							src="./images/common/img_emblem_award.jpg" alt="ëª¨ë°”ì¼ ì–´ì›Œë“œ ì½”ë¦¬ì•„ 2016" />
+							alt="2016³â ´ëÇÑ¹Î±¹ ºê·£µå½ºÅ¸" /> <img
+							src="./images/common/img_emblem_award.jpg" alt="¸ğ¹ÙÀÏ ¾î¿öµå ÄÚ¸®¾Æ 2016" />
 
 						<img src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
 
@@ -1021,8 +1039,6 @@ a.hoverline:hover {
 	</div>
 
 	<!-- // End #wrap -->
-
-
 
 </body>
 
