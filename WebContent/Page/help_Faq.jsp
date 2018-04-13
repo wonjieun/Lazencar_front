@@ -121,21 +121,19 @@
 
 				<div class="sidebar">
 					<!-- 왼쪽 메뉴 -->
-
 					<h2 class="left-tit">고객센터</h2>
 
 					<ul class="leftMenu">
 
 						<li class="top"><a href="#"><span>1 : 1 문의</span></a></li>
 
-						<li><a href="#"><span>자주찾는질문</span></a></li>
+						<li><a href="#" class = 'on'><span>자주찾는질문</span></a></li>
 
-						<li><a href="#" class = 'on'><span>공지사항</span></a></li>
+						<li><a href="#"><span>공지사항</span></a></li>
 
 <!-- 					class = 'on'	현재 페이지를 나타낼때 on 사용하는 듯 -->
 
 					</ul>
-a
 					<div class="side_sns">
 
 						<span class="tit">SNS<em></em></span> <a class="facebook"
@@ -146,9 +144,7 @@ a
 							인스타그램</a>
 
 					</div>
-
 					<div class="side_cscenter">
-
 						<span class="tit">고객센터</span> <span class="tel">010-9550-0167</span>
 
 					</div>
@@ -166,7 +162,9 @@ a
         </div>
         <div class="subtop-content bg_subvisual_02_01">
           <h3 class="subtit">자주 찾는 질문</h3>
-          <p class="subtxt"><strong>라젠카가 궁금하세요? 자주찾는 질문을 이용하세요.</strong><br />고객님의 궁금하신 사항을 빠르고 정확하게 해결하실 수 있습니다.</p>
+          <p class="subtxt">
+          <strong>라젠카가 궁금하세요? 자주찾는 질문을 이용하세요.</strong><br />
+          	고객님의 궁금하신 사항을 빠르고 정확하게 해결하실 수 있습니다.</p>
         </div>
 
 

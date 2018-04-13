@@ -235,7 +235,7 @@ $(document).ready(function(){
 			<td>${i.startDate }</td>
 			<td>${i.endDate }</td>
 			<td>${i.ageConst } 세 이상</td>
-			<td>${i.timeConst } 시간 이상</td>							
+			<td>${i.timeConst } 일 이상</td>							
 			<td>${i.carConst }</td>							
 			<td>${i.discount } %</td>							
 			<td><img width="200px" height="150px" src="/upload/${i.couponImg }"></td>						

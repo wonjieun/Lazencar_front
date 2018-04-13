@@ -31,7 +31,7 @@
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
 	
-	.level1 :nth-child(4) .fly {background: #ffb505 !important;}
+	.level1 :nth-child(6) .fly {background: #ffb505 !important;}
 	
 	
 	tr.hiddenTr{

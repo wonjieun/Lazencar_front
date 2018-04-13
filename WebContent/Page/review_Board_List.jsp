@@ -49,43 +49,26 @@
 			<div class="content-wrap">
 
 				<div class="sidebar">
-					<!-- 왼쪽 메뉴 -->
+	<h2 class="left-tit">서비스 / 혜택</h2>
+	<ul class="leftMenu">
+		<li class="top"><a href="#"><span>특가상품</span></a></li>
+		<li><a href="/coupon.do"><span>쿠폰받기</span></a></li>
+		<li><a href="/Page/review_Board_List.do" class='on'><span>후기</span></a></li>
+<!-- 					class = 'on'	현재 페이지를 나타낼때 on 사용하는 듯 -->
+	</ul>
+	<div class="side_sns">
+		<span class="tit">SNS<em></em></span> <a class="facebook"
+			href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
+			페이스북</a> <a class="blog" href="http://blog.naver.com/greencar_co"
+			target="_blank">라젠카 블로그</a> <a class="instagram"
+			href="https://www.instagram.com/greencar_kr" target="_blank">라젠카
+			인스타그램</a>
+	</div>
 
-					<h2 class="left-tit">라젠카 소개</h2>
-
-					<ul class="leftMenu">
-
-						<li class="top"><a href="#" class='on'><span>라젠카란?</span></a></li>
-
-						<li><a
-							href="http://localhost:8082/Page/p03_Use_Guide_01.html"><span>이용안내</span></a></li>
-
-						<li><a href="#"><span>요금안내</span></a></li>
-
-						<li><a href="http://localhost:8082/Page/p05_Road_Guide.html"><span>찾아오시는길</span></a></li>
-
-					</ul>
-
-
-
-					<div class="side_sns">
-
-						<span class="tit">SNS<em></em></span> <a class="facebook"
-							href="https://www.facebook.com/greencarkorea" target="_blank">라젠카
-							페이스북</a> <a class="blog" href="http://blog.naver.com/greencar_co"
-							target="_blank">라젠카 블로그</a> <a class="instagram"
-							href="https://www.instagram.com/greencar_kr" target="_blank">라젠카
-							인스타그램</a>
-
-					</div>
-
-					<div class="side_cscenter">
-
-						<span class="tit">고객센터</span> <span class="tel">010-9550-0167</span>
-
-					</div>
-
-				</div>
+	<div class="side_cscenter">
+		<span class="tit">고객센터</span> <span class="tel">010-9550-0167</span>
+	</div>
+</div>
 
 				<div class="contentbox">
 					<div class="location">

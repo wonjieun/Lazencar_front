@@ -10,10 +10,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 </head>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js">
-<%-- style 시작 --%>
-<link type="text/css" rel="stylesheet" media="all" href="./css/main.css" />
-<%-- style 끝 --%>
+<link type="text/css" rel="stylesheet" href="/Page/css/main.css" >
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/master.css?v=180322">
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/calendar.css">
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 
 // 로그인, 회원가입 -> 로그아웃, 마이페이지
@@ -73,7 +75,7 @@ $(document).ready(function() {
             			 	</script>
             			
             			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
-                  <a class="nvalinks-rev" href="/reservation/reservation.do">라젠카 예약하기</a>
+                  <a class="nvalinks-rev" href="/reservation/reservation.do">라젠카 예약</a>
 
                </div>
 <nav id="topMenu" > 

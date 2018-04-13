@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%-- style 시작 --%>
-<link type="text/css" rel="stylesheet" media="all" href="./css/main.css" />
+<link type="text/css" rel="stylesheet" media="all" href="/Page/css/main.css" />
 <%-- style 끝 --%>
 
 <!-- 시작 #footer -->
@@ -29,14 +29,14 @@
 	<ul class="footer_partner">
 	<li><a
 	href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-	src=".Page/images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+	src="/Page/images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
 	<li><a
 	href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
-	src="..Page/images/common/img_partner_suwon.gif"
+	src="/Page/images/common/img_partner_suwon.gif"
 	alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
 	<li><a
 	href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
-	src="..Page/images/common/img_partner_incheon.gif"
+	src="/Page/images/common/img_partner_incheon.gif"
 	alt="인천광역시 라젠카 예약하기" /></a></li>
 	</ul>
 		</div>
@@ -85,13 +85,13 @@
 					
 			<div class="footer_emblem">
 
-	<img src="./images/common/img_emblem_brandpower.jpg"
+	<img src="/Page/images/common/img_emblem_brandpower.jpg"
 	alt="2016년 한국산업의 브랜드파워 1위" /> <img
-	src="./images/common/img_emblem_brandstar.jpg"
+	src="/Page/images/common/img_emblem_brandstar.jpg"
 	alt="2016년 대한민국 브랜드스타" /> <img
-	src="./images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
+	src="/Page/images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
 
-	<img src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
+	<img src="/Page/images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
 
 			</div>
 		</div>

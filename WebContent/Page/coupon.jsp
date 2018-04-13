@@ -4,13 +4,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ì¿ í°ë°›ê¸°</title>
+<title>ÄíÆù¹Þ±â</title>
 
 <link type="text/css" rel="stylesheet" href="/Page/css/main.css" >
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/master.css?v=180322">
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/calendar.css">
+<script type="text/javascript"	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
 
+function alertMsg(){
+	alert("ÄíÆùÀ» ¹Þ¾Ò½À´Ï´Ù");
+}
+
+
+// 	$(document).ready(function(){
+// 		$("#down1").onclick(function(){
+// 			alert("ÄíÆùÀ» ¹Þ¾Ò½À´Ï´Ù");
+// 		});
+		
+// 		$("#down2").onclick(function(){
+// 			alert("ÄíÆùÀ» ¹Þ¾Ò½À´Ï´Ù");
+// 		});
+		
+// 		$("#down3").onclick(function(){
+// 			alert("ÄíÆùÀ» ¹Þ¾Ò½À´Ï´Ù");
+// 		});
+		
+// 	});	
+</script>
 </head>
 <body>
 <div id="wrap">
@@ -18,39 +40,39 @@
 <div id="header" class="sub">
 	<div class="hgroup">
 		<div class="inbox">
-			<h1 class="logo"><a href="/main.do"><span>ë¼ì  ì¹´</span></a></h1>
+			<h1 class="logo"><a href="/main.do"><span>¶óÁ¨Ä«</span></a></h1>
 
 			<div class="nvalinks">
-				<a href="/login/login.do">ë¡œê·¸ì¸</a>
-				<a href="/signUp.do">íšŒì›ê°€ìž…</a>
-				<a class="nvalinks-rev" href="#">ë¼ì  ì¹´ ì˜ˆì•½</a>
+				<a href="/login/login.do">·Î±×ÀÎ</a>
+				<a href="/signUp.do">È¸¿ø°¡ÀÔ</a>
+				<a class="nvalinks-rev" href="#">¶óÁ¨Ä« ¿¹¾à</a>
 			</div>
 			
 			<nav id="topMenu">
 			<ul>
 				<li class="topMenuLi">
-				<a href="#" class="menuLink">Lazencar ì†Œê°œ</a>
+				<a href="#" class="menuLink">Lazencar ¼Ò°³</a>
 					<ul class="submenu">
-						<li><a href="#" class="submenuLink longLink">Lazencarëž€?</a></li>
-						<li><a href="#" class="submenuLink longLink">ì´ìš©ì•ˆë‚´</a></li>
-						<li><a href="#" class="submenuLink longLink">ìš”ê¸ˆì•ˆë‚´</a></li>
-						<li><a href="#" class="submenuLink longLink">ìœ„ì¹˜</a></li>
+						<li><a href="#" class="submenuLink longLink">Lazencar¶õ?</a></li>
+						<li><a href="#" class="submenuLink longLink">ÀÌ¿ë¾È³»</a></li>
+						<li><a href="#" class="submenuLink longLink">¿ä±Ý¾È³»</a></li>
+						<li><a href="#" class="submenuLink longLink">À§Ä¡</a></li>
 					</ul></li>
 
 				<li class="topMenuLi">
-				<a href="#" class="menuLink">ì„œë¹„ìŠ¤/í˜œíƒ</a>
+				<a href="#" class="menuLink">¼­ºñ½º/ÇýÅÃ</a>
 					<ul class="submenu">
-						<li><a href="#" class="submenuLink longLink">íŠ¹ê°€ìƒí’ˆ</a></li>
-						<li><a href="#" class="submenuLink longLink">ì¿ í°ë°›ê¸°</a></li>
-						<li><a href="#" class="submenuLink longLink">í›„ê¸°</a></li>
+						<li><a href="#" class="submenuLink longLink">Æ¯°¡»óÇ°</a></li>
+						<li><a href="#" class="submenuLink longLink">ÄíÆù¹Þ±â</a></li>
+						<li><a href="#" class="submenuLink longLink">ÈÄ±â</a></li>
 					</ul></li>
 
 				<li class="topMenuLi">
-				<a href="#" class="menuLink">ê³ ê°ì„¼í„°</a>
+				<a href="#" class="menuLink">°í°´¼¾ÅÍ</a>
 					<ul class="submenu">
-						<li><a href="#" class="submenuLink longLink">1:1 ë¬¸ì˜</a></li>
-						<li><a href="#" class="submenuLink longLink">ìžì£¼ ì°¾ëŠ” ì§ˆë¬¸</a></li>
-						<li><a href="/service/list.do" class="submenuLink longLink">ê³µì§€ì‚¬í•­</a></li>
+						<li><a href="#" class="submenuLink longLink">1:1 ¹®ÀÇ</a></li>
+						<li><a href="#" class="submenuLink longLink">ÀÚÁÖ Ã£´Â Áú¹®</a></li>
+						<li><a href="/service/list.do" class="submenuLink longLink">°øÁö»çÇ×</a></li>
 					</ul></li>
 			</ul>
 			</nav>
@@ -66,113 +88,115 @@
 <div class="content-wrap">
 
 <div class="sidebar">
-	<h2 class="left-tit">ì„œë¹„ìŠ¤ / í˜œíƒ</h2>
+	<h2 class="left-tit">¼­ºñ½º / ÇýÅÃ</h2>
 	<ul class="leftMenu">
-		<li class="top"><a href="#"><span>íŠ¹ê°€ìƒí’ˆ</span></a></li>
-		<li><a href="/coupon.do"><span>ì¿ í°ë°›ê¸°</span></a></li>
-		<li><a href="/Page/review_Board_List.do" class='on'><span>í›„ê¸°</span></a></li>
-<!-- 					class = 'on'	í˜„ìž¬ íŽ˜ì´ì§€ë¥¼ ë‚˜íƒ€ë‚¼ë•Œ on ì‚¬ìš©í•˜ëŠ” ë“¯ -->
+		<li class="top"><a href="#"><span>Æ¯°¡»óÇ°</span></a></li>
+		<li><a href="/coupon.do"><span>ÄíÆù¹Þ±â</span></a></li>
+		<li><a href="/Page/review_Board_List.do" class='on'><span>ÈÄ±â</span></a></li>
+<!-- 					class = 'on'	ÇöÀç ÆäÀÌÁö¸¦ ³ªÅ¸³¾¶§ on »ç¿ëÇÏ´Â µí -->
 	</ul>
 	<div class="side_sns">
 		<span class="tit">SNS<em></em></span> <a class="facebook"
-			href="https://www.facebook.com/greencarkorea" target="_blank">ë¼ì  ì¹´
-			íŽ˜ì´ìŠ¤ë¶</a> <a class="blog" href="http://blog.naver.com/greencar_co"
-			target="_blank">ë¼ì  ì¹´ ë¸”ë¡œê·¸</a> <a class="instagram"
-			href="https://www.instagram.com/greencar_kr" target="_blank">ë¼ì  ì¹´
-			ì¸ìŠ¤íƒ€ê·¸ëž¨</a>
+			href="https://www.facebook.com/greencarkorea" target="_blank">¶óÁ¨Ä«
+			ÆäÀÌ½ººÏ</a> <a class="blog" href="http://blog.naver.com/greencar_co"
+			target="_blank">¶óÁ¨Ä« ºí·Î±×</a> <a class="instagram"
+			href="https://www.instagram.com/greencar_kr" target="_blank">¶óÁ¨Ä«
+			ÀÎ½ºÅ¸±×·¥</a>
 	</div>
 
 	<div class="side_cscenter">
-		<span class="tit">ê³ ê°ì„¼í„°</span> <span class="tel">010-9550-0167</span>
+		<span class="tit">°í°´¼¾ÅÍ</span> <span class="tel">010-9550-0167</span>
 	</div>
 </div>
 
 <div class="contentbox">
 <div class="location">
   <div class="location_in">
-    <p><span>ì„œë¹„ìŠ¤ / í˜œíƒ</span>&gt; <strong>ì¿ í°ë°›ê¸°</strong></p>
+    <p><span>¼­ºñ½º / ÇýÅÃ</span>&gt; <strong>ÄíÆù¹Þ±â</strong></p>
   </div>
 </div>
 <div class="subtop-content bg_subvisual_02_01">
-  <h3 class="subtit">ì¿ í°ë°›ê¸°</h3>
+  <h3 class="subtit">ÄíÆù¹Þ±â</h3>
   <p class="subtxt">
-  <strong>ë¼ì  ì¹´ íšŒì›ì´ë¼ë©´ ëˆ„êµ¬ë‚˜ ë‹¤ìš´ë°›ì„ ìˆ˜ ìžˆëŠ” ë²„ë¼ì´ì–´í‹° í• ì¸ ì¿ í°~!</strong><br/>
- 					ì¼ìƒì˜ ì¶©ì „, ë¼ì  ì¹´ì˜ í• ì¸í˜œíƒì„ ëˆ„ë ¤ë³´ì„¸ìš”.</p>
+  <strong>¶óÁ¨Ä« È¸¿øÀÌ¶ó¸é ´©±¸³ª ´Ù¿î¹ÞÀ» ¼ö ÀÖ´Â ¹ö¶óÀÌ¾îÆ¼ ÇÒÀÎ ÄíÆù~!</strong><br/>
+ 					ÀÏ»óÀÇ ÃæÀü, ¶óÁ¨Ä«ÀÇ ÇÒÀÎÇýÅÃÀ» ´©·Áº¸¼¼¿ä.</p>
 </div>
 
 <div class="bodystart">
 	<div class="coupon-wrap">
 		<div class="coupon-con coupon-con-gap">
-			<!-- ì§„í–‰ì¤‘ -->
+			<!-- ÁøÇàÁß -->
 			<ul class="coupon-down">
 				<li>
 					<span><img src="/Page/images/coupon/nightcoupon_02115.png" alt="" width="335" height="140" /></span>
-					<span class="eventImg-txt"><img src="/Page/images/coupon/icon_event_ing.png" alt="ì§„í–‰" /></span>
+					<span class="eventImg-txt"><img src="/Page/images/coupon/icon_event_ing.png" alt="ÁøÇà" /></span>
 				</li>
-<!-- 			<li class="num"><span>5331</span>ë‚¨ìŒ</li> -->
-				<!-- ë‹¤ìš´ë¡œë“œ ê°€ëŠ¥ -->
-				<li class="down"><a href="javascript:couponView('2KJdS9pt4cH7i7RarHeQlA==','8383');"><img src="./images/coupon/btn_down.gif" alt="ë‹¤ìš´ë¡œë“œ" /></a></li>
+<!-- 			<li class="num"><span>5331</span>³²À½</li> -->
+				<!-- ´Ù¿î·Îµå °¡´É -->
+				<li class="down"><a href="javascript:couponView('2KJdS9pt4cH7i7RarHeQlA==','8383');" onclick="alertMsg()">
+				<img  src="./images/coupon/btn_down.gif" alt="´Ù¿î·Îµå" /></a></li>
 			</ul>
 			<ul class="coupon-info">
 				<li><span class="title"><img
-						src="/Page/images/coupon/btn_coupon_name.gif" alt="ì¿ í°ëª…" /></span> <strong
-					class="txt">ì‹¬ì•¼ 10ì‹œê°„ 10,000ì›!(3/21)</strong></li>
+						src="/Page/images/coupon/btn_coupon_name.gif" alt="ÄíÆù¸í" /></span> <strong
+					class="txt">½É¾ß 10½Ã°£ 10,000¿ø!(3/21)</strong></li>
 				<li><span class="title"><img
-						src="/Page/images/coupon/btn_coupon_date.gif" alt="ì‹ ì²­ê¸°ê°„" /></span> <span
+						src="/Page/images/coupon/btn_coupon_date.gif" alt="½ÅÃ»±â°£" /></span> <span
 					class="txt">2018-03-21~2018-03-21</span></li>
 				<li><span class="title"><img
-						src="/Page/images/coupon/btn_coupon_use.gif" alt="ì‚¬ìš©ì¡°ê±´" /></span> <span
-					class="txt">ì£¼ì¤‘ ì‚¬ìš©/ì°¨ì¢…ì œí•œ/ì´ìš©ê°€ëŠ¥ì‹œê°„ì œí•œ</span></li>
+						src="/Page/images/coupon/btn_coupon_use.gif" alt="»ç¿ëÁ¶°Ç" /></span> <span
+					class="txt">ÁÖÁß »ç¿ë/Â÷Á¾Á¦ÇÑ/ÀÌ¿ë°¡´É½Ã°£Á¦ÇÑ</span></li>
 			</ul>
 		</div>	
 		<div class="coupon-con">
-			<!-- ì§„í–‰ì¤‘ -->
+			<!-- ÁøÇàÁß -->
 			<ul class="coupon-down">
 				<li>
 					<span><img src="/Page/images/coupon/coupon-03.png" alt="" width="335" height="140" /></span>
-					<span class="eventImg-txt"><img src="/Page/images/coupon/icon_event_ing.png" alt="ì§„í–‰" /></span>
+					<span class="eventImg-txt"><img src="/Page/images/coupon/icon_event_ing.png" alt="ÁøÇà" /></span>
 				</li>
-						<!-- ë‹¤ìš´ë¡œë“œ ê°€ëŠ¥ -->
-				<li class="down"><a href="javascript:couponView('86k0hhtfhz0O/7w+/IdrFg==','8372');"><img src="./images/coupon/btn_down.gif" alt="ë‹¤ìš´ë¡œë“œ" /></a></li>
+						<!-- ´Ù¿î·Îµå °¡´É -->
+				<li class="down"><a href="javascript:couponView('86k0hhtfhz0O/7w+/IdrFg==','8372');" onclick="alertMsg()">
+				<img src="./images/coupon/btn_down.gif" alt="´Ù¿î·Îµå" /></a></li>
 			</ul>
 			<ul class="coupon-info">
 				<li><span class="title"><img
-						src="./images/coupon/btn_coupon_name.gif" alt="ì¿ í°ëª…" /></span> <strong
-					class="txt">[ë´„ê½ƒ íŠ¸ëž˜ë¸”ìœ„í¬] ì „ì°¨ì¢… 60% í• ì¸!</strong></li>
+						src="./images/coupon/btn_coupon_name.gif" alt="ÄíÆù¸í" /></span> <strong
+					class="txt">[º½²É Æ®·¡ºíÀ§Å©] ÀüÂ÷Á¾ 60% ÇÒÀÎ!</strong></li>
 				<li><span class="title"><img
-						src="./images/coupon/btn_coupon_date.gif" alt="ì‹ ì²­ê¸°ê°„" /></span> <span
+						src="./images/coupon/btn_coupon_date.gif" alt="½ÅÃ»±â°£" /></span> <span
 					class="txt">2018-03-21~2018-03-21</span></li>
 				<li><span class="title"><img
-						src="./images/coupon/btn_coupon_use.gif" alt="ì‚¬ìš©ì¡°ê±´" /></span> <span
-					class="txt">ì£¼ì¤‘ ì‚¬ìš©/3ì‹œê°„ì´ìƒ/ì°¨ì¢…ì œí•œ</span></li>
+						src="./images/coupon/btn_coupon_use.gif" alt="»ç¿ëÁ¶°Ç" /></span> <span
+					class="txt">ÁÖÁß »ç¿ë/3½Ã°£ÀÌ»ó/Â÷Á¾Á¦ÇÑ</span></li>
 			</ul>
 		</div>
 		
 		<div class="coupon-con coupon-con-gap">	
-			<!-- ì§„í–‰ì¤‘ -->
+			<!-- ÁøÇàÁß -->
 			<ul class="coupon-down">			
 				<li>
 					<span><img src="/Page/images/coupon/coupon_web7.png" alt="" width="335" height="140" /></span>
-					<span class="eventImg-txt"><img src="/Page/images/coupon/icon_event_ing.png" alt="ì§„í–‰" /></span>
+					<span class="eventImg-txt"><img src="/Page/images/coupon/icon_event_ing.png" alt="ÁøÇà" /></span>
 				</li>
-				<!-- ë‹¤ìš´ë¡œë“œ ê°€ëŠ¥ -->
+				<!-- ´Ù¿î·Îµå °¡´É -->
 				<li class="down">
-					<a href="javascript:couponView('k/2q2jlEykZVjl3LF2+wTA==','8385');">
-					<img src="./images/coupon/btn_down.gif" alt="ë‹¤ìš´ë¡œë“œ" /></a></li>
+					<a href="javascript:couponView('k/2q2jlEykZVjl3LF2+wTA==','8385');" onclick="alertMsg()">
+					<img src="./images/coupon/btn_down.gif" alt="´Ù¿î·Îµå" /></a></li>
 			</ul>
 			
 			<ul class="coupon-info">
 				<li><span class="title"><img
-						src="./images/coupon/btn_coupon_name.gif" alt="ì¿ í°ëª…" /></span> <strong
-					class="txt">[50%í• ì¸]í†µí° ë°˜ê°’í• ì¸</strong></li>
+						src="./images/coupon/btn_coupon_name.gif" alt="ÄíÆù¸í" /></span> <strong
+					class="txt">[50%ÇÒÀÎ]ÅëÅ« ¹Ý°ªÇÒÀÎ</strong></li>
 					
 				<li><span class="title"><img
-						src="./images/coupon/btn_coupon_date.gif" alt="ì‹ ì²­ê¸°ê°„" /></span> <span
+						src="./images/coupon/btn_coupon_date.gif" alt="½ÅÃ»±â°£" /></span> <span
 					class="txt">2018-03-19~2018-03-24</span></li>
 					
 				<li><span class="title"><img
-						src="./images/coupon/btn_coupon_use.gif" alt="ì‚¬ìš©ì¡°ê±´" /></span> <span
-					class="txt">ì£¼ì¤‘ ì£¼ë§ ì‚¬ìš©/50ì‹œê°„ì´ìƒ/ê·¸ë¦°ì¡´ì œí•œ/ì°¨ì¢…ì œí•œ/ì´ìš©ê°€ëŠ¥ì‹œê°„ì œí•œ</span></li>
+						src="./images/coupon/btn_coupon_use.gif" alt="»ç¿ëÁ¶°Ç" /></span> <span
+					class="txt">ÁÖÁß ÁÖ¸» »ç¿ë/50½Ã°£ÀÌ»ó/±×¸°Á¸Á¦ÇÑ/Â÷Á¾Á¦ÇÑ/ÀÌ¿ë°¡´É½Ã°£Á¦ÇÑ</span></li>
 			</ul>
 			
 		</div>
@@ -192,19 +216,19 @@
 
 				<li><a
 					href="https://www.lotterentacar.net/kor/info/sinchajangCall.do?mnCd=MK0501"
-					target="_blank">ìž¥ê¸°ë Œí„°ì¹´</a></li>
+					target="_blank">Àå±â·»ÅÍÄ«</a></li>
 
 				<li><a
 					href="https://www.lotterentacar.net/kor/short/shortSubmain.do"
-					target="_blank">ë‹¨ê¸°ë Œí„°ì¹´</a></li>
+					target="_blank">´Ü±â·»ÅÍÄ«</a></li>
 
 				<li><a
 					href="https://www.lotterentacar.net/kor/long/usedList.do"
-					target="_blank">ì¤‘ê³ ì°¨ë Œí„°ì¹´</a></li>
+					target="_blank">Áß°íÂ÷·»ÅÍÄ«</a></li>
 
 				<li><a
 					href="https://www.lotteautoauction.net/sell/sellMyCar/greenCarSellMyCar.do"
-					target="_blank">ë‚´ì°¨íŒ”ê¸°</a></li>
+					target="_blank">³»Â÷ÆÈ±â</a></li>
 
 				<li><a href="https://www.lpoint.com/" target="_blank">L.POINT</a></li>
 
@@ -214,17 +238,17 @@
 
 				<li><a
 					href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-						src="/Page/images/common/img_partner_seoul.gif" alt="ê³µìœ ì„œìš¸ ë‚˜ëˆ”ì¹´ ì˜ˆì•½í•˜ê¸°" /></a></li>
+						src="/Page/images/common/img_partner_seoul.gif" alt="°øÀ¯¼­¿ï ³ª´®Ä« ¿¹¾àÇÏ±â" /></a></li>
 
 				<li><a
 					href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
 						src="/Page/images/common/img_partner_suwon.gif"
-						alt="íœ´ë¨¼ì‹œí‹° ìˆ˜ì› ë¼ì  ì¹´ ì˜ˆì•½í•˜ê¸°" /></a></li>
+						alt="ÈÞ¸Õ½ÃÆ¼ ¼ö¿ø ¶óÁ¨Ä« ¿¹¾àÇÏ±â" /></a></li>
 
 				<li><a
 					href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
 						src="/Page/images/common/img_partner_incheon.gif"
-						alt="ì¸ì²œê´‘ì—­ì‹œ ë¼ì  ì¹´ ì˜ˆì•½í•˜ê¸°" /></a></li>
+						alt="ÀÎÃµ±¤¿ª½Ã ¶óÁ¨Ä« ¿¹¾àÇÏ±â" /></a></li>
 
 			</ul>
 		</div>
@@ -235,35 +259,35 @@
 			<ul class="footer_sns">
 				<li><a class="facebook"
 					href="https://www.facebook.com/greencarkorea" target="_blank">
-					ë¼ì  ì¹´ íŽ˜ì´ìŠ¤ë¶</a></li>
+					¶óÁ¨Ä« ÆäÀÌ½ººÏ</a></li>
 				<li><a class="blog"
 					href="http://blog.naver.com/greencar_co" target="_blank">
-					ë¼ì  ì¹´ ë¸”ë¡œê·¸</a></li>
+					¶óÁ¨Ä« ºí·Î±×</a></li>
 				<li><a class="instagram"
 					href="https://www.instagram.com/greencar_kr/" target="_blank">
-					ë¼ì  ì¹´ ì¸ìŠ¤íƒ€ê·¸ëž¨</a></li>
+					¶óÁ¨Ä« ÀÎ½ºÅ¸±×·¥</a></li>
 			</ul>
 
 			<ul class="footer_links">
-				<li><a href="http://www.greencar.co.kr/service/company/">íšŒì‚¬ì†Œê°œ</a></li>
-				<li><a href="http://www.greencar.co.kr/alliance/">ì œíœ´ì‹ ì²­</a></li>
-				<li><a href="http://www.greencar.co.kr/service/useclause/">íšŒì›ì´ìš©ì•½ê´€</a></li>
+				<li><a href="http://www.greencar.co.kr/service/company/">È¸»ç¼Ò°³</a></li>
+				<li><a href="http://www.greencar.co.kr/alliance/">Á¦ÈÞ½ÅÃ»</a></li>
+				<li><a href="http://www.greencar.co.kr/service/useclause/">È¸¿øÀÌ¿ë¾à°ü</a></li>
 				<li><a href="http://www.greencar.co.kr/service/personalinfo/"
-					class="point">ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</a></li>
+					class="point">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</a></li>
 				<li><a href="http://www.greencar.co.kr/service/carclause/">
-					ìžë™ì°¨ëŒ€ì—¬ í‘œì¤€ì•½ê´€</a></li>
+					ÀÚµ¿Â÷´ë¿© Ç¥ÁØ¾à°ü</a></li>
 				<li><a href="http://www.greencar.co.kr/service/location/">
-					ìœ„ì¹˜ê¸°ë°˜	ì„œë¹„ìŠ¤ ì´ìš©ì•½ê´€</a></li>
-				<li><a href="http://www.greencar.co.kr/service/sitemap/">ì‚¬ì´íŠ¸ë§µ</a></li>
+					À§Ä¡±â¹Ý	¼­ºñ½º ÀÌ¿ë¾à°ü</a></li>
+				<li><a href="http://www.greencar.co.kr/service/sitemap/">»çÀÌÆ®¸Ê</a></li>
 			</ul>
 
 			<div class="footer_info">
 				<div class="info">
-					<span>(ì£¼) ë¼ì  ì¹´</span> <span>ì‚¬ì—…ìžë“±ë¡ë²ˆí˜¸ : 220-87-91595</span> <span>í†µì‹ íŒë§¤ì—…ì‹ ê³ ë²ˆí˜¸
-						: ì œ2011-ì„œìš¸ê°•ë‚¨-01456í˜¸</span> <span>ëŒ€í‘œì´ì‚¬ : ì•ˆì•„ë¦„</span>
+					<span>(ÁÖ) ¶óÁ¨Ä«</span> <span>»ç¾÷ÀÚµî·Ï¹øÈ£ : 220-87-91595</span> <span>Åë½ÅÆÇ¸Å¾÷½Å°í¹øÈ£
+						: Á¦2011-¼­¿ï°­³²-01456È£</span> <span>´ëÇ¥ÀÌ»ç : ¾È¾Æ¸§</span>
 				</div>
 				<div class="addr">
-					<span>ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ í…Œí—¤ëž€ë¡œ 14ê¸¸ 6 (ë‚¨ë„ë¹Œë¼ 4ì¸µ)</span> <span>TEL :
+					<span>¼­¿ïÆ¯º°½Ã °­³²±¸ Å×Çì¶õ·Î 14±æ 6 (³²µµºô¶ó 4Ãþ)</span> <span>TEL :
 						010-9550-0167</span> <span>FAX : 02-9550-0167</span>
 				</div>
 				<span class="copy">Copyright &#169; 2018 LazenCar. All
@@ -272,11 +296,11 @@
 
 			<div class="footer_emblem">
 				<img src="/Page/images/common/img_emblem_brandpower.jpg"
-					alt="2016ë…„ í•œêµ­ì‚°ì—…ì˜ ë¸Œëžœë“œíŒŒì›Œ 1ìœ„" /> <img
+					alt="2016³â ÇÑ±¹»ê¾÷ÀÇ ºê·£µåÆÄ¿ö 1À§" /> <img
 					src="/Page/images/common/img_emblem_brandstar.jpg"
-					alt="2016ë…„ ëŒ€í•œë¯¼êµ­ ë¸Œëžœë“œìŠ¤íƒ€" /> <img
+					alt="2016³â ´ëÇÑ¹Î±¹ ºê·£µå½ºÅ¸" /> <img
 					src="/Page/images/common/img_emblem_award.jpg"
-					alt="ëª¨ë°”ì¼ ì–´ì›Œë“œ ì½”ë¦¬ì•„ 2016" /> <img
+					alt="¸ð¹ÙÀÏ ¾î¿öµå ÄÚ¸®¾Æ 2016" /> <img
 					src="/Page/images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
 			</div>
 		</div>

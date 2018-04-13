@@ -98,23 +98,24 @@ $(function(){
 		<div id="container">
 
 			<div class="content-wrap">
-
-				<div class="sidebar">
+<div class="sidebar">
 					<!-- 왼쪽 메뉴 -->
 
-					<h2 class="left-tit">라젠카 소개</h2>
+
+
+					<h2 class="left-tit">고객센터</h2>
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#" class = 'on' ><span>라젠카란?</span></a></li>
+						<li class="top">
+						<a href="/Page/mypage_Qna" class='on'><span>1:1문의</span></a></li>
 
-						<li><a href="http://localhost:8082/Page/p03_Use_Guide_01.html"><span>이용안내</span></a></li>
+						<li><a href="/Page/help_Faq.jsp"><span>자주 찾는 질문</span></a></li>
 
-						<li><a href="#"><span>요금안내</span></a></li>
-
-						<li><a href="http://localhost:8082/Page/p05_Road_Guide.html"><span>찾아오시는길</span></a></li>
-
+						<li><a href="/service/list.do"><span>공지사항</span></a></li>
 					</ul>
+
+
 
 					<div class="side_sns">
 
@@ -142,7 +143,7 @@ $(function(){
 					</div>
 				</div>
 				<div class="subtop-content bg_subvisual_01_03">
-					<h3 class="subtit">후기</h3>
+					<h3 class="subtit">1:1 문의</h3>
 					<p class="subtxt"><strong>합리적인 소비와 환경보호를 실천하는 신개념 차량 공유서비스</strong> <br />우리동네에도 그린카가 필요하다면 지금 바로 신청하세요!</p>
 				</div>
 				<div class="bodystart">

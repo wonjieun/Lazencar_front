@@ -31,23 +31,9 @@
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
 	
-	#table2 th:first-child{
-	    background: #f1c40f;
-	    height: 30px;
-	    background-repeat: no-repeat;
-	    color: white;
-	    text-align: center;
-	    width: 20%;
-	}
-	#table2 th:last-child{
-	background:#f1c40f;
-	height:30px;
-	background-repeat:no-repeat;
-	color:white;
-	text-align: center;   
-	width: 10%;}
+
 	
-	.level1 :nth-child(4) .fly {background: #ffb505 !important;}
+	.level1 :nth-child(5) .fly {background: #ffb505 !important;}
 	
 	
 	tr.hiddenTr{

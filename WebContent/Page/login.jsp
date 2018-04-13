@@ -436,12 +436,77 @@ function f_login() {
 		<!-- 카카오아이디로 로그인 -->
 		<a id="custom-login-btn" href="javascript:loginWithKakao()">
 		<img src="/Page/images/login/kakao.png" alt="" /><br/></a>
-		<script type='text/javascript'>
+		<script type="text/javascript">
+//<![CDATA[
+// 사용할 앱의 JavaScript 키를 설정해 주세요.
+Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
+// 카카오 로그인 버튼을 생성합니다.
+function loginWithKakao() {
+// 		    토큰꺼내기	authObj.access_token
+// 		    	alert("access token : " + Kakao.Auth.getAccessToken());
+ 	if(Kakao.Auth.getAccessToken()==null) {
+ 		Kakao.Auth.loginForm({
+ 			success : function(authObj) {
+ 				console.log(JSON.stringify(authObj));
+ 				alert(authObj.access_token);
+//  				location.href="/main.do";
+ 				var id = authObj.access_token;
+     	  var pw = -1;
+     		var token = authObj.access_token;
+     		
+     		$.ajax({
+     			type: "POST"
+     			, url: "/login/login.do"
+     			, data: {
+     					memId:id,
+     					memPw:pw,
+     					token:token
+     				}
+     			, dataType: "json"
+     			, success: function( data ) {
+     				var check = data.check;
+     				token = data.token;
+     				
+     				if( check ) {
+     					location.href="/main.do";
+     				}
+     			}
+     			, error: function(e) {
+     				console.log("----- error -----");
+     				console.log(e.responseText);
+     			}
+     		});
+
+
+ 			},
+ 			fail: function(err) {
+ 				alert(JSON.stringify(err));
+ 			}
+ 		});
+ 	}
+// 		      // 로그인 창을 띄웁니다.
+// 		      Kakao.Auth.login({
+// 		        success: function(authObj) {
+// 		          alert(JSON.stringify(authObj));
+// 		          alert(authObj.access_token);
+// 							location.href="/main.do";
+// 		        },
+// 		        fail: function(err) {
+// 		          alert(JSON.stringify(err));
+// 		        }
+// 		      });
+};
+//]]>
 		</script>
 		
 		<a href="javascript:logoutWithKakao()"
 			id="logout_kakao">kakao logout</a>
 		<script type='text/javascript'>
+		function logoutWithKakao() {
+			  Kakao.Auth.logout(function() {
+			 	  location.href="/main.do";
+			  });
+			};
 		</script>
 		
 		<!-- 구글아이디로 로그인 -->
@@ -458,25 +523,12 @@ function f_login() {
 		
 		<a href="#" onclick="signOut();">google logout</a>
 		<script>
-<<<<<<< HEAD
-		$(document).ready(function(){
-			$("#logout").click(function(){
-				var token = 'AAAAOnK1n/KtSh6PiPz/lNNHmkNKfyHWEeJuIMAOVaKBYnl59c7RjbEy/wAEcotpswFxcP0IxZPw1OPFfljPXABGw74=';
-				console.log(token);
-				location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
-// 				console.log("logout");t
-// 				naver_id_login.logout();
-// 				location.reload();
-			});
-		});
-=======
 		  function signOut() {
 		    var auth2 = gapi.auth2.getAuthInstance();
 		    auth2.signOut().then(function () {
 		      console.log('User signed out.');
 		    });
 		  }
->>>>>>> 0eebd169674036b60aa12109b38d5bd820aabb65
 		</script>
 	</div>
 	

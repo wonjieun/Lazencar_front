@@ -98,27 +98,14 @@ public class CouponCheckDaoImpl implements CouponCheckDao {
 			
 			while(rs.next()) {
 				Coupon coupon = new Coupon();
-<<<<<<< HEAD
-				coupon.setNo(rs.getInt("COU_NUM"));
-				coupon.setName(rs.getString("COU_NAME"));
-				coupon.setCarConst(rs.getString("COU_CAR_CONST"));
-				coupon.setDiscount(rs.getString("COU_DISCOUNT"));
-<<<<<<< HEAD
-				coupon.setStartDate(rs.getString("COU_START_DATE"));
-				coupon.setEndDate(rs.getString("COU_END_DATE"));
-=======
+
 	            coupon.setNo(rs.getInt("COU_NUM"));
 	            coupon.setName(rs.getString("COU_NAME"));
 	            coupon.setCarConst(rs.getString("COU_CAR_CONST"));
 	            coupon.setDiscount(rs.getString("COU_DISCOUNT"));
-	            coupon.setStartDate(rs.getString("COU_START_DATE"));
-	            coupon.setEndDate(rs.getString("COU_END_DATE"));
->>>>>>> 8b32c8568a86884a869e0f2d685e0a1ad5437dcd
-=======
 				coupon.setStartDate(rs.getString("COU_START"));
 				coupon.setEndDate(rs.getString("COU_END"));
->>>>>>> 09dcafe61810abf5cbdabe367463727d1a4350d1
-				
+
 				list.add(coupon);
 			}
 
