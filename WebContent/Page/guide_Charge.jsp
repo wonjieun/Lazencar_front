@@ -650,7 +650,7 @@ a.hoverline:hover {
 }
 </style>
 
-
+<%-- header include --%><jsp:include page="header.jsp" />
 
 
 
@@ -724,68 +724,6 @@ a.hoverline:hover {
 		</div>
 
 		<!-- [e]top_banner -->
-
-
-
-		<!-- Begin #header -->
-
-		<div id="header" class="sub">
-
-			<div class="hgroup">
-
-				<div class="inbox">
-
-					<h1 class="logo">
-						<a href="http://www.greencar.co.kr/"><span>라젠카</span></a>
-					</h1>
-
-					<div class="nvalinks">
-
-						<a href="javascript:void(0);" onclick="openLapComLogin();">로그인</a>
-
-						<a href="https://www.greencar.co.kr/member/index.jsp">회원가입</a> <a
-							class="nvalinks-rev"
-							href="https://www.greencar.co.kr/reserve/index.do">라젠카 예약하기</a>
-
-					</div>
-		<nav id="topMenu" > 
-			<ul> 
-						<li class="topMenuLi"> 
-				<a class="menuLink" href="#">LaZencar 소개</a> 
-				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">Lazencar란?</a></li> 
-					<li><a href="#" class="submenuLink longLink">이용안내</a></li> 
-					<li><a href="#" class="submenuLink longLink">요금안내</a></li> 
-					<li><a href="#" class="submenuLink longLink">위치</a></li> 
-				</ul> 
-					</li>
-					
-								<li class="topMenuLi"> 
-				<a class="menuLink" href="#">서비스/혜택</a> 
-				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">특가상품</a></li> 
-					<li><a href="#" class="submenuLink longLink">쿠폰받기</a></li> 
-					<li><a href="#" class="submenuLink longLink">후기</a></li> 
-				</ul> 
-					</li>
-				
-							<li class="topMenuLi"> 
-				<a class="menuLink" href="#">고객센터</a> 
-				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">1:1 문의</a></li> 
-					<li><a href="#" class="submenuLink longLink">자주찾는 질문</a></li> 
-					<li><a href="#" class="submenuLink longLink">공지사항</a></li> 
-				</ul> 
-					</li>
-			</ul> 
-		</nav>
-				</div>
-
-			</div>
-
-		</div>
-
-		<!-- // End #header -->
 
 
 

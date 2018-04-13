@@ -54,6 +54,20 @@
 
 <title>Lazencar | 믿음을 주는 고품격 카셰어링</title>
 
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/main.css">
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/layout_01.css">
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/mypage_ex3.css">
+
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/common.css?v=201802">
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/master.css?v=180322">
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/calendar.css">
+
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/main.css" />
 <link type="text/css" rel="stylesheet" media="all" href="css/common.css" />
 <link type="text/css" rel="stylesheet" media="all" href="css/master.css" />
@@ -89,20 +103,23 @@
 				<div class="sidebar">
 					<!-- 왼쪽 메뉴 -->
 
-					<h2 class="left-tit">라젠카 소개</h2>
+
+
+					<h2 class="left-tit">서비스 / 혜택</h2>
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#" class='on'><span>라젠카란?</span></a></li>
+						<li class="top"><a href="#"><span>특가상품</span></a></li>
 
-						<li><a
-							href="http://localhost:8082/Page/p03_Use_Guide_01.html"><span>이용안내</span></a></li>
+						<li><a href="#"><span>쿠폰받기</span></a></li>
 
-						<li><a href="#"><span>요금안내</span></a></li>
+						<li><a href="#" class = 'on'><span>후기</span></a></li>
 
-						<li><a href="http://localhost:8082/Page/p05_Road_Guide.html"><span>찾아오시는길</span></a></li>
+<!-- 					class = 'on'	현재 페이지를 나타낼때 on 사용하는 듯 -->
 
 					</ul>
+
+
 
 					<div class="side_sns">
 

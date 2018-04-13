@@ -62,7 +62,7 @@
 
 <div id="menu">
    <ul class="level1">
-      <li><a href="/home.jsp">Home</a></li>
+      <li><a href="/main.do">Home</a></li>
       <li><a class="fly" href="/admin/memberManage.do">회원 관리</a>
          <ul>
             <li><a href="/admin/memberManage.do" >회원목록 조회</a></li>

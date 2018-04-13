@@ -72,7 +72,7 @@ $(document).ready(function() {
       			<script type="text/javascript">
             $("#logout").click(function() {
 // 										console.log(token);
-							location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
+							location.href="http://nid.naver.com/nidlogin.logout";
 						});
             </script>
       			
@@ -97,7 +97,7 @@ $(document).ready(function() {
             <a class="menuLink" href="#">서비스/혜택</a> 
             <ul class="submenu"> 
                <li><a href="/Page/promotion.jsp" class="submenuLink longLink">특가상품</a></li> 
-               <li><a href="/coupon.do" class="submenuLink longLink">쿠폰받기</a></li> 
+               <li><a href="/Page/coupon.do" class="submenuLink longLink">쿠폰받기</a></li> 
                <li><a href="/Page/review_Board_List.do" class="submenuLink longLink">후기</a></li> 
             </ul> 
          </li>

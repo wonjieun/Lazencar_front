@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>공지사항</title>
+<%-- header include --%><jsp:include page="header.jsp" />
 
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/master.css?v=180322">
@@ -1806,59 +1807,6 @@ a.hoverline:hover {
 
 		<!-- [e]top_banner -->
 
-
-
-		<!-- Begin #header -->
-
-		<div id="header" class="sub">
-
-			<div class="hgroup">
-
-				<div class="inbox">
-
-					<h1 class="logo">
-						<a href="/main.do"><span>라젠카</span></a>
-					</h1>
-
-					<div class="nvalinks">
-
-						<a href="/login/login.do">로그인</a>
-						<a href="/signUp.do">회원가입</a>
-						<a class="nvalinks-rev"
-							href="https://www.greencar.co.kr/reserve/index.do">라젠카 예약하기</a>
-
-					</div>
-					<nav id="topMenu">
-					<ul>
-						<li class="topMenuLi">
-							<a class="menuLink" href="#">Lazencar소개</a>
-							<ul class="submenu">
-								<li><a href="#" class="submenuLink longLink">Lazencar란?</a></li>
-								<li><a href="#" class="submenuLink longLink">이용안내</a></li>
-								<li><a href="#" class="submenuLink longLink">요금안내</a></li>
-								<li><a href="#" class="submenuLink longLink">위치</a></li>
-							</ul></li>
-
-						<li class="topMenuLi"><a class="menuLink" href="#">서비스/혜택</a>
-							<ul class="submenu">
-								<li><a href="#" class="submenuLink longLink">특가상품</a></li>
-								<li><a href="#" class="submenuLink longLink">쿠폰받기</a></li>
-								<li><a href="#" class="submenuLink longLink">후기</a></li>
-							</ul></li>
-
-						<li class="topMenuLi"><a class="menuLink" href="#">고객센터</a>
-							<ul class="submenu">
-								<li><a href="#" class="submenuLink longLink">1:1 문의</a></li>
-								<li><a href="#" class="submenuLink longLink">자주찾는 질문</a></li>
-								<li><a href="/service/list.do" class="submenuLink longLink">공지사항</a></li>
-							</ul></li>
-					</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
-
-		<!-- // End #header -->
 
 
 

@@ -68,7 +68,7 @@ public class MemberDeleteDaoImpl implements MemberDeleteDao {
 				dbPw = rs.getString("MEM_PW");
 				if(dbPw.equals(mem.getMemPw())) {
 					//비밀번호 일치 & 삭제 진행
-					deleteLicenData(mem);
+//					deleteLicenData(mem);
 					deleteMemData(mem);
 //					System.out.println("test4");
 //					System.out.println("여기 통과는 하겠지?");
