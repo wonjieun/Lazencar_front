@@ -71,7 +71,7 @@ public class LoginDaoImpl implements LoginDao {
 			
 			rs = pst.executeQuery();
 			rs.next();
-			System.out.println(rs.getInt(1));
+//			System.out.println(rs.getInt(1));
 			
 			// 테이블 조회시 키값이 1번째인 값 리턴
 			return rs.getInt(1);

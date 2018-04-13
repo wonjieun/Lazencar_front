@@ -5,6 +5,7 @@ public class Reservation {
 
 	private int resNum;
 	private String memId;
+<<<<<<< HEAD
 	private String carNum;//차량 번호
 	private String resStart;//차량 시작일
 	private String resEnd;//차량 반납일
@@ -15,9 +16,21 @@ public class Reservation {
 	private int normalPrice;//할인 전 총합계 내용
 	private String carName;      //CAR_NAME
 	
+=======
+	private String carNum;
+	private String carDemage;
+	private String carOption;
+	private String resStart;
+	private String resEnd;
+	private int couNum;
+	private String carName;
+	private String optionList;
+
+>>>>>>> 8b32c8568a86884a869e0f2d685e0a1ad5437dcd
 	public String getCarName() {
 		   return carName;
 	}
+<<<<<<< HEAD
 	public int getNormalPrice() {
 		return normalPrice;
 	}
@@ -26,6 +39,14 @@ public class Reservation {
 	}
 	public int getDcPrice() {
 		return dcPrice;
+=======
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+
+	public String getCarOption() {
+		return carOption;
+>>>>>>> 8b32c8568a86884a869e0f2d685e0a1ad5437dcd
 	}
 	public void setDcPrice(int dcPrice) {
 		this.dcPrice = dcPrice;

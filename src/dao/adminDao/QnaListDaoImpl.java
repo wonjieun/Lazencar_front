@@ -98,7 +98,7 @@ public class QnaListDaoImpl implements QnaListDao {
 		String sql = "SELECT * FROM (" 
 				+ " SELECT rownum rnum, b.* FROM ("
 				+ " SELECT QNA_NUM, MEM_ID, QNA_DATE, QNA_CATE, QNA_TITLE, QNA_CONTENT, "
-				+ " QNA_ANSWER, QNA_IMG, MEM_EMAIL, QNA_COMPLETED "
+				+ " QNA_ANSWER, QNA_COMPLETED "
 				+ "	FROM TB_QNA"
 				+ " ORDER BY QNA_COMPLETED, QNA_DATE " 
 				+ " ) b" 
@@ -119,13 +119,8 @@ public class QnaListDaoImpl implements QnaListDao {
 				dto.setQnaTitle(rs.getString("QNA_TITLE"));
 				dto.setQnaContents(rs.getString("QNA_CONTENT"));
 				dto.setQnaAnswer(rs.getString("QNA_ANSWER"));
-				dto.setMemEmail(rs.getString("MEM_EMAIL"));
 				dto.setQnaCompleted(rs.getString("QNA_COMPLETED"));
-				
-				if(rs.getString("QNA_IMG") != null) {
-					dto.setQnaImg(rs.getString("QNA_IMG"));
-				}
-				
+
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -150,7 +145,7 @@ public class QnaListDaoImpl implements QnaListDao {
 		List<Qna> list = new ArrayList<>();
 		String sql = "SELECT * FROM(" + " SELECT ROWNUM RNUM, B.* FROM("
 				+ " SELECT QNA_NUM, MEM_ID, QNA_DATE, QNA_CATE, QNA_TITLE, QNA_CONTENT, "
-				+ " QNA_ANSWER, QNA_IMG, MEM_EMAIL, QNA_COMPLETED " 
+				+ " QNA_ANSWER, QNA_COMPLETED " 
 				+ " FROM TB_QNA"
 				+ " WHERE "	+ qm.getCategory() + " LIKE '%' || ? || '%'"
 				+ " ORDER BY " + qm.getSort() + ", QNA_DATE )B" 
@@ -180,12 +175,7 @@ public class QnaListDaoImpl implements QnaListDao {
 				dto.setQnaTitle(rs.getString("QNA_TITLE"));
 				dto.setQnaContents(rs.getString("QNA_CONTENT"));
 				dto.setQnaAnswer(rs.getString("QNA_ANSWER"));
-				dto.setMemEmail(rs.getString("MEM_EMAIL"));
 				dto.setQnaCompleted(rs.getString("QNA_COMPLETED"));
-
-				if (rs.getString("QNA_IMG") != null) {
-					dto.setQnaImg(rs.getString("QNA_IMG"));
-				}
 
 				list.add(dto);
 			}
@@ -294,7 +284,6 @@ public class QnaListDaoImpl implements QnaListDao {
 			pst.setString(4, qnaTitle);
 			pst.setString(5, qnaContents);
 			
-			
 			return pst.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -303,6 +292,65 @@ public class QnaListDaoImpl implements QnaListDao {
 		}
 
 		return -1; // 디비 오류나면
+	}
+
+	@Override
+	public List getUserList(Paging paging, QnaManage cm, String mem_id) {
+		
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+
+		List<Qna> list = new ArrayList<>();
+		// list = null;
+		String sql = "SELECT * FROM (" 
+				+ " SELECT rownum rnum, b.* FROM ("
+				+ " SELECT QNA_NUM, MEM_ID, QNA_DATE, QNA_CATE, QNA_TITLE, QNA_CONTENT, "
+				+ " QNA_ANSWER, QNA_COMPLETED "
+				+ "	FROM TB_QNA WHERE MEM_ID = ? "
+				+ " ORDER BY QNA_COMPLETED, QNA_DATE " 
+				+ " ) b" 
+				+ " ) WHERE rnum BETWEEN ? AND ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, mem_id);
+			pst.setInt(2, paging.getStartNo());
+			pst.setInt(3, paging.getEndNo());
+			
+
+			rs = pst.executeQuery();
+			
+			System.out.println(mem_id);
+			System.out.println("돌았음");
+
+			while (rs.next()) {
+				Qna dto = new Qna();
+				dto.setQnaNum(rs.getInt("QNA_NUM"));
+				dto.setMemId(rs.getString("MEM_ID"));
+				dto.setQnaDate(rs.getString("QNA_DATE"));
+				dto.setQnaCate(rs.getString("QNA_CATE"));
+				dto.setQnaTitle(rs.getString("QNA_TITLE"));
+				dto.setQnaContents(rs.getString("QNA_CONTENT"));
+				dto.setQnaAnswer(rs.getString("QNA_ANSWER"));
+				dto.setQnaCompleted(rs.getString("QNA_COMPLETED"));
+
+				list.add(dto);
+			}
+			
+		    System.out.println(list);
+		    
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pst != null)
+					pst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
 	}
 
 }

@@ -255,7 +255,7 @@ $(document).ready(function(){
 								<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button>
 								</td>
 							</tr>
-							<tr class="hiddenTr" id="hiddenTr_${listNumber.count }">
+							<tr class="hiddenTr" id="hiddenTr_${listNumber.count }" style="display:none;">
 								<td colspan="7">
 								<div style="width:90px" >
 								<font>번호: </font><br>

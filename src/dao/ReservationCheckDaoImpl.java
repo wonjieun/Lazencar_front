@@ -98,7 +98,7 @@ public class ReservationCheckDaoImpl implements ReservationCheckDao {
 				reserv.setCarNum(rs.getString("car_num"));
 				reserv.setCouNum(rs.getInt("cou_num"));
 				reserv.setCarDemage(rs.getString("car_demage"));
-				reserv.setCarOption(rs.getString("car_option"));
+				reserv.setOptionList(rs.getString("car_option"));
 				reserv.setResStart(rs.getString("res_start"));
 				reserv.setResEnd(rs.getString("res_end"));
 				reserv.setCarName(rs.getString("car_name"));

@@ -244,7 +244,7 @@ $(document).ready(function(){
 			<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button>
 			</td>
 		</tr>
-		<tr class="hiddenTr" id="hiddenTr_${listNumber.count }">
+		<tr class="hiddenTr" id="hiddenTr_${listNumber.count }" style="display:none;">
 				<td colspan="10" style="text-align: left;">
 				쿠폰명 : <textarea rows="1" cols="30" id="key_couName_${listNumber.count}">${i.name }</textarea><br>
 				<br>

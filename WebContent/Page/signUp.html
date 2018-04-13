@@ -1245,6 +1245,9 @@ a.btnTbl01 {
 										var msg = JSON.parse(data.msg);
 										
 										alert(msg);
+										
+										location.replace('http://localhost:8085/main.do');
+
 									},
 									error : function(e) {
 										console.log("------error------");

@@ -37,27 +37,27 @@
 </head>
 <body>
 <%  
-   String now_id = null;
-   if (session.getAttribute("id") != null) {
-     now_id = (String) session.getAttribute("id");
-   }
+//    String now_id = null;
+//    if (session.getAttribute("id") != null) {
+//      now_id = (String) session.getAttribute("id");
+//    }
 
-   // 예외처리 현재 아이디값 안들어와있을때
+//    // 예외처리 현재 아이디값 안들어와있을때
 
-   if (now_id == null) {
+//    if (now_id == null) {
 
-      PrintWriter script = response.getWriter();
-      script.println("<script>");
-      script.println("alert('로그인부터 해주세요!')");
-      script.println("location.href = '/login/login.do'");
-      script.println("</script>");
-   }else if(!(now_id.equals("manager1"))){
-      PrintWriter script = response.getWriter();
-      script.println("<script>");
-      script.println("alert('관리자만 이용할 수 있습니다.')");
-      script.println("location.href = '/login/login.do'");
-      script.println("</script>");
-   }
+//       PrintWriter script = response.getWriter();
+//       script.println("<script>");
+//       script.println("alert('로그인부터 해주세요!')");
+//       script.println("location.href = '/login/login.do'");
+//       script.println("</script>");
+//    }else if(!(now_id.equals("manager1"))){
+//       PrintWriter script = response.getWriter();
+//       script.println("<script>");
+//       script.println("alert('관리자만 이용할 수 있습니다.')");
+//       script.println("location.href = '/login/login.do'");
+//       script.println("</script>");
+//    }
 %>
 
 <div id="menu">

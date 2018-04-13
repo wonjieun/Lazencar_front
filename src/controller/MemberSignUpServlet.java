@@ -30,7 +30,7 @@ public class MemberSignUpServlet extends HttpServlet {
 		
 		String memId = request.getParameter("memId");
 		
-		Number memGubn = Integer.parseInt(request.getParameter("memGubn"));
+//		Number memGubn = Integer.parseInt(request.getParameter("memGubn"));
 		String memPw = request.getParameter("memPw");
 		String memName = request.getParameter("memName");
 		String memPhone = request.getParameter("memPhone");
@@ -43,7 +43,7 @@ public class MemberSignUpServlet extends HttpServlet {
 		Member mem = new Member();
 		mem.setMemId(memId);
 		mem.setMemPw(memPw);
-		mem.setMemGubn(memGubn);
+//		mem.setMemGubn(memGubn);
 		mem.setMemName(memName);
 		mem.setMemPhone(memPhone);
 		mem.setMemAddr(memAddr);
@@ -64,7 +64,7 @@ public class MemberSignUpServlet extends HttpServlet {
 		String msg = mem.getMsg();
     
 		JsonObject jsonObject = new JsonObject();
-//		jsonObject.addProperty("msg", gson.toJson(msg));
+		jsonObject.addProperty("msg", gson.toJson(msg));
 		response.getWriter().write(gson.toJson(jsonObject));
 	}
 }

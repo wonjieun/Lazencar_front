@@ -54,7 +54,7 @@ public class MemberModifyDataDaoImpl implements MemberModifyDataDao {
 				
 				String jumin = rs.getString("MEM_JUMIN");
 				String MEM_JUMIN1 = jumin.substring(0, 6);
-				String MEM_JUMIN2 = jumin.substring(6, 13);
+				String MEM_JUMIN2 = jumin.substring(6, 12);
 //				
 				String phone = rs.getString("MEM_PHONE");
 				String MEM_PHONE1 = phone.substring(0, 3);
