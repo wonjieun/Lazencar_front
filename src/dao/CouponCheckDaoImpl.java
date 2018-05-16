@@ -35,7 +35,6 @@ public class CouponCheckDaoImpl implements CouponCheckDao {
 		}
 	}
 
-
 	// 총 쿠폰 리스트 반환
 	@Override
 	public int getTotal(String id) {
@@ -99,13 +98,14 @@ public class CouponCheckDaoImpl implements CouponCheckDao {
 			
 			while(rs.next()) {
 				Coupon coupon = new Coupon();
-				coupon.setNo(rs.getInt("COU_NUM"));
-				coupon.setName(rs.getString("COU_NAME"));
-				coupon.setCarConst(rs.getString("COU_CAR_CONST"));
-				coupon.setDiscount(rs.getString("COU_DISCOUNT"));
+
+	            coupon.setNo(rs.getInt("COU_NUM"));
+	            coupon.setName(rs.getString("COU_NAME"));
+	            coupon.setCarConst(rs.getString("COU_CAR_CONST"));
+	            coupon.setDiscount(rs.getString("COU_DISCOUNT"));
 				coupon.setStartDate(rs.getString("COU_START"));
 				coupon.setEndDate(rs.getString("COU_END"));
-				
+
 				list.add(coupon);
 			}
 

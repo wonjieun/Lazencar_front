@@ -1,31 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
-<%@ page import = "java.io.PrintWriter" %>
-<%@ page import = "dto.Qna" %>
-<%@ page import = "dao.adminDao.QnaListDaoImpl" %>
-
-<%
-
-	String now_id = null;
-	if (session.getAttribute("id") != null) {
-
-		now_id = (String) session.getAttribute("id");
-	}
-	
-	// 예외처리 현재 아이디값 안들어와있을때
-
-	if (now_id == null) {
-
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('로그인부터 해주세요!')");
-		script.println("location.href = 'login.jsp'");
-		script.println("</script>");
-    }
-
-%>
-
 <!DOCTYPE html>
 
 <html>
@@ -56,9 +31,9 @@
 /* navigation */
 .hgroup .logo {position:absolute;top:0;left:10px}
 .hgroup .logo a {display:block;width:156px;height:68px;padding-top:12px}
-.hgroup .logo a span {display:block;padding-top:48px;background:url('./images/common/logo.png') no-repeat 0 0;font:0/0 dotum;color:transparent}
+.hgroup .logo a span {display:block;padding-top:48px;background:url('/Page/images/common/logo.png') no-repeat 0 0;font:0/0 dotum;color:transparent}
 .nvalinks {position:absolute;top:19px;right:10px}
-.nvalinks a {float:left;height:40px;padding-left:13px;background:url('./images/main/bg_dot.png') no-repeat 6px center;font-size:13px;line-height:40px;letter-spacing:-0.05em;color:#fff}
+.nvalinks a {float:left;height:40px;padding-left:13px;background:url('/Page/images/main/bg_dot.png') no-repeat 6px center;font-size:13px;line-height:40px;letter-spacing:-0.05em;color:#fff}
 .nvalinks a:first-child {padding-left:0;background:none}
 .nvalinks a:hover {text-decoration:underline}
 a.nvalinks-rev {margin-left:14px;padding:0 18px;background:none;border:1px solid #fff;-webkit-border-radius:3px;border-radius:3px;font-size:16px;letter-spacing:-0.03em;line-height:38px;-webkit-transition-duration:0.2s;transition-duration:0.2s}
@@ -76,7 +51,7 @@ a.nvalinks-rev:hover {background:#f1c40f;border:1px solid #f1c40f;text-decoratio
 #header.sub .hgroup {background:#fff;border-bottom:1px solid #eee}
 #header.sub .hgroup .inbox {height:79px}
 #header.sub .hgroup .logo a span {background-position:0 -58px}
-#header.sub .nvalinks a {background:url('./images/main/bg_dot02.png') no-repeat 6px center;color:#636363}
+#header.sub .nvalinks a {background:url('/Page/images/main/bg_dot02.png') no-repeat 6px center;color:#636363}
 #header.sub .nvalinks a:first-child {padding-left:0;background:none}
 #header.sub .nvalinks a:hover {color:#171717}
 #header.sub a.nvalinks-rev {background:none;border:1px solid #f1c40f;color:#f1c40f}
@@ -192,47 +167,9 @@ background-color: #f1c40f;
 <link type="text/css" rel="stylesheet" media="all" href="css/master.css" />
 <link type="text/css" rel="stylesheet" media="all" href="css/calendar.css" />
 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
-<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-
 <link type="text/css" rel="stylesheet" href="/js/lib/magnific-popup.css"/>
 
-<script type = "text/javascript" >
 
-$(function(){
-    //전역변수선언
-    var editor_object = [];
-     
-    nhn.husky.EZCreator.createInIFrame({
-        oAppRef: editor_object,
-        elPlaceHolder: "qnaContents",
-        sSkinURI: "/smarteditor/SmartEditor2Skin.html",
-        htParams : {
-            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseToolbar : true,            
-            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseVerticalResizer : true,    
-            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseModeChanger : true,
-        }
-    });
-     
-    //전송버튼 클릭이벤트
-    
-    $("#save").click(function(){
-    	
-        //id가 rev_content인 textarea에 에디터에서 대입
-        editor_object.getById["qnaContents"].exec("UPDATE_CONTENTS_FIELD", []);
-         
-        // 이부분에 에디터 validation 검증
-         
-        //폼 submit
-        $("#frm").submit();
-    })
-})
-
-</script>
 
 <!-- <link type="text/css" rel="stylesheet" media="all" -->
 <!-- 	href="./css/master.css" /> -->
@@ -255,13 +192,13 @@ $(function(){
 
 				<a href="https://www.greencar.co.kr/member/index.jsp"
 					target="_blank"><img
-					src="./images/common/top_banner_160825.gif"
+					src="/Page/images/common/top_banner_160825.gif"
 					alt="신규가입시 3시간 무료쿠폰 전원증정" /></a>
 
 
 				<p class="close">
 					<a href="javascript:void(0)"><img
-						src="./images/common/btn_close.png" alt="닫기" /></a>
+						src="/Page/images/common/btn_close.png" alt="닫기" /></a>
 				</p>
 
 			</div>
@@ -269,6 +206,8 @@ $(function(){
 		</div>
 
 		<!-- [e]top_banner -->
+
+
 
 		<!-- Begin #header -->
 
@@ -279,7 +218,7 @@ $(function(){
 				<div class="inbox">
 
 					<h1 class="logo">
-						<a href="http://www.greencar.co.kr/"><span>라젠카</span></a>
+						<a href="/main.do"><span>라젠카</span></a>
 					</h1>
 
 					<div class="nvalinks">
@@ -292,36 +231,38 @@ $(function(){
 
 					</div>
 		<nav id="topMenu" > 
-			<ul> 
-						<li class="topMenuLi"> 
-				<a class="menuLink" href="#">LaZencar 소개</a> 
-				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">Lazencar란?</a></li> 
-					<li><a href="#" class="submenuLink longLink">이용안내</a></li> 
-					<li><a href="#" class="submenuLink longLink">요금안내</a></li> 
-					<li><a href="#" class="submenuLink longLink">위치</a></li> 
-				</ul> 
-					</li>
-					
-								<li class="topMenuLi"> 
-				<a class="menuLink" href="#">서비스/혜택</a> 
-				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">특가상품</a></li> 
-					<li><a href="#" class="submenuLink longLink">쿠폰받기</a></li> 
-					<li><a href="#" class="submenuLink longLink">후기</a></li> 
-				</ul> 
-					</li>
-				
-							<li class="topMenuLi"> 
-				<a class="menuLink" href="#">고객센터</a> 
-				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">1:1 문의</a></li> 
-					<li><a href="#" class="submenuLink longLink">자주찾는 질문</a></li> 
-					<li><a href="#" class="submenuLink longLink">공지사항</a></li> 
-				</ul> 
-					</li>
-			</ul> 
-		</nav>
+      
+         <ul> 
+         <li class="topMenuLi"> 
+            <a class="menuLink" href="#">Lazencar 소개</a> 
+            <ul class="submenu"> 
+               <li><a href="/Page/guide_Introduction.jsp" class="submenuLink longLink">Lazencar란?</a></li> 
+               <li><a href="/Page/guide_Use.jsp" class="submenuLink longLink">이용안내</a></li> 
+               <li><a href="/Page/guide_Charge.jsp" class="submenuLink longLink">요금안내</a></li> 
+               <li><a href="/Page/guide_Road.jsp" class="submenuLink longLink">위치</a></li> 
+            </ul> 
+          </li>
+               
+         <li class="topMenuLi"> 
+            <a class="menuLink" href="#">서비스/혜택</a> 
+            <ul class="submenu"> 
+               <li><a href="/Page/promotion.jsp" class="submenuLink longLink">특가상품</a></li> 
+               <li><a href="/coupon.do" class="submenuLink longLink">쿠폰받기</a></li> 
+               <li><a href="/Page/review_Board_List.do" class="submenuLink longLink">후기</a></li> 
+            </ul> 
+         </li>
+            
+         <li class="topMenuLi"> 
+           <a class="menuLink" href="#">고객센터</a> 
+           <ul class="submenu"> 
+              <li><a href="/Page/help_Qna.jsp" class="submenuLink longLink">1:1 문의</a></li> 
+              <li><a href="/Page/help_Faq.jsp" class="submenuLink longLink">자주찾는 질문</a></li> 
+              <li><a href="/service/notice.do" class="submenuLink longLink">공지사항</a></li> 
+           </ul> 
+         </li>
+         </ul>
+         
+      </nav>
 				</div>
 
 			</div>
@@ -329,7 +270,9 @@ $(function(){
 		</div>
 
 		<!-- // End #header -->
-\
+
+
+
 		<!-- Begin #container -->
 
 		<div id="container">
@@ -338,6 +281,8 @@ $(function(){
 
 				<div class="sidebar">
 					<!-- 왼쪽 메뉴 -->
+
+
 
 					<h2 class="left-tit">라젠카 소개</h2>
 
@@ -352,6 +297,8 @@ $(function(){
 						<li><a href="http://localhost:8082/Page/p05_Road_Guide.html"><span>찾아오시는길</span></a></li>
 
 					</ul>
+
+
 
 					<div class="side_sns">
 
@@ -372,78 +319,206 @@ $(function(){
 
 				</div>
 
-			<div class="contentbox">
+				<div class="contentbox">
+
 				<div class="location">
 					<div class="location_in">
-						<p><span>고객센터</span>&gt; <strong>그린존신청</strong></p>
+						<p><span>서비스안내</span>&gt; <strong>라젠카란?</strong></p>
 					</div>
 				</div>
-				<div class="subtop-content bg_subvisual_01_03">
-					<h3 class="subtit">후기</h3>
-					<p class="subtxt"><strong>합리적인 소비와 환경보호를 실천하는 신개념 차량 공유서비스</strong> <br />우리동네에도 그린카가 필요하다면 지금 바로 신청하세요!</p>
+
+				<div class="subtop-content bg_subvisual_01_01">
+					<h3 class="subtit">라젠카란?</h3>
+					<p class="subtxt"><strong>365일 24시간 전국 어디서든 만날 수 있는 내 차!</strong><br />필요한 시간만큼 10분 단위로 즉시 라젠카를 대여하실 수 있습니다.</p>
 				</div>
 				<div class="bodystart">
 <!-- bodystart -->
-                    <form action="qna_Action.jsp" method="post" id="frm">
-                             
-					<table summary="신청장소 선택, 등록" class="boardView-02">
-						<caption> 후기 작성 </caption>
+
+					<div class="sevice_index">
+					
+
+						<!-- [s]top_info -->
+						<div class="top_info">
+							<h4 class="stit02">대한민국 No.1 라젠카</h4>
+							<div class="top_info_box">
+								<dl class="top_info01" >
+									<dt>국내 최초</dt>
+									<dd>
+										<p class="txt">국내 카셰어링 시장을<br />개척한 First Runner<span class="bar"></span></p>
+										<p class="txt_sub">2011년 국내 최초<br />카셰어링 서비스 도입</p>
+									</dd>
+								</dl>
+								<dl class="top_info02">
+									<dt>국내 최대</dt>
+									<dd>
+										<p class="txt">전국 2,800여개 그린존<br />6,000여대 차량<span class="bar"></span></p>
+										<p class="txt_sub">경차부터 수입차까지 <span>총 55종</span>으로<br />카셰어링 부문 최다 차종 운영</p>
+									</dd>
+								</dl>
+								<dl class="top_info03">
+									<dt>국내 최고</dt>
+									<dd>
+										<p class="txt">최고의 서비스를 제공하는<br />대한민국 카셰어링 대표 브랜드<span class="bar"></span></p>
+										<p class="txt_sub">2018 K-BPI(한국산업의 브랜드파워)<br />카셰어링 부문 4년 연속 1위 수상</p>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<!-- [s]top_info -->	
+						
+						<!-- 추가 (2015-07-28) -->
+						<!--div class="txt-img-userguide"><img src="/images/service/txt_img_user_share.jpg" alt="카셰어링? 라젠카!" /></div-->
+						<div class="video">
+							<iframe width="750px" height="452px" src="https://www.youtube.com/embed/639Cydro8NE" frameborder="0" title="라젠카 tv cf" ></iframe>
+<!-- 							<iframe width="750px" height="452px" src="https://www.youtube.com/embed/AyOVD1ahSMc?autoplay=1&loop=1" frameborder="0" title="라젠카 tv cf" allowfullscreen></iframe> -->
+						</div>
+						<!-- // 추가 (2015-07-28) -->
+						
+						<h4 class="stit02">내 차가 필요없는 이유, 라젠카!</h4>
+
+
+						<!-- [s]data_box01 -->
+						<ul class="data_box01">
+							<li>
+								<dl class="txtbox01">
+									<dt>원하는 만큼</dt>
+									<dd>
+										데이트/외근/쇼핑 등 차가 필요하면 언제든지<br />10분 단위로 자유롭게 라젠카를 이용하실 수 있습니다.
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl class="txtbox02">
+									<dt>다양한 차종</dt>
+									<dd>
+										경차/승용차/SUV/전기차/승합차 등 55종의 차량을<br />사용 용도에 따라 선택하실 수 있습니다.
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl class="txtbox03">
+									<dt>전국 곳곳에</dt>
+									<dd>
+										우리동네/학교/회사/공항/터미널 등<br />여러분의 가까운 곳에 라젠카가 기다리고 있습니다.
+										<p class="btn"><a class="btn btn_ws" href="https://www.greencar.co.kr/reserve/index.do"><span style="padding:0 10px 0 8px;">라젠카 찾아보기</span></a></p>
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl class="txtbox04">
+									<dt>편리한 방식</dt>
+									<dd>
+										직원을 만나 계약서를 작성하지 않으셔도 됩니다.<br />스마트폰 예약 &gt; 그린존에서 차량 탑승 &gt; 스마트키로 도어오픈하세요.
+									</dd>
+								</dl>
+							</li>
+							<!--
+							<li>
+								<dl class="txtbox05">
+									<dt>간편한 예약방식</dt>
+									<dd>
+										홈페이지/모바일웹/앱으로 간편하게 예약하고 앱 스마트키를 통해<br />즉시 라젠카 이용이 가능합니다.
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl class="txtbox06">
+									<dt>쉬운 대여/반납/결제</dt>
+									<dd>차량을 대여한 위치에 반납하면되고,<br />예약한 시간/거리만큼 요금이 자동결제 됩니다. </dd>
+								</dl>
+							</li>
+							-->
+							<li>
+								<dl class="txtbox07">
+									<dt>똑똑한 소비</dt>
+									<dd>차량 소유로 발생하는 각종 유지 비용이 절감됩니다.<br />새롭고 합리적인 방식으로 차량을 소비하세요.</dd>
+								</dl>
+							</li>
+							<li>
+								<dl class="txtbox08">
+									<dt>사회적 기여</dt>
+									<dd>차량을 공유함으로써 교통환경을 개선하고 환경보호에 기여합니다.</dd>
+								</dl>
+							</li>
+						</ul>
+						<!-- [e]data_box01 -->
+
+
+						<h4 class="stit02">라젠카 VS 일반 렌터카 비교</h4>
+
+
+					<!-- [s]boardList01 -->
+					<table summary="구분,라젠카,일반렌터카" class="boardList04 type02">
+						<caption>라젠카 VS 일반 렌터카 비교 테이블</caption>
 						<colgroup>
-							<col width="150" />
-							<col width="" />
+							<col width="119px" />
+							<col width="284px" />
+							<col width="285px" />
 						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">구분</th>
+								<th scope="col">라젠카</th>
+								<th class="th_last" scope="col">일반 렌터카</th>
+							</tr>
+						</thead>
 						<tbody>
 							<tr>
-								<th scope="row">카테고리 정하기</th>
-						<td class="q-select">
-								
-									<select name="qnaCate" id="qnaCate">
-
-									<option value="예약/결제문의" >예약/결제문의</option>
-												
-									<option value="서비스/버그신고" >서비스 버그신고</option>
-															
-									</select>
-								</td>
+								<th scope="row">대여시간</th>
+								<td>10분 단위(최소 30분)</td>
+								<td class="td_last">24시간 단위</td>
 							</tr>
 							<tr>
-								<tr class="common top">								
-							
-								<th scope="row"><label for="qnaType">제목</label></th>
-								<td>
-									<div class="pop_location">
-									 
-										<input type="text" name="qnaTitle"  id="qnaTitle" class="inputTxt02" />
-                                       
-									</div>
-								</td>
-							      
+								<th scope="row">대여장소</th>
+								<td>집/학교/회사 근처의 그린존</td>
+								<td class="td_last">지점 영업소</td>
 							</tr>
-				
 							<tr>
-								<td colspan="2" class="contentView">
-	
-                                   <textarea name="qnaContents" id="qnaContents" rows="10" cols="100" style="width:738px; height:412px;">
-
-                                   </textarea>
-    
-                                   <input type="button" id="save" value="글쓰기" />
-  			
-								</td>
+								<th scope="row">계약방식</th>
+								<td>회원가입 후 대여 시 별도 계약서 없음</td>
+								<td class="td_last">대여할 때마다 계약서 작성</td>
+							</tr>
+							<tr>
+								<th scope="row">대여방식</th>
+								<td>무인(스마트폰 또는 회원카드 이용)</td>
+								<td class="td_last">유인</td>
+							</tr>
+							<!-- 
+							<tr>
+								<td>보험</td>
+								<td>포함</td>
+								<td class="td_last">보험료 추가징수</td>
+							</tr>
+							-->
+							<tr>
+								<th scope="row">운영시간</th>
+								<td>24시간</td>
+								<td class="td_last">지점 영업소별 운영시간 제한</td>
 							</tr>
 						</tbody>
 					</table>
-					
-					 </form>
-<!-- // bodyend -->
+					<!-- [e]boardList01 -->
+
+
+
+					</div>
+
+
+
+						<!-- // bodyend -->
+
+					</div>
+
 				</div>
-			</div> <!-- // end contentBox -->
+				<!-- // end contentBox -->
+
+			</div>
+
 		</div>
-	</div>
-	<!-- // End #container -->
 
-	<!-- Begin #footer -->
+		<!-- // End #container -->
 
+		<!-- Begin #footer -->
 
 		<div id="footer">
 
@@ -477,16 +552,16 @@ $(function(){
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D01&seoul=Y"><img
-								src="./images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
+								src="/Page/images/common/img_partner_seoul.gif" alt="공유서울 나눔카 예약하기" /></a></li>
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D03"><img
-								src="./images/common/img_partner_suwon.gif"
+								src="/Page/images/common/img_partner_suwon.gif"
 								alt="휴먼시티 수원 라젠카 예약하기" /></a></li>
 
 						<li><a
 							href="https://www.greencar.co.kr/reserve/index.do?gbn=R01&tp=D02"><img
-								src="./images/common/img_partner_incheon.gif"
+								src="/Page/images/common/img_partner_incheon.gif"
 								alt="인천광역시 라젠카 예약하기" /></a></li>
 
 					</ul>
@@ -558,13 +633,13 @@ $(function(){
 
 					<div class="footer_emblem">
 
-						<img src="./images/common/img_emblem_brandpower.jpg"
+						<img src="/Page/images/common/img_emblem_brandpower.jpg"
 							alt="2016년 한국산업의 브랜드파워 1위" /> <img
-							src="./images/common/img_emblem_brandstar.jpg"
+							src="/Page/images/common/img_emblem_brandstar.jpg"
 							alt="2016년 대한민국 브랜드스타" /> <img
-							src="./images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
+							src="/Page/images/common/img_emblem_award.jpg" alt="모바일 어워드 코리아 2016" />
 
-						<img src="./images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
+						<img src="/Page/images/common/img_emblem_kspbi.jpg" alt="KS PBI" />
 
 					</div>
 

@@ -5,10 +5,7 @@
     
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<<<<<<< HEAD
-=======
 <%@ page import="dto.Promotion" %>
->>>>>>> 0eebd169674036b60aa12109b38d5bd820aabb65
 <%@ page import="dao.adminDao.PromotionRegisterDao" %>
 <%@ page import="dao.adminDao.PromotionRegisterDaoImpl" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>

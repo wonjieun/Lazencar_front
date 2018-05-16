@@ -112,7 +112,7 @@
 			<tr>
 				<td class="left">
 				<p>나이 : <input type="text" id="ageConst" name="ageConst" value="0" size="5"> 세 이상 </p>
-				<p>사용 시간 : <input type="text" id="timeConst" name="timeConst" value="0" size="5"> 시간 이상 </p>
+				<p>사용 시간 : <input type="text" id="timeConst" name="timeConst" value="0" size="5"> 일 이상 </p>
 				<p>차종 : 
 					<select class="sort" id="carConst" name="carConst">
 					    <option value="All">전차종</option>

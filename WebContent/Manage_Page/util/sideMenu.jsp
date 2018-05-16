@@ -62,7 +62,7 @@
 
 <div id="menu">
    <ul class="level1">
-      <li><a href="/home.jsp">Home</a></li>
+      <li><a href="/main.do">Home</a></li>
       <li><a class="fly" href="/admin/memberManage.do">회원 관리</a>
          <ul>
             <li><a href="/admin/memberManage.do" >회원목록 조회</a></li>
@@ -71,7 +71,7 @@
       
       <li><a class="fly" href="javascript:void(0);">예약 관리</a>
          <ul>
-            <li><a href="/reservManage.jsp">예약목록 조회</a></li>
+            <li><a href="/admin/reservationManage.do">예약목록 조회</a></li>
          </ul>
       </li>
       

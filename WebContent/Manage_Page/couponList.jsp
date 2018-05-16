@@ -235,7 +235,7 @@ $(document).ready(function(){
 			<td>${i.startDate }</td>
 			<td>${i.endDate }</td>
 			<td>${i.ageConst } 세 이상</td>
-			<td>${i.timeConst } 시간 이상</td>							
+			<td>${i.timeConst } 일 이상</td>							
 			<td>${i.carConst }</td>							
 			<td>${i.discount } %</td>							
 			<td><img width="200px" height="150px" src="/upload/${i.couponImg }"></td>						
@@ -244,7 +244,7 @@ $(document).ready(function(){
 			<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button>
 			</td>
 		</tr>
-		<tr class="hiddenTr" id="hiddenTr_${listNumber.count }">
+		<tr class="hiddenTr" id="hiddenTr_${listNumber.count }" style="display:none;">
 				<td colspan="10" style="text-align: left;">
 				쿠폰명 : <textarea rows="1" cols="30" id="key_couName_${listNumber.count}">${i.name }</textarea><br>
 				<br>

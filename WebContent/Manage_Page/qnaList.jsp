@@ -148,9 +148,11 @@ $(document).ready(function(){
 	</table>
 </div>
 <button class="btnSearch" id="searchQna" type="button">검색</button>
+
 <div class="clear"></div>
 <div>
 	<table id="table2">
+	
 	<thead>
 		<tr>
 			<th class="left">문의 번호</th>
@@ -185,15 +187,14 @@ $(document).ready(function(){
 <%-- 				<button id="btn_delete_${listNumber.count}" onclick="delete_clicked(${listNumber.count});" style="margin:auto 0;">삭제</button> --%>
 				</td>
 			</tr>
-			<tr class="hiddenTr" id="hiddenTr_${listNumber.count }">
+			<tr class="hiddenTr" id="hiddenTr_${listNumber.count }" style="display:none;">
 				<td colspan="6">
 				<div>
 				<p id="key_qnaNum_${listNumber.count }">문의 번호 : ${i.qnaNum}</p>
 				<p>카테고리 : ${i.qnaCate }</p>
 				<p>문의 제목 : ${i.qnaTitle }</p>
-				<p>문의 내용 : <textArea cols="80" readonly="readonly">${i.qnaContent}</textArea></p>
-<%-- 				<p>첨부파일 : <img src="/upload/${i.qnaImg }" width="200px;" height="150px;"></p> --%>
-<%-- 				<p>회원 이메일 : ${i.memEmail }</p> --%>
+				<p>문의 내용 : </p>
+				<p>${i.qnaContents}</p>
 				<p>답변 : <textarea cols="80" id="edit_qna_Answer_${listNumber.count }">${i.qnaAnswer}</textarea></p>
 				</div>
 				<div class="clear"></div>

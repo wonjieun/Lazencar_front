@@ -38,7 +38,6 @@ public class ReservationController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 
 		// String carName = request.getParameter("CAR_NAME");
-
 		List<Car> carList = res_service.car_list();
 		request.setAttribute("carList", carList);
 
@@ -99,12 +98,6 @@ public class ReservationController extends HttpServlet {
 		dao.insertPayment(payNum);
 		// 컨트롤러 res 출력
 		System.out.println("reservationContorll res 출력" + res.getMemId());
-
-		// request.setAttribute("pay_num", pay.getResNum());
-		// request.setAttribute("pay_num", pay.getResNum());
-		// request.setAttribute("pay_num", pay.getResNum());
-		// request.setAttribute("pay_num", pay.getResNum());
-		// request.setAttribute("pay_num", pay.getResNum());
 		
 //		response.sendRedirect("/reservation/payment.do");
 		request.getRequestDispatcher("/reservation/payment.do").forward(request, response);

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.slide {
+	width: 1910px;
+	height: 915px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+
+.slide ul {
+	width: 3000px;
+	list-style: none;
+	font-size: 0;
+}
+
+.slide ul li {
+	display: inline-block;
+}
+
+.slide button.prev {
+	position: absolute;
+	left: 0;
+	top: 120px;
+}
+
+.slide button.next {
+	position: absolute;
+	right: 0;
+	top: 120px;
+}

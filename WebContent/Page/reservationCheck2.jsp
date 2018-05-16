@@ -15,6 +15,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%-- header include --%><jsp:include page="header.jsp" />
+
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/main.css">
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/layout_01.css">
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/mypage_ex3.css">

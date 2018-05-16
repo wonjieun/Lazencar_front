@@ -94,7 +94,7 @@ public class NoticeListDaoImpl implements NoticeListDao {
 		List<Notice> list = new ArrayList<>();
 		// list = null;
 		String sql = "SELECT * FROM (" + " SELECT rownum rnum, b.* FROM ("
-				+ " 	SELECT NOT_NUM, NOT_TItle, NOT_CONTENT, NOT_DATE, NOT_EMAIL, NOT_FILE" + " 	FROM TB_NOTICE"
+				+ " 	SELECT NOT_NUM, NOT_TItle, NOT_CONTENT, NOT_DATE, NOT_EMAIL, NOT_FILE FROM TB_NOTICE"
 				+ " 	ORDER BY NOT_NUM DESC" + " ) b" + " ORDER BY rnum" + ") WHERE rnum BETWEEN ? AND ?";
 
 		try {

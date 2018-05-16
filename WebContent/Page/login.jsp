@@ -4,8 +4,10 @@
 <html>
 <head>
 
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인</title>
+<%-- header include --%><jsp:include page="header.jsp" />
 
 <link type="text/css" rel="stylesheet" href="/Page/css/login.css" >
 <link type="text/css" rel="stylesheet" media="all" href="/Page/css/common.css?v=201802">
@@ -25,6 +27,79 @@
 <script src="https://apis.google.com/js/api:client.js"></script>
 
 <script type="text/javascript">
+//<![CDATA[
+// 사용할 앱의 JavaScript 키를 설정해 주세요.
+Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
+// 카카오 로그인 버튼을 생성합니다.
+function loginWithKakao() {
+// 		    토큰꺼내기	authObj.access_token
+// 		    	alert("access token : " + Kakao.Auth.getAccessToken());
+ 	if(Kakao.Auth.getAccessToken()==null) {
+ 		Kakao.Auth.loginForm({
+ 			success : function(authObj) {
+ 				console.log(JSON.stringify(authObj));
+ 				alert(authObj.access_token);
+//  				location.href="/main.do";
+ 				var id = profile.getId();
+     	  var pw = -1;
+     	  var email = profile.getEmail();
+     		var token = authObj.access_token;
+     		
+     		$.ajax({
+     			type: "POST"
+     			, url: "/login/login.do"
+     			, data: {
+     					memId:id,
+     					memPw:pw,
+     					memEmail:email
+     				}
+     			, dataType: "json"
+     			, success: function( data ) {
+     				var check = data.check;
+     				token = data.token;
+     				
+     				if( check ) {
+     					location.href="/main.do";
+     				}
+     			}
+     			, error: function(e) {
+     				console.log("----- error -----");
+     				console.log(e.responseText);
+     			}
+     		});
+
+
+ 			},
+ 			fail: function(err) {
+ 				alert(JSON.stringify(err));
+ 			}
+ 		});
+ 	}
+// 		      // 로그인 창을 띄웁니다.
+// 		      Kakao.Auth.login({
+// 		        success: function(authObj) {
+// 		          alert(JSON.stringify(authObj));
+// 		          alert(authObj.access_token);
+// 							location.href="/main.do";
+// 		        },
+// 		        fail: function(err) {
+// 		          alert(JSON.stringify(err));
+// 		        }
+// 		      });
+};
+//]]>
+
+
+//<![CDATA[
+// 사용할 앱의 JavaScript 키를 설정해 주세요.
+// Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
+function logoutWithKakao() {
+  Kakao.Auth.logout(function() {
+// 	  location.href="/main.do";
+  });
+};
+//]]>
+
 var googleUser = {};
 var startApp = function() {
   gapi.load('auth2', function(){
@@ -87,16 +162,12 @@ function attachSignin(element) {
         }
 //         location.href = "/main.do";
       }, function(error) {
-        alert(JSON.stringify(error, undefined, 2));
+//         alert(JSON.stringify(error, undefined, 2));
       });
 }
 
 var revokeAllScopes = function() {
 	  auth2.disconnect();
-}
-
-function googleLogin() {
-	
 }
 
 
@@ -257,50 +328,7 @@ function f_login() {
 </head>
 <body>
 <div id="wrap">
-<!-- Begin #header -->
-<div id="header" class="sub">
-	<div class="hgroup">
-		<div class="inbox">
-			<h1 class="logo"><a href="/main.do"><span>라젠카</span></a></h1>
 
-			<div class="nvalinks">
-				<a href="/login/login.do">로그인</a>
-				<a href="/signUp.do">회원가입</a>
-				<a class="nvalinks-rev" href="#">라젠카 예약</a>
-			</div>
-			
-			<nav id="topMenu">
-			<ul>
-				<li class="topMenuLi">
-				<a href="#" class="menuLink">Lazencar 소개</a>
-					<ul class="submenu">
-						<li><a href="#" class="submenuLink longLink">Lazencar란?</a></li>
-						<li><a href="#" class="submenuLink longLink">이용안내</a></li>
-						<li><a href="#" class="submenuLink longLink">요금안내</a></li>
-						<li><a href="#" class="submenuLink longLink">위치</a></li>
-					</ul></li>
-
-				<li class="topMenuLi">
-				<a href="#" class="menuLink">서비스/혜택</a>
-					<ul class="submenu">
-						<li><a href="#" class="submenuLink longLink">특가상품</a></li>
-						<li><a href="#" class="submenuLink longLink">쿠폰받기</a></li>
-						<li><a href="#" class="submenuLink longLink">후기</a></li>
-					</ul></li>
-
-				<li class="topMenuLi">
-				<a href="#" class="menuLink">고객센터</a>
-					<ul class="submenu">
-						<li><a href="#" class="submenuLink longLink">1:1 문의</a></li>
-						<li><a href="#" class="submenuLink longLink">자주 찾는 질문</a></li>
-						<li><a href="/service/list.do" class="submenuLink longLink">공지사항</a></li>
-					</ul></li>
-			</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<!-- // End #header -->
 
 <!-- Begin #container -->
 <div id="container">
@@ -367,55 +395,77 @@ function f_login() {
 		<!-- 카카오아이디로 로그인 -->
 		<a id="custom-login-btn" href="javascript:loginWithKakao()">
 		<img src="/Page/images/login/kakao.png" alt="" /><br/></a>
-		<script type='text/javascript'>
-		//<![CDATA[
-		// 사용할 앱의 JavaScript 키를 설정해 주세요.
-		Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
-				    
-				    // 카카오 로그인 버튼을 생성합니다.
-		function loginWithKakao() {
-		// 		    토큰꺼내기	authObj.access_token
-		// 		    	alert("access token : " + Kakao.Auth.getAccessToken());
-		 	if(Kakao.Auth.getAccessToken()==null) {
-		 		Kakao.Auth.loginForm({
-		 			success : function(authObj) {
-		 				alert(JSON.stringify(authObj));
-		 				console.log(JSON.stringify(authObj));
-		 				alert(authObj.access_token);
-		 				location.href="/main.do";
-		 			},
-		 			fail: function(err) {
-		 				alert(JSON.stringify(err));
-		 			}
-		 		});
-		 	}
-		// 		      // 로그인 창을 띄웁니다.
-		// 		      Kakao.Auth.login({
-		// 		        success: function(authObj) {
-		// 		          alert(JSON.stringify(authObj));
-		// 		          alert(authObj.access_token);
-		// 							location.href="/main.do";
-		// 		        },
-		// 		        fail: function(err) {
-		// 		          alert(JSON.stringify(err));
-		// 		        }
-		// 		      });
-		};
-		//]]>
+		<script type="text/javascript">
+//<![CDATA[
+// 사용할 앱의 JavaScript 키를 설정해 주세요.
+Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
+// 카카오 로그인 버튼을 생성합니다.
+function loginWithKakao() {
+// 		    토큰꺼내기	authObj.access_token
+// 		    	alert("access token : " + Kakao.Auth.getAccessToken());
+ 	if(Kakao.Auth.getAccessToken()==null) {
+ 		Kakao.Auth.loginForm({
+ 			success : function(authObj) {
+ 				console.log(JSON.stringify(authObj));
+ 				alert(authObj.access_token);
+//  				location.href="/main.do";
+ 				var id = authObj.access_token;
+     	  var pw = -1;
+     		var token = authObj.access_token;
+     		
+     		$.ajax({
+     			type: "POST"
+     			, url: "/login/login.do"
+     			, data: {
+     					memId:id,
+     					memPw:pw,
+     					token:token
+     				}
+     			, dataType: "json"
+     			, success: function( data ) {
+     				var check = data.check;
+     				token = data.token;
+     				
+     				if( check ) {
+     					location.href="/main.do";
+     				}
+     			}
+     			, error: function(e) {
+     				console.log("----- error -----");
+     				console.log(e.responseText);
+     			}
+     		});
+
+
+ 			},
+ 			fail: function(err) {
+ 				alert(JSON.stringify(err));
+ 			}
+ 		});
+ 	}
+// 		      // 로그인 창을 띄웁니다.
+// 		      Kakao.Auth.login({
+// 		        success: function(authObj) {
+// 		          alert(JSON.stringify(authObj));
+// 		          alert(authObj.access_token);
+// 							location.href="/main.do";
+// 		        },
+// 		        fail: function(err) {
+// 		          alert(JSON.stringify(err));
+// 		        }
+// 		      });
+};
+//]]>
 		</script>
 		
 		<a href="javascript:logoutWithKakao()"
 			id="logout_kakao">kakao logout</a>
 		<script type='text/javascript'>
-		//<![CDATA[
-		// 사용할 앱의 JavaScript 키를 설정해 주세요.
-		// Kakao.init('77a0e108a3b9e6e97babced59f50bbef');
 		function logoutWithKakao() {
-		  Kakao.Auth.logout(function() {
-			  location.href="/main.do";
-		  });
-		};
-		//]]>
+			  Kakao.Auth.logout(function() {
+			 	  location.href="/main.do";
+			  });
+			};
 		</script>
 		
 		<!-- 구글아이디로 로그인 -->
@@ -432,25 +482,12 @@ function f_login() {
 		
 		<a href="#" onclick="signOut();">google logout</a>
 		<script>
-<<<<<<< HEAD
-		$(document).ready(function(){
-			$("#logout").click(function(){
-				var token = 'AAAAOnK1n/KtSh6PiPz/lNNHmkNKfyHWEeJuIMAOVaKBYnl59c7RjbEy/wAEcotpswFxcP0IxZPw1OPFfljPXABGw74=';
-				console.log(token);
-				location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=vL_aDS4Z9bTr4P8i4TKj&client_secret=o_DYWMfCmK&access_token="+token+"&service_provider=NAVER";
-// 				console.log("logout");t
-// 				naver_id_login.logout();
-// 				location.reload();
-			});
-		});
-=======
 		  function signOut() {
 		    var auth2 = gapi.auth2.getAuthInstance();
 		    auth2.signOut().then(function () {
 		      console.log('User signed out.');
 		    });
 		  }
->>>>>>> 0eebd169674036b60aa12109b38d5bd820aabb65
 		</script>
 	</div>
 	

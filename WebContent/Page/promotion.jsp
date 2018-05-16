@@ -647,7 +647,7 @@ a.hoverline:hover {
 </style>
 
 
-
+<%-- header include --%><jsp:include page="header.jsp" />
 
 
 
@@ -681,7 +681,19 @@ a.hoverline:hover {
 	var _birth = "";
 </script>
 
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/main.css">
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/layout_01.css">
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/mypage_ex3.css">
 
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/common.css?v=201802">
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/master.css?v=180322">
+<link type="text/css" rel="stylesheet" media="all"
+	href="/Page/css/calendar.css">
 <script type="text/javascript" src="./js/lib/jquery-1.9.1.js"></script>
 
 
@@ -698,6 +710,68 @@ a.hoverline:hover {
 	<!-- Begin #wrap -->
 
 	<div id="wrap">
+	
+	<!-- 시작 #header -->
+
+<div id="header" class="sub">
+	<div class="hgroup">
+		<div class="inbox">
+			<h1 class="logo">
+				<a href="/main.do"><span>라젠카</span></a>
+			</h1>
+
+               <div class="nvalinks">
+                  <a href="/login/login.do" id="login">로그인</a>
+                  <a href="/signUp.do" id="signup">회원가입</a>
+                  <a href="/login/logout.do" id="logout">로그아웃</a>
+                  <!-- 네이버 로그아웃 -->
+            			<a href="/login/logout.do" id="sns_logout">로그아웃</a>
+            			
+            			<script type="text/javascript">
+            			$("#logout").click(function() {
+						//								console.log(token);
+										location.href="http://nid.naver.com/nidlogin.logout";
+									});
+            			 	</script>
+            			
+            			<a href="/Page/reservationCheck.jsp" id="mypage">마이페이지</a>
+                  <a href="/reservation/reservation.do" class="nvalinks-rev">라젠카 예약</a>
+
+               </div>
+<nav id="topMenu" > 
+	<ul> 
+		<li class="topMenuLi"> 
+	<a class="menuLink" href="#">Lazencar 소개</a> 
+			<ul class="submenu"> 
+		<li><a href="/Page/guide_Introduction.jsp" class="submenuLink longLink">Lazencar란?</a></li> 
+		<li><a href="/Page/guide_Use.jsp" class="submenuLink longLink">이용안내</a></li> 
+		<li><a href="/Page/guide_Charge.jsp" class="submenuLink longLink">요금안내</a></li> 
+		<li><a href="/Page/guide_Road.jsp" class="submenuLink longLink">위치</a></li> 
+			</ul> 
+		</li>
+			
+		<li class="topMenuLi"> 
+	<a class="menuLink" href="#">서비스/혜택</a> 
+			<ul class="submenu"> 
+		<li><a href="/Page/promotion.jsp" class="submenuLink longLink">특가상품</a></li> 
+		<li><a href="/Page/coupon.do" class="submenuLink longLink">쿠폰받기</a></li> 
+		<li><a href="/Page/review_Board_List.do" class="submenuLink longLink">후기</a></li> 
+			</ul> 
+		</li>
+				
+		<li class="topMenuLi"> 
+	<a class="menuLink" href="#">고객센터</a> 
+			<ul class="submenu"> 
+		<li><a href="/Page/help_Qna.jsp" class="submenuLink longLink">1:1 문의</a></li> 
+		<li><a href="/Page/help_Faq.jsp" class="submenuLink longLink">자주찾는 질문</a></li> 
+		<li><a href="/service/list.do" class="submenuLink longLink">공지사항</a></li> 
+			</ul> 
+		</li>
+	</ul> 
+</nav>
+				</div>
+			</div>
+		</div>
 
 		<div class="top_banner join" style="display: none;">
 			<!-- // free 클래스 삭제 (2015-12-30) -->
@@ -723,67 +797,6 @@ a.hoverline:hover {
 
 
 
-		<!-- Begin #header -->
-
-		<div id="header" class="sub">
-
-			<div class="hgroup">
-
-				<div class="inbox">
-
-					<h1 class="logo">
-						<a href="http://www.greencar.co.kr/"><span>라젠카</span></a>
-					</h1>
-
-					<div class="nvalinks">
-
-						<a href="javascript:void(0);" onclick="openLapComLogin();">로그인</a>
-
-						<a href="https://www.greencar.co.kr/member/index.jsp">회원가입</a> <a
-							class="nvalinks-rev"
-							href="https://www.greencar.co.kr/reserve/index.do">라젠카 예약하기</a>
-
-					</div>
-		<nav id="topMenu" > 
-			<ul> 
-						<li class="topMenuLi"> 
-				<a class="menuLink" href="#">LaZencar 소개</a> 
-				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">Lazencar란?</a></li> 
-					<li><a href="#" class="submenuLink longLink">이용안내</a></li> 
-					<li><a href="#" class="submenuLink longLink">요금안내</a></li> 
-					<li><a href="#" class="submenuLink longLink">위치</a></li> 
-				</ul> 
-					</li>
-					
-								<li class="topMenuLi"> 
-				<a class="menuLink" href="#">서비스/혜택</a> 
-				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">특가상품</a></li> 
-					<li><a href="#" class="submenuLink longLink">쿠폰받기</a></li> 
-					<li><a href="#" class="submenuLink longLink">후기</a></li> 
-				</ul> 
-					</li>
-				
-							<li class="topMenuLi"> 
-				<a class="menuLink" href="#">고객센터</a> 
-				<ul class="submenu"> 
-					<li><a href="#" class="submenuLink longLink">1:1 문의</a></li> 
-					<li><a href="#" class="submenuLink longLink">자주찾는 질문</a></li> 
-					<li><a href="#" class="submenuLink longLink">공지사항</a></li> 
-				</ul> 
-					</li>
-			</ul> 
-		</nav>
-				</div>
-
-			</div>
-
-		</div>
-
-		<!-- // End #header -->
-
-
 
 		<!-- Begin #container -->
 
@@ -800,11 +813,11 @@ a.hoverline:hover {
 
 					<ul class="leftMenu">
 
-						<li class="top"><a href="#"><span>특가상품</span></a></li>
+						<li class="top"><a href="#" class = 'on'><span>특가상품</span></a></li>
 
 						<li><a href="#"><span>쿠폰받기</span></a></li>
 
-						<li><a href="#" class = 'on'><span>후기</span></a></li>
+						<li><a href="#"><span>후기</span></a></li>
 
 <!-- 					class = 'on'	현재 페이지를 나타낼때 on 사용하는 듯 -->
 

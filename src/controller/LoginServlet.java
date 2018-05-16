@@ -42,8 +42,8 @@ public class LoginServlet extends HttpServlet {
 		String memEmail = request.getParameter("memEmail");
 		String token = request.getParameter("token");
 		
-		if(memPw.equals(null))
-			System.out.println(memPw);
+//		if(memPw.equals(null))
+//			System.out.println(memPw);
 		
 		// member객체에 id, pw set
 		Member mem = new Member();
