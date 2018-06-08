@@ -210,7 +210,7 @@
 							<li>
 								<p class="question-list">
 									<a href="#" onclick= "SirenFunction('1'); return false;" class="blind_view"> 면허 등록이 불가능합니다 </a> 
-							</p>
+								</p>
 								<div class="answer" style="display:none;" id= "1">
 									<p>운전 면허 등록이 불가능하다면 하기 안내 내용을 참고 부탁드립니다.</p><p>&nbsp;</p><p>&nbsp;</p><p><strong></strong></p><p><strong>1. 운전면허 취득일자 체크</strong><br> -&nbsp; 만 21세 이상 + 면허 취득 후 1년 이후 회원가입/등록이 가능합니다.</p><p>&nbsp;</p><p><strong>2. 면허정보 수기 입력 시도</strong><br>&nbsp;-&nbsp; 사진 촬영을 통해 면허정보 등록 시, 텍스트가 완벽하게 인식되지 않아<br>&nbsp;&nbsp;&nbsp; 면허정보 불일치로 정상 등록되지 않았을 수 있습니다.</p><p>&nbsp;</p><p><strong>3. 면허 진위여부 확인 필요</strong><br>&nbsp;-&nbsp; 면허 정지/취소 후 재취득 여부에 따라 등록이 어려울 수 있습니다.<br>&nbsp;&nbsp;&nbsp; 음주, 뺑소니 등 중대 사고로 인해 면허 취소 후 재 취득 시 1년 경과 후<br>&nbsp;&nbsp;&nbsp; 가입 및 면허정보 변경이 가능하며 이외 등록 불가 상황 발생 시<br>&nbsp;&nbsp;&nbsp; 운전경력증명서(재취득 사유포함), 운전면허증을 하기 메일로 접수하신 후 <br>&nbsp;&nbsp;&nbsp; 고객센터로 연락주시면 서류 검토 후 개별 면허 등록 처리를 도와 드리고 있습니다.</p><p>&nbsp;-&nbsp; 이메일 : greencar@greencar.co.kr <br>&nbsp;-&nbsp; 고객센터 : 080-2000-3000<br>&nbsp;&nbsp;&nbsp; (개인정보 서류 발송 시 주민번호 뒷 6자리는 마스킹 처리 해 주세요)</p><p>&nbsp;</p><p><strong>4. 기존 가입 정보 확인요청</strong><br>&nbsp;-&nbsp; 기존 라젠카 OR 엘포인트 통합 회원 가입이력이 있으신 경우<br>&nbsp;&nbsp;&nbsp; 동일 면허 번호로 가입/정보 수정이 불가능합니다.<br>&nbsp;&nbsp;&nbsp; 기존 계정을 확인하시어 탈퇴 OR 수정 후 등록이 가능합니다</p><p>&nbsp;</p><p>&nbsp;-&nbsp;</a>&nbsp;</p>
 								</div>
